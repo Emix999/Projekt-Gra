@@ -7,15 +7,45 @@
 </head>
 <body>
     <button id="przycisk_losowania_nazwy" onclick="losowanie_nazwy()">losuj</button>
-    <input type="text" id="pole_nazwy">
+    <button id="wybor_klasy_strzalka_w_prawo"></button>
+    <input type="text" id="nazwa_pole">
+    <button id="wybor_klasy_strzalka_w_lewo" onclick="wybor_klasy_strzalka_w_lewo()">c--</button>
+    <input type="text" id="klasa_pole">
+    <button id="wybor_klasy_strzalka_w_prawo" onclick="wybor_klasy_strzalka_w_prawo()">--a</button>
+
     <script>
 let lista_imion = ["test0","test1","test2"];
 
 function losowanie_nazwy(){
-    let ilosc_imion_w_liscie;
     let losowa_liczba=Math.floor(Math.random()*lista_imion.length);
     let wylosowane_imie= lista_imion[losowa_liczba];
-    document.getElementById('pole_nazwy').value = wylosowane_imie;
+    document.getElementById('nazwa_pole').value = wylosowane_imie;
+}
+
+let lista_klas=["klasa0","klasa1","klasa2","klasa3"];
+let nr_klasy=0;
+
+function wybor_klasy_strzalka_w_lewo(){
+    if(nr_klasy==0){
+        nr_klasy=lista_klas.length-1;
+    }
+    else{
+    nr_klasy-=1;
+    }
+    let wybrana_klasa=lista_klas[nr_klasy];
+    document.getElementById('klasa_pole').value = wybrana_klasa;
+}
+
+
+function wybor_klasy_strzalka_w_prawo(){
+    if(nr_klasy==lista_klas.length-1){
+        nr_klasy=0;
+    }
+    else{
+    nr_klasy+=1;
+    }
+    let wybrana_klasa=lista_klas[nr_klasy];
+    document.getElementById('klasa_pole').value = wybrana_klasa;
 }
 
     </script>
