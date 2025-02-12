@@ -69,7 +69,7 @@ function rozwin_menu_gracza4(){
 
 
 
-
+let lista_imion = ["test0","test1","test2"];
 
 
 
