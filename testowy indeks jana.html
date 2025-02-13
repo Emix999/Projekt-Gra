@@ -6,6 +6,25 @@
     <title>testy janka</title>
 </head>
 <body>
-    <script src='js.js'></script>
+    <div id="menu_gracza1" style="visibility: hidden;">1</div>
+    <button id="plusik1" onclick="rozwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
+    <button id="krzyzyk1" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
+    <div id="menu_gracza2" style="visibility: hidden;">2</div>
+    <button id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
+    <button id="krzyzyk2" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
+
+    <script>
+        function rozwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+            document.getElementById(gracz_menu).style.visibility = 'visible';
+            document.getElementById(gracz_rozwin).style.visibility = 'hidden';
+            document.getElementById(gracz_zwin).style.visibility = 'visible';
+        }
+
+        function zwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+            document.getElementById(gracz_menu).style.visibility = 'hidden';
+            document.getElementById(gracz_rozwin).style.visibility = 'visible';
+            document.getElementById(gracz_zwin).style.visibility = 'hidden';
+        }
+    </script>
 </body>
 </html>

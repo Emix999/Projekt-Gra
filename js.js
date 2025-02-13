@@ -1,71 +1,13 @@
-const postac1_menu = document.getElementById('menu_gracza1');
-const postac2_menu = document.getElementById('menu_gracza2');
-const postac3_menu = document.getElementById('menu_gracza3');
-const postac4_menu = document.getElementById('menu_gracza4');
-const postac1_rozwin = document.getElementById('plusik1');
-const postac2_rozwin = document.getElementById('plusik2');
-const postac3_rozwin = document.getElementById('plusik3');
-const postac4_rozwin = document.getElementById('plusik4');
-const postac1_zwin = document.getElementById('krzyzyk1');
-const postac2_zwin = document.getElementById('krzyzyk2');
-const postac3_zwin = document.getElementById('krzyzyk3');
-const postac4_zwin = document.getElementById('krzyzyk4');
-
-postac1_rozwin.onclick = rozwin_menu_gracza1;
-postac2_rozwin.onclick = rozwin_menu_gracza2;
-postac3_rozwin.onclick = rozwin_menu_gracza3;
-postac4_rozwin.onclick = rozwin_menu_gracza4;
-postac1_zwin.onclick = zwin_menu_gracza1;
-postac2_zwin.onclick = zwin_menu_gracza2;
-postac3_zwin.onclick = zwin_menu_gracza3;
-postac4_zwin.onclick = zwin_menu_gracza4;
-
-function rozwin_menu_gracza1(){
-    postac1_menu.style.visibility = 'visible';
-    postac1_rozwin.style.visibility = 'hidden';
-    postac1_zwin.style.visibility = 'visible';
+function rozwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+    gracz_menu.style.visibility = 'visible';
+    gracz_rozwin.style.visibility = 'hidden';
+    gracz_zwin.style.visibility = 'visible';
 }
 
-function rozwin_menu_gracza2(){
-    postac2_menu.style.visibility = 'visible';
-    postac2_rozwin.style.visibility = 'hidden';
-    postac2_zwin.style.visibility = 'visible';
-}
-
-function rozwin_menu_gracza3(){
-    postac3_menu.style.visibility = 'visible';
-    postac3_rozwin.style.visibility = 'hidden';
-    postac3_zwin.style.visibility = 'visible';
-}
-
-function rozwin_menu_gracza4(){
-    postac4_menu.style.visibility = 'visible';
-    postac4_rozwin.style.visibility = 'hidden';
-    postac4_zwin.style.visibility = 'visible';
-}
-
-function zwin_menu_gracza1(){
-    postac1_menu.style.visibility = 'hidden';
-    postac1_rozwin.style.visibility = 'visible';
-    postac1_zwin.style.visibility = 'hidden';
-}
-
-function zwin_menu_gracza2(){
-    postac2_menu.style.visibility = 'hidden';
-    postac2_rozwin.style.visibility = 'visible';
-    postac2_zwin.style.visibility = 'hidden';
-}
-
-function zwin_menu_gracza3(){
-    postac3_menu.style.visibility = 'hidden';
-    postac3_rozwin.style.visibility = 'visible';
-    postac3_zwin.style.visibility = 'hidden';
-}
-
-function zwin_menu_gracza4(){
-    postac4_menu.style.visibility = 'hidden';
-    postac4_rozwin.style.visibility = 'visible';
-    postac4_zwin.style.visibility = 'hidden';
+function zwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+    gracz_menu.style.visibility = 'hidden';
+    gracz_rozwin.style.visibility = 'visible';
+    gracz_zwin.style.visibility = 'hidden';
 }
 
 
