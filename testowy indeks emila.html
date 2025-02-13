@@ -32,7 +32,7 @@ function strzalka_przesuwajaca_talice_w_lewo(indeks_startowy,lista){
     else{
     indeks_startowy-=1;
     }
-    return lista[indeks_startowy];
+    return lista[indeks_startowy],indeks_startowy;
 }
 
 
@@ -43,7 +43,7 @@ function strzalka_przesuwajaca_talice_w_prawo(indeks_startowy,lista){
     else{
     indeks_startowy+=1;
     }
-    return lista[indeks_startowy];
+    return lista[indeks_startowy],indeks_startowy;
 }
 
 function wybor_klasy_strzalka_w_prawo(){
