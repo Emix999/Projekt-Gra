@@ -25,29 +25,33 @@ function losowanie_nazwy(){
 let lista_klas=["klasa0","klasa1","klasa2","klasa3"];
 let nr_klasy=0;
 
-function wybor_klasy_strzalka_w_lewo(){
-    if(nr_klasy==0){
-        nr_klasy=lista_klas.length-1;
+function strzalka_przesuwajaca_talice_w_lewo(indeks_startowy,lista){
+    if(indeks_startowy==0){
+        indeks_startowy=lista.length-1;
     }
     else{
-    nr_klasy-=1;
+    indeks_startowy-=1;
     }
-    let wybrana_klasa=lista_klas[nr_klasy];
-    document.getElementById('klasa_pole').value = wybrana_klasa;
+    return lista[indeks_startowy];
 }
 
+
+function strzalka_przesuwajaca_talice_w_prawo(indeks_startowy,lista){
+    if(indeks_startowy==lista.length-1){
+        indeks_startowy=0;
+    }
+    else{
+    indeks_startowy+=1;
+    }
+    return lista[indeks_startowy];
+}
 
 function wybor_klasy_strzalka_w_prawo(){
-    if(nr_klasy==lista_klas.length-1){
-        nr_klasy=0;
-    }
-    else{
-    nr_klasy+=1;
-    }
-    let wybrana_klasa=lista_klas[nr_klasy];
-    document.getElementById('klasa_pole').value = wybrana_klasa;
+    document.getElementById('klasa_pole').value = strzalka_przesuwajaca_talice_w_prawo(nr_klasy,lista_klas);
 }
-
+function wybor_klasy_strzalka_w_lewo(){
+    document.getElementById('klasa_pole').value = strzalka_przesuwajaca_talice_w_lewo(nr_klasy,lista_klas);
+}
     </script>
 </body>
 </html>
