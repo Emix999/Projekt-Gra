@@ -32,7 +32,7 @@ function strzalka_przesuwajaca_talice_w_lewo(indeks_startowy,lista){
     else{
     indeks_startowy-=1;
     }
-    return lista[indeks_startowy],indeks_startowy;
+    return indeks_startowy;
 }
 
 
@@ -43,14 +43,14 @@ function strzalka_przesuwajaca_talice_w_prawo(indeks_startowy,lista){
     else{
     indeks_startowy+=1;
     }
-    return lista[indeks_startowy],indeks_startowy;
+    return indeks_startowy;
 }
 
 function wybor_klasy_strzalka_w_prawo(){
-    document.getElementById('klasa_pole').value = strzalka_przesuwajaca_talice_w_prawo(nr_klasy,lista_klas);
+    document.getElementById('klasa_pole').value = lista_klas[nr_klasy=strzalka_przesuwajaca_talice_w_prawo(nr_klasy,lista_klas)];
 }
-function wybor_klasy_strzalka_w_lewo(){
-    document.getElementById('klasa_pole').value = strzalka_przesuwajaca_talice_w_lewo(nr_klasy,lista_klas);
+function wybor_klasy_strzalka_w_lewo(){ 
+    document.getElementById('klasa_pole').value = lista_klas[nr_klasy=strzalka_przesuwajaca_talice_w_lewo(nr_klasy,lista_klas)];
 }
     </script>
 </body>
