@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testy janka 2 - nie pomyl</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+
+        .kontener{
+            width: 10%;
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .przycisk{
+            width: 100%;
+            height: 100%;
+            border: 10px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="kontener" style="top: 10%; left: 10%; position: fixed;">
+        <button class="przycisk" id="plusik1" onclick="rozwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
+    </div>
+    <div class="kontener" style="top: 10%; right: 10%; position: fixed;">
+        <button class="przycisk" id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
+    </div>
+    <div class="kontener" style="bottom: 10%; left: 10%; position: fixed;">
+        <button class="przycisk" id="plusik3" onclick="rozwin_menu_gracza('menu_gracza3', 'plusik3', 'krzyzyk3')"></button>
+    </div>
+    <div class="kontener" style="bottom: 10%; right: 10%; position: fixed;">
+        <button class="przycisk" id="plusik4" onclick="rozwin_menu_gracza('menu_gracza4', 'plusik4', 'krzyzyk4')"></button>
+    </div>
+    <div class="kontener" style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 20%;">
+        <button class="przycisk" id="start"></button>
+    </div>
+    <script>
+        function rozwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+            document.getElementById(gracz_menu).style.visibility = 'visible';
+            document.getElementById(gracz_rozwin).style.visibility = 'hidden';
+            document.getElementById(gracz_zwin).style.visibility = 'visible';
+        }
+
+        function zwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
+            document.getElementById(gracz_menu).style.visibility = 'hidden';
+            document.getElementById(gracz_rozwin).style.visibility = 'visible';
+            document.getElementById(gracz_zwin).style.visibility = 'hidden';
+        }
+    </script>
+</body>
+</html>
