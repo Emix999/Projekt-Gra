@@ -1,12 +1,22 @@
 body{
     background-color: aqua;
+} 
+.container{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.miejsce_uzytkownika{
-    height: 30%;
-    width: 30%;
-    border-radius: 10%;
+.przycisk_uzytkownika{
+    width: 100%;
+    height: 100%;
+    border: 10px solid black;
+    transition: 0.4s ease-in-out;
 }
-.btn {
-    width: 200%; /* Określona szerokość */
-    height: 50%; /* Opcjonalna wysokość */
+.przycisk_uzytkownika:hover{
+    transform: scale(1.2);
+}
+.nazwa_gracza{
+    margin-bottom: 80%;
 }

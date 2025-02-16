@@ -5,45 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body{
-            background-color: aqua;
-        } 
-        .container{
-            width: 200px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        }
-        .btn_user{
-            width: 100%;
-            height: 100%;
-            border: 10px solid black;
-
-        }
-        
-    </style>
     <!-- Olek kod mieliśmy pisać po polsku -->
-
 </head>
 <body>
+
+    <audio autoplay loop>
+        <source src="Bruh sound effect.ogg" type="audio/ogg">
+    </audio>
+
     <div class="container" style="top: 150px; left: 150px; position: fixed;">
-        <button class="btn_user"></button>
+        <button class="przycisk_uzytkownika">
+            <input type="text" class="nazwa_gracza">
+        </button>
     </div>
     <div class="container" style="top: 150px; right: 150px; position: fixed;">
-        <button class="btn_user"></button>
+        <button class="przycisk_uzytkownika">
+            <input type="text" class="nazwa_gracza">
+        </button>
     </div>
     <div class="container" style="bottom: 150px; left: 150px; position: fixed;">
-        <button class="btn_user"></button>
+        <button class="przycisk_uzytkownika">
+            <input type="text" class="nazwa_gracza">
+        </button>
     </div>
     <div class="container" style="bottom: 150px; right: 150px; position: fixed;">
-        <button class="btn_user"></button>
+        <button class="przycisk_uzytkownika">
+            <input type="text" class="nazwa_gracza">
+        </button>
     </div>
     <div class="container" style="position: fixed; top: 50%;; left: 50%; transform: translate(-50%, -50%); height: 300px;">
-        <button class="btn_user"></button>
+        <button class="przycisk_uzytkownika">
+            <input type="button" class="nazwa_gracza" value="START" style="height: 30%; width: 70%; margin-bottom: 110%;">
+        </button>
     </div>
-    <script src="js.js"></script>
+
+   <button onclick="playMusic()">Włącz muzykę</button>
+
+    <audio id="bgMusic" loop>
+        <source src="OO.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();  // Rozpoczyna odtwarzanie dźwięku po kliknięciu
+        }
+    </script>
+
 </body>
 </html>
