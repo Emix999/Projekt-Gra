@@ -1,15 +1,8 @@
-body{
+body {
     background-color: aqua;
-} 
-.container{
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.menu_gracza{
+.menu_gracza {
     width: 400px;
     height: 400px;
     display: flex;
@@ -17,34 +10,62 @@ body{
     justify-content: center;
 }
 
-
-
-.nazwa_gracza{
-    margin-bottom: 80%;
+#przyciski_rozwijania > button{
+    position: fixed;
+    height: 15vmin;
+    width: 15vmin;
+    border: 1vmin solid black;
 }
 
-#dodanie_gracza1{
-    top: 150px; left: 150px; position: fixed; height: 15vmin; width: 15vmin;border: 1vmin solid black;
-}
-#dodanie_gracza2{
-    top: 150px; right: 150px; position: fixed;height: 15vmin; width: 15vmin;border: 1vmin solid black;
-}
-#dodanie_gracza3{
-    bottom: 150px; left: 150px; position: fixed;height: 15vmin; width: 15vmin;border: 1vmin solid black;
-}
-#dodanie_gracza4{
-    bottom: 150px; right: 150px; position: fixed;height: 15vmin; width: 15vmin;border: 1vmin solid black;
+#rozwin1 {
+    top: 150px;
+    left: 150px;
+
 }
 
-#menu_gracza1{
-    top: 50px; left: 50px; position: fixed; visibility: hidden;background-color: brown;height: 30vmin;width: 30vmin; text-align: center;
+#rozwin2 {
+    top: 150px;
+    right: 150px;
+
 }
-#menu_gracza2{
-    top: 50px; right: 50px; position: fixed;visibility: hidden;background-color: brown;height: 30vmin;width: 30vmin;text-align: center;
+
+#rozwin3 {
+    bottom: 150px;
+    left: 150px;
+
 }
-#menu_gracza3{
-    bottom: 50px; left: 50px; position: fixed;visibility: hidden;background-color: brown;height: 30vmin;width: 30vmin;text-align: center;
+
+#rozwin4 {
+    bottom: 150px;
+    right: 150px;
+
 }
-#menu_gracza4{
-    bottom: 50px; right: 50px; position: fixed;visibility: hidden;background-color: brown;height: 30vmin;width: 30vmin;text-align: center;
+#menu_graczy{
+    position: fixed;
+    visibility: hidden;
+    background-color: brown;
+    height: 30vmin;
+    width: 30vmin;
+    text-align: center;
+}
+#menu_gracza1 {
+    top: 50px;
+    left: 50px; 
+}
+
+#menu_gracza2 {
+    top: 50px;
+    right: 50px;
+
+}
+
+#menu_gracza3 {
+    bottom: 50px;
+    left: 50px;
+
+}
+
+#menu_gracza4 {
+    bottom: 50px;
+    right: 50px;
 }

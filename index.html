@@ -10,55 +10,76 @@
 </head>
 
 <body>
+    <div id="przyciski_rozwijania">
+        <button id="rozwin1">
 
-    <button id="dodanie_gracza1" onclick="rozwijanie_menu_gracza(0)">
+        </button>
+        <button id="rozwin2">
 
-    </button>
-    <button id="dodanie_gracza2"  onclick="rozwijanie_menu_gracza(1)">
+        </button>
+        <button id="rozwin3">
 
-    </button>
-    <button id="dodanie_gracza3"  onclick="rozwijanie_menu_gracza(2)">
-
-    </button>
-    <button id="dodanie_gracza4"  onclick="rozwijanie_menu_gracza(3)">
-
-    </button>
-
-    <div id="menu_gracza1">
-
-        <input type="text" readonly id="pole_nazwy_gracza1">
-        <button onclick="losowanie_nazwy('pole_nazwy_gracza1')">los</button>
-
-
+        </button>
+        <button id="rozwin4">
+        </button>
     </div>
-    <div id="menu_gracza2">
+    <div id="menu_graczy">
+        <div id="menu_gracza1">
+            <button id="zwijanie1"></button>
+            <input type="text" readonly id="nazwa_gracza1">
+            <button id="los_nazwy1">los</button>
+            <button id="klasa_lewo1"></button>
+            <input type="text" readonly id="klasa1">
+            <button id="klasa_prawo1"></button>
+            <button id="avatar_lewo1"></button>
+            <input type="text" readonly id="avatar1">
+            <button id="avatar_prawo1"></button>
 
-        <input type="text" readonly id="pole_nazwy_gracza2">
-        <button onclick="losowanie_nazwy('pole_nazwy_gracza2')">los</button>
 
+        </div>
+        <div id="menu_gracza2">
+            <button id="zwijanie2"></button>
+            <input type="text" readonly id="nazwa_gracza2">
+            <button id="los_nazwy2">los</button>
+            <button id="klasa_lewo2"></button>
+            <input type="text" readonly id="klasa2">
+            <button id="klasa_prawo2"></button>
+            <button id="avatar_lewo2"></button>
+            <input type="text" readonly id="avatar2">
+            <button id="avatar_prawo2"></button>
 
-    </div>
-    <div id="menu_gracza3">
+        </div>
+        <div id="menu_gracza3">
+            <button id="zwijanie3"></button>
+            <input type="text" readonly id="nazwa_gracza3">
+            <button id="los_nazwy3">los</button>
+            <button id="klasa_lewo3"></button>
+            <input type="text" readonly id="klasa3">
+            <button id="klasa_prawo3"></button>
+            <button id="avatar_lewo3"></button>
+            <input type="text" readonly id="avatar3">
+            <button id="avatar_prawo3"></button>
 
-        <input type="text" readonly id="pole_nazwy_gracza3">
-        <button onclick="losowanie_nazwy('pole_nazwy_gracza3')">los</button>
+        </div>
+        <div id="menu_gracza4">
 
-
-    </div>
-    <div id="menu_gracza4">
-
-        <input type="text" readonly id="pole_nazwy_gracza4">
-        <button onclick="losowanie_nazwy('pole_nazwy_gracza4')">los</button>
-
+            <button id="zwijanie4"></button>
+            <input type="text" readonly id="nazwa_gracza4">
+            <button id="los_nazwy4">los</button>
+            <button id="klasa_lewo4"></button>
+            <input type="text" readonly id="klasa4">
+            <button id="klasa_prawo4"></button>
+            <button id="avatar_lewo4"></button>
+            <input type="text" readonly id="avatar4">
+            <button id="avatar_prawo4"></button>
+        </div>
     </div>
     <div class="container"
-        style="position: fixed; top: 50%;; left: 50%; transform: translate(-50%, -50%); height: 300px;">
+        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 300px;">
         <button class="przycisk_dodania_uzytkownika">
             <input type="button" class="nazwa_gracza" value="START"
                 style="height: 30%; width: 70%; margin-bottom: 110%;">
     </div>
-    </div>
-
 
     <script src="js.js">
 
