@@ -82,8 +82,8 @@ window.addEventListener('click', function() {
     var audio = document.getElementById('bgMusic');
     audio.play();
 }, { once: true });
- let id_rozwijanie_menu_gracza=['przycisk_dodania_uzytkownika1','przycisk_dodania_uzytkownika2','przycisk_dodania_uzytkownika3','przycisk_dodania_uzytkownika4'];
- let id_menu_gracza=['menu_uzytkownika1','menu_uzytkownika2','menu_uzytkownika3','menu_uzytkownika4'];
+ let id_rozwijanie_menu_gracza=['dodanie_gracza1','dodanie_gracza2','dodanie_gracza3','dodanie_gracza4'];
+ let id_menu_gracza=['menu_gracza1','menu_gracza2','menu_gracza3','menu_gracza4'];
  
 
 function rozwijanie_menu_konkretnego_gracza(id_gracza){

@@ -11,74 +11,58 @@
 
 <body>
 
-    <audio autoplay loop>
-        <source src="Bruh sound effect.ogg" type="audio/ogg">
-    </audio>
+    <button id="dodanie_gracza1" onclick="rozwijanie_menu_konkretnego_gracza(0)">
 
-    <div class="container" style="top: 150px; left: 150px; position: fixed;">
-        <button class="przycisk_uzytkownika" id="przycisk_dodania_uzytkownika1"
-            onclick="rozwijanie_menu_konkretnego_gracza(0)">
+    </button>
+    <button id="dodanie_gracza2"  onclick="rozwijanie_menu_konkretnego_gracza(1)">
 
-        </button>
+    </button>
+    <button id="dodanie_gracza3"  onclick="rozwijanie_menu_konkretnego_gracza(2)">
+
+    </button>
+    <button id="dodanie_gracza4"  onclick="rozwijanie_menu_konkretnego_gracza(3)">
+
+    </button>
+
+    <div id="menu_gracza1">
+
+        <input type="text" readonly id="pole_nazwy_gracza1">
+        <button onclick="losowanie_nazwy('pole_nazwy_gracza1')">los</button>
+
+
     </div>
-    <div class="container" style="top: 150px; right: 150px; position: fixed;">
-        <button class="przycisk_uzytkownika" id="przycisk_dodania_uzytkownika2"
-            onclick="rozwijanie_menu_konkretnego_gracza(1)">
+    <div id="menu_gracza2">
 
-        </button>
+        <input type="text" readonly id="pole_nazwy_gracza2">
+        <button onclick="losowanie_nazwy('pole_nazwy_gracza2')">los</button>
+
+
     </div>
-    <div class="container" style="bottom: 150px; left: 150px; position: fixed;">
-        <button class="przycisk_uzytkownika" id="przycisk_dodania_uzytkownika3"
-            onclick="rozwijanie_menu_konkretnego_gracza(2)">
+    <div id="menu_gracza3">
 
-        </button>
+        <input type="text" readonly id="pole_nazwy_gracza3">
+        <button onclick="losowanie_nazwy('pole_nazwy_gracza3')">los</button>
+
+
     </div>
-    <div class="container" style="bottom: 150px; right: 150px; position: fixed;">
-        <button class="przycisk_uzytkownika" id="przycisk_dodania_uzytkownika4"
-            onclick="rozwijanie_menu_konkretnego_gracza(3)">
+    <div id="menu_gracza4">
 
-        </button>
+        <input type="text" readonly id="pole_nazwy_gracza4">
+        <button onclick="losowanie_nazwy('pole_nazwy_gracza4')">los</button>
 
-        <div class="menu_gracza" style="top: 50px; left: 50px; position: fixed; visibility: hidden;">
-            <div class="przycisk_uzytkownika" id="menu_uzytkownika1">
-                <input type="text" readonly id="pole_nazwy_gracza1">
-                <button onclick="losowanie_nazwy('pole_nazwy_gracza1')">los</button>
-
-            </div>
-        </div>
-        <div class="menu_gracza" style="top: 50px; right: 50px; position: fixed;visibility: hidden;">
-            <div class="przycisk_uzytkownika" id="menu_uzytkownika2">
-                <input type="text" readonly id="pole_nazwy_gracza2">
-                <button onclick="losowanie_nazwy('pole_nazwy_gracza2')">los</button>
-
-            </div>
-        </div>
-        <div class="menu_gracza" style="bottom: 50px; left: 50px; position: fixed;visibility: hidden;">
-            <div class="przycisk_uzytkownika" id="menu_uzytkownika3">
-                <input type="text" readonly id="pole_nazwy_gracza3">
-                <button onclick="losowanie_nazwy('pole_nazwy_gracza3')">los</button>
-
-            </div>
-        </div>
-        <div class="menu_gracza" style="bottom: 50px; right: 50px; position: fixed;visibility: hidden;">
-            <div class="przycisk_uzytkownika" id="menu_uzytkownika4">
-                <input type="text" readonly id="pole_nazwy_gracza4">
-                <button onclick="losowanie_nazwy('pole_nazwy_gracza4')">los</button>
-
-            </div>
-        </div>
-        <div class="container"
-            style="position: fixed; top: 50%;; left: 50%; transform: translate(-50%, -50%); height: 300px;">
-            <button class="przycisk_uzytkownika">
-                <input type="button" class="nazwa_gracza" value="START"
-                    style="height: 30%; width: 70%; margin-bottom: 110%;">
-            </div>
-        </div>
+    </div>
+    <div class="container"
+        style="position: fixed; top: 50%;; left: 50%; transform: translate(-50%, -50%); height: 300px;">
+        <button class="przycisk_dodania_uzytkownika">
+            <input type="button" class="nazwa_gracza" value="START"
+                style="height: 30%; width: 70%; margin-bottom: 110%;">
+    </div>
+    </div>
 
 
-        <script src="js.js">
+    <script src="js.js">
 
-        </script>
+    </script>
 
 </body>
 
