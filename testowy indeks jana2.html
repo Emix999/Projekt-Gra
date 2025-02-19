@@ -9,49 +9,35 @@
             background-color: aqua;
         }
 
-        .kontener{
-            width: 10%;
-            height: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .przycisk{
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            border: 10px solid black;
+            font: optional;
         }
 
-        .przycisk{
-            width: 100%;
-            height: 100%;
-            border: 10px solid black;
+        .ludek{
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            background-color: black;
+            border-radius: 100%;
+            font: optional;
         }
     </style>
-
 </head>
 <body>
-    <div class="kontener" style="top: 10%; left: 10%; position: fixed;">
-        <button class="przycisk" id="plusik1" onclick="rozwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
-    </div>
-    <div class="kontener" style="top: 10%; right: 10%; position: fixed;">
-        <button class="przycisk" id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
-    </div>
-    <div class="kontener" style="bottom: 10%; left: 10%; position: fixed;">
-        <button class="przycisk" id="plusik3" onclick="rozwin_menu_gracza('menu_gracza3', 'plusik3', 'krzyzyk3')"></button>
-    </div>
-    <div class="kontener" style="bottom: 10%; right: 10%; position: fixed;">
-        <button class="przycisk" id="plusik4" onclick="rozwin_menu_gracza('menu_gracza4', 'plusik4', 'krzyzyk4')"></button>
-    </div>
-    <div class="kontener" style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 20%;">
-        <button class="przycisk" id="start"></button>
-    </div>
+    <button class="przycisk" id="punkt1" style="top: 15%; left: 10%;" onclick="idz('gracz1', 'punkt1')"></button>
+    <button class="przycisk" id="punkt2" style="top: 30%; right: 15%;" onclick="idz('gracz1', 'punkt2')"></button>
+    <button class="przycisk" id="punkt3" style="bottom: 10%; left: 50%;" onclick="idz('gracz1', 'punkt3')"></button>
+    <div class="ludek" id="gracz1" style="top: 15%; left: 40%;"></div>
     <script>
-        function rozwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
-            document.getElementById(gracz_menu).style.visibility = 'visible';
-            document.getElementById(gracz_rozwin).style.visibility = 'hidden';
-            document.getElementById(gracz_zwin).style.visibility = 'visible';
-        }
-
-        function zwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
-            document.getElementById(gracz_menu).style.visibility = 'hidden';
-            document.getElementById(gracz_rozwin).style.visibility = 'visible';
-            document.getElementById(gracz_zwin).style.visibility = 'hidden';
+        function idz(gracz_id, cel_id){
+            gracz = document.getElementById(gracz_id);
+            cel = document.getElementById(cel_id).getBoundingClientRect();
+            gracz.style.left = cel.left + 'px';
+            gracz.style.top = cel.top + 'px';
         }
     </script>
 </body>
