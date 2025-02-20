@@ -1,16 +1,31 @@
 body {
     background-color: aqua;
 }
-
-.menu_gracza {
-    width: 400px;
-    height: 400px;
+.flex_pion{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-#przyciski_rozwijania > button{
+.flex_poziom{
+    display: flex;
+    flex-direction: row;
+}
+
+.przycisk_menu{
+    height: 4vmin;
+    width: 4vmin;
+}
+.input_menu{
+    height: 3vmin;
+    width: 15vmin;
+}
+.zwijanie{
+    float: right;
+    float: top;
+
+}
+
+#przyciski_rozwijania > *{
     position: fixed;
     height: 15vmin;
     width: 15vmin;
@@ -18,29 +33,29 @@ body {
 }
 
 #rozwin1 {
-    top: 150px;
-    left: 150px;
+    top: 18vmin;
+    left: 18vmin;
 
 }
 
 #rozwin2 {
-    top: 150px;
-    right: 150px;
+    top: 18vmin;
+    right: 18vmin;
 
 }
 
 #rozwin3 {
-    bottom: 150px;
-    left: 150px;
+    bottom: 18vmin;
+    left: 18vmin;
 
 }
 
 #rozwin4 {
-    bottom: 150px;
-    right: 150px;
+    bottom: 18vmin;
+    right: 18vmin;
 
 }
-#menu_graczy{
+#menu_graczy > *{
     position: fixed;
     visibility: hidden;
     background-color: brown;
