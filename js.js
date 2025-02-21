@@ -7,18 +7,20 @@ const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {
-    constructor(nazwa, id_nazwy, klasa, id_klasy) {
+    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara) {
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
         this.id_klasy = id_klasy;
+        this.avatar=avatar;
+        this.id_avatara=id_avatara;
     }
 }
 
-const gracz1 = new gracz(null, 0, null, 0);
-const gracz2 = new gracz(null, 0, null, 0);
-const gracz3 = new gracz(null, 0, null, 0);
-const gracz4 = new gracz(null, 0, null, 0);
+const gracz1 = new gracz(null, 0, null, 0, null, 0);
+const gracz2 = new gracz(null, 0, null, 0, null, 0);
+const gracz3 = new gracz(null, 0, null, 0, null, 0);
+const gracz4 = new gracz(null, 0, null, 0, null, 0);
 
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
@@ -53,6 +55,22 @@ class menu_graczy {
         let rezultat = klasy[gracze[i].id_klasy];
         document.getElementById(this.id_klasa).value = rezultat;
         gracze[i].klasa = rezultat;
+    }
+
+    avatar_lewo(i) {
+        if (gracze[i].id_avatara == 0) gracze[i].id_avatara = avatary.length - 1;
+        else gracze[i].id_avatara -= 1;
+        let rezultat = avatary[gracze[i].id_avatara];
+        document.getElementById(this.id_avatar).src = rezultat;
+        gracze[i].avatar = rezultat;
+    }
+
+    avatar_prawo(i) {
+        if (gracze[i].id_avatara == avatary.length - 1) gracze[i].id_avatara = 0;
+        else gracze[i].id_avatara += 1;
+        let rezultat = avatary[gracze[i].id_avatara];
+        document.getElementById(this.id_avatar).src = rezultat;
+        gracze[i].avatar = rezultat;
     }
 
     losowanie_nazwy(i) {
@@ -108,4 +126,12 @@ for (let i = 0; i < liczba_graczy; i++) {
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_klasa_lewo);
     obiekt.addEventListener("click", () => tablica_indeksow[i].klasa_lewo(i));
+}
+for (let i = 0; i < liczba_graczy; i++) {
+    let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_lewo);
+    obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_lewo(i));
+}
+for (let i = 0; i < liczba_graczy; i++) {
+    let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_prawo);
+    obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_prawo(i));
 }

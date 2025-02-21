@@ -10,7 +10,10 @@ body {
     display: flex;
     flex-direction: row;
 }
-
+.avatar{
+    height: 10vmin;
+    width: 10vmin;
+}
 .przycisk_menu{
     height: 4vmin;
     width: 4vmin;
