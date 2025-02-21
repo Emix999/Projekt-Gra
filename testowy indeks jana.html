@@ -24,14 +24,12 @@
         zaktualizuj_glosnosc_muzyki();
 
         function rozwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
-            // już zaimplementowane
             document.getElementById(gracz_menu).style.visibility = 'visible';
             document.getElementById(gracz_rozwin).style.visibility = 'hidden';
             document.getElementById(gracz_zwin).style.visibility = 'visible';
         }
 
         function zwin_menu_gracza(gracz_menu, gracz_rozwin, gracz_zwin){
-            // już zaimplementowane
             document.getElementById(gracz_menu).style.visibility = 'hidden';
             document.getElementById(gracz_rozwin).style.visibility = 'visible';
             document.getElementById(gracz_zwin).style.visibility = 'hidden';
@@ -45,15 +43,15 @@
             document.getElementById('wartosc_glosnosci_muzyki').innerHTML = document.getElementById('suwak_glosnosci_muzyki').value;
         }
 
-        function start_gry(wszystkie_elementy_do_znikniecia, wszystkie_elementy_do_pokzania, wszystkie_funkcje_do_wykonania){
-            for(let i = 0; i < wszystkie_elementy_do_znikniecia.length; i++){
-                document.getElementById(wszystkie_elementy_do_znikniecia[i]).style.visibility = 'hidden';
+        function start_gry(elementy_do_znikniecia, elementy_do_pokazania, funkcje_do_wykonania){
+            for(let element of elementy_do_znikniecia){
+                document.getElementById(element).style.visibility = 'hidden';
             }
-            for(let i = 0; i < wszystkie_elementy_do_pokzania.length; i++){
-                document.getElementById(wszystkie_elementy_do_pokzania[i]).style.visibility = 'visible';
+            for(let element of elementy_do_pokazania){
+                document.getElementById(element).style.visibility = 'visible';
             }
-            for(let i = 0; i < wszystkie_funkcje_do_wykonania.length; i++){
-                wszystkie_funkcje_do_wykonania[i];
+            for(let funkcja of funkcje_do_wykonania){
+                funkcja;
             }
         }
     </script>
