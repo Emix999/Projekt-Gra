@@ -1,12 +1,14 @@
-console.log("Java scrpit się wczytuje");//Debug czy na pewno js się wczytał
+//Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
+console.log("Java scrpit się wczytuje");
 
+//Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
 const avatary = ["test avatar 1.png", "test avatar 2.png", "test avatar 3.png", "test avatar 4.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
-class gracz {
+class gracz {//gracz i wszystkie jego parametry
     constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara) {
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
@@ -17,17 +19,18 @@ class gracz {
     }
 }
 
+//Obiekty 4 graczy
 const gracz1 = new gracz(null, 0, null, 0, null, 0);
 const gracz2 = new gracz(null, 0, null, 0, null, 0);
 const gracz3 = new gracz(null, 0, null, 0, null, 0);
 const gracz4 = new gracz(null, 0, null, 0, null, 0);
 
-
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
-
+//menu wyboru gracza i wszystkie jego funcje
 class menu_graczy {
     constructor(id_menu, id_rozwin, id_zwin, id_losuj_nazwe, id_nazwa, id_klasa_lewo, id_klasa, id_klasa_prawo, id_avatar_lewo, id_avatar, id_avatar_prawo) {
+        // to coś powoduje można się odwoływać do tych elementów o wartościach dla konkretnych graczy wewnątrz obieków
         this.id_menu = id_menu;
         this.id_rozwin = id_rozwin;
         this.id_zwin = id_zwin;
@@ -40,7 +43,7 @@ class menu_graczy {
         this.id_avatar = id_avatar;
         this.id_avatar_prawo = id_avatar_prawo;
     }
-
+    //Strzałka w prawo zmienia klasę na następną w tablicy
     klasa_prawo(i) {
         if (gracze[i].id_klasy == klasy.length - 1) gracze[i].id_klasy = 0;
         else gracze[i].id_klasy += 1;
@@ -48,7 +51,7 @@ class menu_graczy {
         document.getElementById(this.id_klasa).value = rezultat;
         gracze[i].klasa = rezultat;
     }
-
+    //Strzałka w lewo zmienia klasę na poprzednią w tablicy
     klasa_lewo(i) {
         if (gracze[i].id_klasy == 0) gracze[i].id_klasy = klasy.length - 1;
         else gracze[i].id_klasy -= 1;
@@ -56,7 +59,7 @@ class menu_graczy {
         document.getElementById(this.id_klasa).value = rezultat;
         gracze[i].klasa = rezultat;
     }
-
+    //Strzałka w lewo zmienia avatar na poprzedni w tablicy
     avatar_lewo(i) {
         if (gracze[i].id_avatara == 0) gracze[i].id_avatara = avatary.length - 1;
         else gracze[i].id_avatara -= 1;
@@ -64,7 +67,7 @@ class menu_graczy {
         document.getElementById(this.id_avatar).src = rezultat;
         gracze[i].avatar = rezultat;
     }
-
+    //Strzałka w prawo zmienia avatar na następny w tablicy
     avatar_prawo(i) {
         if (gracze[i].id_avatara == avatary.length - 1) gracze[i].id_avatara = 0;
         else gracze[i].id_avatara += 1;
@@ -72,7 +75,7 @@ class menu_graczy {
         document.getElementById(this.id_avatar).src = rezultat;
         gracze[i].avatar = rezultat;
     }
-
+    //losowanie nazwy dla gracza z tablicy nazw
     losowanie_nazwy(i) {
         let losowa_liczba = Math.floor(Math.random() * nazwy.length);
         let wylosowane_imie = nazwy[losowa_liczba];
@@ -80,13 +83,13 @@ class menu_graczy {
         gracze[i].nazwa = wylosowane_imie;
         gracze[i].id_nazwy = losowa_liczba;
     }
-
+    //Rozwijanie menu gracza po kliknięciu przycisku plus
     rozwin_menu() {
         document.getElementById(this.id_menu).style.visibility = 'visible';
         document.getElementById(this.id_rozwin).style.visibility = 'hidden';
 
     }
-
+    //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu() {
         document.getElementById(this.id_menu).style.visibility = 'hidden';
         document.getElementById(this.id_rozwin).style.visibility = 'visible';
@@ -94,7 +97,7 @@ class menu_graczy {
 }
 
 
-
+//Obiekty menu dla 4 graczy zawierające id do elementów w HTMLu
 const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1', 'klasa_lewo1', 'klasa1', 'klasa_prawo1', 'avatar_lewo1', 'avatar1', 'avatar_prawo1');
 const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2', 'klasa_lewo2', 'klasa2', 'klasa_prawo2', 'avatar_lewo2', 'avatar2', 'avatar_prawo2');
 const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3', 'klasa_lewo3', 'klasa3', 'klasa_prawo3', 'avatar_lewo3', 'avatar3', 'avatar_prawo3');
@@ -103,6 +106,18 @@ const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los
 const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
 
+
+/*
+function dodaj_sluchacza(przycisk,funkcja){
+    for (let i = 0; i < liczba_graczy; i++) {
+        let obiekt = document.getElementById(tablica_indeksow[i].przycisk);
+        obiekt.addEventListener("click", () => tablica_indeksow[i].funkcja());
+    }
+}
+*/
+
+
+//Dodanie event listenerów do przycisków w menu graczy
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_rozwin);

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testy emila 2 - nie pomyl</title>
+    <style>
+        body {
+            background-image: url("mapy/schemat_pierwsze_pietro.png");
+            background-size: cover;
+        }
+
+        .sala {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            border: none;
+            font: optional;
+            background-color: blueviolet;
+        }
+
+        .ludek {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            background-color: black;
+            border-radius: 100%;
+            font: optional;
+            animation-duration: 5s;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="sala" id="punkt1" style="top: 150px; left: 100px;"></button>
+    <button class="sala" id="punkt2" style="top: 300px; right: 150px;"></button>
+    <button class="sala" id="punkt3" style="bottom: 100px; left: 500px;"></button>
+    <div class="ludek" id="gracz1" style="top: 150px; left: 400px;"></div>
+    <script>
+        function klatka(gracz_id, cel_id) {
+            let gracz = document.getElementById(gracz_id);
+            let gracz_gora=parseFloat(gracz.style.top);
+            let gracz_lewo=parseFloat(gracz.style.left);
+            let cel = document.getElementById(cel_id).getBoundingClientRect();
+
+            if (gracz_lewo < cel.left) {
+                let x=(gracz_lewo+1)+'px';
+                gracz.style.left = x;
+            }
+            if (gracz_gora < cel.top) {
+                let y=(gracz_gora+1)+'px';
+                gracz.style.top = y;
+            }
+
+        }
+
+
+        setInterval(()=>klatka('gracz1', 'punkt3'), 10);
+
+    </script>
+</body>
+
+</html>
