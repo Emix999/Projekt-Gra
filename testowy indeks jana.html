@@ -6,18 +6,21 @@
     <title>testy janka</title>
 </head>
 <body>
-    <div id="menu_gracza1" style="visibility: hidden;">1</div>
-    <button id="plusik1" onclick="rozwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
-    <button id="krzyzyk1" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
-    <div id="menu_gracza2" style="visibility: hidden;">2</div>
-    <button id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
-    <button id="krzyzyk2" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
-    <br>
-    Głośność dźwięku: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_dzwieku" oninput="zaktualizuj_glosnosc_dzwieku()">
-    <div id="wartosc_glosnosci_dzwieku"></div>
-    <br>
-    Głośność muzyki: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_muzyki" oninput="zaktualizuj_glosnosc_muzyki()">
-    <div id="wartosc_glosnosci_muzyki"></div>
+    <div id="ekran_startowy">
+        <div id="menu_gracza1" style="visibility: hidden;">1</div>
+        <button id="plusik1" onclick="rozwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
+        <button id="krzyzyk1" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza1', 'plusik1', 'krzyzyk1')"></button>
+        <div id="menu_gracza2" style="visibility: hidden;">2</div>
+        <button id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
+        <button id="krzyzyk2" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
+        <br>
+        Głośność dźwięku: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_dzwieku" oninput="zaktualizuj_glosnosc_dzwieku()">
+        <div id="wartosc_glosnosci_dzwieku"></div>
+        <br>
+        Głośność muzyki: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_muzyki" oninput="zaktualizuj_glosnosc_muzyki()">
+        <div id="wartosc_glosnosci_muzyki"></div>
+        <input type="button" id="start">
+    </div>
 
     <script>
         zaktualizuj_glosnosc_dzwieku();
@@ -43,18 +46,16 @@
             document.getElementById('wartosc_glosnosci_muzyki').innerHTML = document.getElementById('suwak_glosnosci_muzyki').value;
         }
 
-        function start_gry(elementy_do_znikniecia, elementy_do_pokazania, funkcje_do_wykonania){
-            // funkcja może zostać wykorzystana nie tylko do startu gry, ale też do innych rzeczy
+        const przycisk_start = document.getElementById('start');
+        const ekran_startowy = document.getElementById('ekran_startowy');
+
+        function start_gry(elementy_do_znikniecia){
             for(let element of elementy_do_znikniecia){
-                document.getElementById(element).style.visibility = 'hidden';
-            }
-            for(let element of elementy_do_pokazania){
-                document.getElementById(element).style.visibility = 'visible';
-            }
-            for(let funkcja of funkcje_do_wykonania){
-                funkcja;
+                element.style.visibility = 'hidden';
             }
         }
+        
+        przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.children));
     </script>
 </body>
 </html>
