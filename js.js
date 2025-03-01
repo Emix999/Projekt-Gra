@@ -9,21 +9,21 @@ const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara) {
+    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, ekwipunek) {
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
         this.id_klasy = id_klasy;
-        this.avatar=avatar;
-        this.id_avatara=id_avatara;
+        this.avatar = avatar;
+        this.id_avatara = id_avatara;
     }
 }
 
 //Obiekty 4 graczy
-const gracz1 = new gracz(null, 0, null, 0, null, 0);
-const gracz2 = new gracz(null, 0, null, 0, null, 0);
-const gracz3 = new gracz(null, 0, null, 0, null, 0);
-const gracz4 = new gracz(null, 0, null, 0, null, 0);
+const gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["soczek"]);
+const gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["piwo"]);
+const gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["latarka"]);
+const gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
