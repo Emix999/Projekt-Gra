@@ -85,14 +85,14 @@ class menu_graczy {
     }
     //Rozwijanie menu gracza po kliknięciu przycisku plus
     rozwin_menu() {
-        document.getElementById(this.id_menu).style.visibility = 'visible';
-        document.getElementById(this.id_rozwin).style.visibility = 'hidden';
+        document.getElementById(this.id_menu).style.display = 'block';
+        document.getElementById(this.id_rozwin).style.display = 'none';
 
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu() {
-        document.getElementById(this.id_menu).style.visibility = 'hidden';
-        document.getElementById(this.id_rozwin).style.visibility = 'visible';
+        document.getElementById(this.id_menu).style.display = 'none';
+        document.getElementById(this.id_rozwin).style.display = 'block';
     }
 }
 
@@ -148,3 +148,20 @@ for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_prawo);
     obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_prawo(i));
 }
+
+//Przycisk Start
+const przycisk_start = document.getElementById('start');
+const ekran_startowy = document.getElementById('ekran_startowy');
+const gra = document.getElementById('gra');
+
+function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
+    for (let element of elementy_do_znikniecia) {
+        element.style.display = 'none';
+    }
+
+    for (let element of elementy_do_pojawienia) {
+        element.style.display = 'block';
+    }
+}
+//Event listner przycisku Start
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
