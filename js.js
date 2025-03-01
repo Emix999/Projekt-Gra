@@ -96,12 +96,10 @@ class menu_graczy {
     }
 }
 
-
-//Obiekty menu dla 4 graczy zawierające id do elementów w HTMLu
-const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1', 'klasa_lewo1', 'klasa1', 'klasa_prawo1', 'avatar_lewo1', 'avatar1', 'avatar_prawo1');
-const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2', 'klasa_lewo2', 'klasa2', 'klasa_prawo2', 'avatar_lewo2', 'avatar2', 'avatar_prawo2');
-const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3', 'klasa_lewo3', 'klasa3', 'klasa_prawo3', 'avatar_lewo3', 'avatar3', 'avatar_prawo3');
-const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4', 'klasa_lewo4', 'klasa4', 'klasa_prawo4', 'avatar_lewo4', 'avatar4', 'avatar_prawo4');
+const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
+const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
+const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
+const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
 
 const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
