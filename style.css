@@ -1,5 +1,7 @@
 body {
     background-color: grey;
+    margin: 0;
+    padding: 0;
 }
 
 #ekran_startowy {
@@ -90,7 +92,7 @@ body {
 
 #menu_graczy>* {
     position: fixed;
-    visibility: hidden;
+    display: none;
     background-color: brown;
     height: 30vmin;
     width: 30vmin;
@@ -118,4 +120,30 @@ body {
 #menu_gracza4 {
     bottom: 11vmin;
     right: 11vmin;
+}
+
+
+.gra *{
+    display: none;
+}
+.gra{
+    display: flex;
+    flex-direction: row;
+}
+.menu_statystyk{
+    height: 100vh;
+    width: 15vw;
+    background-color: red;
+    
+}
+.ekran_gry{
+    height: 100vh;
+    width: 85vw;
+    background-color: blue;
+}
+.menu_statystyk>*{
+    height: 5vmin;
+    width: 5vmin;
+    background-color: blueviolet;
+    margin: 1vmin;
 }
