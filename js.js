@@ -1,6 +1,11 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
 
+/*
+gracz aktywny to taki który bierze udział w rozgrywce
+gracz wybrany to taki który ma obecnie turę
+*/
+
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
@@ -178,7 +183,7 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
     }
 
     for (let element of elementy_do_pojawienia) {
-        element.style.display = 'block';
+        element.style.display = 'flex';
     }
     //Tworzy tabelę aktywnych graczy
     for(i in gracze){
