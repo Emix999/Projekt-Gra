@@ -14,10 +14,14 @@
         <button id="plusik2" onclick="rozwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
         <button id="krzyzyk2" style="visibility: hidden;" onclick="zwin_menu_gracza('menu_gracza2', 'plusik2', 'krzyzyk2')"></button>
         <br>
+        <div>
         Głośność dźwięku: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_dzwieku" oninput="zaktualizuj_glosnosc_dzwieku()">
+        </div>
         <div id="wartosc_glosnosci_dzwieku"></div>
         <br>
+        <div>
         Głośność muzyki: <input type="range" min="0" max="100" value="50" id="suwak_glosnosci_muzyki" oninput="zaktualizuj_glosnosc_muzyki()">
+        </div>
         <div id="wartosc_glosnosci_muzyki"></div>
         <input type="button" id="start">
     </div>
