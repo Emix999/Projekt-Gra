@@ -1,33 +1,85 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            display: flex;
-            flex-direction: row;
+        body {
             margin: 0;
             padding: 0;
         }
-        .menu_statystyk{
+
+        .gra {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .menu_statystyk {
             height: 100vh;
             width: 15vw;
             background-color: aquamarine;
-            
+
         }
-        .ekran_gry{
+
+        .ekran_gry {
             height: 100vh;
             width: 85vw;
-            background-color: red;
+            background-color: gray;
+        }
+
+        .menu_statystyk>* {
+            height: 5vmin;
+            width: 5vmin;
+            background-color: lightcyan;
+            margin: 1vmin;
         }
     </style>
 </head>
+
 <body>
-    <div class="ekran_gry">
+    <div class="gra">
+        <div class="ekran_gry">
         </div>
-    <div class="menu_statystyk">
+        <div class="menu_statystyk">
+            <button id="mapa">mapa</button>
+            <button id="ustawienia">ustawienia</button>
+            <input id="nr_wybranego">nr</input>
+            <input readonly id="nazwa_wybranego">nazwa</input>
+            <input readonly id="klasa_wybranego">klasa</input>
+            <input readonly id="sanity">sanity</input>
+            <input readonly id="iq">iq</input>
+            <input readonly id="zadne_lata"></input>
+            <input readonly id="obecny_rok"></input>
+            <div id="ekwipunek"></div>
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <input readonly id="nr_gracza1"></input>
+            <input readonly id="nazwa_gracza1"></input>
+            <input readonly id="klasa_gracza1"></input>
+            <input readonly id="nr_gracza2"></input>
+            <input readonly id="nazwa_gracza2"></input>
+            <input readonly id="klasa_gracza2"></input>
+            <input readonly id="nr_gracza3"></input>
+            <input readonly id="nazwa_gracza3"></input>
+            <input readonly id="klasa_gracza3"></input>
+        </div>
     </div>
 
     <script>
@@ -39,6 +91,11 @@
         //P2 klasa nazwa
         //P3 klasa nazwa
         //P4 klasa nazwa
+
+
+
+
     </script>
 </body>
+
 </html>

@@ -9,21 +9,21 @@ const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara) {
+    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, ekwipunek) {
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
         this.id_klasy = id_klasy;
-        this.avatar=avatar;
-        this.id_avatara=id_avatara;
+        this.avatar = avatar;
+        this.id_avatara = id_avatara;
     }
 }
 
 //Obiekty 4 graczy
-const gracz1 = new gracz(null, 0, null, 0, null, 0);
-const gracz2 = new gracz(null, 0, null, 0, null, 0);
-const gracz3 = new gracz(null, 0, null, 0, null, 0);
-const gracz4 = new gracz(null, 0, null, 0, null, 0);
+const gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["soczek"]);
+const gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["piwo"]);
+const gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["latarka"]);
+const gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -85,23 +85,21 @@ class menu_graczy {
     }
     //Rozwijanie menu gracza po kliknięciu przycisku plus
     rozwin_menu() {
-        document.getElementById(this.id_menu).style.visibility = 'visible';
-        document.getElementById(this.id_rozwin).style.visibility = 'hidden';
+        document.getElementById(this.id_menu).style.display = 'block';
+        document.getElementById(this.id_rozwin).style.display = 'none';
 
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu() {
-        document.getElementById(this.id_menu).style.visibility = 'hidden';
-        document.getElementById(this.id_rozwin).style.visibility = 'visible';
+        document.getElementById(this.id_menu).style.display = 'none';
+        document.getElementById(this.id_rozwin).style.display = 'block';
     }
 }
 
-
-//Obiekty menu dla 4 graczy zawierające id do elementów w HTMLu
-const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1', 'klasa_lewo1', 'klasa1', 'klasa_prawo1', 'avatar_lewo1', 'avatar1', 'avatar_prawo1');
-const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2', 'klasa_lewo2', 'klasa2', 'klasa_prawo2', 'avatar_lewo2', 'avatar2', 'avatar_prawo2');
-const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3', 'klasa_lewo3', 'klasa3', 'klasa_prawo3', 'avatar_lewo3', 'avatar3', 'avatar_prawo3');
-const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4', 'klasa_lewo4', 'klasa4', 'klasa_prawo4', 'avatar_lewo4', 'avatar4', 'avatar_prawo4');
+const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
+const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
+const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
+const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
 
 const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
@@ -150,3 +148,20 @@ for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_prawo);
     obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_prawo(i));
 }
+
+//Przycisk Start
+const przycisk_start = document.getElementById('start');
+const ekran_startowy = document.getElementById('ekran_startowy');
+const gra = document.getElementById('gra');
+
+function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
+    for (let element of elementy_do_znikniecia) {
+        element.style.display = 'none';
+    }
+
+    for (let element of elementy_do_pojawienia) {
+        element.style.display = 'block';
+    }
+}
+//Event listner przycisku Start
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
