@@ -23,7 +23,7 @@
         const tresc = document.getElementById('tresc');
         const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
         
-        class Pytanie{
+        class pytanie{
             constructor(tresc, odpowiedzi) {
                 this.tresc = tresc;
                 this.odpowiedzi = odpowiedzi;
@@ -31,7 +31,7 @@
             }
         }
 
-        const pytanie_testowe = new Pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
+        const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
         pokaz_pytanie(pytanie_testowe);
 
         function pokaz_pytanie(pytanie){
@@ -59,9 +59,9 @@
         }
 
         // do debugowania
-        for(let przycisk of odpowiedzi_przyciski){
-            przycisk.addEventListener('click', () => console.log(przycisk.dataset.czy_poprawna));
-        }
+        // for(let przycisk of odpowiedzi_przyciski){
+        //     przycisk.addEventListener('click', () => console.log(przycisk.dataset.czy_poprawna));
+        // }
     </script>
 </body>
 </html>
