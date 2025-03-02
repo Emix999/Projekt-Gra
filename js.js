@@ -9,7 +9,7 @@ gracz wybrany to taki który ma obecnie turę
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
-const avatary = ["test avatar 1.png", "test avatar 2.png", "test avatar 3.png", "test avatar 4.png"];
+const avatary = ["postacie/test avatar 1.png", "postacie/test avatar 2.png", "postacie/test avatar 3.png", "postacie/test avatar 4.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
