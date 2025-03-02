@@ -55,7 +55,7 @@ body {
 .zwijanie {
     float: right;
     float: top;
-
+    margin-left: 87%;
 }
 
 #przyciski_rozwijania>* {
