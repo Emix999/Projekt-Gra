@@ -163,15 +163,34 @@ body {
 }
 
 #nr_wybranego {
-    width: 1.5vw;
+    width: 2vw;
     height: 3vh;
     margin: 0.25vw;
 
 }
 
-#nazwa_wybranego,
-#klasa_wybranego {
-    width: 6vw;
+#nazwa_wybranego {
+    width: 11vw;
     height: 3vh;
     margin: 0.25vw;
+}
+
+#klasa_wybranego {
+    margin: 0.25vw;
+    width: 14vw;
+    height: 3vh;
+}
+
+#sanity,
+#iq,
+#zadne_lata,
+#obecny_rok {
+    margin: 0.25vw;
+    height: 3vh;
+    width: 6.5vw;
+}
+.ekwipunek{
+    margin: 0.25vw;
+    width: 3vw;
+    height: 3vh;
 }
