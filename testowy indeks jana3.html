@@ -14,15 +14,14 @@
 </head>
 <body>
     <div id="tresc"></div>
-    <button class="odpowiedz" id="odpowiedz_a"></button>
-    <button class="odpowiedz" id="odpowiedz_b"></button>
-    <button class="odpowiedz" id="odpowiedz_c"></button>
-    <button class="odpowiedz" id="odpowiedz_d"></button>
+    <button class="odpowiedz" id="odpowiedz_a" data-etykieta = "A"></button>
+    <button class="odpowiedz" id="odpowiedz_b" data-etykieta = "B"></button>
+    <button class="odpowiedz" id="odpowiedz_c" data-etykieta = "C"></button>
+    <button class="odpowiedz" id="odpowiedz_d" data-etykieta = "D"></button>
 
     <script>
         const tresc = document.getElementById('tresc');
         const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
-        const etykiety = ['A', 'B', 'C', 'D'];
         
         class Pytanie{
             constructor(tresc, odpowiedzi) {
@@ -40,14 +39,14 @@
             let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
             przemieszaj_tablice(mozliwe_indeksy);
             for(let i = 0; i < odpowiedzi_przyciski.length; i++){
-                odpowiedzi_przyciski[i].innerHTML = '<span style = "float: left">' +  etykiety[i] + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
+                odpowiedzi_przyciski[i].innerHTML = '<span style = "float: left">' +  odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
                 odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
             }
             
             // do debugowania
-            for(let i = 0; i < odpowiedzi_przyciski.length; i++){
-                if(odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true'){
-                    console.log(etykiety[i]);
+            for(let przycisk of odpowiedzi_przyciski){
+                if(przycisk.dataset.czy_poprawna == 'true'){
+                    console.log(przycisk.dataset.etykieta);
                 }
             }
         }
