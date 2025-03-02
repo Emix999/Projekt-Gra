@@ -210,6 +210,8 @@ class pytanie {
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 pokaz_pytanie(pytanie_testowe);
 
+
+
 function pokaz_pytanie(pytanie) {
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
