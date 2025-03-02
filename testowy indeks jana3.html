@@ -17,27 +17,28 @@
         const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
         
         class Pytanie{
-            constructor(tresc, odpowiedzi, poprawna_odpowiedz) {
+            constructor(tresc, odpowiedzi) {
                 this.tresc = tresc;
                 this.odpowiedzi = odpowiedzi;
-                this.poprawna_odpowiedz = poprawna_odpowiedz;
+                // odpowiedź na indeksie zerowym jest poprawna
             }
         }
 
-        const pytanie_testowe = new Pytanie('2 + 2 = ?', ['2', '3', '4', '5'], '4');
+        const pytanie_testowe = new Pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
         pokaz_pytanie(pytanie_testowe);
 
         function pokaz_pytanie(pytanie){
             tresc.innerHTML = pytanie.tresc;
-            przemieszaj_tablice(pytanie.odpowiedzi);
+            let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
+            przemieszaj_tablice(mozliwe_indeksy);
             for(let i = 0; i < odpowiedzi_przyciski.length; i++){
-                odpowiedzi_przyciski[i].value = pytanie.odpowiedzi[i];
-                odpowiedzi_przyciski[i].dataset.czy_poprawna = pytanie.odpowiedzi[i] === pytanie.poprawna_odpowiedz;
+                odpowiedzi_przyciski[i].value = pytanie.odpowiedzi[mozliwe_indeksy[i]];
+                odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
             }
             
             // do debugowania
             for(przycisk of odpowiedzi_przyciski){
-                if(przycisk.value == pytanie.poprawna_odpowiedz){
+                if(przycisk.dataset.czy_poprawna == 'true'){
                     console.log(przycisk.id);
                 }
             }
