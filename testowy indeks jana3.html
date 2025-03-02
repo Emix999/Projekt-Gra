@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>testy janka 3 - pytania</title>
+
+    <style>
+        .odpowiedz{
+            width: 200px;
+            height:50px
+        }
+    </style>
 </head>
 <body>
     <div id="tresc"></div>
-    <input type="button" class="odpowiedz" id="odpowiedz_a">
-    <input type="button" class="odpowiedz" id="odpowiedz_b">
-    <input type="button" class="odpowiedz" id="odpowiedz_c">
-    <input type="button" class="odpowiedz" id="odpowiedz_d">
+    <button class="odpowiedz" id="odpowiedz_a"></button>
+    <button class="odpowiedz" id="odpowiedz_b"></button>
+    <button class="odpowiedz" id="odpowiedz_c"></button>
+    <button class="odpowiedz" id="odpowiedz_d"></button>
 
     <script>
         const tresc = document.getElementById('tresc');
         const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
+        const etykiety = ['A', 'B', 'C', 'D'];
         
         class Pytanie{
             constructor(tresc, odpowiedzi) {
@@ -32,14 +40,14 @@
             let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
             przemieszaj_tablice(mozliwe_indeksy);
             for(let i = 0; i < odpowiedzi_przyciski.length; i++){
-                odpowiedzi_przyciski[i].value = pytanie.odpowiedzi[mozliwe_indeksy[i]];
+                odpowiedzi_przyciski[i].innerHTML = '<span style = "float: left">' +  etykiety[i] + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
                 odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
             }
             
             // do debugowania
-            for(przycisk of odpowiedzi_przyciski){
-                if(przycisk.dataset.czy_poprawna == 'true'){
-                    console.log(przycisk.id);
+            for(let i = 0; i < odpowiedzi_przyciski.length; i++){
+                if(odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true'){
+                    console.log(etykiety[i]);
                 }
             }
         }
