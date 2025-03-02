@@ -134,7 +134,7 @@ body {
 
 .menu_statystyk {
     height: 100vh;
-    width: 15vw;
+    width: 16vw;
     background-color: red;
     flex-direction: column;
     justify-content: center;
@@ -157,28 +157,35 @@ body {
 
 #mapa,
 #ustawienia {
-    height: 5vh;
+    height: 8vh;
     width: 7vw;
     margin: 0.25vw;
+    margin-bottom: 5vh;
 }
 
-#nr_wybranego {
+.nr_gracza {
     width: 2vw;
     height: 3vh;
     margin: 0.25vw;
 
 }
 
-#nazwa_wybranego {
+.nazwa_gracza {
     width: 11vw;
     height: 3vh;
     margin: 0.25vw;
 }
 
-#klasa_wybranego {
+.klasa_gracza {
     margin: 0.25vw;
     width: 14vw;
     height: 3vh;
+}
+#ekwipunek{
+    margin: 0.25vw;
+    width: 14vw;
+    height: 3vh;
+    margin-top: 3vh;
 }
 
 #sanity,
@@ -190,12 +197,18 @@ body {
     width: 6.5vw;
 }
 .ekwipunek{
+    border: 1px solid black;
+    border-collapse: collapse;
     margin: 0.25vw;
-    width: 3vw;
-    height: 3vh;
+    width: 4.5vw;
+    height: 6vh;
 }
 
 .odpowiedz{
     width: 200px;
     height: 50px;
+}
+
+.margines_gora{
+    margin-top: 3vh;
 }
