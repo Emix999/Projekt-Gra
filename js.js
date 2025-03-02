@@ -1,6 +1,11 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
 
+/*
+gracz aktywny to taki który bierze udział w rozgrywce
+gracz wybrany to taki który ma obecnie turę
+*/
+
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
@@ -9,23 +14,30 @@ const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, ekwipunek) {
+    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
         this.id_klasy = id_klasy;
         this.avatar = avatar;
         this.id_avatara = id_avatara;
+        this.sanity=sanity;
+        this.iq=iq;
+        this.zdane_lata=zdane_lata;
+        this.czy_aktywny=czy_aktywny;
+        this.ekwipunek=ekwipunek;
     }
 }
 
-//Obiekty 4 graczy
-const gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["soczek"]);
-const gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["piwo"]);
-const gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["latarka"]);
-const gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, ["mikrofalówka"]);
+//Obiekty 4 graczy i ich domyślne warotści
+const gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
+const gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+const gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+const gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
+let aktywni_gracze=[];
+let ilosc_aktywnych_graczy=0;
 
 //menu wyboru gracza i wszystkie jego funcje
 class menu_graczy {
@@ -84,15 +96,19 @@ class menu_graczy {
         gracze[i].id_nazwy = losowa_liczba;
     }
     //Rozwijanie menu gracza po kliknięciu przycisku plus
-    rozwin_menu() {
+    rozwin_menu(i) {
         document.getElementById(this.id_menu).style.display = 'block';
         document.getElementById(this.id_rozwin).style.display = 'none';
+        gracze[i].czy_aktywny=true;
+        ilosc_aktywnych_graczy++;
 
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
-    zwin_menu() {
+    zwin_menu(i) {
         document.getElementById(this.id_menu).style.display = 'none';
         document.getElementById(this.id_rozwin).style.display = 'block';
+        gracze[i].czy_aktywny=false;
+        ilosc_aktywnych_graczy--;
     }
 }
 
@@ -119,12 +135,12 @@ function dodaj_sluchacza(przycisk,funkcja){
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_rozwin);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].rozwin_menu());
+    obiekt.addEventListener("click", () => tablica_indeksow[i].rozwin_menu(i));
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_indeksow[i].id_zwin);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].zwin_menu());
+    obiekt.addEventListener("click", () => tablica_indeksow[i].zwin_menu(i));
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
@@ -154,14 +170,29 @@ const przycisk_start = document.getElementById('start');
 const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
+//Powoduje że menu znika i pojawia się ekran gry
 function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
+    //Sprawdza czy przynajmniej jeden gracz jest aktywny
+    if(!ilosc_aktywnych_graczy){
+        alert("Musi być przynajmniej jeden gracz");
+        return 0;
+    }
+
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
 
     for (let element of elementy_do_pojawienia) {
-        element.style.display = 'block';
+        element.style.display = 'flex';
+    }
+    //Tworzy tabelę aktywnych graczy
+    for(i in gracze){
+        if(gracze[i].czy_aktywny){
+            aktywni_gracze.push(gracze[i]);
+        }
     }
 }
+
 //Event listner przycisku Start
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
+

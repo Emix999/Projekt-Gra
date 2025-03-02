@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testy janka 3 - pytania</title>
+</head>
+<body>
+    <div id="tresc"></div>
+    <input type="button" class="odpowiedz" id="odpowiedz_a">
+    <input type="button" class="odpowiedz" id="odpowiedz_b">
+    <input type="button" class="odpowiedz" id="odpowiedz_c">
+    <input type="button" class="odpowiedz" id="odpowiedz_d">
+
+    <script>
+        const tresc = document.getElementById('tresc');
+        const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
+        
+        class Pytanie{
+            constructor(tresc, odpowiedzi) {
+                this.tresc = tresc;
+                this.odpowiedzi = odpowiedzi;
+                // odpowiedź na indeksie zerowym jest poprawna
+            }
+        }
+
+        const pytanie_testowe = new Pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
+        pokaz_pytanie(pytanie_testowe);
+
+        function pokaz_pytanie(pytanie){
+            tresc.innerHTML = pytanie.tresc;
+            let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
+            przemieszaj_tablice(mozliwe_indeksy);
+            for(let i = 0; i < odpowiedzi_przyciski.length; i++){
+                odpowiedzi_przyciski[i].value = pytanie.odpowiedzi[mozliwe_indeksy[i]];
+                odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
+            }
+            
+            // do debugowania
+            for(przycisk of odpowiedzi_przyciski){
+                if(przycisk.dataset.czy_poprawna == 'true'){
+                    console.log(przycisk.id);
+                }
+            }
+        }
+
+        function przemieszaj_tablice(tablica) {
+            for (let i = tablica.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [tablica[i], tablica[j]] = [tablica[j], tablica[i]];
+            }
+        }
+
+        // do debugowania
+        for(let przycisk of odpowiedzi_przyciski){
+            przycisk.addEventListener('click', () => console.log(przycisk.dataset.czy_poprawna));
+        }
+    </script>
+</body>
+</html>

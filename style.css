@@ -123,27 +123,55 @@ body {
 }
 
 
-.gra *{
+.gra * {
     display: none;
 }
-.gra{
+
+.gra {
     display: flex;
     flex-direction: row;
 }
-.menu_statystyk{
+
+.menu_statystyk {
     height: 100vh;
     width: 15vw;
     background-color: red;
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
-.ekran_gry{
+
+
+.menu_statystyk * {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ekran_gry {
     height: 100vh;
     width: 85vw;
     background-color: blue;
 }
-.menu_statystyk>*{
-    height: 5vmin;
-    width: 5vmin;
-    background-color: blueviolet;
-    margin: 1vmin;
+
+#mapa,
+#ustawienia {
+    height: 5vh;
+    width: 7vw;
+    margin: 0.25vw;
+}
+
+#nr_wybranego {
+    width: 1.5vw;
+    height: 3vh;
+    margin: 0.25vw;
+
+}
+
+#nazwa_wybranego,
+#klasa_wybranego {
+    width: 6vw;
+    height: 3vh;
+    margin: 0.25vw;
 }
