@@ -196,3 +196,40 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
 //Event listner przycisku Start
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
 
+const tresc = document.getElementById('tresc');
+const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
+
+class pytanie {
+    constructor(tresc, odpowiedzi) {
+        this.tresc = tresc;
+        this.odpowiedzi = odpowiedzi;
+        // odpowiedź na indeksie zerowym jest poprawna
+    }
+}
+
+const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
+pokaz_pytanie(pytanie_testowe);
+
+function pokaz_pytanie(pytanie) {
+    tresc.innerHTML = pytanie.tresc;
+    let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
+    przemieszaj_tablice(mozliwe_indeksy);
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        odpowiedzi_przyciski[i].innerHTML = '<span style = "float: left">' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
+        odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
+    }
+
+    // do debugowania
+    for (let przycisk of odpowiedzi_przyciski) {
+        if (przycisk.dataset.czy_poprawna == 'true') {
+            console.log(przycisk.dataset.etykieta);
+        }
+    }
+}
+
+function przemieszaj_tablice(tablica) {
+    for (let i = tablica.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tablica[i], tablica[j]] = [tablica[j], tablica[i]];
+    }
+}
