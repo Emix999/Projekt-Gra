@@ -4,8 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>testy janka 5 - mapowanie schematow</title>
+
+    <style>
+        div{
+            max-width: fit-content;
+            margin: auto;
+        }
+        
+        button{
+            background-color: transparent;
+            border-color: transparent;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    <img src="mapy/schemat_pierwsze_pietro.png" usemap="schemat_pierwsze_pietro">
+    <!--strzałeczki dokończyć i zmienić src-->
+    <!--zrobić coś z 21 studio RTV i z tą salą gimnastyczną i 15-->
+    <div id="schemat_pierwsze_pietro" style = "display: none;">
+        <img src="mapy/schemat_pierwsze_pietro.png">
+        <div style = "display: flex; position: absolute;">
+            <button style="left: 13px; top: 191px; width: 80px; height: 50px;">101</button>
+            <button style="left: 96px; top: 191px; width: 60px; height: 50px;">102a</button>
+            <button style="left: 159px; top: 191px; width: 60px; height: 50px;">102b</button>
+            <button style="left: 221px; top: 191px; width: 80px; height: 50px;">103</button>
+            <button style="left: 325px; top: 191px; width: 80px; height: 50px;">104</button>
+            <button style="left: 407px; top: 191px; width: 80px; height: 50px;">105</button>
+            <button style="left: 489px; top: 191px; width: 80px; height: 50px;">106</button>
+            <button style="left: 572px; top: 214px; width: 80px; height: 50px;">107</button>
+            <button style="left: 654px; top: 214px; width: 80px; height: 50px;">108</button>
+            <button style="left: 737px; top: 214px; width: 50px; height: 72px;">109</button>
+            <button style="left: 572px; top: 289px; width: 58px; height: 50px;">111</button>
+            <button style="font-size: 30px; left: 67px; top: 272px; width: 80px; height: 35x;">↓</button><!-- ↑ --><!--trochę źle to wygląda-->
+        </div>
+    </div>
+
+    <div id="schemat_drugie_pietro" style = "display: none;">
+        <img src="mapy/schemat_drogie_pietro.png">
+        <div style = "display: flex; position: absolute;">
+            <button style="left: 13px; top: 191px; width: 80px; height: 50px;">201</button>
+            <button style="left: 117px; top: 191px; width: 80px; height: 50px;">202</button>
+            <button style="left: 221px; top: 191px; width: 80px; height: 50px;">203</button>
+            <button style="left: 325px; top: 191px; width: 80px; height: 50px;">204</button>
+            <button style="left: 407px; top: 191px; width: 80px; height: 50px;">205</button>
+            <button style="left: 489px; top: 191px; width: 80px; height: 50px;">206</button>
+            <button style="left: 572px; top: 214px; width: 80px; height: 50px;">207</button>
+            <button style="left: 654px; top: 214px; width: 80px; height: 50px;">208</button>
+            <button style="left: 737px; top: 214px; width: 50px; height: 72px;">209</button>
+            <button style="left: 699px; top: 289px; width: 74px; height: 50px;">210</button>
+            <button style="left: 597px; top: 289px; width: 74px; height: 50px;">211</button>
+        </div>
+    </div>
+
+    <div id="schemat_parter" style = "display: flex;">
+        <img src="mapy/schemat_parter.png">
+        <div style = "display: flex; position: absolute;">
+            <button style="position: absolute; left: 16px; top: 342px; width: 80px; height: 50px;">24</button>
+            <button style="position: absolute; left: 145px; top: 342px; width: 76px; height: 50px;">22</button>
+            <button style="position: absolute; left: 363px; top: 342px; width: 77px; height: 50px;">20</button>
+            <button style="position: absolute; left: 443px; top: 342px; width: 91px; height: 50px;">19</button>
+            <button style="position: absolute; left: 552px; top: 89px; width: 87px; height: 172px;">sala gimnastyczna</button>
+            <button style="background-color: burlywood; border-color: burlywood; position: absolute; left: 752px; top: 89px; width: 87px; height: 172px;">15</button>
+            <button style="position: absolute; left: 602px; top: 365px; width: 135px; height: 55px;">sala samokształceniowa</button>
+        </div>
+    </div>
 </body>
 </html>
