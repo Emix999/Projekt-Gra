@@ -106,7 +106,7 @@
     </div>
 
     <div class="gra" id="gra">
-        <div class="ekran_gry">
+        <div class="ekran_gry" id="ekran_gry">
         </div>
         <div class="menu_statystyk">
             <div class="flex_poziom">
@@ -114,10 +114,10 @@
                 <button id="ustawienia">ustawienia</button>
             </div>
             <div class="flex_poziom">
-                <input id="nr_wybranego"class="nr_gracza"></input>
-                <input readonly id="nazwa_wybranego"class="nazwa_gracza"></input>
+                <input id="nr_wybranego" class="nr_gracza"></input>
+                <input readonly id="nazwa_wybranego" class="nazwa_gracza"></input>
             </div>
-            <input readonly id="klasa_wybranego"class="klasa_gracza"></input>
+            <input readonly id="klasa_wybranego" class="klasa_gracza"></input>
             <div class="flex_poziom">
                 <input readonly id="sanity"></input>
                 <input readonly id="iq"></input>
@@ -143,18 +143,18 @@
                 <button class="ekwipunek"></button>
                 <button class="ekwipunek"></button>
             </div>
-            
-            <div class="flex_poziom margines_gora">
-                <input readonly id="nr_gracza1"class="nr_gracza"></input>
-                <input readonly id="nazwa_gracza1"class="nazwa_gracza"></input>
-            </div>
-            <input readonly id="klasa_gracza1"class="klasa_gracza"></input>
 
             <div class="flex_poziom margines_gora">
-                <input readonly id="nr_gracza2"class="nr_gracza"></input>
-                <input readonly id="nazwa_gracza2"class="nazwa_gracza"></input>
+                <input readonly id="nr_gracza1" class="nr_gracza"></input>
+                <input readonly id="nazwa_gracza1" class="nazwa_gracza"></input>
             </div>
-            <input readonly id="klasa_gracza2"class="klasa_gracza"></input>
+            <input readonly id="klasa_gracza1" class="klasa_gracza"></input>
+
+            <div class="flex_poziom margines_gora">
+                <input readonly id="nr_gracza2" class="nr_gracza"></input>
+                <input readonly id="nazwa_gracza2" class="nazwa_gracza"></input>
+            </div>
+            <input readonly id="klasa_gracza2" class="klasa_gracza"></input>
 
             <div class="flex_poziom margines_gora">
                 <input readonly id="nr_gracza3" class="nr_gracza"></input>
@@ -165,12 +165,16 @@
         </div>
     </div>
 
-    <div id="ekran_pytania" style="display: none;">
+    <div id="ekran_pytania" class="flex_pion">
         <div id="tresc"></div>
-        <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
-        <button class="odpowiedz" id="odpowiedz_b" data-etykieta="B"></button>
-        <button class="odpowiedz" id="odpowiedz_c" data-etykieta="C"></button>
-        <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
+        <div class="flex_poziom">
+            <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
+            <button class="odpowiedz" id="odpowiedz_b" data-etykieta="B"></button>
+        </div>
+        <div class="flex_poziom">
+            <button class="odpowiedz" id="odpowiedz_c" data-etykieta="C"></button>
+            <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
+        </div>
     </div>
 
     <script src="js.js">

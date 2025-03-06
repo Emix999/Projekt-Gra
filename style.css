@@ -155,6 +155,12 @@ body {
     background-color: blue;
 }
 
+#ekran_pytania {
+    height: 100vh;
+    width: 85vw;
+    background-color: azure;
+}
+
 #mapa,
 #ustawienia {
     height: 8vh;
@@ -181,7 +187,8 @@ body {
     width: 14vw;
     height: 3vh;
 }
-#ekwipunek{
+
+#ekwipunek {
     margin: 0.25vw;
     width: 14vw;
     height: 3vh;
@@ -196,7 +203,8 @@ body {
     height: 3vh;
     width: 6.5vw;
 }
-.ekwipunek{
+
+.ekwipunek {
     border: 1px solid black;
     border-collapse: collapse;
     margin: 0.25vw;
@@ -204,11 +212,30 @@ body {
     height: 6vh;
 }
 
-.odpowiedz{
-    width: 200px;
-    height: 50px;
+.odpowiedz {
+    background-color: aquamarine;
+    width: 30vw;
+    height: 20vh;
+    margin: 2vw;
 }
 
-.margines_gora{
+#tresc {
+    width: 66vw;
+    height: 15vh;
+    background-color: blueviolet;
+    margin-bottom: 3vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+#ekran_pytania,
+#ekran_pytania * {
+    display: none;
+}
+
+.margines_gora {
     margin-top: 3vh;
 }
