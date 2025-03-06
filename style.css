@@ -159,6 +159,7 @@ body {
     height: 100vh;
     width: 85vw;
     background-color: azure;
+    display: none;
 }
 
 #mapa,
@@ -229,11 +230,6 @@ body {
     text-align: center;
     font-size: 100px;
 
-}
-
-#ekran_pytania,
-#ekran_pytania * {
-    display: none;
 }
 
 .margines_gora {

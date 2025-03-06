@@ -210,17 +210,12 @@ class pytanie {
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 
 
-
-
 function pokaz_pytanie(pytanie) {
-    let elementy_do_znikniecia=document.getElementById('ekran_gry').querySelectorAll('*');
-    let elementy_do_pojawienia=document.getElementById('ekran_pytania').querySelectorAll('*');
+    let elementy_do_znikniecia = document.getElementById('ekran_gry').querySelectorAll('*');
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
-    for (let element of elementy_do_pojawienia) {
-        element.style.display = 'block';
-    }
+    document.getElementById('ekran_pytania').style.display = 'flex';
 
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -238,9 +233,6 @@ function pokaz_pytanie(pytanie) {
     }
 
 }
-
-
-setInterval(()=>pokaz_pytanie(pytanie_testowe),3000);
 
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
