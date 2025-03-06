@@ -209,19 +209,18 @@ class pytanie {
 
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 
-const ekran_gry = document.getElementById('ekran_gry');
-const ekran_pytania = document.getElementById('ekran_pytania');
+
 pokaz_pytanie(pytanie_testowe);
 
 
 function pokaz_pytanie(pytanie) {
-    let elementy_do_znikniecia=ekran_gry.querySelectorAll('*');
-    let elementy_do_pojawienia=ekran_pytania.querySelectorAll('*');
+    let elementy_do_znikniecia=document.getElementById('ekran_gry').querySelectorAll('*');
+    let elementy_do_pojawienia=document.getElementById('ekran_pytania').querySelectorAll('*');
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
     for (let element of elementy_do_pojawienia) {
-        element.style.display = 'flex';
+        element.style.display = 'block';
     }
 
     tresc.innerHTML = pytanie.tresc;
