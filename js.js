@@ -210,7 +210,6 @@ class pytanie {
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 
 
-pokaz_pytanie(pytanie_testowe);
 
 
 function pokaz_pytanie(pytanie) {
@@ -238,8 +237,10 @@ function pokaz_pytanie(pytanie) {
         }
     }
 
-
 }
+
+
+setInterval(()=>pokaz_pytanie(pytanie_testowe),3000);
 
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
