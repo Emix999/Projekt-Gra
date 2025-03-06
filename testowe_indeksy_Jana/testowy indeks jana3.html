@@ -36,7 +36,7 @@
 
         function pokaz_pytanie(pytanie){
             tresc.innerHTML = pytanie.tresc;
-            let mozliwe_indeksy = pytanie.odpowiedzi.map((x, i) => i);
+            let mozliwe_indeksy = [0, 1, 2, 3];
             przemieszaj_tablice(mozliwe_indeksy);
             for(let i = 0; i < odpowiedzi_przyciski.length; i++){
                 odpowiedzi_przyciski[i].innerHTML = '<span style = "float: left">' +  odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
