@@ -134,7 +134,7 @@ body {
 
 .menu_statystyk {
     height: 100vh;
-    width: 16vw;
+    width: 36vh;
     background-color: red;
     flex-direction: column;
     justify-content: center;
@@ -164,33 +164,33 @@ body {
 #mapa,
 #ustawienia {
     height: 8vh;
-    width: 7vw;
-    margin: 0.25vw;
+    width: 16vh;
+    margin: 0.5vh;
     margin-bottom: 5vh;
 }
 
 .nr_gracza {
-    width: 2vw;
+    width: 4vh;
     height: 3vh;
-    margin: 0.25vw;
+    margin: 0.5vh;
 
 }
 
 .nazwa_gracza {
-    width: 11vw;
+    width: 26vh;
     height: 3vh;
-    margin: 0.25vw;
+    margin: 0.5vh;
 }
 
 .klasa_gracza {
-    margin: 0.25vw;
-    width: 14vw;
+    margin: 0.5vh;
+    width: 32vh;
     height: 3vh;
 }
 
 #ekwipunek {
-    margin: 0.25vw;
-    width: 14vw;
+    margin: 0.5vh;
+    width: 32vh;
     height: 3vh;
     margin-top: 3vh;
 }
@@ -199,16 +199,16 @@ body {
 #iq,
 #zadne_lata,
 #obecny_rok {
-    margin: 0.25vw;
+    margin: 0.5vh;
     height: 3vh;
-    width: 6.5vw;
+    width: 15vh;
 }
 
 .ekwipunek {
     border: 1px solid black;
     border-collapse: collapse;
-    margin: 0.25vw;
-    width: 4.5vw;
+    margin: 0.5vh;
+    width: 10.3vh;
     height: 6vh;
 }
 
