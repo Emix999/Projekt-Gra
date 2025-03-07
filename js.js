@@ -194,7 +194,7 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
 }
 
 //Event listner przycisku Start
-przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('#ekran_gry, #menu_statystyk')));
 
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
@@ -209,13 +209,20 @@ class pytanie {
 
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 
-
 function pokaz_pytanie(pytanie) {
     let elementy_do_znikniecia = document.getElementById('ekran_gry').querySelectorAll('*');
+    let elementy_do_pojawienia = document.getElementById('ekran_pytania').querySelectorAll('*');
+
+    document.getElementById('ekran_gry').style.display='none';
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
+
+    
     document.getElementById('ekran_pytania').style.display = 'flex';
+    for (let element of elementy_do_pojawienia) {
+        element.style.display = 'flex';
+    }
 
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -240,3 +247,6 @@ function przemieszaj_tablice(tablica) {
         [tablica[i], tablica[j]] = [tablica[j], tablica[i]];
     }
 }
+
+
+setTimeout(()=>pokaz_pytanie(pytanie_testowe),3000);
