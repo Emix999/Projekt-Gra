@@ -28,8 +28,10 @@ body {
 }
 
 .avatar {
-    height: 10vmin;
-    width: 10vmin;
+    height: 16.1vmin;
+    width: 16.1vmin;
+    top: 23%;
+    position: absolute;
 }
 
 #start {
@@ -47,15 +49,63 @@ body {
     width: 4vmin;
 }
 
-.input_menu {
-    height: 3vmin;
-    width: 15vmin;
+.los{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    top: 5%;
 }
 
+.strzalka_srodek_lewo{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    top: 43%; 
+}
+
+.strzalka_srodek_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    top: 43%; 
+}
+
+.strzalka_dol_lewo{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    bottom: 5%; 
+}
+
+.strzalka_dol_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    bottom: 5%; 
+}
+
+.input_menu {
+    height: 2.4vmin;
+    width: 16.1vmin;
+    background-color: transparent;
+    color: white;
+}
+
+.nazwa_gracza_menu{
+    position: absolute;
+    top: 7.5%;
+    left: 22%;
+}
+.profil_gracza_menu{
+    position: absolute;
+    bottom: 7.5%;
+    left: 22%;
+}
 .zwijanie {
-    float: right;
-    float: top;
-    margin-left: 87%;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
 }
 
 #przyciski_rozwijania>* {
@@ -103,23 +153,29 @@ body {
 #menu_gracza1 {
     top: 11vmin;
     left: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_red.png');
+    background-size: cover;
 }
 
 #menu_gracza2 {
     top: 11vmin;
     right: 11vmin;
-
+    background-image: url('menu_grafiki/menu_gracza_blue.png');
+    background-size: cover;
 }
 
 #menu_gracza3 {
     bottom: 11vmin;
     left: 11vmin;
-
+    background-image: url('menu_grafiki/menu_gracza_green.png');
+    background-size: cover;
 }
 
 #menu_gracza4 {
     bottom: 11vmin;
     right: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_yellow.png');
+    background-size: cover;
 }
 
 
