@@ -9,7 +9,7 @@ gracz wybrany to taki który ma obecnie turę
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
-const avatary = ["postacie/test avatar 1.png", "postacie/test avatar 2.png", "postacie/test avatar 3.png", "postacie/test avatar 4.png"];
+const avatary = ["postacie/test avatar 1.png", "postacie/test avatar 2.png", "postacie/test avatar 3.png", "postacie/test avatar 4.png", "postacie/test avatar 5.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
@@ -261,4 +261,4 @@ function przemieszaj_tablice(tablica) {
 }
 
 
-setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
