@@ -21,11 +21,11 @@ class gracz {//gracz i wszystkie jego parametry
         this.id_klasy = id_klasy;
         this.avatar = avatar;
         this.id_avatara = id_avatara;
-        this.sanity=sanity;
-        this.iq=iq;
-        this.zdane_lata=zdane_lata;
-        this.czy_aktywny=czy_aktywny;
-        this.ekwipunek=ekwipunek;
+        this.sanity = sanity;
+        this.iq = iq;
+        this.zdane_lata = zdane_lata;
+        this.czy_aktywny = czy_aktywny;
+        this.ekwipunek = ekwipunek;
     }
 }
 
@@ -36,8 +36,8 @@ let gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"
 let gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
-let aktywni_gracze=[];
-let ilosc_aktywnych_graczy=0;
+let aktywni_gracze = [];
+let ilosc_aktywnych_graczy = 0;
 
 //menu wyboru gracza i wszystkie jego funcje
 class menu_graczy {
@@ -99,7 +99,7 @@ class menu_graczy {
     rozwin_menu(i) {
         document.getElementById(this.id_menu).style.display = 'block';
         document.getElementById(this.id_rozwin).style.display = 'none';
-        gracze[i].czy_aktywny=true;
+        gracze[i].czy_aktywny = true;
         ilosc_aktywnych_graczy++;
 
     }
@@ -107,7 +107,7 @@ class menu_graczy {
     zwin_menu(i) {
         document.getElementById(this.id_menu).style.display = 'none';
         document.getElementById(this.id_rozwin).style.display = 'block';
-        gracze[i].czy_aktywny=false;
+        gracze[i].czy_aktywny = false;
         ilosc_aktywnych_graczy--;
     }
 }
@@ -173,7 +173,7 @@ const gra = document.getElementById('gra');
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
     //Sprawdza czy przynajmniej jeden gracz jest aktywny
-    if(!ilosc_aktywnych_graczy){
+    if (!ilosc_aktywnych_graczy) {
         alert("Musi być przynajmniej jeden gracz");
         return 0;
     }
@@ -186,15 +186,15 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
         element.style.display = 'flex';
     }
     //Tworzy tabelę aktywnych graczy
-    for(let i of gracze){
-        if(i.czy_aktywny){
+    for (let i of gracze) {
+        if (i.czy_aktywny) {
             aktywni_gracze.push(i);
         }
     }
 }
 
 //Event listner przycisku Start
-przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('#ekran_gry, #menu_statystyk')));
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('.start, .start *')));
 
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
@@ -213,12 +213,12 @@ function pokaz_pytanie(pytanie) {
     let elementy_do_znikniecia = document.getElementById('ekran_gry').querySelectorAll('*');
     let elementy_do_pojawienia = document.getElementById('ekran_pytania').querySelectorAll('*');
 
-    document.getElementById('ekran_gry').style.display='none';
+    document.getElementById('ekran_gry').style.display = 'none';
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
 
-    
+
     document.getElementById('ekran_pytania').style.display = 'flex';
     for (let element of elementy_do_pojawienia) {
         element.style.display = 'flex';
@@ -232,6 +232,18 @@ function pokaz_pytanie(pytanie) {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
+    function czy_poprawna(i){
+        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+            alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+        }
+else{
+            alert("UwUaga Debil");
+        }
+    }
+
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
+    }
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
@@ -249,4 +261,4 @@ function przemieszaj_tablice(tablica) {
 }
 
 
-setTimeout(()=>pokaz_pytanie(pytanie_testowe),3000);
+setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
