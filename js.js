@@ -9,7 +9,7 @@ gracz wybrany to taki który ma obecnie turę
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
-const avatary = ["test avatar 1.png", "test avatar 2.png", "test avatar 3.png", "test avatar 4.png"];
+const avatary = ["postacie/test avatar 1.png", "postacie/test avatar 2.png", "postacie/test avatar 3.png", "postacie/test avatar 4.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
@@ -30,10 +30,10 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
-const gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-const gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-const gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+let gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
+let gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+let gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+let gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 let aktywni_gracze=[];
@@ -112,10 +112,10 @@ class menu_graczy {
     }
 }
 
-const menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
-const menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
-const menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
-const menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
+let menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
+let menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
+let menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
+let menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
 
 const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
@@ -186,13 +186,67 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
         element.style.display = 'flex';
     }
     //Tworzy tabelę aktywnych graczy
-    for(i in gracze){
-        if(gracze[i].czy_aktywny){
-            aktywni_gracze.push(gracze[i]);
+    for(let i of gracze){
+        if(i.czy_aktywny){
+            aktywni_gracze.push(i);
         }
     }
 }
 
 //Event listner przycisku Start
-przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('*')));
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('#ekran_gry, #menu_statystyk')));
 
+const tresc = document.getElementById('tresc');
+const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
+
+class pytanie {
+    constructor(tresc, odpowiedzi) {
+        this.tresc = tresc;
+        this.odpowiedzi = odpowiedzi;
+        // odpowiedź na indeksie zerowym jest poprawna
+    }
+}
+
+const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
+
+function pokaz_pytanie(pytanie) {
+    let elementy_do_znikniecia = document.getElementById('ekran_gry').querySelectorAll('*');
+    let elementy_do_pojawienia = document.getElementById('ekran_pytania').querySelectorAll('*');
+
+    document.getElementById('ekran_gry').style.display='none';
+    for (let element of elementy_do_znikniecia) {
+        element.style.display = 'none';
+    }
+
+    
+    document.getElementById('ekran_pytania').style.display = 'flex';
+    for (let element of elementy_do_pojawienia) {
+        element.style.display = 'flex';
+    }
+
+    tresc.innerHTML = pytanie.tresc;
+    let mozliwe_indeksy = [0, 1, 2, 3];
+    przemieszaj_tablice(mozliwe_indeksy);
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
+        odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
+    }
+
+    // do debugowania
+    for (let przycisk of odpowiedzi_przyciski) {
+        if (przycisk.dataset.czy_poprawna == 'true') {
+            console.log(przycisk.dataset.etykieta);
+        }
+    }
+
+}
+
+function przemieszaj_tablice(tablica) {
+    for (let i = tablica.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tablica[i], tablica[j]] = [tablica[j], tablica[i]];
+    }
+}
+
+
+setTimeout(()=>pokaz_pytanie(pytanie_testowe),3000);

@@ -33,16 +33,9 @@
                         <button id="los_nazwy1" class="przycisk_menu">los</button>
                     </div>
                     <div class="flex_poziom">
-<<<<<<< HEAD
                         <button id="avatar_lewo1" class="przycisk_menu"></button>
-                        <img id="avatar1" class="avatar">
+                        <img id="avatar1_menu" class="avatar">
                         <button id="avatar_prawo1" class="przycisk_menu"></button>
-=======
-                        <button id="avatar_lewo1" class="przycisk_menu">
-                            <=< /button>
-                                <img id="avatar1" class="avatar">
-                                <button id="avatar_prawo1" class="przycisk_menu">=></button>
->>>>>>> 27eadb7dbb4c4a978dae874897b96d38d2025d6d
                     </div>
                     <div class="flex_poziom">
                         <button id="klasa_lewo1" class="przycisk_menu"></button>
@@ -60,7 +53,7 @@
                     </div>
                     <div class="flex_poziom">
                         <button id="avatar_lewo2" class="przycisk_menu"></button>
-                        <img id="avatar1" class="avatar">
+                        <img id="avatar2_menu" class="avatar">
                         <button id="avatar_prawo2" class="przycisk_menu"></button>
                     </div>
                     <div class="flex_poziom">
@@ -113,61 +106,79 @@
     </div>
 
     <div class="gra" id="gra">
-        <div class="ekran_gry">
+        <div class="ekran_gry" id="ekran_gry"> 
         </div>
+        
+        <div id="ekran_pytania" class="flex_pion">
+            <div id="tresc"></div>
+            <div class="flex_poziom">
+                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
+                <button class="odpowiedz" id="odpowiedz_b" data-etykieta="B"></button>
+            </div>
+            <div class="flex_poziom">
+                <button class="odpowiedz" id="odpowiedz_c" data-etykieta="C"></button>
+                <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
+            </div>
+        </div>
+
         <div class="menu_statystyk">
             <div class="flex_poziom">
                 <button id="mapa">mapa</button>
                 <button id="ustawienia">ustawienia</button>
             </div>
             <div class="flex_poziom">
-                <input id="nr_wybranego"></input>
-                <input readonly id="nazwa_wybranego"></input>
-                <input readonly id="klasa_wybranego"></input>
+                <input id="nr_wybranego" class="nr_gracza"></input>
+                <input readonly id="nazwa_wybranego" class="nazwa_gracza"></input>
             </div>
+            <input readonly id="klasa_wybranego" class="klasa_gracza"></input>
             <div class="flex_poziom">
-                <input readonly id="sanity">sanity</input>
-                <input readonly id="iq">iq</input>
+                <input readonly id="sanity"></input>
+                <input readonly id="iq"></input>
             </div>
             <div class="flex_poziom">
                 <input readonly id="zadne_lata"></input>
                 <input readonly id="obecny_rok"></input>
             </div>
-            <div id="ekwipunek"></div>
-            <table class="ekwipunek">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+
+            <input type="text" id="ekwipunek" placeholder="EKWIPUNEK">
             <div class="flex_poziom">
-                <input readonly id="nr_gracza1"></input>
-                <input readonly id="nazwa_gracza1"></input>
-                <input readonly id="klasa_gracza1"></input>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
             </div>
             <div class="flex_poziom">
-                <input readonly id="nr_gracza2"></input>
-                <input readonly id="nazwa_gracza2"></input>
-                <input readonly id="klasa_gracza2"></input>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
             </div>
             <div class="flex_poziom">
-                <input readonly id="nr_gracza3"></input>
-                <input readonly id="nazwa_gracza3"></input>
-                <input readonly id="klasa_gracza3"></input>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
+                <button class="ekwipunek"></button>
             </div>
+
+            <div class="flex_poziom margines_gora">
+                <input readonly id="nr_gracza1" class="nr_gracza"></input>
+                <input readonly id="nazwa_gracza1" class="nazwa_gracza"></input>
+            </div>
+            <input readonly id="klasa_gracza1" class="klasa_gracza"></input>
+
+            <div class="flex_poziom margines_gora">
+                <input readonly id="nr_gracza2" class="nr_gracza"></input>
+                <input readonly id="nazwa_gracza2" class="nazwa_gracza"></input>
+            </div>
+            <input readonly id="klasa_gracza2" class="klasa_gracza"></input>
+
+            <div class="flex_poziom margines_gora">
+                <input readonly id="nr_gracza3" class="nr_gracza"></input>
+                <input readonly id="nazwa_gracza3" class="nazwa_gracza"></input>
+            </div>
+            <input readonly id="klasa_gracza3" class="klasa_gracza"></input>
+
         </div>
     </div>
+
+
 
     <script src="js.js">
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testy janka 4 - losowe zdarzenia</title>
+    <style>
+        #nazwa,
+        #opis{
+            width: 100vw;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="nazwa"></div>
+    <div id="opis"></div>
+
+    <script>
+        const nazwa = document.getElementById('nazwa');
+        const opis = document.getElementById('opis');
+
+        class zdarzenie{
+            constructor(nazwa, opis){
+                this.nazwa = nazwa;
+                this.opis = opis;
+            }
+        }
+
+        const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.')
+        pokaz_zdarzenie(zdarzenie_testowe);
+
+        function pokaz_zdarzenie(zdarzenie){
+            nazwa.innerHTML = zdarzenie.nazwa;
+            opis.innerHTML = zdarzenie.opis;
+        }
+    </script>
+</body>
+</html>

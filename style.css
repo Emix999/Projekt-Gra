@@ -134,7 +134,7 @@ body {
 
 .menu_statystyk {
     height: 100vh;
-    width: 15vw;
+    width: 36vh;
     background-color: red;
     flex-direction: column;
     justify-content: center;
@@ -155,23 +155,89 @@ body {
     background-color: blue;
 }
 
+
+
 #mapa,
 #ustawienia {
-    height: 5vh;
-    width: 7vw;
-    margin: 0.25vw;
+    height: 8vh;
+    width: 16vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
 }
 
-#nr_wybranego {
-    width: 1.5vw;
+.nr_gracza {
+    width: 4vh;
     height: 3vh;
-    margin: 0.25vw;
+    margin: 0.5vh;
 
 }
 
-#nazwa_wybranego,
-#klasa_wybranego {
-    width: 6vw;
+.nazwa_gracza {
+    width: 26vh;
     height: 3vh;
-    margin: 0.25vw;
+    margin: 0.5vh;
+}
+
+.klasa_gracza {
+    margin: 0.5vh;
+    width: 32vh;
+    height: 3vh;
+}
+
+#ekwipunek {
+    margin: 0.5vh;
+    width: 32vh;
+    height: 3vh;
+    margin-top: 3vh;
+}
+
+#sanity,
+#iq,
+#zadne_lata,
+#obecny_rok {
+    margin: 0.5vh;
+    height: 3vh;
+    width: 15vh;
+}
+
+.ekwipunek {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0.5vh;
+    width: 10.3vh;
+    height: 6vh;
+}
+
+.odpowiedz {
+    background-color: aquamarine;
+    width: 30vw;
+    height: 20vh;
+    margin: 2vw;
+}
+
+#tresc {
+    width: 66vw;
+    height: 15vh;
+    background-color: blueviolet;
+    margin-bottom: 3vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+.margines_gora {
+    margin-top: 3vh;
+}
+
+#ekran_pytania{
+    height: 100vh;
+    width: fit-content;
+    background-color: azure;
+    display: none;
+}
+
+#ekran_pytania *{
+    display: none;
 }
