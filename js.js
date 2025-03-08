@@ -261,4 +261,54 @@ function przemieszaj_tablice(tablica) {
 }
 
 
-setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const mapka = getElementById("przycisk_mapa").querySelectorAll('*');
+const ekran_znikajacy = getElementById("ekran_gry").querySelectorAll('*');
+const ekran_pojawiajacy = getElementById("mapa").querySelectorAll('*');
+
+function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
+    for (let element of elementy_znikajace) {
+        element.style.display = 'none';
+    }
+
+    for (let element of elementy_pojawiajace) {
+        element.style.display = 'flex';
+    }
+}
+
+mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
