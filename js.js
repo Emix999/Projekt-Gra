@@ -270,14 +270,37 @@ function pokaz_menu_startowe(){
     ekran_logo.style.display = 'none';
     ekran_startowy.style.display = 'flex';
     audio1.play();
-    //setTimeout(() => {audio1.pause(); audio1.currentTime = 0}, 3000)
 }
 
 ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 
+// audio definiuje się w html'u:
+// <audio id = "audio_id">
+//  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+//  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+// </audio>
+// (oczywiście trzeba jeszcze wstawić plik dźwiękowy do folderu gry)
 
+// żeby zdefiniować audio zapętlone, daje się parametr loop do definicji audio w html'u:
+// <audio id = "audio_id" loop>
+//  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+//  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+// </audio>
 
+// element audio do javascript'a można wziąć po id
+// audio1 = document.getElementById('audio_id');
 
+// żeby wystartować audio:
+// audio1.play();
+
+// żeby zatrzymać audio:
+// audio1.pause();
+// audio1.currentTime = 0; (powoduje cofnięcie audio do początku)
+
+// żeby zmienić audio można użyć dwóch powyższych:
+// audio1.pause();
+// audio1.currentTime = 0;
+// audio2.play();
 
 
 
