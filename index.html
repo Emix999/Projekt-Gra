@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <div id="ekran_startowy">
+    <div id="ekran_logo" style="display: flex; height: 100vh; width: 100vw;">
+        Kliknij gdziekolwiek, aby przejść dalej
+    </div>
+
+    <div id="ekran_startowy" style="display: none;">
         <div id="przyciski_rozwijania">
             <button id="rozwin1">
 
@@ -181,7 +185,10 @@
         </div>
     </div>
 
-
+<audio id="audio_bruh" loop controls>
+    <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+    <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+</audio>
 
     <script src="js.js">
 

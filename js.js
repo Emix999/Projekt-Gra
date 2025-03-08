@@ -263,7 +263,17 @@ function przemieszaj_tablice(tablica) {
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 
+const ekran_logo = document.getElementById('ekran_logo');
+const audio1 = document.getElementById('audio_bruh')
 
+function pokaz_menu_startowe(){
+    ekran_logo.style.display = 'none';
+    ekran_startowy.style.display = 'flex';
+    audio1.play();
+    //setTimeout(() => {audio1.pause(); audio1.currentTime = 0}, 3000)
+}
+
+ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 
 
 
