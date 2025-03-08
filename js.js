@@ -228,15 +228,15 @@ function pokaz_pytanie(pytanie) {
     let mozliwe_indeksy = [0, 1, 2, 3];
     przemieszaj_tablice(mozliwe_indeksy);
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
+        odpowiedzi_przyciski[i].innerHTML = '<div>' + odpowiedzi_przyciski[i].dataset.etykieta + '</div>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
-    function czy_poprawna(i){
+    function czy_poprawna(i) {
         if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
             alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
         }
-else{
+        else {
             alert("UwUaga Debil");
         }
     }
@@ -261,4 +261,4 @@ function przemieszaj_tablice(tablica) {
 }
 
 
-//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
