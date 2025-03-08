@@ -181,6 +181,7 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
+    ekran_startowy.style.display = 'none';
 
     for (let element of elementy_do_pojawienia) {
         element.style.display = 'flex';
@@ -217,7 +218,6 @@ function pokaz_pytanie(pytanie) {
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
-
 
     document.getElementById('ekran_pytania').style.display = 'flex';
     for (let element of elementy_do_pojawienia) {
