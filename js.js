@@ -262,3 +262,6 @@ function przemieszaj_tablice(tablica) {
 
 
 setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+function debug(){
+    console.log("Debug się ładuje");
+}
