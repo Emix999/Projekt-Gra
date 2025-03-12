@@ -282,7 +282,7 @@ function przemieszaj_tablice(tablica) {
 
 
 
-setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 
 
 
@@ -406,7 +406,15 @@ function debug(){
 
 
 
+let muzyka_glosnosc = 50;
+function muzyka_zwieksz(){
+    muzyka_glosnosc +=2;
+    muzyka_glosnosc = Math.min(muzyka_glosnosc, 100);
+    document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
+}
 
-function muzyka_glosnosc(){
-    
+function muzyka_zmniejsz(){
+    muzyka_glosnosc -=2;
+    muzyka_glosnosc = Math.max(muzyka_glosnosc, 0);
+    document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
 }
