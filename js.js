@@ -181,6 +181,7 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
+    ekran_startowy.style.display = 'none';
 
     for (let element of elementy_do_pojawienia) {
         element.style.display = 'flex';
@@ -217,7 +218,6 @@ function pokaz_pytanie(pytanie) {
     for (let element of elementy_do_znikniecia) {
         element.style.display = 'none';
     }
-
 
     document.getElementById('ekran_pytania').style.display = 'flex';
     for (let element of elementy_do_pojawienia) {
@@ -261,6 +261,90 @@ function przemieszaj_tablice(tablica) {
 }
 
 
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+
+const ekran_logo = document.getElementById('ekran_logo');
+const audio1 = document.getElementById('audio_bruh')
+
+function pokaz_menu_startowe(){
+    ekran_logo.style.display = 'none';
+    ekran_startowy.style.display = 'flex';
+    audio1.play();
+}
+
+ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
+
+// audio definiuje się w html'u:
+// <audio id = "audio_id">
+//  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+//  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+// </audio>
+// (oczywiście trzeba jeszcze wstawić plik dźwiękowy do folderu gry)
+
+// żeby zdefiniować audio zapętlone, daje się parametr loop do definicji audio w html'u:
+// <audio id = "audio_id" loop>
+//  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+//  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+// </audio>
+
+// element audio do javascript'a można wziąć po id
+// audio1 = document.getElementById('audio_id');
+
+// żeby wystartować audio:
+// audio1.play();
+
+// żeby zatrzymać audio:
+// audio1.pause();
+// audio1.currentTime = 0; (powoduje cofnięcie audio do początku)
+
+// żeby zmienić audio można użyć dwóch powyższych:
+// audio1.pause();
+// audio1.currentTime = 0;
+// audio2.play();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const mapka = getElementById("przycisk_mapa").querySelectorAll('*');
+const ekran_znikajacy = getElementById("ekran_gry").querySelectorAll('*');
+const ekran_pojawiajacy = getElementById("mapa").querySelectorAll('*');
+
+function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
+    for (let element of elementy_znikajace) {
+        element.style.display = 'none';
+    }
+
+    for (let element of elementy_pojawiajace) {
+        element.style.display = 'flex';
+    }
+}
+
+mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
 setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 function debug(){
     console.log("Debug się ładuje");
