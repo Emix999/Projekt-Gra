@@ -348,3 +348,6 @@ function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
 
 mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
 setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+function debug(){
+    console.log("Debug się ładuje");
+}
