@@ -302,7 +302,9 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio1.currentTime = 0;
 // audio2.play();
 
-
+// żeby zmienić głośność można użyć:
+// audio.volume = wartość
+// gdzie 1 w wartości to 100%, a 0 - 0%
 
 
 
