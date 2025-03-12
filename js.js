@@ -253,7 +253,7 @@ function pokaz_pytanie(pytanie) {
         }
         function wyswietl_nagrode() {
             document.getElementById("ekran_nagrody").style.visibility = "visible"
-            document.getElementById("ekran_nagrody").innerHTML="<div>Twoje sanity zmieniło się o "+sanity+". <Twoje iq zmieniło się o "+iq+".</div>";
+            document.getElementById("ekran_nagrody").innerHTML="<span>Twoje sanity zmieniło się o "+sanity+". <Twoje iq zmieniło się o "+iq+".</span>";
         }
         document.getElementById("przejdz_dalej").style.visibility = "visible";
         document.getElementById("przejdz_dalej").addEventListener("click", () => wyswietl_nagrode());
