@@ -41,7 +41,26 @@ body {
     background-size: cover;
     position: fixed;
     border: none;
+    margin-bottom: 49vmin;
+}
 
+#ustawienia {
+    width: 50vmin;
+    height: 50vmin;
+    background-image: url('menu_grafiki/ustawienia.png');
+    background-size: cover;
+    position: fixed;
+    margin-top: 23vmin;
+}
+
+#muzyka_glosnosc {
+    left: 33.5%;
+    top: 15.9%;
+    height: 2vmin;
+    width: 25vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
 }
 
 .przycisk_menu {
@@ -218,7 +237,7 @@ body {
 }
 
 #przycisk_mapa,
-#ustawienia {
+#ustawienia_menu_boczne {
     height: 8vh;
     width: 16vh;
     margin: 0.5vh;
@@ -300,4 +319,18 @@ body {
 
 #ekran_pytania *{
     display: none;
+}
+
+#ekran_nagrody{
+    position: absolute;
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+    visibility: hidden;
+}
+#przejdz_dalej{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+    visibility: hidden;
 }

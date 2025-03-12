@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <div id="ekran_startowy">
+    <div id="ekran_logo" style="display: flex; height: 100vh; width: 100vw;">
+        Kliknij gdziekolwiek, aby przejść dalej
+    </div>
+
+    <div id="ekran_startowy" style="display: none;">
         <div id="przyciski_rozwijania">
             <button id="rozwin1">
 
@@ -102,7 +106,10 @@
                 </div>
             </div>
         </div>
-        <button id="start"></button>
+        <button id="start"></button>    
+        <div id="ustawienia">
+            <input type="number" id="muzyka_glosnosc">
+        </div>
     </div>
 
     <div class="gra" id="gra">
@@ -113,21 +120,23 @@
         <div id="ekran_pytania" class="flex_pion">
             <div id="tresc"></div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
+                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A" onclick="debug()"></button>
                 <button class="odpowiedz" id="odpowiedz_b" data-etykieta="B"></button>
             </div>
             <div class="flex_poziom">
                 <button class="odpowiedz" id="odpowiedz_c" data-etykieta="C"></button>
                 <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
             </div>
+            <button id="przejdz_dalej">Przejdź dalej</button>
+            <div id="ekran_nagrody"></div>
         </div>
 
-        <div id="mapa"><img src="logo.png"><button style="width: 10vh; height: 10vh;"></button></div>
+        <div id="mapa"><img src="mapy/schemat_parter.png"></div>
 
         <div class="menu_statystyk start">
             <div class="flex_poziom">
                 <button id="przycisk_mapa">mapa</button>
-                <button id="ustawienia">ustawienia</button>
+                <button id="ustawienia_menu_boczne">ustawienia</button>
             </div>
             <div class="flex_poziom">
                 <input id="nr_wybranego" class="nr_gracza"></input>
@@ -181,7 +190,10 @@
         </div>
     </div>
 
-
+<audio id="audio_bruh"><!-- <audio id="audio_bruh" loop> -->
+    <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+    <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+</audio>
 
     <script src="js.js">
 
