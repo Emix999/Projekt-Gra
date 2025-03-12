@@ -316,3 +316,17 @@ body {
 #ekran_pytania *{
     display: none;
 }
+
+#ekran_nagrody{
+    position: absolute;
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+    visibility: hidden;
+}
+#przejdz_dalej{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+    visibility: hidden;
+}
