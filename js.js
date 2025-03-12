@@ -297,19 +297,20 @@ function przemieszaj_tablice(tablica) {
 
 
 
-const mapka = getElementById("przycisk_mapa").querySelectorAll('*');
-const ekran_znikajacy = getElementById("ekran_gry").querySelectorAll('*');
-const ekran_pojawiajacy = getElementById("mapa").querySelectorAll('*');
-
+const mapka = document.getElementById("przycisk_mapa");
+const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
+const ekran_pojawiajacy = document.getElementById("mapa").querySelectorAll('*');
 function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
+    document.getElementById("ekran_gry").style.display = "none";
     for (let element of elementy_znikajace) {
         element.style.display = 'none';
     }
-
+    document.getElementById("mapa").style.display = "flex";
     for (let element of elementy_pojawiajace) {
         element.style.display = 'flex';
     }
+
 }
 
 mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
-setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
