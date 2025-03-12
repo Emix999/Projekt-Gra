@@ -302,7 +302,9 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio1.currentTime = 0;
 // audio2.play();
 
-
+// żeby zmienić głośność można użyć:
+// audio.volume = wartość
+// gdzie 1 w wartości to 100%, a 0 - 0%
 
 
 
@@ -346,3 +348,6 @@ function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
 
 mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
 setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+function debug(){
+    console.log("Debug się ładuje");
+}
