@@ -201,11 +201,9 @@ const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
 
 class pytanie {
-    constructor(tresc, odpowiedzi, sanity, iq) {
+    constructor(tresc, odpowiedzi) {
         this.tresc = tresc;
         this.odpowiedzi = odpowiedzi;
-        this.sanity=sanity;
-        this.iq=iq;
         // odpowiedź na indeksie zerowym jest poprawna
     }
 }
@@ -244,11 +242,11 @@ function pokaz_pytanie(pytanie) {
         }
 
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-            if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.backgroundColor = "green";
+            if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
+                odpowiedzi_przyciski[i].style.backgroundColor="green";
             }
-            else {
-                odpowiedzi_przyciski[i].style.backgroundColor = "red";
+            else{
+                odpowiedzi_przyciski[i].style.backgroundColor="red";
             }
         }
 
@@ -258,6 +256,8 @@ function pokaz_pytanie(pytanie) {
         }
         document.getElementById("przejdz_dalej").style.visibility = "visible";
         document.getElementById("przejdz_dalej").addEventListener("click", () => wyswietl_nagrode());
+        document.getElementById("przejdz_dalej").style.visibility="visible";
+        document.getElementById("przejdz_dalej").addEventListener("click", (document.getElementById("ekran_nagrody").style.visibility="visible"));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -290,7 +290,7 @@ function przemieszaj_tablice(tablica) {
 const ekran_logo = document.getElementById('ekran_logo');
 const audio1 = document.getElementById('audio_bruh')
 
-function pokaz_menu_startowe() {
+function pokaz_menu_startowe(){
     ekran_logo.style.display = 'none';
     ekran_startowy.style.display = 'flex';
     audio1.play();

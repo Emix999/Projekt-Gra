@@ -112,6 +112,7 @@
             <input type="number" id="muzyka_glosnosc">
             <button id="zmniejsz_muzyke" onclick="muzyka_zmniejsz()">zmniejsz</button>
         </div>
+        <button id="start"></button>
     </div>
 
     <div class="gra" id="gra">
@@ -122,23 +123,21 @@
         <div id="ekran_pytania" class="flex_pion">
             <div id="tresc"></div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A" onclick="debug()"></button>
+                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
                 <button class="odpowiedz" id="odpowiedz_b" data-etykieta="B"></button>
             </div>
             <div class="flex_poziom">
                 <button class="odpowiedz" id="odpowiedz_c" data-etykieta="C"></button>
                 <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
             </div>
-            <button id="przejdz_dalej">Przejdź dalej</button>
-            <div id="ekran_nagrody"></div>
         </div>
 
-        <div id="mapa"><img src="mapy/schemat_parter.png"></div>
+        <div id="mapa"><img src="logo.png"></div>
 
         <div class="menu_statystyk start">
             <div class="flex_poziom">
                 <button id="przycisk_mapa">mapa</button>
-                <button id="ustawienia_menu_boczne">ustawienia</button>
+                <button id="ustawienia">ustawienia</button>
             </div>
             <div class="flex_poziom">
                 <input id="nr_wybranego" class="nr_gracza"></input>
@@ -192,7 +191,11 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream
 <audio id="audio_bruh" loop><!-- <audio id="audio_bruh" loop> -->
+=======
+<audio id="audio_bruh" loop>
+>>>>>>> Stashed changes
     <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
     <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
 </audio>
