@@ -251,9 +251,10 @@ function pokaz_pytanie(pytanie) {
                 odpowiedzi_przyciski[i].style.backgroundColor = "red";
             }
         }
+
         function wyswietl_nagrode() {
             document.getElementById("ekran_nagrody").style.visibility = "visible"
-            document.getElementById("ekran_nagrody").innerHTML="<span>Twoje sanity zmieniło się o "+sanity+". <Twoje iq zmieniło się o "+iq+".</span>";
+            document.getElementById("ekran_nagrody").innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
         }
         document.getElementById("przejdz_dalej").style.visibility = "visible";
         document.getElementById("przejdz_dalej").addEventListener("click", () => wyswietl_nagrode());
