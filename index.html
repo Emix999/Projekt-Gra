@@ -109,6 +109,9 @@
         <div id="ustawienia">
             <input type="number" readonly id="muzyka_glosnosc">
             <input type="range" min="0" max="100" value="50" id="muzyka_slider">
+
+            <input type="number" readonly id="sfx_glosnosc">
+            <input type="range" min="0" max="100" value="50" id="sfx_slider">            
         </div>
         <button id="start"></button>
     </div>
@@ -189,11 +192,15 @@
         </div>
     </div>
 
-<audio id="audio_bruh" ><!-- <audio id="audio_bruh" loop> -->
-    <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
+<audio id="audio_bruh" class="sfx"><!-- <audio id="audio_bruh" loop> -->
     <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
+    <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
 </audio>
 
+<audio id="muzyka_menu" class="muzyka" loop><!-- <audio id="audio_bruh" loop> -->
+    <source src="muzyka/muzyka_menu.mp3" type="audio/mpeg">
+    <source src="muzyka/muzyka_menu.ogg" type="audio/ogg">
+</audio>
     <script src="js.js">
 
     </script>
