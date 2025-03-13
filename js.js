@@ -290,12 +290,14 @@ function przemieszaj_tablice(tablica) {
 
 
 const ekran_logo = document.getElementById('ekran_logo');
-const audio1 = document.getElementById('audio_bruh')
+const bruh = document.getElementById('audio_bruh');
+const muzyka_menu = document.getElementById('muzyka_menu')
 
 function pokaz_menu_startowe(){
     ekran_logo.style.display = 'none';
     ekran_startowy.style.display = 'flex';
-    audio1.play();
+    bruh.play();
+    muzyka_menu.play();
 }
 
 ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
@@ -332,7 +334,40 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
+// dodać menedżera gry
+// indeks wybranego gracza
+// rok gry
 
+const sanity = document.getElementById('sanity');
+const iq = document.getElementById('iq');
+const zdane_lata = document.getElementById('zadne_lata');
+const obecny_rok = document.getElementById('obecny_rok');
+const nr_graczy = document.getElementsByClassName('nr_gracza');
+const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
+const klasy_graczy = document.getElementsByClassName('klasa_gracza');
+let indeks_wybranego = 0;
+
+function koniec_tury(aktywni_gracze, indeks_wybranego){
+    if(indeks_wybranego == aktywni_gracze.length){
+        indeks_wybranego = 0;
+    }
+    else{
+        indeks_wybranego++;
+    }
+
+    sanity.value = aktywni_gracze[indeks_wybranego].sanity;
+    iq.value = aktywni_gracze[indeks_wybranego].iq;
+    zdane_lata.value = aktywni_gracze[indeks_wybranego].zdane_lata;
+    obecny_rok.value  = aktywni_gracze[indeks_wybranego].obecny_rok;
+
+    let i = 0;
+    while(i < aktywni_gracze.length){
+        nr_graczy[i].value = i + (indeks_wybranego % aktywni_gracze.length);
+        nazwy_gracza[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].nazwa;
+        klasy_graczy[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].klasa;
+        i++;
+    }
+}
 
 
 
@@ -433,16 +468,38 @@ function debug(){
 
 
 
-
+/*
 let muzyka_glosnosc = 50;
 function muzyka_zwieksz(){
-    muzyka_glosnosc +=2;
-    muzyka_glosnosc = Math.min(muzyka_glosnosc, 100);
     document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
 }
 
 function muzyka_zmniejsz(){
-    muzyka_glosnosc -=2;
-    muzyka_glosnosc = Math.max(muzyka_glosnosc, 0);
     document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
+}
+*/
+
+let slider_muzyka = document.getElementById("muzyka_slider");
+let glosnosc_muzyki = document.getElementById("muzyka_glosnosc");
+glosnosc_muzyki.value = slider_muzyka.value;
+
+let slider_sfx = document.getElementById("sfx_slider");
+let glosnosc_sfx = document.getElementById("sfx_glosnosc");
+glosnosc_sfx.value = slider_sfx.value;
+
+sfx=document.querySelectorAll(".sfx");
+muzyka=document.querySelectorAll(".muzyka");
+
+slider_muzyka.oninput = function slider_muzyka_update() {
+    glosnosc_muzyki.value = slider_muzyka.value;
+    for(let i of muzyka){
+    i.volume = slider_muzyka.value/100;
+    }
+}
+
+slider_sfx.oninput = function slider_sfx_update() {
+    glosnosc_sfx.value = slider_sfx.value;
+    for(let i of sfx){
+    i.volume = slider_sfx.value/100;
+    }
 }

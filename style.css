@@ -54,10 +54,10 @@ body {
 }
 
 #muzyka_glosnosc {
-    left: 33.5%;
-    top: 15.9%;
+    left: 34.5%;
+    top: 16.3%;
     height: 2vmin;
-    width: 2vmin;
+    width: 3vmin;
     background-color: transparent;
     position: absolute;
     color:  white;
@@ -66,9 +66,28 @@ body {
 
 #muzyka_slider {
     left: 38.5%;
-    top: 15.9%;
+    top: 16.1%;
     height: 2vmin;
-    width: 22vmin;
+    width: 21vmin;
+    position: absolute;
+}
+
+#sfx_glosnosc {
+    left: 34.5%;
+    top: 24.7%;
+    height: 2vmin;
+    width: 3vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
+    border: none;
+}
+
+#sfx_slider {
+    left: 38.5%;
+    top: 24.5%;
+    height: 2vmin;
+    width: 21vmin;
     position: absolute;
 }
 
