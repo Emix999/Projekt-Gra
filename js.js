@@ -332,6 +332,10 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
+// dodać menedżera gry
+// indeks wybranego gracza
+// rok gry
+
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
 const zdane_lata = document.getElementById('zadne_lata');
