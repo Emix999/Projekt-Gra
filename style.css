@@ -239,7 +239,11 @@ body {
     background-color: blue;
 }
 
-
+#mapa{
+    width: calc(100vw - 36vh);
+    height: 100vh;
+    background-color: brown;
+}
 
 #przycisk_mapa,
 #ustawienia_menu_gracza {
