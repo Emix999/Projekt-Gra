@@ -332,7 +332,36 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
+const sanity = document.getElementById('sanity');
+const iq = document.getElementById('iq');
+const zdane_lata = document.getElementById('zadne_lata');
+const obecny_rok = document.getElementById('obecny_rok');
+const nr_graczy = document.getElementsByClassName('nr_gracza');
+const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
+const klasy_graczy = document.getElementsByClassName('klasa_gracza');
+let indeks_wybranego = 0;
 
+function koniec_tury(aktywni_gracze, indeks_wybranego){
+    if(indeks_wybranego == aktywni_gracze.length){
+        indeks_wybranego = 0;
+    }
+    else{
+        indeks_wybranego++;
+    }
+
+    sanity.value = aktywni_gracze[indeks_wybranego].sanity;
+    iq.value = aktywni_gracze[indeks_wybranego].iq;
+    zdane_lata.value = aktywni_gracze[indeks_wybranego].zdane_lata;
+    obecny_rok.value  = aktywni_gracze[indeks_wybranego].obecny_rok;
+
+    let i = 0;
+    while(i < aktywni_gracze.length){
+        nr_graczy[i].value = i + (indeks_wybranego % aktywni_gracze.length);
+        nazwy_gracza[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].nazwa;
+        klasy_graczy[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].klasa;
+        i++;
+    }
+}
 
 
 
