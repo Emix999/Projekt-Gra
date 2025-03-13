@@ -57,10 +57,19 @@ body {
     left: 33.5%;
     top: 15.9%;
     height: 2vmin;
-    width: 25vmin;
+    width: 2vmin;
     background-color: transparent;
     position: absolute;
     color:  white;
+    border: none;
+}
+
+#muzyka_slider {
+    left: 38.5%;
+    top: 15.9%;
+    height: 2vmin;
+    width: 22vmin;
+    position: absolute;
 }
 
 .przycisk_menu {
@@ -237,7 +246,7 @@ body {
 }
 
 #przycisk_mapa,
-#ustawienia_menu_boczne {
+#ustawienia_menu_gracza {
     height: 8vh;
     width: 16vh;
     margin: 0.5vh;

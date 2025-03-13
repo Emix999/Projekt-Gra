@@ -201,11 +201,9 @@ const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
 
 class pytanie {
-    constructor(tresc, odpowiedzi, sanity, iq) {
+    constructor(tresc, odpowiedzi) {
         this.tresc = tresc;
         this.odpowiedzi = odpowiedzi;
-        this.sanity=sanity;
-        this.iq=iq;
         // odpowiedź na indeksie zerowym jest poprawna
     }
 }
@@ -244,19 +242,22 @@ function pokaz_pytanie(pytanie) {
         }
 
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-            if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.backgroundColor = "green";
+            if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
+                odpowiedzi_przyciski[i].style.backgroundColor="green";
             }
-            else {
-                odpowiedzi_przyciski[i].style.backgroundColor = "red";
+            else{
+                odpowiedzi_przyciski[i].style.backgroundColor="red";
             }
         }
+
         function wyswietl_nagrode() {
             document.getElementById("ekran_nagrody").style.visibility = "visible"
-            document.getElementById("ekran_nagrody").innerHTML="<span>Twoje sanity zmieniło się o "+sanity+". <Twoje iq zmieniło się o "+iq+".</span>";
+            document.getElementById("ekran_nagrody").innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
         }
         document.getElementById("przejdz_dalej").style.visibility = "visible";
         document.getElementById("przejdz_dalej").addEventListener("click", () => wyswietl_nagrode());
+        document.getElementById("przejdz_dalej").style.visibility="visible";
+        document.getElementById("przejdz_dalej").addEventListener("click", (document.getElementById("ekran_nagrody").style.visibility="visible"));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -289,7 +290,7 @@ function przemieszaj_tablice(tablica) {
 const ekran_logo = document.getElementById('ekran_logo');
 const audio1 = document.getElementById('audio_bruh')
 
-function pokaz_menu_startowe() {
+function pokaz_menu_startowe(){
     ekran_logo.style.display = 'none';
     ekran_startowy.style.display = 'flex';
     audio1.play();
@@ -421,7 +422,15 @@ function debug(){
 
 
 
+let muzyka_glosnosc = 50;
+function muzyka_zwieksz(){
+    muzyka_glosnosc +=2;
+    muzyka_glosnosc = Math.min(muzyka_glosnosc, 100);
+    document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
+}
 
-function muzyka_glosnosc(){
-    
+function muzyka_zmniejsz(){
+    muzyka_glosnosc -=2;
+    muzyka_glosnosc = Math.max(muzyka_glosnosc, 0);
+    document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
 }
