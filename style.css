@@ -258,7 +258,11 @@ body {
     background-color: blue;
 }
 
-
+#mapa{
+    width: calc(100vw - 36vh);
+    height: 100vh;
+    background-color: brown;
+}
 
 #przycisk_mapa,
 #ustawienia_menu_gracza {
@@ -357,4 +361,10 @@ body {
     width: 80%;
     background-color: greenyellow;
     visibility: hidden;
+}
+.gracz{
+    height: 10vh;
+    width: 20vh;
+    background-color: tomato;
+    background-size: cover;
 }

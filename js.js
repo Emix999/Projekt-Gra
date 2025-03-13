@@ -274,6 +274,8 @@ function pokaz_pytanie(pytanie) {
 
 }
 
+
+
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -332,6 +334,40 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
+// dodać menedżera gry
+// indeks wybranego gracza
+// rok gry
+
+const sanity = document.getElementById('sanity');
+const iq = document.getElementById('iq');
+const zdane_lata = document.getElementById('zadne_lata');
+const obecny_rok = document.getElementById('obecny_rok');
+const nr_graczy = document.getElementsByClassName('nr_gracza');
+const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
+const klasy_graczy = document.getElementsByClassName('klasa_gracza');
+let indeks_wybranego = 0;
+
+function koniec_tury(aktywni_gracze, indeks_wybranego){
+    if(indeks_wybranego == aktywni_gracze.length){
+        indeks_wybranego = 0;
+    }
+    else{
+        indeks_wybranego++;
+    }
+
+    sanity.value = aktywni_gracze[indeks_wybranego].sanity;
+    iq.value = aktywni_gracze[indeks_wybranego].iq;
+    zdane_lata.value = aktywni_gracze[indeks_wybranego].zdane_lata;
+    obecny_rok.value  = aktywni_gracze[indeks_wybranego].obecny_rok;
+
+    let i = 0;
+    while(i < aktywni_gracze.length){
+        nr_graczy[i].value = i + (indeks_wybranego % aktywni_gracze.length);
+        nazwy_gracza[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].nazwa;
+        klasy_graczy[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].klasa;
+        i++;
+    }
+}
 
 
 
@@ -354,30 +390,44 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 
 
 
-/*
 
 
 
-const mapka = getElementById("przycisk_mapa").querySelectorAll('*');
-const ekran_znikajacy = getElementById("ekran_gry").querySelectorAll('*');
-const ekran_pojawiajacy = getElementById("mapa").querySelectorAll('*');
-
+const mapka = document.getElementById("przycisk_mapa");
+const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
+const ekran_pojawiajacy = document.getElementById("mapa").querySelectorAll('*');
 function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
+    document.getElementById("ekran_gry").style.display = "none";
     for (let element of elementy_znikajace) {
         element.style.display = 'none';
     }
-
+    document.getElementById("mapa").style.display = "flex";
     for (let element of elementy_pojawiajace) {
         element.style.display = 'flex';
     }
+
 }
 
+function zamnkniecie_mapy(elementy_znikajace, elementy_pojawiajace){
+    document.getElementById("mapa").style.display = "none";
+    for(let element of elementy_znikajace){
+        element.style.display = "none";
+    }
+    document.getElementById("ekran_gry").style.display = "flex";
+    for(let element of elementy_pojawiajace){
+        element.style.display = "flex";
+    }
+}
+
+
+
 mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
-setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+//mapka.addEventListener('click', () => zamnkniecie_mapy(ekran_pojawiajacy, ekran_znikajacy));
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 function debug(){
     console.log("Debug się ładuje");
 }
-*/
+
 
 
 
