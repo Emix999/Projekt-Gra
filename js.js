@@ -358,9 +358,7 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 
 
 
-const mapka = document.getElementById("przycisk_mapa");
-const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
-const ekran_pojawiajacy = document.getElementById("mapa").querySelectorAll('*');
+
 function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
     document.getElementById("ekran_gry").style.display = "none";
     for (let element of elementy_znikajace) {
@@ -384,10 +382,22 @@ function zamnkniecie_mapy(elementy_znikajace, elementy_pojawiajace){
     }
 }
 
+const otwarte_menu = {mapka: false, ustawienia: false};
 
-
-mapka.addEventListener('click', () => pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy));
-//mapka.addEventListener('click', () => zamnkniecie_mapy(ekran_pojawiajacy, ekran_znikajacy));
+function obsluga_mapy(){
+    const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
+    const ekran_pojawiajacy = document.getElementById("mapa").querySelectorAll('*');
+    if(!otwarte_menu.mapka){
+        pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy);
+        otwarte_menu.mapka = true;
+    }
+    else{
+        zamnkniecie_mapy(ekran_znikajacy, ekran_pojawiajacy);
+        otwarte_menu.mapka = false;
+    }
+}
+    const mapka = document.getElementById("przycisk_mapa");
+mapka.addEventListener('click', () => obsluga_mapy());
 //setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 function debug(){
     console.log("Debug się ładuje");

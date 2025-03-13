@@ -242,7 +242,8 @@ body {
 #mapa{
     width: calc(100vw - 36vh);
     height: 100vh;
-    background-color: brown;
+    background-color: white;
+    justify-content: center;
 }
 
 #przycisk_mapa,
