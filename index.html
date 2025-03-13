@@ -107,9 +107,8 @@
             </div>
         </div>  
         <div id="ustawienia">
-            <button id="zwieksz_muzyke" onclick="muzyka_zwieksz()">zwieksz</button>
-            <input type="number" id="muzyka_glosnosc">
-            <button id="zmniejsz_muzyke" onclick="muzyka_zmniejsz()">zmniejsz</button>
+            <input type="number" readonly id="muzyka_glosnosc">
+            <input type="range" min="0" max="100" value="50" id="muzyka_slider">
         </div>
         <button id="start"></button>
     </div>
@@ -140,7 +139,7 @@
         <div class="menu_statystyk start">
             <div class="flex_poziom">
                 <button id="przycisk_mapa">mapa</button>
-                <button id="ustawienia">ustawienia</button>
+                <button id="ustawienia_menu_gracza">ustawienia</button>
             </div>
             <div class="flex_poziom">
                 <input id="nr_wybranego" class="nr_gracza"></input>
@@ -194,7 +193,7 @@
         </div>
     </div>
 
-<audio id="audio_bruh"><!-- <audio id="audio_bruh" loop> -->
+<audio id="audio_bruh" ><!-- <audio id="audio_bruh" loop> -->
     <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
     <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
 </audio>
