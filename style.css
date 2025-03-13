@@ -330,3 +330,9 @@ body {
     background-color: greenyellow;
     visibility: hidden;
 }
+.gracz{
+    height: 10vh;
+    width: 20vh;
+    background-color: tomato;
+    background-size: cover;
+}

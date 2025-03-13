@@ -274,6 +274,8 @@ function pokaz_pytanie(pytanie) {
 
 }
 
+
+
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
