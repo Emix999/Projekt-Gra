@@ -44,7 +44,7 @@ body {
     margin-bottom: 49vmin;
 }
 
-#ustawienia {
+.ustawienia {
     width: 50vmin;
     height: 50vmin;
     background-image: url('menu_grafiki/ustawienia.png');
@@ -65,7 +65,7 @@ body {
 }
 
 #muzyka_slider {
-    left: 38.5%;
+    left: 39.5%;
     top: 16.1%;
     height: 2vmin;
     width: 21vmin;
@@ -84,7 +84,7 @@ body {
 }
 
 #sfx_slider {
-    left: 38.5%;
+    left: 39.5%;
     top: 24.5%;
     height: 2vmin;
     width: 21vmin;
@@ -258,7 +258,7 @@ body {
     background-color: blue;
 }
 
-#mapa{
+#mapa,#ustawienia2{
     width: calc(100vw - 36vh);
     height: 100vh;
     background-color: white;

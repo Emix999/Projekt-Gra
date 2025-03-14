@@ -433,6 +433,44 @@ function obsluga_mapy(){
 }
     const mapka = document.getElementById("przycisk_mapa");
 mapka.addEventListener('click', () => obsluga_mapy());
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function pokazanie_ustawien(elementy_znikajace, elementy_pojawiajace){
+    document.getElementById("ekran_gry").style.display = "none";
+    for (let element of elementy_znikajace) {
+        element.style.display = 'none';
+    }
+    document.getElementById("ustawienia2").style.display = "flex";
+    for (let element of elementy_pojawiajace) {
+        element.style.display = 'flex';
+    }
+
+}
+
+function zamnkniecie_ustawien(elementy_znikajace, elementy_pojawiajace){
+    document.getElementById("ustawienia2").style.display = "none";
+    for(let element of elementy_znikajace){
+        element.style.display = "none";
+    }
+    document.getElementById("ekran_gry").style.display = "flex";
+    for(let element of elementy_pojawiajace){
+        element.style.display = "flex";
+    }
+}
+
+function obsluga_ustawien(){
+    const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
+    const ekran_pojawiajacy = document.getElementById("ustawienia2").querySelectorAll('*');
+    if(!otwarte_menu.ustawienia){
+        pokazanie_ustawien(ekran_znikajacy, ekran_pojawiajacy);
+        otwarte_menu.ustawienia = true;
+    }
+    else{
+        zamnkniecie_ustawien(ekran_znikajacy, ekran_pojawiajacy);
+        otwarte_menu.ustawienia = false;
+    }
+}
+    const ustawienia = document.getElementById("ustawienia_menu_boczne");
+ustawienia.addEventListener('click', () => obsluga_ustawien());
 //setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 function debug(){
     console.log("Debug się ładuje");
