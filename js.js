@@ -9,12 +9,14 @@ gracz wybrany to taki który ma obecnie turę
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
-const avatary = ["postacie/test avatar 1.png", "postacie/test avatar 2.png", "postacie/test avatar 3.png", "postacie/test avatar 4.png", "postacie/test avatar 5.png"];
+const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png", "avatary/gigachad.png", "avatary/spóźniony.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
+    
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+    constructor(id_html,nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+        this.id_html=id_html;
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
@@ -30,10 +32,10 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
-let gracz2 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-let gracz3 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-let gracz4 = new gracz(null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
+let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 let aktywni_gracze = [];
@@ -101,7 +103,6 @@ class menu_graczy {
         document.getElementById(this.id_rozwin).style.display = 'none';
         gracze[i].czy_aktywny = true;
         ilosc_aktywnych_graczy++;
-
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu(i) {
@@ -119,7 +120,7 @@ let menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_n
 
 const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
-
+const wybrany_gracz=gracze[0];
 
 /*
 function dodaj_sluchacza(przycisk,funkcja){
@@ -192,10 +193,15 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
             aktywni_gracze.push(i);
         }
     }
+     
+    for(i of gracze){
+        let avatar="url('"+i.avatar+"')";
+        document.getElementById(i.id_html).style.backgroundImage=avatar;
+    }
 }
 
 //Event listner przycisku Start
-przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('.start, .start *')));
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('.start, .start *:not(.gracz), #gracz1')));
 
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
@@ -337,6 +343,8 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // dodać menedżera gry
 // indeks wybranego gracza
 // rok gry
+
+
 
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
