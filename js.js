@@ -340,9 +340,14 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
-// dodać menedżera gry
-// indeks wybranego gracza
-// rok gry
+// do menedżera gry:
+// aktywni_gracze
+// ilosc_aktywnych graczys
+
+const menedzer_gry = {
+    indeks_wybranego: 0,
+    rok_gry: 1
+};
 
 
 
@@ -353,26 +358,25 @@ const obecny_rok = document.getElementById('obecny_rok');
 const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
-let indeks_wybranego = 0;
 
-function koniec_tury(aktywni_gracze, indeks_wybranego){
-    if(indeks_wybranego == aktywni_gracze.length){
-        indeks_wybranego = 0;
+function koniec_tury(aktywni_gracze, menedzer_gry){
+    if(menedzer_gry.indeks_wybranego == aktywni_gracze.length - 1){
+        menedzer_gry.indeks_wybranego = 0;
     }
     else{
-        indeks_wybranego++;
+        menedzer_gry.indeks_wybranego++;
     }
 
-    sanity.value = aktywni_gracze[indeks_wybranego].sanity;
-    iq.value = aktywni_gracze[indeks_wybranego].iq;
-    zdane_lata.value = aktywni_gracze[indeks_wybranego].zdane_lata;
-    obecny_rok.value  = aktywni_gracze[indeks_wybranego].obecny_rok;
+    sanity.value = aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+    iq.value = aktywni_gracze[menedzer_gry.indeks_wybranego].iq;
+    zdane_lata.value = aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
+    obecny_rok.value  = aktywni_gracze[menedzer_gry.indeks_wybranego].obecny_rok;
 
     let i = 0;
     while(i < aktywni_gracze.length){
-        nr_graczy[i].value = i + (indeks_wybranego % aktywni_gracze.length);
-        nazwy_gracza[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].nazwa;
-        klasy_graczy[i].value = aktywni_gracze[(i + indeks_wybranego) % aktywni_gracze.length].klasa;
+        nr_graczy[i].value = i + (menedzer_gry.indeks_wybranego % aktywni_gracze.length);
+        nazwy_gracza[i].value = aktywni_gracze[(i + menedzer_gry.indeks_wybranego) % aktywni_gracze.length].nazwa;
+        klasy_graczy[i].value = aktywni_gracze[(i + menedzer_gry.indeks_wybranego) % aktywni_gracze.length].klasa;
         i++;
     }
 }
