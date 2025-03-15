@@ -12,7 +12,7 @@ const nazwy = ["test0", "test1", "test2"];
 const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png", "avatary/gigachad.png", "avatary/spóźniony.png"];
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
-    
+
 class gracz {//gracz i wszystkie jego parametry
     constructor(id_html,nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
         this.id_html=id_html;
@@ -426,7 +426,6 @@ function pokazanie_ustawien(elementy_znikajace, elementy_pojawiajace){
     for (let element of elementy_pojawiajace) {
         element.style.display = 'flex';
     }
-
 }
 
 function zamnkniecie_ustawien(elementy_znikajace, elementy_pojawiajace){

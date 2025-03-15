@@ -38,23 +38,41 @@
     <button class="sala" id="punkt3" style="bottom: 100px; left: 500px;"></button>
     <div class="ludek" id="gracz1" style="top: 150px; left: 400px;"></div>
     <script>
+
         function klatka(gracz_id, cel_id) {
             let gracz = document.getElementById(gracz_id);
             let gracz_gora=parseFloat(gracz.style.top);
             let gracz_lewo=parseFloat(gracz.style.left);
             let cel = document.getElementById(cel_id).getBoundingClientRect();
+            let akcja=false;
+            if(gracz_lewo>cel.left){
+                let x=(gracz_lewo-1)+'px';
+                gracz.style.left = x;
+                akcja=true;
+            }
 
-            if (gracz_lewo < cel.left) {
+            else if (gracz_lewo < cel.left) {
                 let x=(gracz_lewo+1)+'px';
                 gracz.style.left = x;
+                akcja=true;
             }
+
+            else if (gracz_gora > cel.top) {
+                let y=(gracz_gora-1)+'px';
+                gracz.style.top = y;
+                akcja=true;
+            }
+
             if (gracz_gora < cel.top) {
                 let y=(gracz_gora+1)+'px';
                 gracz.style.top = y;
+                akcja=true;
             }
-
         }
-
+        let przyciski=document.getElementsByClassName("sala");
+        for(i of przyciski){
+            addEventListener("click",)
+        }
 
         setInterval(()=>klatka('gracz1', 'punkt3'), 10);
 
