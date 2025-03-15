@@ -366,7 +366,7 @@ body {
 .gracz{
     height: 10vh;
     width: 10vh;
-    background-color: tomato;
+    background-color: transparent;
     background-size: cover;
     display: none;
 }

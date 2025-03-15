@@ -13,7 +13,6 @@ const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png"
 const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
     
-
 class gracz {//gracz i wszystkie jego parametry
     constructor(id_html,nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
         this.id_html=id_html;
@@ -281,7 +280,6 @@ function pokaz_pytanie(pytanie) {
 }
 
 
-
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -290,9 +288,7 @@ function przemieszaj_tablice(tablica) {
 }
 
 
-
 //setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
-
 
 
 const ekran_logo = document.getElementById('ekran_logo');
@@ -350,7 +346,6 @@ const menedzer_gry = {
 };
 
 
-
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
 const zdane_lata = document.getElementById('zadne_lata');
@@ -380,30 +375,6 @@ function koniec_tury(aktywni_gracze, menedzer_gry){
         i++;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
@@ -487,35 +458,6 @@ ustawienia.addEventListener('click', () => obsluga_ustawien());
 function debug(){
     console.log("Debug się ładuje");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
