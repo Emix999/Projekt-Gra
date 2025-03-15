@@ -225,13 +225,8 @@ body {
     background-size: cover;
 }
 
-
-.gra * {
+#gra {
     display: none;
-}
-
-.gra {
-    display: flex;
     flex-direction: row;
 }
 
@@ -263,6 +258,7 @@ body {
     height: 100vh;
     background-color: white;
     justify-content: center;
+    display: none;
 }
 
 #przycisk_mapa,
@@ -343,10 +339,6 @@ body {
     height: 100vh;
     width: calc(100vw - 36vh);
     background-color: azure;
-    display: none;
-}
-
-#ekran_pytania *{
     display: none;
 }
 
