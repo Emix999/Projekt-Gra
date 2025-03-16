@@ -6,6 +6,35 @@ gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
 
+//Deklaracja menedżera gry, który menedżeruje grą
+const menedzer_gry = {
+    indeks_wybranego: 0,
+    rok_gry: 1,
+    aktywni_gracze: [],
+    koniec_tury: function(){
+        if(this.indeks_wybranego == this.aktywni_gracze.length - 1){
+            this.indeks_wybranego = 0;
+        }
+        else{
+            this.indeks_wybranego++;
+        }
+    
+        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
+        iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
+        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
+        obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+    
+        let i = 0;
+        while(i < this.aktywni_gracze.length){
+            nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
+            nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
+            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
+            i++;
+        }
+    }
+};
+
+
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
@@ -37,8 +66,6 @@ let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, [
 let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
-let aktywni_gracze = [];
-let ilosc_aktywnych_graczy = 0;
 
 //menu wyboru gracza i wszystkie jego funcje
 class menu_graczy {
@@ -101,14 +128,12 @@ class menu_graczy {
         document.getElementById(this.id_menu).style.display = 'block';
         document.getElementById(this.id_rozwin).style.display = 'none';
         gracze[i].czy_aktywny = true;
-        ilosc_aktywnych_graczy++;
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu(i) {
         document.getElementById(this.id_menu).style.display = 'none';
         document.getElementById(this.id_rozwin).style.display = 'block';
         gracze[i].czy_aktywny = false;
-        ilosc_aktywnych_graczy--;
     }
 }
 
@@ -117,15 +142,13 @@ let menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_n
 let menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
 let menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
 
-const tablica_indeksow = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
-
-const wybrany_gracz=gracze[0];
+const tablica_menu = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
 /*
 function dodaj_sluchacza(przycisk,funkcja){
     for (let i = 0; i < liczba_graczy; i++) {
-        let obiekt = document.getElementById(tablica_indeksow[i].przycisk);
-        obiekt.addEventListener("click", () => tablica_indeksow[i].funkcja());
+        let obiekt = document.getElementById(tablica_menu[i].przycisk);
+        obiekt.addEventListener("click", () => tablica_menu[i].funkcja());
     }
 }
 */
@@ -134,35 +157,35 @@ function dodaj_sluchacza(przycisk,funkcja){
 //Dodanie event listenerów do przycisków w menu graczy
 
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_rozwin);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].rozwin_menu(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_rozwin);
+    obiekt.addEventListener("click", () => tablica_menu[i].rozwin_menu(i));
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_zwin);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].zwin_menu(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_zwin);
+    obiekt.addEventListener("click", () => tablica_menu[i].zwin_menu(i));
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_losuj_nazwe);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].losowanie_nazwy(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_losuj_nazwe);
+    obiekt.addEventListener("click", () => tablica_menu[i].losowanie_nazwy(i));
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_klasa_prawo);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].klasa_prawo(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_klasa_prawo);
+    obiekt.addEventListener("click", () => tablica_menu[i].klasa_prawo(i));
 }
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_klasa_lewo);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].klasa_lewo(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_klasa_lewo);
+    obiekt.addEventListener("click", () => tablica_menu[i].klasa_lewo(i));
 }
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_lewo);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_lewo(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_avatar_lewo);
+    obiekt.addEventListener("click", () => tablica_menu[i].avatar_lewo(i));
 }
 for (let i = 0; i < liczba_graczy; i++) {
-    let obiekt = document.getElementById(tablica_indeksow[i].id_avatar_prawo);
-    obiekt.addEventListener("click", () => tablica_indeksow[i].avatar_prawo(i));
+    let obiekt = document.getElementById(tablica_menu[i].id_avatar_prawo);
+    obiekt.addEventListener("click", () => tablica_menu[i].avatar_prawo(i));
 }
 
 //Przycisk Start
@@ -171,28 +194,23 @@ const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
 //Powoduje że menu znika i pojawia się ekran gry
-function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
+function start_gry(div_do_znikniecia, div_do_pojawienia) {
+//Tworzy tabelę aktywnych graczy
+    for (let i of gracze) {
+        if (i.czy_aktywny) {
+            menedzer_gry.aktywni_gracze.push(i);
+        }
+    }
+
     //Sprawdza czy przynajmniej jeden gracz jest aktywny
-    if (!ilosc_aktywnych_graczy) {
+    if (!menedzer_gry.aktywni_gracze.length) {
         alert("Musi być przynajmniej jeden gracz");
         return 0;
     }
 
-    for (let element of elementy_do_znikniecia) {
-        element.style.display = 'none';
-    }
-    ekran_startowy.style.display = 'none';
-
-    for (let element of elementy_do_pojawienia) {
-        element.style.display = 'flex';
-    }
-    //Tworzy tabelę aktywnych graczy
-    for (let i of gracze) {
-        if (i.czy_aktywny) {
-            aktywni_gracze.push(i);
-        }
-    }
-     
+    div_do_znikniecia.style.display = 'none';
+    div_do_pojawienia.style.display = 'flex';
+    
     for(i of gracze){
         let avatar="url('"+i.avatar+"')";
         document.getElementById(i.id_html).style.backgroundImage=avatar;
@@ -200,7 +218,7 @@ function start_gry(elementy_do_znikniecia, elementy_do_pojawienia) {
 }
 
 //Event listner przycisku Start
-przycisk_start.addEventListener('click', () => start_gry(ekran_startowy.querySelectorAll('*'), gra.querySelectorAll('.start, .start *:not(.gracz), #gracz1')));
+przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
 
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
@@ -213,21 +231,19 @@ class pytanie {
     }
 }
 
+
+
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 
+
+//to daje jakiś błąd, kiedy się odpowiedziało
+//chyba nie ma elementu o id "ekran_nagrody"
 function pokaz_pytanie(pytanie) {
-    let elementy_do_znikniecia = document.getElementById('ekran_gry').querySelectorAll('*');
-    let elementy_do_pojawienia = document.getElementById('ekran_pytania').querySelectorAll('*');
+    let elementy_do_znikniecia = document.getElementById('ekran_gry');
+    let elementy_do_pojawienia = document.getElementById('ekran_pytania');
 
     document.getElementById('ekran_gry').style.display = 'none';
-    for (let element of elementy_do_znikniecia) {
-        element.style.display = 'none';
-    }
-
     document.getElementById('ekran_pytania').style.display = 'flex';
-    for (let element of elementy_do_pojawienia) {
-        element.style.display = 'flex';
-    }
 
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -336,16 +352,6 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 // audio.volume = wartość
 // gdzie 1 w wartości to 100%, a 0 - 0%
 
-// do menedżera gry:
-// aktywni_gracze
-// ilosc_aktywnych graczys
-
-const menedzer_gry = {
-    indeks_wybranego: 0,
-    rok_gry: 1
-};
-
-
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
 const zdane_lata = document.getElementById('zadne_lata');
@@ -354,100 +360,55 @@ const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 
-function koniec_tury(aktywni_gracze, menedzer_gry){
-    if(menedzer_gry.indeks_wybranego == aktywni_gracze.length - 1){
-        menedzer_gry.indeks_wybranego = 0;
-    }
-    else{
-        menedzer_gry.indeks_wybranego++;
-    }
+//funkcje pokazanie_mapy, zamnkniecie_mapy, pokazanie_ustawien, zamnkniecie_ustawien są takie same
+//obsługa mapy i obsługa ustawień też są prawie takie same
 
-    sanity.value = aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
-    iq.value = aktywni_gracze[menedzer_gry.indeks_wybranego].iq;
-    zdane_lata.value = aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
-    obecny_rok.value  = aktywni_gracze[menedzer_gry.indeks_wybranego].obecny_rok;
-
-    let i = 0;
-    while(i < aktywni_gracze.length){
-        nr_graczy[i].value = i + (menedzer_gry.indeks_wybranego % aktywni_gracze.length);
-        nazwy_gracza[i].value = aktywni_gracze[(i + menedzer_gry.indeks_wybranego) % aktywni_gracze.length].nazwa;
-        klasy_graczy[i].value = aktywni_gracze[(i + menedzer_gry.indeks_wybranego) % aktywni_gracze.length].klasa;
-        i++;
-    }
+function pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
 }
 
-
-function pokazanie_mapy(elementy_znikajace, elementy_pojawiajace){
-    document.getElementById("ekran_gry").style.display = "none";
-    for (let element of elementy_znikajace) {
-        element.style.display = 'none';
-    }
-    document.getElementById("mapa").style.display = "flex";
-    for (let element of elementy_pojawiajace) {
-        element.style.display = 'flex';
-    }
-
-}
-
-function zamnkniecie_mapy(elementy_znikajace, elementy_pojawiajace){
-    document.getElementById("mapa").style.display = "none";
-    for(let element of elementy_znikajace){
-        element.style.display = "none";
-    }
-    document.getElementById("ekran_gry").style.display = "flex";
-    for(let element of elementy_pojawiajace){
-        element.style.display = "flex";
-    }
+function zamnkniecie_mapy(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
 }
 
 const otwarte_menu = {mapka: false, ustawienia: false};
 
 function obsluga_mapy(){
-    const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
-    const ekran_pojawiajacy = document.getElementById("mapa").querySelectorAll('*');
+    const ekran_gry = document.getElementById("ekran_gry");
+    const mapa = document.getElementById("mapa");
     if(!otwarte_menu.mapka){
-        pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy);
+        pokazanie_mapy(ekran_gry, mapa);
         otwarte_menu.mapka = true;
     }
     else{
-        zamnkniecie_mapy(ekran_znikajacy, ekran_pojawiajacy);
+        zamnkniecie_mapy(mapa, ekran_gry);
         otwarte_menu.mapka = false;
     }
 }
     const mapka = document.getElementById("przycisk_mapa");
 mapka.addEventListener('click', () => obsluga_mapy());
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function pokazanie_ustawien(elementy_znikajace, elementy_pojawiajace){
-    document.getElementById("ekran_gry").style.display = "none";
-    for (let element of elementy_znikajace) {
-        element.style.display = 'none';
-    }
-    document.getElementById("ustawienia2").style.display = "flex";
-    for (let element of elementy_pojawiajace) {
-        element.style.display = 'flex';
-    }
+function pokazanie_ustawien(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
 }
 
-function zamnkniecie_ustawien(elementy_znikajace, elementy_pojawiajace){
-    document.getElementById("ustawienia2").style.display = "none";
-    for(let element of elementy_znikajace){
-        element.style.display = "none";
-    }
-    document.getElementById("ekran_gry").style.display = "flex";
-    for(let element of elementy_pojawiajace){
-        element.style.display = "flex";
-    }
+function zamnkniecie_ustawien(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
 }
 
 function obsluga_ustawien(){
-    const ekran_znikajacy = document.getElementById("ekran_gry").querySelectorAll('*');
-    const ekran_pojawiajacy = document.getElementById("ustawienia2").querySelectorAll('*');
+    const ekran_gry = document.getElementById("ekran_gry");
+    const ustawienia = document.getElementById("ustawienia2");
     if(!otwarte_menu.ustawienia){
-        pokazanie_ustawien(ekran_znikajacy, ekran_pojawiajacy);
+        pokazanie_ustawien(ekran_gry, ustawienia);
         otwarte_menu.ustawienia = true;
     }
     else{
-        zamnkniecie_ustawien(ekran_znikajacy, ekran_pojawiajacy);
+        zamnkniecie_ustawien(ustawienia, ekran_gry);
         otwarte_menu.ustawienia = false;
     }
 }
@@ -469,6 +430,8 @@ function muzyka_zmniejsz(){
     document.getElementById("audio_bruh").volume = muzyka_glosnosc/100;
 }
 */
+
+//napraw ten swój kod
 
 let slider_muzyka = document.getElementById("muzyka_slider");
 let glosnosc_muzyki = document.getElementById("muzyka_glosnosc");
