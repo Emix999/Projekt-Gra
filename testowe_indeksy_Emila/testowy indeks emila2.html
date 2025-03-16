@@ -39,42 +39,60 @@
     <div class="ludek" id="gracz1" style="top: 150px; left: 400px;"></div>
     <script>
 
-        function klatka(gracz_id, cel_id) {
+        function klatka(gracz_id, cel) {
             let gracz = document.getElementById(gracz_id);
+            let cel_gora=parseFloat(cel.style.top);
+            console.log("cel gora "+cel_gora);
+            let cel_lewo=parseFloat(cel.style.left);
+            console.log("cel left "+cel_lewo);
+
             let gracz_gora=parseFloat(gracz.style.top);
+            console.log("gracz gora "+gracz_gora);
+
             let gracz_lewo=parseFloat(gracz.style.left);
-            let cel = document.getElementById(cel_id).getBoundingClientRect();
+            console.log("cel lewo: "+ gracz_lewo);
+
             let akcja=false;
-            if(gracz_lewo>cel.left){
-                let x=(gracz_lewo-1)+'px';
+            let skok=1;
+            if(gracz_lewo>cel_lewo){
+                let x=(gracz_lewo-skok)+'px';
                 gracz.style.left = x;
                 akcja=true;
+                console.log("lewo");
             }
 
-            else if (gracz_lewo < cel.left) {
-                let x=(gracz_lewo+1)+'px';
+            if (gracz_lewo < cel_lewo) {
+                let x=(gracz_lewo+skok)+'px';
                 gracz.style.left = x;
                 akcja=true;
+                console.log("prawo");
+
             }
 
-            else if (gracz_gora > cel.top) {
-                let y=(gracz_gora-1)+'px';
+            if (gracz_gora > cel_gora) {
+                let y=(gracz_gora-skok)+'px';
                 gracz.style.top = y;
                 akcja=true;
+                console.log("gora");
+
             }
 
-            if (gracz_gora < cel.top) {
-                let y=(gracz_gora+1)+'px';
+            if (gracz_gora < cel_gora) {
+                let y=(gracz_gora+skok)+'px';
                 gracz.style.top = y;
                 akcja=true;
-            }
-        }
-        let przyciski=document.getElementsByClassName("sala");
-        for(i of przyciski){
-            addEventListener("click",)
-        }
+                console.log("dol");
 
-        setInterval(()=>klatka('gracz1', 'punkt3'), 10);
+            }
+            //if(akcja)setTimeout(()=>(klatka(gracz_id, cel)),10);
+
+            return akcja;
+        }
+        let przyciski=document.querySelectorAll(".sala");
+
+        for(let i of przyciski){
+            i.addEventListener("click",()=>(klatka("gracz1",i)));
+        }
 
     </script>
 </body>
