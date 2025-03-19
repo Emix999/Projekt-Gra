@@ -427,14 +427,14 @@ const muzyka=document.querySelectorAll(".muzyka");
 slider_muzyka.oninput = function slider_muzyka_update() {
     glosnosc_muzyki.value = slider_muzyka.value;
     for(let i of muzyka){
-        i.volume = slider_muzyka2.value/100;
+        i.volume = slider_muzyka.value/100;
     }
 }
 
 slider_sfx.oninput = function slider_sfx_update() {
     glosnosc_sfx.value = slider_sfx.value;
     for(let i of sfx){
-        i.volume = slider_sfx2.value/100;
+        i.volume = slider_sfx.value/100;
     }
 }
 
