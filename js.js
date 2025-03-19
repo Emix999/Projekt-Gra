@@ -194,8 +194,8 @@ const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
 //Powoduje że menu znika i pojawia się ekran gry
-function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
-    //Tworzy tabelę aktywnych graczy
+function start_gry(div_do_znikniecia, div_do_pojawienia) {
+//Tworzy tabelę aktywnych graczy
     for (let i of gracze) {
         if (i.czy_aktywny) {
             menedzer_gry.aktywni_gracze.push(i);
@@ -208,17 +208,13 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
         return 0;
     }
 
-    zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+    div_do_znikniecia.style.display = 'none';
+    div_do_pojawienia.style.display = 'flex';
     
     for(i of gracze){
         let avatar="url('"+i.avatar+"')";
         document.getElementById(i.id_html).style.backgroundImage=avatar;
     }
-
-    slider_muzyka2.value = glosnosc_muzyki.value;
-    glosnosc_muzyki2.value = glosnosc_muzyki.value;
-    slider_sfx2.value = glosnosc_sfx.value;
-    glosnosc_sfx2.value = glosnosc_sfx.value;
 }
 
 //Event listner przycisku Start
@@ -238,13 +234,16 @@ class pytanie {
 
 
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
-const ekran_gry = document.getElementById("ekran_gry");
-const ekran_pytania = document.getElementById("ekran_pytania");
+
 
 //to daje jakiś błąd, kiedy się odpowiedziało
 //chyba nie ma elementu o id "ekran_nagrody"
-function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
-    zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+function pokaz_pytanie(pytanie) {
+    let elementy_do_znikniecia = document.getElementById('ekran_gry');
+    let elementy_do_pojawienia = document.getElementById('ekran_pytania');
+
+    document.getElementById('ekran_gry').style.display = 'none';
+    document.getElementById('ekran_pytania').style.display = 'flex';
 
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -273,14 +272,13 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
         }
 
         function wyswietl_nagrode() {
-            const ekran_nagrody = document.getElementById("ekran_nagrody");
-            ekran_nagrody.style.visibility = "visible"
-            ekran_nagrody.innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
+            document.getElementById("ekran_nagrody").style.visibility = "visible"
+            document.getElementById("ekran_nagrody").innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
         }
-
-        const przejdz_dalej = document.getElementById("przejdz_dalej");
-        przejdz_dalej.style.visibility = "visible";
-        przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
+        document.getElementById("przejdz_dalej").style.visibility = "visible";
+        document.getElementById("przejdz_dalej").addEventListener("click", () => wyswietl_nagrode());
+        document.getElementById("przejdz_dalej").style.visibility="visible";
+        document.getElementById("przejdz_dalej").addEventListener("click", (document.getElementById("ekran_nagrody").style.visibility="visible"));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -305,57 +303,58 @@ function przemieszaj_tablice(tablica) {
     }
 }
 
-//setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
+
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 
 
 const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu')
 
-function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
-    zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-
+function pokaz_menu_startowe(){
+    ekran_logo.style.display = 'none';
+    ekran_startowy.style.display = 'flex';
     bruh.play();
     muzyka_menu.play();
 }
 
-ekran_logo.addEventListener('click', () => pokaz_menu_startowe(ekran_logo, ekran_startowy));
+ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
 
-//audio definiuje się w html'u:
-//<audio id = "audio_id">
+// audio definiuje się w html'u:
+// <audio id = "audio_id">
 //  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
 //  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
-//</audio>
-//(oczywiście trzeba jeszcze wstawić plik dźwiękowy do folderu gry)
+// </audio>
+// (oczywiście trzeba jeszcze wstawić plik dźwiękowy do folderu gry)
 
-//żeby zdefiniować audio zapętlone, daje się parametr loop do definicji audio w html'u:
+// żeby zdefiniować audio zapętlone, daje się parametr loop do definicji audio w html'u:
 // <audio id = "audio_id" loop>
 //  <source src="sfx/Bruh sound effect.ogg" type="audio/ogg">
 //  <source src="sfx/Bruh sound effect.mp3" type="audio/mpeg">
-//</audio>
+// </audio>
 
-//element audio do javascript'a można wziąć po id
-//audio1 = document.getElementById('audio_id');
+// element audio do javascript'a można wziąć po id
+// audio1 = document.getElementById('audio_id');
 
-//żeby wystartować audio:
-//audio1.play();
+// żeby wystartować audio:
+// audio1.play();
 
-//żeby zatrzymać audio:
-//audio1.pause();
-//audio1.currentTime = 0; (powoduje cofnięcie audio do początku)
+// żeby zatrzymać audio:
+// audio1.pause();
+// audio1.currentTime = 0; (powoduje cofnięcie audio do początku)
 
-//żeby zmienić audio można użyć dwóch powyższych:
-//audio1.pause();
-//audio1.currentTime = 0;
-//audio2.play();
+// żeby zmienić audio można użyć dwóch powyższych:
+// audio1.pause();
+// audio1.currentTime = 0;
+// audio2.play();
 
-//żeby zmienić głośność można użyć:
-//audio.volume = wartość
-//gdzie 1 w wartości to 100%, a 0 - 0%
+// żeby zmienić głośność można użyć:
+// audio.volume = wartość
+// gdzie 1 w wartości to 100%, a 0 - 0%
 
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
-const zdane_lata = document.getElementById('zdane_lata');
+const zdane_lata = document.getElementById('zadne_lata');
 const obecny_rok = document.getElementById('obecny_rok');
 const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
@@ -364,39 +363,58 @@ const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 //funkcje pokazanie_mapy, zamnkniecie_mapy, pokazanie_ustawien, zamnkniecie_ustawien są takie same
 //obsługa mapy i obsługa ustawień też są prawie takie same
 
+function pokazanie_mapy(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
+}
+
+function zamnkniecie_mapy(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
+}
+
 const otwarte_menu = {mapka: false, ustawienia: false};
 
 function obsluga_mapy(){
     const ekran_gry = document.getElementById("ekran_gry");
     const mapa = document.getElementById("mapa");
     if(!otwarte_menu.mapka){
-        zmiana_ekranu(ekran_gry, mapa);
+        pokazanie_mapy(ekran_gry, mapa);
         otwarte_menu.mapka = true;
     }
     else{
-        zmiana_ekranu(mapa, ekran_gry);
+        zamnkniecie_mapy(mapa, ekran_gry);
         otwarte_menu.mapka = false;
     }
 }
     const mapka = document.getElementById("przycisk_mapa");
 mapka.addEventListener('click', () => obsluga_mapy());
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function pokazanie_ustawien(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
+}
+
+function zamnkniecie_ustawien(ekran_znikajacy, ekran_pojawiajacy){
+    ekran_znikajacy.style.display = "none";
+    ekran_pojawiajacy.style.display = "flex";
+}
+
 function obsluga_ustawien(){
     const ekran_gry = document.getElementById("ekran_gry");
     const ustawienia = document.getElementById("ustawienia2");
     if(!otwarte_menu.ustawienia){
-        zmiana_ekranu(ekran_gry, ustawienia);
+        pokazanie_ustawien(ekran_gry, ustawienia);
         otwarte_menu.ustawienia = true;
     }
     else{
-        zmiana_ekranu(ustawienia, ekran_gry);
+        zamnkniecie_ustawien(ustawienia, ekran_gry);
         otwarte_menu.ustawienia = false;
     }
 }
-
-const ustawienia = document.getElementById("ustawienia_menu_boczne");
+    const ustawienia = document.getElementById("ustawienia_menu_boczne");
 ustawienia.addEventListener('click', () => obsluga_ustawien());
-
+//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
 function debug(){
     console.log("Debug się ładuje");
 }
@@ -413,51 +431,114 @@ function muzyka_zmniejsz(){
 }
 */
 
-const slider_muzyka = document.getElementById("muzyka_slider");
-const glosnosc_muzyki = document.getElementById("muzyka_glosnosc");
+//napraw ten swój kod
+
+let slider_muzyka = document.getElementById("muzyka_slider");
+let glosnosc_muzyki = document.getElementById("muzyka_glosnosc");
 glosnosc_muzyki.value = slider_muzyka.value;
 
-const slider_sfx = document.getElementById("sfx_slider");
-const glosnosc_sfx = document.getElementById("sfx_glosnosc");
+let slider_sfx = document.getElementById("sfx_slider");
+let glosnosc_sfx = document.getElementById("sfx_glosnosc");
 glosnosc_sfx.value = slider_sfx.value;
 
-const sfx=document.querySelectorAll(".sfx");
-const muzyka=document.querySelectorAll(".muzyka");
+sfx=document.querySelectorAll(".sfx");
+muzyka=document.querySelectorAll(".muzyka");
 
 slider_muzyka.oninput = function slider_muzyka_update() {
     glosnosc_muzyki.value = slider_muzyka.value;
     for(let i of muzyka){
-        i.volume = slider_muzyka.value/100;
+    i.volume = slider_muzyka.value/100;
     }
 }
 
 slider_sfx.oninput = function slider_sfx_update() {
     glosnosc_sfx.value = slider_sfx.value;
     for(let i of sfx){
-        i.volume = slider_sfx.value/100;
+    i.volume = slider_sfx.value/100;
     }
 }
 
-const slider_muzyka2 = document.getElementById("muzyka_slider2");
-const glosnosc_muzyki2 = document.getElementById("muzyka_glosnosc2");
-const slider_sfx2 = document.getElementById("sfx_slider2");
-const glosnosc_sfx2 = document.getElementById("sfx_glosnosc2");
 
-slider_muzyka2.oninput = function slider_muzyka_update2() {
-    glosnosc_muzyki2.value = slider_muzyka2.value;
-    for(let i of muzyka){
-        i.volume = slider_muzyka2.value/100;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function klatka(gracz_id, cel, predkosc=10) {
+    let gracz = document.getElementById(gracz_id);
+    let cel_gora=parseFloat(cel.getBoundingClientRect().top);
+    let cel_lewo=parseFloat(cel.getBoundingClientRect().left);
+    let gracz_gora=parseFloat(gracz.getBoundingClientRect().top);
+    let gracz_lewo=parseFloat(gracz.getBoundingClientRect().left);
+    let akcja=false;
+
+    let skok=1;
+    if(gracz_lewo>cel_lewo){
+        let x=(gracz_lewo-skok)+'px';
+        gracz.style.left = x;
+        akcja=true;
     }
-}
 
-slider_sfx2.oninput = function slider_sfx_update2() {
-    glosnosc_sfx2.value = slider_sfx2.value;
-    for(let i of sfx){
-        i.volume = slider_sfx2.value/100;
+    if (gracz_lewo < cel_lewo) {
+        let x=(gracz_lewo+skok)+'px';
+        gracz.style.left = x;
+        akcja=true;
     }
-}
 
-function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy){
-    ekran_znikajacy.style.display = "none";
-    ekran_pojawiajacy.style.display = "flex";
+    if (gracz_gora > cel_gora) {
+        let y=(gracz_gora-skok)+'px';
+        gracz.style.top = y;
+        akcja=true;
+    }
+
+    if (gracz_gora < cel_gora) {
+        let y=(gracz_gora+skok)+'px';
+        gracz.style.top = y;
+        akcja=true;
+
+    }
+    if(akcja)setTimeout(()=>(klatka(gracz_id, cel)),predkosc);
+
 }
+/*
+let przyciski=document.querySelectorAll(".sala");
+
+for(let i of przyciski){
+    i.addEventListener("click",()=>(klatka("gracz1",i)));
+}
+*/
