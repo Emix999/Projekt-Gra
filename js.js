@@ -281,8 +281,6 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
         const przejdz_dalej = document.getElementById("przejdz_dalej");
         przejdz_dalej.style.visibility = "visible";
         przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
-        przejdz_dalej.style.visibility="visible";
-        przejdz_dalej.addEventListener("click", (document.getElementById("ekran_nagrody").style.visibility="visible"));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -357,7 +355,7 @@ ekran_logo.addEventListener('click', () => pokaz_menu_startowe(ekran_logo, ekran
 
 const sanity = document.getElementById('sanity');
 const iq = document.getElementById('iq');
-const zdane_lata = document.getElementById('zadne_lata');
+const zdane_lata = document.getElementById('zdane_lata');
 const obecny_rok = document.getElementById('obecny_rok');
 const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
@@ -398,7 +396,7 @@ function obsluga_ustawien(){
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
 ustawienia.addEventListener('click', () => obsluga_ustawien());
-//setTimeout(() => pokaz_pytanie(pytanie_testowe), 3000);
+
 function debug(){
     console.log("Debug się ładuje");
 }
