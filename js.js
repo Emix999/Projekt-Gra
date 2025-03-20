@@ -316,7 +316,7 @@ function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
     muzyka_menu.play();
 }
 
-ekran_logo.addEventListener('click', () => pokaz_menu_startowe());
+ekran_logo.addEventListener('click', () => pokaz_menu_startowe(ekran_logo, ekran_startowy));
 
 //audio definiuje się w html'u:
 //<audio id = "audio_id">
