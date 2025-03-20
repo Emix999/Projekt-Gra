@@ -362,36 +362,36 @@ const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 //obsługa mapy i obsługa ustawień też są prawie takie same
 
 const otwarte_menu = {mapka: false, ustawienia: false};
+const mapa = document.getElementById("mapa");
+const ustawienia2 = document.getElementById("ustawienia2");
 
-function obsluga_mapy(){
-    const ekran_gry = document.getElementById("ekran_gry");
-    const mapa = document.getElementById("mapa");
+function obsluga_mapy(ekran_znikajacy, ekran_pojawiajacy){
     if(!otwarte_menu.mapka){
-        zmiana_ekranu(ekran_gry, mapa);
+        zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
         otwarte_menu.mapka = true;
     }
     else{
-        zmiana_ekranu(mapa, ekran_gry);
+        zmiana_ekranu(ekran_pojawiajacy, ekran_znikajacy);
         otwarte_menu.mapka = false;
     }
 }
-    const mapka = document.getElementById("przycisk_mapa");
-mapka.addEventListener('click', () => obsluga_mapy());
+
+const mapka = document.getElementById("przycisk_mapa");
+mapka.addEventListener('click', () => obsluga_mapy(ekran_gry, mapa));
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(){
-    const ekran_gry = document.getElementById("ekran_gry");
-    const ustawienia = document.getElementById("ustawienia2");
+function obsluga_ustawien(ekran_znikajacy, ekran_pojawiajacy){
     if(!otwarte_menu.ustawienia){
-        zmiana_ekranu(ekran_gry, ustawienia);
+        zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
         otwarte_menu.ustawienia = true;
     }
     else{
-        zmiana_ekranu(ustawienia, ekran_gry);
+        zmiana_ekranu(ekran_pojawiajacy, ekran_znikajacy);
         otwarte_menu.ustawienia = false;
     }
 }
-    const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien());
+
+const ustawienia = document.getElementById("ustawienia_menu_boczne");
+ustawienia.addEventListener('click', () => obsluga_ustawien(ekran_gry, ustawienia2));
 
 function debug(){
     console.log("Debug się ładuje");
