@@ -53,7 +53,8 @@ body {
     margin-top: 23vmin;
 }
 
-#muzyka_glosnosc {
+#muzyka_glosnosc,
+#muzyka_glosnosc2 {
     left: 34.5%;
     top: 16.3%;
     height: 2vmin;
@@ -64,7 +65,8 @@ body {
     border: none;
 }
 
-#muzyka_slider {
+#muzyka_slider,
+#muzyka_slider2 {
     left: 39.5%;
     top: 16.1%;
     height: 2vmin;
@@ -72,7 +74,8 @@ body {
     position: absolute;
 }
 
-#sfx_glosnosc {
+#sfx_glosnosc,
+#sfx_glosnosc2 {
     left: 34.5%;
     top: 24.7%;
     height: 2vmin;
@@ -83,7 +86,8 @@ body {
     border: none;
 }
 
-#sfx_slider {
+#sfx_slider,
+#sfx_slider2 {
     left: 39.5%;
     top: 24.5%;
     height: 2vmin;
@@ -297,7 +301,7 @@ body {
 
 #sanity,
 #iq,
-#zadne_lata,
+#zdane_lata,
 #obecny_rok {
     margin: 0.5vh;
     height: 3vh;
