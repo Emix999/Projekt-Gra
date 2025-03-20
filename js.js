@@ -434,6 +434,11 @@ slider_sfx.oninput = function slider_sfx_update() {
     }
 }
 
+const slider_muzyka2 = document.getElementById("muzyka_slider2");
+const glosnosc_muzyki2 = document.getElementById("muzyka_glosnosc2");
+const slider_sfx2 = document.getElementById("sfx_slider2");
+const glosnosc_sfx2 = document.getElementById("sfx_glosnosc2");
+
 slider_muzyka2.oninput = function slider_muzyka_update2() {
     glosnosc_muzyki2.value = slider_muzyka2.value;
     for(let i of muzyka){
