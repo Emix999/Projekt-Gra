@@ -367,31 +367,37 @@ const ustawienia2 = document.getElementById("ustawienia2");
 
 function obsluga_mapy(ekran_znikajacy, ekran_pojawiajacy){
     if(!otwarte_menu.mapka){
-        zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+        if(otwarte_menu.ustawienia){
+            obsluga_ustawien(ekran_pojawiajacy, ekran_znikajacy);
+        }
+        pojawienie_ekranu(ekran_pojawiajacy);
         otwarte_menu.mapka = true;
     }
     else{
-        zmiana_ekranu(ekran_pojawiajacy, ekran_znikajacy);
+        znikniecie_ekranu(ekran_pojawiajacy);
         otwarte_menu.mapka = false;
     }
 }
 
 const mapka = document.getElementById("przycisk_mapa");
-mapka.addEventListener('click', () => obsluga_mapy(ekran_gry, mapa));
+mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function obsluga_ustawien(ekran_znikajacy, ekran_pojawiajacy){
     if(!otwarte_menu.ustawienia){
-        zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+        if(otwarte_menu.mapka){
+            obsluga_mapy(ekran_pojawiajacy, ekran_znikajacy);
+        }
+        pojawienie_ekranu(ekran_pojawiajacy);
         otwarte_menu.ustawienia = true;
     }
     else{
-        zmiana_ekranu(ekran_pojawiajacy, ekran_znikajacy);
+        znikniecie_ekranu(ekran_pojawiajacy);
         otwarte_menu.ustawienia = false;
     }
 }
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien(ekran_gry, ustawienia2));
+ustawienia.addEventListener('click', () => obsluga_ustawien(mapa, ustawienia2));
 
 function debug(){
     console.log("Debug się ładuje");
@@ -458,7 +464,13 @@ function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy){
     ekran_pojawiajacy.style.display = "flex";
 }
 
+function pojawienie_ekranu(ekran_pojawiajacy){
+    ekran_pojawiajacy.style.display = "flex";
+}
 
+function znikniecie_ekranu(ekran_znikajacy){
+    ekran_znikajacy.style.display = "none";
+}
 
 
 
