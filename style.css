@@ -370,3 +370,14 @@ body {
 .mapowanie_mapy *{
     position: absolute;
 }
+
+#ekran_sali{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    display: none;
+}
+
+#sala{
+    height: 100%;
+    width: 100%;
+}

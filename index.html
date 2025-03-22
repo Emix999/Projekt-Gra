@@ -161,9 +161,13 @@
             </div>
         </div>
 
+        <div id="ekran_sali" style = "display: none;">
+            <img id="sala">
+        </div>
+
         <div id="mapa">
             <!-- Pierwsze Piętro -->
-            <div id="schemat_pierwsze_pietro" style="position: relative; display: none;">
+            <div id="schemat_pierwsze_pietro" style="position: relative; display: flex;">
                 <img src="mapy/schemat_pierwsze_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala" style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;" data-sciezka_sali="sale/prototyp_sali_101.png">101</button>
@@ -234,36 +238,34 @@
             </div>
         
             <!-- Drugi Budynek -->
-            <div id="schemat_drugi_budynek" style="position: relative; display: flex;">
+            <div id="schemat_drugi_budynek" style="position: relative; display: none;">
                 <img src="mapy/schemat_2_budynek.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala" style="left: 92.5%; top: 52.333%; width: 6.375%; height: 8.5%;">01</button>
-        <button class="przycisk_sala" style="left: 65.125%; top: 69.667%; width: 6.125%; height: 7.333%;">02a</button>
-        <button class="przycisk_sala" style="left: 53.875%; top: 69.667%; width: 11%; height: 7.333%;">02</button>
-        <button class="przycisk_sala" style="left: 33%; top: 69.667%; width: 6.25%; height: 7.333%;">04</button>
-        <button class="przycisk_sala" style="left: 20.5%; top: 69.667%; width: 6%; height: 7.333%;">06</button>
-        <button class="przycisk_sala" style="left: 4.25%; top: 68.667%; width: 5.625%; height: 8.333%;">09</button>
-        <button class="przycisk_sala" style="left: 4.25%; top: 59.667%; width: 5.625%; height: 8.5%;">09a</button>
-        <button class="przycisk_sala" style="left: 4.25%; top: 32.167%; width: 5.625%; height: 8.667%;">012</button>
-        <button class="przycisk_sala" style="left: 13.375%; top: 26.333%; width: 6.125%; height: 19.333%;">014</button>
-        <button class="przycisk_sala" style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%;">013</button>
-        <button class="przycisk_sala" style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%;">015</button>
-        <button class="przycisk_sala" style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>
-        <button class="przycisk_sala" style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%;">018</button>
-        <button class="przycisk_sala" style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%;">021</button>
-        <button class="przycisk_sala" style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>
-        <button class="przycisk_sala" style="left: 45.875%; top: 26.333%; width: 12.5%; height: 19.333%;">SCEM</button>
-        <button class="przycisk_sala" style="left: 48.125%; top: 46.167%; width: 10.25%; height: 4.167%;">025</button>
-        <button class="przycisk_sala" style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%;">026</button>
-        <button class="przycisk_sala" style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%;">030</button>
-        <button class="przycisk_sala" style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>
-        <button class="przycisk_sala" style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%;">029</button>
-        <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 92.25%; top: 47.333%; width: 4.625%; height: 4.5%;" data-mapa="schemat_piwnica"></button>
+                    <button class="przycisk_sala" style="left: 65.125%; top: 69.667%; width: 6.125%; height: 7.333%;">02a</button>
+                    <button class="przycisk_sala" style="left: 53.875%; top: 69.667%; width: 11%; height: 7.333%;">02</button>
+                    <button class="przycisk_sala" style="left: 33%; top: 69.667%; width: 6.25%; height: 7.333%;">04</button>
+                    <button class="przycisk_sala" style="left: 20.5%; top: 69.667%; width: 6%; height: 7.333%;">06</button>
+                    <button class="przycisk_sala" style="left: 4.25%; top: 68.667%; width: 5.625%; height: 8.333%;">09</button>
+                    <button class="przycisk_sala" style="left: 4.25%; top: 59.667%; width: 5.625%; height: 8.5%;">09a</button>
+                    <button class="przycisk_sala" style="left: 4.25%; top: 32.167%; width: 5.625%; height: 8.667%;">012</button>
+                    <button class="przycisk_sala" style="left: 13.375%; top: 26.333%; width: 6.125%; height: 19.333%;">014</button>
+                    <button class="przycisk_sala" style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%;">013</button>
+                    <button class="przycisk_sala" style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%;">015</button>
+                    <button class="przycisk_sala" style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>
+                    <button class="przycisk_sala" style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%;">018</button>
+                    <button class="przycisk_sala" style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%;">021</button>
+                    <button class="przycisk_sala" style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>
+                    <button class="przycisk_sala" style="left: 45.875%; top: 26.333%; width: 12.5%; height: 19.333%;">SCEM</button>
+                    <button class="przycisk_sala" style="left: 48.125%; top: 46.167%; width: 10.25%; height: 4.167%;">025</button>
+                    <button class="przycisk_sala" style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%;">026</button>
+                    <button class="przycisk_sala" style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%;">030</button>
+                    <button class="przycisk_sala" style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>
+                    <button class="przycisk_sala" style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%;">029</button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 92.25%; top: 47.333%; width: 4.625%; height: 4.5%;" data-mapa="schemat_piwnica"></button>
                 </div>
             </div>
         </div>
-        
-
         
         <div id="ustawienia2">
             <div class="ustawienia">

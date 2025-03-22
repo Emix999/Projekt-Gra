@@ -460,8 +460,8 @@ slider_sfx2.oninput = function slider_sfx_update2() {
 }
 
 function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy){
-    ekran_znikajacy.style.display = "none";
-    ekran_pojawiajacy.style.display = "flex";
+    znikniecie_ekranu(ekran_znikajacy);
+    pojawienie_ekranu(ekran_pojawiajacy);
 }
 
 function pojawienie_ekranu(ekran_pojawiajacy){
@@ -472,7 +472,28 @@ function znikniecie_ekranu(ekran_znikajacy){
     ekran_znikajacy.style.display = "none";
 }
 
+const ekran_sali = document.getElementById('ekran_sali');
+const sala_przyciski = document.getElementsByClassName('przycisk_sala');
+const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
+function pokaz_sale(sciezka_sali, ekran_sali, mapa){
+    znikniecie_ekranu(mapa);
+    otwarte_menu.mapka = false;
+    zmiana_ekranu(ekran_gry, ekran_sali)
+    sala.src = sciezka_sali;
+}
+
+function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca){
+    zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
+}
+
+for(let przycisk of sala_przyciski){
+    przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali, ekran_sali, mapa));
+}
+
+for(let przycisk of mapa_przyciski){
+    przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa)));
+}
 
 
 
