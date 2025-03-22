@@ -163,42 +163,42 @@
 
         <div id="mapa">
             <!-- Pierwsze Piętro -->
-            <div id="schemat_pierwsze_pietro" style="position: relative; display: flex;">
+            <div id="schemat_pierwsze_pietro" style="position: relative; display: none;">
                 <img src="mapy/schemat_pierwsze_pietro.png" style="width: 100%; height: auto;">
-                <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button style="position: absolute; left: 1.625%; top: 31.83%; width: 10%; height: 8.33%;" data-sciezka_obrazu="sale/prototyp_sali_101.png">101</button>
-                    <button style="position: absolute; left: 12%; top: 31.83%; width: 7.5%; height: 8.33%;">102a</button>
-                    <button style="position: absolute; left: 19.875%; top: 31.83%; width: 7.5%; height: 8.33%;">102b</button>
-                    <button style="position: absolute; left: 27.625%; top: 31.83%; width: 10%; height: 8.33%;">103</button>
-                    <button style="position: absolute; left: 40.625%; top: 31.83%; width: 10%; height: 8.33%;">104</button>
-                    <button style="position: absolute; left: 50.875%; top: 31.83%; width: 10%; height: 8.33%;">105</button>
-                    <button style="position: absolute; left: 61.125%; top: 31.83%; width: 10%; height: 8.33%;">106</button>
-                    <button style="position: absolute; left: 71.5%; top: 35.67%; width: 10%; height: 8.33%;">107</button>
-                    <button style="position: absolute; left: 81.75%; top: 35.67%; width: 10%; height: 8.33%;">108</button>
-                    <button style="position: absolute; left: 92.125%; top: 35.67%; width: 6.25%; height: 12%; ">109</button>
-                    <button style="position: absolute; left: 71.5%; top: 48.17%; width: 7.25%; height: 8.33%;">111</button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.33%; width: 3.125%; height: 6.17%;"></button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.33%; width: 3.875%; height: 4.67%;"></button>
+                <div class="mapowanie_mapy" style="display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <button class="przycisk_sala" style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;" data-sciezka_sali="sale/prototyp_sali_101.png">101</button>
+                    <button class="przycisk_sala" style="left: 12%; top: 31.833%; width: 7.5%; height: 8.333%;">102a</button>
+                    <button class="przycisk_sala" style="left: 19.875%; top: 31.833%; width: 7.5%; height: 8.333%;">102b</button>
+                    <button class="przycisk_sala" style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%;">103</button>
+                    <button class="przycisk_sala" style="left: 40.625%; top: 31.833%; width: 10%; height: 8.333%;">104</button>
+                    <button class="przycisk_sala" style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">105</button>
+                    <button class="przycisk_sala" style="left: 61.125%; top: 31.833%; width: 10%; height: 8.333%;">106</button>
+                    <button class="przycisk_sala" style="left: 71.5%; top: 35.667%; width: 10%; height: 8.333%;">107</button>
+                    <button class="przycisk_sala" style="left: 81.75%; top: 35.667%; width: 10%; height: 8.333%;">108</button>
+                    <button class="przycisk_sala" style="left: 92.125%; top: 35.667%; width: 6.25%; height: 12%;">109</button>
+                    <button class="przycisk_sala" style="left: 71.5%; top: 48.167%; width: 7.25%; height: 8.333%;">111</button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.333%; width: 3.125%; height: 6.167%;" data-mapa="schemat_parter"></button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.333%; width: 3.875%; height: 4.667%;" data-mapa="schemat_drugie_pietro"></button>
                 </div>
             </div>
-        
+
             <!-- Drugie Piętro -->
             <div id="schemat_drugie_pietro" style="position: relative; display: none;">
                 <img src="mapy/schemat_drogie_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button style="position: absolute; left: 1.625%; top: 31.83%; width: 10%; height: 8.33%;">201</button>
-                    <button style="position: absolute; left: 12%; top: 31.83%; width: 10%; height: 8.33%;">202</button>
-                    <button style="position: absolute; left: 27.625%; top: 31.83%; width: 10%; height: 8.33%;">203</button>
-                    <button style="position: absolute; left: 40.625%; top: 31.83%; width: 10%; height: 8.33%;">204</button>
-                    <button style="position: absolute; left: 50.875%; top: 31.83%; width: 10%; height: 8.33%;">205</button>
-                    <button style="position: absolute; left: 61.125%; top: 31.83%; width: 10%; height: 8.33%;">206</button>
-                    <button style="position: absolute; left: 71.5%; top: 35.67%; width: 10%; height: 8.33%;">207</button>
-                    <button style="position: absolute; left: 81.75%; top: 35.67%; width: 10%; height: 8.33%;">208</button>
-                    <button style="position: absolute; left: 92.125%; top: 35.67%; width: 6.25%; height: 12%; ">209</button>
-                    <button style="position: absolute; left: 87.625%; top: 48.17%; width: 9.25%; height: 8.33%;">210</button>
-                    <button style="position: absolute; left: 79.375%; top: 48.17%; width: 9.25%; height: 8.33%;">211</button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.33%; width: 3.125%; height: 6.17%;"></button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.33%; width: 3.875%; height: 4.67%;"></button>
+                    <button class="przycisk_sala" style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;">201</button>
+                    <button class="przycisk_sala" style="left: 14.625%; top: 31.833%; width: 10%; height: 8.333%;">202</button>
+                    <button class="przycisk_sala" style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%;">203</button>
+                    <button class="przycisk_sala" style="left: 40.625%; top: 31.833%; width: 10%; height: 8.333%;">204</button>
+                    <button class="przycisk_sala" style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>
+                    <button class="przycisk_sala" style="left: 61.125%; top: 31.833%; width: 10.125%; height: 8.333%;">206</button>
+                    <button class="przycisk_sala" style="left: 71.5%; top: 35.667%; width: 10%; height: 8.333%;">207</button>
+                    <button class="przycisk_sala" style="left: 81.75%; top: 35.667%; width: 10%; height: 8.333%;">208</button>
+                    <button class="przycisk_sala" style="left: 92.125%; top: 35.667%; width: 6.25%; height: 12%;">209</button>
+                    <button class="przycisk_sala" style="left: 87.375%; top: 48.167%; width: 9.25%; height: 8.333%;">210</button>
+                    <button class="przycisk_sala" style="left: 74.625%; top: 48.167%; width: 9.25%; height: 8.333%;">211</button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.333%; width: 3.125%; height: 6.167%;" data-mapa="schemat_pierwsze_pietro"></button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.333%; width: 3.875%; height: 4.667%;" data-mapa="schemat_pierwsze_pietro"></button>
                 </div>
             </div>
         
@@ -206,16 +206,16 @@
             <div id="schemat_parter" style="position: relative; display: none;">
                 <img src="mapy/schemat_parter.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button style="position: absolute; left: 2.67%; top: 57.0%; width: 13.33%; height: 8.33%;">24</button>
-                    <button style="position: absolute; left: 24.17%; top: 57.0%; width: 12.67%; height: 8.33%;">22</button>
-                    <button style="position: absolute; left: 37.33%; top: 57.0%; width: 22.67%; height: 8.33%;">studio RTV</button>
-                    <button style="position: absolute; left: 60.5%; top: 57.0%; width: 12.83%; height: 8.33%;">20</button>
-                    <button style="position: absolute; left: 74.17%; top: 57.0%; width: 15.17%; height: 8.33%;">19</button>
-                    <button style="position: absolute; left: 84.5%; top: 14.83%; width: 14.5%; height: 28.67%;">sala gimnastyczna</button>
-                    <button style="position: absolute; left: 87.5%; top: 44.0%; width: 7.0%; height: 4.5%;">15</button>
-                    <button style="position: absolute; left: 88.5%; top: 60.83%; width: 22.5%; height: 9.17%;">sala samokształceniowa</button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 9.25%; top: 70.67%; width: 4.33%; height: 6.17%;"></button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 83.33%; top: 69.5%; width: 5.17%; height: 4.67%;"></button>
+                    <button class="przycisk_sala" style="left: 1.875%; top: 57%; width: 10%; height: 8.333%;">24</button>
+                    <button class="przycisk_sala" style="left: 18.125%; top: 57%; width: 9.5%; height: 8.333%;">22</button>
+                    <button class="przycisk_sala" style="left: 28%; top: 57%; width: 17%; height: 8.333%;">studio RTV</button>
+                    <button class="przycisk_sala" style="left: 45.25%; top: 57%; width: 9.625%; height: 8.333%;">20</button>
+                    <button class="przycisk_sala" style="left: 55.25%; top: 57%; width: 11.5%; height: 8.333%;">19</button>
+                    <button class="przycisk_sala" style="left: 69%; top: 14.833%; width: 10.875%; height: 28.667%;">sala gimnastyczna</button>
+                    <button class="przycisk_sala" style="left: 74.625%; top: 44%; width: 5.25%; height: 4.5%;">15</button>
+                    <button class="przycisk_sala" style="left: 75.25%; top: 60.833%; width: 16.875%; height: 9.167%;">sala samokształceniowa</button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 8.75%; top: 70.5%; width: 3.25%; height: 6.167%;" data-mapa="schemat_piwnica"></button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 62.625%; top: 69.5%; width: 3.875%; height: 4.667%;" data-mapa="schemat_pierwsze_pietro"></button>
                 </div>
             </div>
         
@@ -223,40 +223,42 @@
             <div id="schemat_piwnica" style="position: relative; display: none;">
                 <img src="mapy/schemat_piwnica.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button style="position: absolute; left: 27.5%; top: 31.83%; width: 17.33%; height: 8.33%;">jadalnia</button>
-                    <button style="position: absolute; left: 50.0%; top: 31.83%; width: 6.67%; height: 8.33%;">036</button>
-                    <button style="position: absolute; left: 92.125%; top: 48.17%; width: 6.17%; height: 8.33%;">25</button>
-                    <button style="position: absolute; left: 1.75%; top: 31.83%; width: 8.5%; height: 8.33%;">01</button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.33%; width: 3.125%; height: 6.17%;"></button>
-                    <button style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.33%; width: 3.875%; height: 4.67%;"></button>
+                    <button class="przycisk_sala" style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%;">jadalnia</button>
+                    <button class="przycisk_sala" style="left: 50%; top: 31.833%; width: 5%; height: 8.333%;">036</button>
+                    <button class="przycisk_sala" style="left: 92.125%; top: 48.167%; width: 4.625%; height: 8.333%;">25</button>
+                    <button class="przycisk_sala" style="left: 1.75%; top: 31.833%; width: 6.375%; height: 8.333%;">01</button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 45.333%; width: 3.125%; height: 6.167%;" data-mapa="schemat_parter"></button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 62.375%; top: 44.333%; width: 3.875%; height: 4.667%;" data-mapa="schemat_parter"></button>
+                    <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 8.5%; top: 31.5%; width: 3.125%; height: 6.167%;" data-mapa="schemat_drugi_budynek"></button>
                 </div>
             </div>
         
             <!-- Drugi Budynek -->
-            <div id="schemat_drugi_budynek" style="position: relative; display: none;">
+            <div id="schemat_drugi_budynek" style="position: relative; display: flex;">
                 <img src="mapy/schemat_2_budynek.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button style="position: absolute; left: 92.5%; top: 52.33%; width: 6.33%; height: 8.5%;">01</button>
-                    <button style="position: absolute; left: 65.125%; top: 69.67%; width: 6.17%; height: 7.33%;">02a</button>
-                    <button style="position: absolute; left: 56.875%; top: 69.67%; width: 11.0%; height: 7.33%;">02</button>
-                    <button style="position: absolute; left: 33.0%; top: 69.67%; width: 6.25%; height: 7.33%;">04</button>
-                    <button style="position: absolute; left: 20.5%; top: 69.67%; width: 6.0%; height: 7.33%;">06</button>
-                    <button style="position: absolute; left: 4.17%; top: 68.67%; width: 5.83%; height: 8.33%;">09</button>
-                    <button style="position: absolute; left: 4.17%; top: 59.67%; width: 5.83%; height: 8.5%;">09a</button>
-                    <button style="position: absolute; left: 4.17%; top: 35.83%; width: 5.83%; height: 8.67%;">012</button>
-                    <button style="position: absolute; left: 13.42%; top: 26.33%; width: 6.0%; height: 19.33%;">014</button>
-                    <button style="position: absolute; left: 13.42%; top: 46.17%; width: 8.42%; height: 13.5%;">013</button>
-                    <button style="position: absolute; left: 19.875%; top: 26.33%; width: 6.0%; height: 19.33%;">015</button>
-                    <button style="position: absolute; left: 22.125%; top: 26.33%; width: 6.25%; height: 16.17%;">016</button>
-                    <button style="position: absolute; left: 27.875%; top: 26.33%; width: 6.25%; height: 19.33%;">018</button>
-                    <button style="position: absolute; left: 27.875%; top: 46.33%; width: 10.0%; height: 19.33%;">021</button>
-                    <button style="position: absolute; left: 33.25%; top: 26.33%; width: 6.0%; height: 19.33%;">022</button>
-                    <button style="position: absolute; left: 38.5%; top: 26.33%; width: 10.0%; height: 19.33%;">SCEM</button>
-                    <button style="position: absolute; left: 40.0%; top: 47.0%; width: 7.67%; height: 4.17%;">025</button>
-                    <button style="position: absolute; left: 38.5%; top: 51.0%; width: 10.0%; height: 10.67%;">026</button>
-                    <button style="position: absolute; left: 47.0%; top: 26.33%; width: 10.0%; height: 19.33%;">030</button>
-                    <button style="position: absolute; left: 46.5%; top: 47.33%; width: 6.0%; height: 19.33%;">028</button>
-                    <button style="position: absolute; left: 51.75%; top: 47.33%; width: 6.0%; height: 19.33%;">029</button>
+                    <button class="przycisk_sala" style="left: 92.5%; top: 52.333%; width: 6.375%; height: 8.5%;">01</button>
+        <button class="przycisk_sala" style="left: 65.125%; top: 69.667%; width: 6.125%; height: 7.333%;">02a</button>
+        <button class="przycisk_sala" style="left: 53.875%; top: 69.667%; width: 11%; height: 7.333%;">02</button>
+        <button class="przycisk_sala" style="left: 33%; top: 69.667%; width: 6.25%; height: 7.333%;">04</button>
+        <button class="przycisk_sala" style="left: 20.5%; top: 69.667%; width: 6%; height: 7.333%;">06</button>
+        <button class="przycisk_sala" style="left: 4.25%; top: 68.667%; width: 5.625%; height: 8.333%;">09</button>
+        <button class="przycisk_sala" style="left: 4.25%; top: 59.667%; width: 5.625%; height: 8.5%;">09a</button>
+        <button class="przycisk_sala" style="left: 4.25%; top: 32.167%; width: 5.625%; height: 8.667%;">012</button>
+        <button class="przycisk_sala" style="left: 13.375%; top: 26.333%; width: 6.125%; height: 19.333%;">014</button>
+        <button class="przycisk_sala" style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%;">013</button>
+        <button class="przycisk_sala" style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%;">015</button>
+        <button class="przycisk_sala" style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>
+        <button class="przycisk_sala" style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%;">018</button>
+        <button class="przycisk_sala" style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%;">021</button>
+        <button class="przycisk_sala" style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>
+        <button class="przycisk_sala" style="left: 45.875%; top: 26.333%; width: 12.5%; height: 19.333%;">SCEM</button>
+        <button class="przycisk_sala" style="left: 48.125%; top: 46.167%; width: 10.25%; height: 4.167%;">025</button>
+        <button class="przycisk_sala" style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%;">026</button>
+        <button class="przycisk_sala" style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%;">030</button>
+        <button class="przycisk_sala" style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>
+        <button class="przycisk_sala" style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%;">029</button>
+        <button class="przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 92.25%; top: 47.333%; width: 4.625%; height: 4.5%;" data-mapa="schemat_piwnica"></button>
                 </div>
             </div>
         </div>

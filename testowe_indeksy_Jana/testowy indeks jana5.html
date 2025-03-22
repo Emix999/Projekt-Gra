@@ -30,7 +30,7 @@
         <div id="schemat_pierwsze_pietro" style = "display: flex;">
             <img src="mapy/schemat_pierwsze_pietro.png">
             <div style = "display: flex; position: absolute;">
-                <button class = "przycisk_sala" style="left: 13px; top: 191px; width: 80px; height: 50px;" data-sciezka_obrazu="sale/prototyp_sali_101.png">101</button>
+                <button class = "przycisk_sala" style="left: 13px; top: 191px; width: 80px; height: 50px;" data-sciezka_sali="sale/prototyp_sali_101.png">101</button>
                 <button class = "przycisk_sala" style="left: 96px; top: 191px; width: 60px; height: 50px;">102a</button>
                 <button class = "przycisk_sala" style="left: 159px; top: 191px; width: 60px; height: 50px;">102b</button>
                 <button class = "przycisk_sala" style="left: 221px; top: 191px; width: 80px; height: 50px;">103</button>
@@ -87,7 +87,7 @@
                 <button class = "przycisk_sala" style="position: absolute; left: 14px; top: 191px; width: 51px; height: 50px;">01</button>
                 <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 68px; top: 272px; width: 26px; height: 37px;" data-mapa="schemat_parter"></button>
                 <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 499px; top: 266px; width: 31px; height: 28px;" data-mapa="schemat_parter"></button>
-                <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 68px; top: 189px; width: 26px; height: 37px;" data-mapa="schemat_drugi_budynek"></button><!--trzeba wyprocentować-->
+                <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 68px; top: 189px; width: 26px; height: 37px;" data-mapa="schemat_drugi_budynek"></button>
             </div>
         </div>
         <div id="schemat_drugi_budynek" style = "display: none;">
@@ -115,7 +115,7 @@
                 <button class = "przycisk_sala" style="position: absolute; left: 470px; top: 158px; width: 100px; height: 116px;">030</button>
                 <button class = "przycisk_sala" style="position: absolute; left: 469px; top: 277px; width: 49px; height: 116px;">028</button>
                 <button class = "przycisk_sala" style="position: absolute; left: 521px; top: 277px; width: 49px; height: 116px;">029</button>
-                <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 738px; top: 284px; width: 37px; height: 27px;" data-mapa="schemat_piwnica"></button><!--trzeba wyprocentować-->
+                <button class = "przycisk_mapa" style="background-color: burlywood; border-color: burlywood; left: 738px; top: 284px; width: 37px; height: 27px;" data-mapa="schemat_piwnica"></button>
             </div>
         </div>
     </div>
@@ -127,10 +127,10 @@
         const sala_przyciski = document.getElementsByClassName('przycisk_sala');
         const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
-        function pokaz_sale(sciezka_obrazu){
+        function pokaz_sale(sciezka_sali){
             mapa.style.display = 'none';
             sala.style.display = 'flex';
-            sala.innerHTML = '<img src = "' + sciezka_obrazu + '">';
+            sala.innerHTML = '<img src = "' + sciezka_sali + '">';
         }
 
         function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca){
@@ -139,7 +139,7 @@
         }
 
         for(let przycisk of sala_przyciski){
-            przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_obrazu));
+            przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali));
         }
 
         for(let przycisk of mapa_przyciski){
