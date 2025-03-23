@@ -622,7 +622,8 @@ for(let i of przyciski){
 const sas = document.getElementById("start")
 
 function jaki_gracz(){
-    document.getElementById("nr_wybranego").innerText = gracze[0].id_html
+    document.getElementById("nr_wybranego").innerText = gracze[0].id_html;
+    document.getElementById("nazwa_wybranego").innerText = gracze[0].nazwa;
 }
 
 sas.addEventListener('click', () => jaki_gracz());
