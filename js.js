@@ -319,7 +319,7 @@ const muzyka_menu = document.getElementById('muzyka_menu');
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-    bruh.play();
+    bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
 }
 
@@ -490,7 +490,7 @@ function pokaz_sale(sciezka_sali, ekran_sali, mapa, ustawienia){
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
-    
+
     //losuje, czy zdarzenie ma wystąpić i jakie
     if(Math.floor(Math.random() * 10 /*daj se jakąś liczbę*/) == 0){
         let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];

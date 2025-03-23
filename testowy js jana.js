@@ -1,3 +1,6 @@
+//dać do menedżera gry: ekrany i funkcje
+//obiekty ekranów: nazwy, tytuły, opisy i inne
+
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
 
@@ -198,8 +201,6 @@ const przycisk_start = document.getElementById('start');
 const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
-//początek -----------------------------------------------------------
-//dać do menedżera gry może
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 //Tworzy tabelę aktywnych graczy
@@ -229,7 +230,6 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 
     menedzer_gry.runda = 1;
 }
-//koniec -----------------------------------------------------------
 
 //Event listner przycisku Start
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
@@ -303,7 +303,6 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     }
 
 }
-
 
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
