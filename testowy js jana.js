@@ -198,6 +198,8 @@ const przycisk_start = document.getElementById('start');
 const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
+//początek -----------------------------------------------------------
+//dać do menedżera gry może
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 //Tworzy tabelę aktywnych graczy
@@ -227,6 +229,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 
     menedzer_gry.runda = 1;
 }
+//koniec -----------------------------------------------------------
 
 //Event listner przycisku Start
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
@@ -541,80 +544,3 @@ function zniknij_zdarzenie(){
 }
 
 przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function klatka(gracz_id, cel, predkosc=10) {
-    let gracz = document.getElementById(gracz_id);
-    let cel_gora=parseFloat(cel.getBoundingClientRect().top);
-    let cel_lewo=parseFloat(cel.getBoundingClientRect().left);
-    let gracz_gora=parseFloat(gracz.getBoundingClientRect().top);
-    let gracz_lewo=parseFloat(gracz.getBoundingClientRect().left);
-    let akcja=false;
-
-    let skok=1;
-    if(gracz_lewo>cel_lewo){
-        let x=(gracz_lewo-skok)+'px';
-        gracz.style.left = x;
-        akcja=true;
-    }
-
-    if (gracz_lewo < cel_lewo) {
-        let x=(gracz_lewo+skok)+'px';
-        gracz.style.left = x;
-        akcja=true;
-    }
-
-    if (gracz_gora > cel_gora) {
-        let y=(gracz_gora-skok)+'px';
-        gracz.style.top = y;
-        akcja=true;
-    }
-
-    if (gracz_gora < cel_gora) {
-        let y=(gracz_gora+skok)+'px';
-        gracz.style.top = y;
-        akcja=true;
-
-    }
-    if(akcja)setTimeout(()=>(klatka(gracz_id, cel)),predkosc);
-
-}
-/*
-let przyciski=document.querySelectorAll(".sala");
-
-for(let i of przyciski){
-    i.addEventListener("click",()=>(klatka("gracz1",i)));
-}
-*/
