@@ -11,6 +11,7 @@ const menedzer_gry = {
     indeks_wybranego: 0,
     rok_gry: 1,
     aktywni_gracze: [],
+    runda: 0,
     koniec_tury: function(){
         if(this.indeks_wybranego == this.aktywni_gracze.length - 1){
             this.indeks_wybranego = 0;
@@ -30,6 +31,10 @@ const menedzer_gry = {
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
+        }
+
+        if(this.indeks_wybranego == 0){
+            this.runda++;
         }
     }
 };
@@ -219,6 +224,8 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     glosnosc_muzyki2.value = glosnosc_muzyki.value;
     slider_sfx2.value = glosnosc_sfx.value;
     glosnosc_sfx2.value = glosnosc_sfx.value;
+
+    menedzer_gry.runda = 1;
 }
 
 //Event listner przycisku Start
@@ -272,7 +279,7 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
 
         function wyswietl_nagrode() {
             const ekran_nagrody = document.getElementById("ekran_nagrody");
-            ekran_nagrody.style.visibility = "visible"
+            ekran_nagrody.style.visibility = "visible";
             ekran_nagrody.innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
         }
         const przejdz_dalej = document.getElementById("przejdz_dalej");
@@ -308,11 +315,11 @@ function przemieszaj_tablice(tablica) {
 
 const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
-const muzyka_menu = document.getElementById('muzyka_menu')
+const muzyka_menu = document.getElementById('muzyka_menu');
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-    bruh.play();
+    bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
 }
 
@@ -358,40 +365,39 @@ const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 
-//funkcje pokazanie_mapy, zamnkniecie_mapy, pokazanie_ustawien, zamnkniecie_ustawien są takie same
-//obsługa mapy i obsługa ustawień też są prawie takie same
-
-const otwarte_menu = {mapka: false, ustawienia: false};
+const otwarte_menu = {mapka: false, ustawienia: false, zdarzenie: false};
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 
-function obsluga_mapy(ekran_znikajacy, ekran_pojawiajacy){
-    if(!otwarte_menu.mapka){
-        if(otwarte_menu.ustawienia){
-            obsluga_ustawien(ekran_pojawiajacy, ekran_znikajacy);
+function obsluga_mapy(ustawienia, mapa){
+    if(!otwarte_menu.zdarzenie){
+        if(!otwarte_menu.mapka){
+            if(otwarte_menu.ustawienia){
+                obsluga_ustawien(mapa, ustawienia);
+            }
+            pojawienie_ekranu(mapa);
+            otwarte_menu.mapka = true;
         }
-        pojawienie_ekranu(ekran_pojawiajacy);
-        otwarte_menu.mapka = true;
-    }
-    else{
-        znikniecie_ekranu(ekran_pojawiajacy);
-        otwarte_menu.mapka = false;
+        else{
+            znikniecie_ekranu(mapa);
+            otwarte_menu.mapka = false;
+        }
     }
 }
 
 const mapka = document.getElementById("przycisk_mapa");
 mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(ekran_znikajacy, ekran_pojawiajacy){
+function obsluga_ustawien(mapa, ustawienia){
     if(!otwarte_menu.ustawienia){
         if(otwarte_menu.mapka){
-            obsluga_mapy(ekran_pojawiajacy, ekran_znikajacy);
+            obsluga_mapy(ustawienia, mapa);
         }
-        pojawienie_ekranu(ekran_pojawiajacy);
+        pojawienie_ekranu(ustawienia);
         otwarte_menu.ustawienia = true;
     }
     else{
-        znikniecie_ekranu(ekran_pojawiajacy);
+        znikniecie_ekranu(ustawienia);
         otwarte_menu.ustawienia = false;
     }
 }
@@ -476,26 +482,65 @@ const ekran_sali = document.getElementById('ekran_sali');
 const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
-function pokaz_sale(sciezka_sali, ekran_sali, mapa){
-    znikniecie_ekranu(mapa);
-    otwarte_menu.mapka = false;
-    zmiana_ekranu(ekran_gry, ekran_sali)
+function pokaz_sale(sciezka_sali, ekran_sali, mapa, ustawienia){
+    obsluga_mapy(ustawienia, mapa);
+    zmiana_ekranu(ekran_gry, ekran_sali);
     sala.src = sciezka_sali;
 }
 
-function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca){
+function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
+
+    //losuje, czy zdarzenie ma wystąpić i jakie
+    if(Math.floor(Math.random() * 10 /*daj se jakąś liczbę*/) == 0){
+        let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];
+        pokaz_zdarzenie(zdarzenie);
+    }
 }
 
 for(let przycisk of sala_przyciski){
-    przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali, ekran_sali, mapa));
+    przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali, ekran_sali, mapa, ustawienia2));
 }
+
+const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
+const nazwa = document.getElementById('nazwa');
+const opis = document.getElementById('opis');
+const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
 
 for(let przycisk of mapa_przyciski){
-    przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa)));
+    przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa), losowe_zdarzenia));
 }
 
+class zdarzenie{
+    constructor(nazwa, opis){
+        this.nazwa = nazwa;
+        this.opis = opis;
+    }
+}
 
+const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
+const losowe_zdarzenia = [
+    zdarzenie_testowe,
+    new zdarzenie('Atak terrorystyczny', 'Terroryści atakują szkołę.')
+];
+
+function pokaz_zdarzenie(zdarzenie){
+    znikniecie_ekranu(ekran_gry);
+    zmiana_ekranu(mapa, ekran_zdarzenia);
+    otwarte_menu.mapka = false;
+    otwarte_menu.zdarzenie = true;
+    nazwa.innerHTML = zdarzenie.nazwa;
+    opis.innerHTML = zdarzenie.opis;
+}
+
+function zniknij_zdarzenie(){
+    zmiana_ekranu(ekran_zdarzenia, mapa);
+    otwarte_menu.mapka = true;
+    otwarte_menu.zdarzenie = false;
+    pojawienie_ekranu(ekran_gry);
+}
+
+przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
