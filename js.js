@@ -496,12 +496,47 @@ function znikniecie_ekranu(ekran_znikajacy){
 const ekran_sali = document.getElementById('ekran_sali');
 const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
+const sala_obraz = document.getElementById('obraz_sala');
 
-function pokaz_sale(sciezka_sali, ekran_sali, mapa, ustawienia){
-    obsluga_mapy(ustawienia, mapa);
-    zmiana_ekranu(ekran_gry, ekran_sali);
-    sala.src = sciezka_sali;
-    setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_sali, ekran_pytania), 3000);
+class sala{
+    constructor(nr, sciezka_sali, pytania){
+        this.nr = nr;
+        this.sciezka_sali = sciezka_sali;
+        this.pytania = pytania;
+    }
+
+    pokaz_sale(){
+        obsluga_mapy(ustawienia, mapa);
+        zmiana_ekranu(ekran_gry, ekran_sali);
+        sala_obraz.src = this.sciezka_sali;
+        let rok = 'rok_'+(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata+1)
+        let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random()*this.pytania[rok].length)];
+        setTimeout(() => pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania), 3000);
+    }
+}
+
+class zestaw_pytan{
+    constructor(rok_1, rok_2, rok_3, rok_4, rok_5){
+        this.rok_1 = rok_1;
+        this.rok_2 = rok_2;
+        this.rok_3 = rok_3;
+        this.rok_4 = rok_4;
+        this.rok_5 = rok_5;
+    }
+}
+
+const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]
+));
+const sale = [s101];
+
+for(let i = 0; i < sale.length; i++){
+    sala_przyciski[i].sala = sale[i];
+    sala_przyciski[i].addEventListener('click', () => sale[i].pokaz_sale());
 }
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
@@ -512,10 +547,6 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
         let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];
         pokaz_zdarzenie(zdarzenie);
     }
-}
-
-for(let przycisk of sala_przyciski){
-    przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali, ekran_sali, mapa, ustawienia2));
 }
 
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
@@ -558,20 +589,6 @@ function zniknij_zdarzenie(){
 }
 
 przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
-
-class sala{
-    constructor(nr, sciezka_sali, pytania_rok_1, pytania_rok_2, pytania_rok_3, pytania_rok_4, pytania_rok_5){
-        this.nr = nr;
-        this.sciezka_sali = sciezka_sali;
-        this.pytania_rok_1 = pytania_rok_1;
-        this.pytania_rok_2 = pytania_rok_2;
-        this.pytania_rok_3 = pytania_rok_3;
-        this.pytania_rok_4 = pytania_rok_4;
-        this.pytania_rok_5 = pytania_rok_5;
-    }
-}
-
-
 
 
 
