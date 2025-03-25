@@ -266,6 +266,14 @@ body {
 
 }
 
+#mapa{
+    background-color: white;
+}
+
+#ustawienia2{
+    background-color: transparent ;
+}
+
 #przycisk_mapa,
 #ustawienia_menu_boczne {
     height: 8vh;
@@ -397,5 +405,10 @@ body {
 
 #sala{
     height: 100%;
-    width: 100%;
+}
+
+#ekran_sali{
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
 }

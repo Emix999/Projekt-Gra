@@ -8,10 +8,11 @@ gracz wybrany to taki który ma obecnie turę
 
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
-    indeks_wybranego: 0,
+    indeks_wybranego: -1,
     rok_gry: 1,
     aktywni_gracze: [],
     runda: 0,
+    ilosc_losowych_zdarzen: 0,
     koniec_tury: function(){
         if(this.indeks_wybranego == this.aktywni_gracze.length - 1){
             this.indeks_wybranego = 0;
@@ -24,7 +25,6 @@ const menedzer_gry = {
         iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
         obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
-    
         let i = 0;
         while(i < this.aktywni_gracze.length){
             nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
@@ -35,6 +35,21 @@ const menedzer_gry = {
 
         if(this.indeks_wybranego == 0){
             this.runda++;
+        }
+
+        if(Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0){
+            this.ilosc_losowych_zdarzen = 1;
+        }
+        else{
+            this.ilosc_losowych_zdarzen = 0;
+        }
+
+        if(this.runda % 10 == 0){
+            this.rok_gry++;
+            for(let i of this.aktywni_gracze){
+                //warunek
+                i.zdane_lata++;
+            }
         }
     }
 };
@@ -225,7 +240,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     slider_sfx2.value = glosnosc_sfx.value;
     glosnosc_sfx2.value = glosnosc_sfx.value;
 
-    menedzer_gry.runda = 1;
+    menedzer_gry.koniec_tury();
 }
 
 //Event listner przycisku Start
@@ -486,13 +501,14 @@ function pokaz_sale(sciezka_sali, ekran_sali, mapa, ustawienia){
     obsluga_mapy(ustawienia, mapa);
     zmiana_ekranu(ekran_gry, ekran_sali);
     sala.src = sciezka_sali;
+    setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_sali, ekran_pytania), 3000);
 }
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
 
     //losuje, czy zdarzenie ma wystąpić i jakie
-    if(Math.floor(Math.random() * 10 /*daj se jakąś liczbę*/) == 0){
+    if(menedzer_gry.ilosc_losowych_zdarzen > 0){
         let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];
         pokaz_zdarzenie(zdarzenie);
     }
@@ -538,11 +554,22 @@ function zniknij_zdarzenie(){
     otwarte_menu.mapka = true;
     otwarte_menu.zdarzenie = false;
     pojawienie_ekranu(ekran_gry);
+    menedzer_gry.ilosc_losowych_zdarzen--;
 }
 
 przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
-
+class sala{
+    constructor(nr, sciezka_sali, pytania_rok_1, pytania_rok_2, pytania_rok_3, pytania_rok_4, pytania_rok_5){
+        this.nr = nr;
+        this.sciezka_sali = sciezka_sali;
+        this.pytania_rok_1 = pytania_rok_1;
+        this.pytania_rok_2 = pytania_rok_2;
+        this.pytania_rok_3 = pytania_rok_3;
+        this.pytania_rok_4 = pytania_rok_4;
+        this.pytania_rok_5 = pytania_rok_5;
+    }
+}
 
 
 
@@ -618,6 +645,8 @@ for(let i of przyciski){
     i.addEventListener("click",()=>(klatka("gracz1",i)));
 }
 */
+
+//co to ma być za heretyczny kod
 
 const sas = document.getElementById("start")
 
