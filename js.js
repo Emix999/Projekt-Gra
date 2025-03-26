@@ -83,6 +83,16 @@ class gracz {//gracz i wszystkie jego parametry
     }
 }
 
+class przedmiot {
+    constructor(nazwa, opis, obraz){
+        this.nazwa=nazwa;
+        this.opis=opis;
+        this.obraz=obraz;
+    }
+}
+
+let ziemniak =new ziemniak("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png')
+
 //Obiekty 4 graczy i ich domyślne warotści
 let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek","długopis","Ziemniak","Bag of holding","Pyra","Obca forma życia ze śniadaniówki"]);
 let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
