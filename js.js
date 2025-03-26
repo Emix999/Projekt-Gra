@@ -91,10 +91,10 @@ class przedmiot {
     }
 }
 
-let ziemniak =new ziemniak("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png')
+let ziemniak =new przedmiot("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png')
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek","długopis","Ziemniak","Bag of holding","Pyra","Obca forma życia ze śniadaniówki"]);
+let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak.obraz]);
 let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
 let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
 let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
