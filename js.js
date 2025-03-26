@@ -25,6 +25,10 @@ const menedzer_gry = {
         iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
         obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+        for(let i=0;i<this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length;i++){
+            ekwipunek[i].innerHTML=this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i];
+        }
+
         let i = 0;
         while(i < this.aktywni_gracze.length){
             nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
@@ -80,7 +84,7 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
+let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek","długopis","Ziemniak","Bag of holding","Pyra","Obca forma życia ze śniadaniówki"]);
 let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
 let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
 let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
@@ -379,6 +383,9 @@ const obecny_rok = document.getElementById('obecny_rok');
 const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
+const ekwipunek = document.getElementsByClassName('ekwipunek');
+
+
 
 const otwarte_menu = {mapka: false, ustawienia: false, zdarzenie: false};
 const mapa = document.getElementById("mapa");
@@ -616,7 +623,7 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
-
+/*
 
 
 function klatka(gracz_id, cel, predkosc=10) {
@@ -629,32 +636,31 @@ function klatka(gracz_id, cel, predkosc=10) {
 
     let skok=1;
     if(gracz_lewo>cel_lewo){
-        let x=(gracz_lewo-skok)+'px';
-        gracz.style.left = x;
+        gracz.style.left = (gracz_lewo-skok)+'px';
         akcja=true;
     }
 
     if (gracz_lewo < cel_lewo) {
-        let x=(gracz_lewo+skok)+'px';
-        gracz.style.left = x;
+        gracz.style.left = (gracz_lewo+skok)+'px';
         akcja=true;
     }
 
     if (gracz_gora > cel_gora) {
-        let y=(gracz_gora-skok)+'px';
-        gracz.style.top = y;
+        gracz.style.top = (gracz_gora-skok)+'px';
         akcja=true;
     }
 
     if (gracz_gora < cel_gora) {
-        let y=(gracz_gora+skok)+'px';
-        gracz.style.top = y;
+        gracz.style.top = (gracz_gora+skok)+'px';
         akcja=true;
-
     }
     if(akcja)setTimeout(()=>(klatka(gracz_id, cel)),predkosc);
-
 }
+
+*/
+
+
+
 /*
 let przyciski=document.querySelectorAll(".sala");
 
@@ -673,3 +679,27 @@ function jaki_gracz(){
 }
 
 sas.addEventListener('click', () => jaki_gracz());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ekwipunek 
