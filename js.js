@@ -266,6 +266,8 @@ class pytanie {
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 const ekran_gry = document.getElementById("ekran_gry");
 const ekran_pytania = document.getElementById("ekran_pytania");
+const przejdz_dalej = document.getElementById("przejdz_dalej");
+const ekran_nagrody = document.getElementById("ekran_nagrody");
 
 function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
@@ -279,7 +281,8 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     }
 
     function czy_poprawna(i) {
-        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+        let czy_poprawna = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
+        if (czy_poprawna) {
             alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
 
         }
@@ -296,14 +299,12 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
             }
         }
 
-        function wyswietl_nagrode() {
-            const ekran_nagrody = document.getElementById("ekran_nagrody");
+        function wyswietl_nagrode(czy_poprawna) {
             ekran_nagrody.style.visibility = "visible";
-            ekran_nagrody.innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
+            ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
         }
-        const przejdz_dalej = document.getElementById("przejdz_dalej");
         przejdz_dalej.style.visibility = "visible";
-        przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
+        przejdz_dalej.addEventListener("click", () => wyswietl_nagrode(czy_poprawna));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -516,7 +517,7 @@ class sala{
         obsluga_mapy(ustawienia, mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
-        let rok = 'rok_'+(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata+1)
+        let rok = 'rok_'+(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata+1);
         let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random()*this.pytania[rok].length)];
         setTimeout(() => pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania), 3000);
     }
