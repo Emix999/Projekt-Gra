@@ -27,9 +27,8 @@ const menedzer_gry = {
         obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
 
         for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
-            let imagePath = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
-            console.log("Ścieżka obrazu:", imagePath);
-            ekwipunek[i].style.backgroundImage = "url('" + imagePath + "')";
+            let sciezka = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
+            ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
         }
 
         let i = 0;
@@ -60,6 +59,7 @@ const menedzer_gry = {
         }
     }
 };
+
 
 
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
@@ -637,9 +637,14 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
+for(let i of ekwipunek){
+    i.addEventListener("click",()=> szczegoly_przedmiotu());
+}
 
 
-
+function szczegoly_przedmiotu(){
+    pojawienie_ekranu(document.getElementById("statystyki_przedmiotu"));
+}
 
 
 

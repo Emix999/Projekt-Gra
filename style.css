@@ -323,7 +323,8 @@ body {
     margin: 0.5vh;
     width: 10.3vh;
     height: 6vh;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
 }
 
 .odpowiedz {
@@ -412,4 +413,20 @@ body {
     background-color: #212121;
     justify-content: center;
     align-items: center;
+}
+
+#statyki_przedmiotu{
+    height: 36vh;
+    width: 36vh;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+}
+#nazwa_przedmiotu{
+    width: 20vh;
+    height: 6vh;
+    margin: 2vh;
+    font-size: 5vh;
 }
