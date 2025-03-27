@@ -26,7 +26,7 @@ const menedzer_gry = {
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
         obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
         for(let i=0;i<this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length;i++){
-            ekwipunek[i].innerHTML=this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i];
+            ekwipunek[i].style.backgroundImage="url('"+this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i]+"');";
         }
 
         let i = 0;
@@ -84,17 +84,17 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, obraz){
+    constructor(nazwa, opis, id_obrazu, obraz){
         this.nazwa=nazwa;
         this.opis=opis;
-        this.obraz=obraz;
+        this.id_obrazu=id_obrazu;
     }
 }
 
-let ziemniak =new przedmiot("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png')
+let ziemniak =new przedmiot("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png','ziemniak.png')
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak.obraz]);
+let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak.id_obrazu]);
 let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
 let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
 let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
