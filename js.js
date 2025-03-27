@@ -294,23 +294,19 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
-    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
-    }
-
-
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
             console.log(przycisk.dataset.etykieta);
         }
     }
-
 }
 
+let czy_poprawna_odpowiedz;
+
 function czy_poprawna(i) {
-    let czy_poprawna = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
-    if (czy_poprawna) {
+    czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
+    if (czy_poprawna_odpowiedz) {
         alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
     }
     else {
@@ -325,28 +321,24 @@ function czy_poprawna(i) {
             odpowiedzi_przyciski[i].style.backgroundColor = "red";
         }
     }
-
-    function wyswietl_nagrode(czy_poprawna) {
-        ekran_nagrody.style.visibility = "visible";
-        ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
-        przejdz_dalej.innerHTML = 'Zakończ turę';
-        przejdz_dalej.removeEventListener('click', () => wyswietl_nagrode(czy_poprawna));
-        przejdz_dalej.addEventListener('click', () => odwroc_pokaz_pytanie());
-    }
-    przejdz_dalej.style.visibility = "visible";
-    przejdz_dalej.addEventListener("click", () => wyswietl_nagrode(czy_poprawna));
+    
+    przejdz_dalej.style.display = "block";
 }
 
-function odwroc_pokaz_pytanie() {
+function wyswietl_nagrode() {
+    ekran_nagrody.style.visibility = "visible";
+    ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+    przejdz_dalej.style.display = 'none';
+    zakoncz_ture.style.display = 'block';
+}
+
+function odwroc_pokaz_pytanie(){
     ekran_gry.style.display = 'flex';
     ekran_pytania.style.display = 'none';
     ekran_nagrody.style.visibility = 'hidden';
-    przejdz_dalej.style.visibility = 'hidden';
-    przejdz_dalej.innerHTML = 'Przejdź dalej';
-    przejdz_dalej.removeEventListener('click', () => odwroc_pokaz_pytanie);
+    zakoncz_ture.style.display = 'none';
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
         odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
-        odpowiedzi_przyciski[i].removeEventListener("click", () => czy_poprawna(i));
     }
     menedzer_gry.koniec_tury();
 }
@@ -359,6 +351,11 @@ function przemieszaj_tablice(tablica) {
     }
 }
 
+for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+    odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
+}
+przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
+zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
 

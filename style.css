@@ -379,12 +379,12 @@ body {
     background-color: greenyellow;
 }
 
-#przejdz_dalej
+#przejdz_dalej, #zakoncz_ture
 {
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
-    visibility: hidden;
+    display: none;
 }
 
 .gracz{
