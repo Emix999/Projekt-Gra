@@ -278,6 +278,7 @@ const ekran_gry = document.getElementById("ekran_gry");
 const ekran_pytania = document.getElementById("ekran_pytania");
 const przejdz_dalej = document.getElementById("przejdz_dalej");
 const ekran_nagrody = document.getElementById("ekran_nagrody");
+const zakoncz_ture = document.getElementById('zakoncz_ture');
 
 function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
@@ -288,33 +289,6 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
         odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
-    }
-
-    function czy_poprawna(i) {
-        let czy_poprawna = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
-        if (czy_poprawna) {
-            alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
-
-        }
-        else {
-            alert("UwUaga Debil");
-        }
-
-        for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-            if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
-                odpowiedzi_przyciski[i].style.backgroundColor="green";
-            }
-            else{
-                odpowiedzi_przyciski[i].style.backgroundColor="red";
-            }
-        }
-
-        function wyswietl_nagrode(czy_poprawna) {
-            ekran_nagrody.style.visibility = "visible";
-            ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
-        }
-        przejdz_dalej.style.visibility = "visible";
-        przejdz_dalej.addEventListener("click", () => wyswietl_nagrode(czy_poprawna));
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -329,6 +303,49 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
         }
     }
 
+}
+
+function czy_poprawna(i) {
+    let czy_poprawna = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
+    if (czy_poprawna) {
+        alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+    }
+    else {
+        alert("UwUaga Debil");
+    }
+
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
+            odpowiedzi_przyciski[i].style.backgroundColor="green";
+        }
+        else{
+            odpowiedzi_przyciski[i].style.backgroundColor="red";
+        }
+    }
+
+    function wyswietl_nagrode(czy_poprawna) {
+        ekran_nagrody.style.visibility = "visible";
+        ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+        przejdz_dalej.innerHTML = 'Zakończ turę';
+        przejdz_dalej.removeEventListener('click', () => wyswietl_nagrode(czy_poprawna));
+        przejdz_dalej.addEventListener('click', () => odwroc_pokaz_pytanie());
+    }
+    przejdz_dalej.style.visibility = "visible";
+    przejdz_dalej.addEventListener("click", () => wyswietl_nagrode(czy_poprawna));
+}
+
+function odwroc_pokaz_pytanie(){
+    ekran_gry.style.display = 'flex';
+    ekran_pytania.style.display = 'none';
+    ekran_nagrody.style.visibility = 'hidden';
+    przejdz_dalej.style.visibility = 'hidden';
+    przejdz_dalej.innerHTML = 'Przejdź dalej';
+    przejdz_dalej.removeEventListener('click', () => odwroc_pokaz_pytanie);
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        odpowiedzi_przyciski[i].style.backgroundColor="aquamarine";
+        odpowiedzi_przyciski[i].removeEventListener("click", () => czy_poprawna(i));
+    }
+    menedzer_gry.koniec_tury();
 }
 
 
