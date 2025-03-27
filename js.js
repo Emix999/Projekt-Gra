@@ -13,44 +13,47 @@ const menedzer_gry = {
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
-    koniec_tury: function(){
-        if(this.indeks_wybranego == this.aktywni_gracze.length - 1){
+    koniec_tury: function () {
+        if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
             this.indeks_wybranego = 0;
         }
-        else{
+        else {
             this.indeks_wybranego++;
         }
-    
+
         sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
         iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
-        obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
-        for(let i=0;i<this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length;i++){
-            ekwipunek[i].style.backgroundImage="url('"+this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i]+"');";
+        obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+
+        for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
+            let imagePath = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
+            console.log("Ścieżka obrazu:", imagePath);
+            ekwipunek[i].style.backgroundImage = "url('" + imagePath + "')";
         }
 
         let i = 0;
-        while(i < this.aktywni_gracze.length){
+        while (i < this.aktywni_gracze.length) {
             nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
         }
 
-        if(this.indeks_wybranego == 0){
+        if (this.indeks_wybranego == 0) {
             this.runda++;
         }
 
-        if(Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0){
+        if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
             this.ilosc_losowych_zdarzen = 1;
         }
-        else{
+        else {
             this.ilosc_losowych_zdarzen = 0;
         }
 
-        if(this.runda % 10 == 0){
+        if (this.runda % 10 == 0) {
             this.rok_gry++;
-            for(let i of this.aktywni_gracze){
+            for (let i of this.aktywni_gracze) {
                 //warunek
                 i.zdane_lata++;
             }
@@ -67,8 +70,8 @@ const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(id_html,nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
-        this.id_html=id_html;
+    constructor(id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+        this.id_html = id_html;
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
@@ -84,20 +87,20 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, obraz){
-        this.nazwa=nazwa;
-        this.opis=opis;
-        this.id_obrazu=id_obrazu;
+    constructor(nazwa, opis, id_obrazu, obraz) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.id_obrazu = id_obrazu;
     }
 }
 
-let ziemniak =new przedmiot("Ziemniak","Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.",'ziemniak.png','ziemniak.png')
+let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 'ziemniak.png');
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak.id_obrazu]);
-let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+let gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+let gracz2 = new gracz("gracz2", null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+let gracz3 = new gracz("gracz3", null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+let gracz4 = new gracz("gracz4", null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -229,7 +232,7 @@ const gra = document.getElementById('gra');
 
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
-//Tworzy tabelę aktywnych graczy
+    //Tworzy tabelę aktywnych graczy
     for (let i of gracze) {
         if (i.czy_aktywny) {
             menedzer_gry.aktywni_gracze.push(i);
@@ -243,10 +246,10 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     }
 
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-    
-    for(i of gracze){
-        let avatar="url('"+i.avatar+"')";
-        document.getElementById(i.id_html).style.backgroundImage=avatar;
+
+    for (i of gracze) {
+        let avatar = "url('" + i.avatar + "')";
+        document.getElementById(i.id_html).style.backgroundImage = avatar;
     }
 
     slider_muzyka2.value = glosnosc_muzyki.value;
@@ -315,17 +318,17 @@ function czy_poprawna(i) {
     }
 
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
-            odpowiedzi_przyciski[i].style.backgroundColor="green";
+        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+            odpowiedzi_przyciski[i].style.backgroundColor = "green";
         }
-        else{
-            odpowiedzi_przyciski[i].style.backgroundColor="red";
+        else {
+            odpowiedzi_przyciski[i].style.backgroundColor = "red";
         }
     }
 
     function wyswietl_nagrode(czy_poprawna) {
         ekran_nagrody.style.visibility = "visible";
-        ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+        ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna ? '1' : '0') + "<br> Procenty: " + (czy_poprawna ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
         przejdz_dalej.innerHTML = 'Zakończ turę';
         przejdz_dalej.removeEventListener('click', () => wyswietl_nagrode(czy_poprawna));
         przejdz_dalej.addEventListener('click', () => odwroc_pokaz_pytanie());
@@ -334,7 +337,7 @@ function czy_poprawna(i) {
     przejdz_dalej.addEventListener("click", () => wyswietl_nagrode(czy_poprawna));
 }
 
-function odwroc_pokaz_pytanie(){
+function odwroc_pokaz_pytanie() {
     ekran_gry.style.display = 'flex';
     ekran_pytania.style.display = 'none';
     ekran_nagrody.style.visibility = 'hidden';
@@ -342,7 +345,7 @@ function odwroc_pokaz_pytanie(){
     przejdz_dalej.innerHTML = 'Przejdź dalej';
     przejdz_dalej.removeEventListener('click', () => odwroc_pokaz_pytanie);
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].style.backgroundColor="aquamarine";
+        odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
         odpowiedzi_przyciski[i].removeEventListener("click", () => czy_poprawna(i));
     }
     menedzer_gry.koniec_tury();
@@ -364,7 +367,7 @@ const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
 
-function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
+function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
@@ -415,20 +418,20 @@ const ekwipunek = document.getElementsByClassName('ekwipunek');
 
 
 
-const otwarte_menu = {mapka: false, ustawienia: false, zdarzenie: false};
+const otwarte_menu = { mapka: false, ustawienia: false, zdarzenie: false };
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 
-function obsluga_mapy(ustawienia, mapa){
-    if(!otwarte_menu.zdarzenie){
-        if(!otwarte_menu.mapka){
-            if(otwarte_menu.ustawienia){
+function obsluga_mapy(ustawienia, mapa) {
+    if (!otwarte_menu.zdarzenie) {
+        if (!otwarte_menu.mapka) {
+            if (otwarte_menu.ustawienia) {
                 obsluga_ustawien(mapa, ustawienia);
             }
             pojawienie_ekranu(mapa);
             otwarte_menu.mapka = true;
         }
-        else{
+        else {
             znikniecie_ekranu(mapa);
             otwarte_menu.mapka = false;
         }
@@ -438,15 +441,15 @@ function obsluga_mapy(ustawienia, mapa){
 const mapka = document.getElementById("przycisk_mapa");
 mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(mapa, ustawienia){
-    if(!otwarte_menu.ustawienia){
-        if(otwarte_menu.mapka){
+function obsluga_ustawien(mapa, ustawienia) {
+    if (!otwarte_menu.ustawienia) {
+        if (otwarte_menu.mapka) {
             obsluga_mapy(ustawienia, mapa);
         }
         pojawienie_ekranu(ustawienia);
         otwarte_menu.ustawienia = true;
     }
-    else{
+    else {
         znikniecie_ekranu(ustawienia);
         otwarte_menu.ustawienia = false;
     }
@@ -455,7 +458,7 @@ function obsluga_ustawien(mapa, ustawienia){
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
 ustawienia.addEventListener('click', () => obsluga_ustawien(mapa, ustawienia2));
 
-function debug(){
+function debug() {
     console.log("Debug się ładuje");
 }
 
@@ -479,20 +482,20 @@ const slider_sfx = document.getElementById("sfx_slider");
 const glosnosc_sfx = document.getElementById("sfx_glosnosc");
 glosnosc_sfx.value = slider_sfx.value;
 
-const sfx=document.querySelectorAll(".sfx");
-const muzyka=document.querySelectorAll(".muzyka");
+const sfx = document.querySelectorAll(".sfx");
+const muzyka = document.querySelectorAll(".muzyka");
 
 slider_muzyka.oninput = function slider_muzyka_update() {
     glosnosc_muzyki.value = slider_muzyka.value;
-    for(let i of muzyka){
-        i.volume = slider_muzyka.value/100;
+    for (let i of muzyka) {
+        i.volume = slider_muzyka.value / 100;
     }
 }
 
 slider_sfx.oninput = function slider_sfx_update() {
     glosnosc_sfx.value = slider_sfx.value;
-    for(let i of sfx){
-        i.volume = slider_sfx.value/100;
+    for (let i of sfx) {
+        i.volume = slider_sfx.value / 100;
     }
 }
 
@@ -503,28 +506,28 @@ const glosnosc_sfx2 = document.getElementById("sfx_glosnosc2");
 
 slider_muzyka2.oninput = function slider_muzyka_update2() {
     glosnosc_muzyki2.value = slider_muzyka2.value;
-    for(let i of muzyka){
-        i.volume = slider_muzyka2.value/100;
+    for (let i of muzyka) {
+        i.volume = slider_muzyka2.value / 100;
     }
 }
 
 slider_sfx2.oninput = function slider_sfx_update2() {
     glosnosc_sfx2.value = slider_sfx2.value;
-    for(let i of sfx){
-        i.volume = slider_sfx2.value/100;
+    for (let i of sfx) {
+        i.volume = slider_sfx2.value / 100;
     }
 }
 
-function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy){
+function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy) {
     znikniecie_ekranu(ekran_znikajacy);
     pojawienie_ekranu(ekran_pojawiajacy);
 }
 
-function pojawienie_ekranu(ekran_pojawiajacy){
+function pojawienie_ekranu(ekran_pojawiajacy) {
     ekran_pojawiajacy.style.display = "flex";
 }
 
-function znikniecie_ekranu(ekran_znikajacy){
+function znikniecie_ekranu(ekran_znikajacy) {
     ekran_znikajacy.style.display = "none";
 }
 
@@ -533,25 +536,25 @@ const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
-class sala{
-    constructor(nr, sciezka_sali, pytania){
+class sala {
+    constructor(nr, sciezka_sali, pytania) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
     }
 
-    pokaz_sale(){
+    pokaz_sale() {
         obsluga_mapy(ustawienia, mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
-        let rok = 'rok_'+(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata+1);
-        let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random()*this.pytania[rok].length)];
+        let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
+        let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random() * this.pytania[rok].length)];
         setTimeout(() => pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania), 3000);
     }
 }
 
-class zestaw_pytan{
-    constructor(rok_1, rok_2, rok_3, rok_4, rok_5){
+class zestaw_pytan {
+    constructor(rok_1, rok_2, rok_3, rok_4, rok_5) {
         this.rok_1 = rok_1;
         this.rok_2 = rok_2;
         this.rok_3 = rok_3;
@@ -569,17 +572,17 @@ const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
 ));
 const sale = [s101];
 
-for(let i = 0; i < sale.length; i++){
+for (let i = 0; i < sale.length; i++) {
     sala_przyciski[i].sala = sale[i];
     sala_przyciski[i].addEventListener('click', () => sale[i].pokaz_sale());
 }
 
-function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
+function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
 
     //losuje, czy zdarzenie ma wystąpić i jakie
-    if(menedzer_gry.ilosc_losowych_zdarzen > 0){
-        let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];
+    if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
+        let zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
         pokaz_zdarzenie(zdarzenie);
     }
 }
@@ -589,12 +592,12 @@ const nazwa = document.getElementById('nazwa');
 const opis = document.getElementById('opis');
 const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
 
-for(let przycisk of mapa_przyciski){
+for (let przycisk of mapa_przyciski) {
     przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa), losowe_zdarzenia));
 }
 
-class zdarzenie{
-    constructor(nazwa, opis){
+class zdarzenie {
+    constructor(nazwa, opis) {
         this.nazwa = nazwa;
         this.opis = opis;
     }
@@ -606,7 +609,7 @@ const losowe_zdarzenia = [
     new zdarzenie('Atak terrorystyczny', 'Terroryści atakują szkołę.')
 ];
 
-function pokaz_zdarzenie(zdarzenie){
+function pokaz_zdarzenie(zdarzenie) {
     znikniecie_ekranu(ekran_gry);
     zmiana_ekranu(mapa, ekran_zdarzenia);
     otwarte_menu.mapka = false;
@@ -615,7 +618,7 @@ function pokaz_zdarzenie(zdarzenie){
     opis.innerHTML = zdarzenie.opis;
 }
 
-function zniknij_zdarzenie(){
+function zniknij_zdarzenie() {
     zmiana_ekranu(ekran_zdarzenia, mapa);
     otwarte_menu.mapka = true;
     otwarte_menu.zdarzenie = false;
@@ -701,7 +704,7 @@ for(let i of przyciski){
 
 const sas = document.getElementById("start")
 
-function jaki_gracz(){
+function jaki_gracz() {
     document.getElementById("nr_wybranego").innerText = gracze[0].id_html;
     document.getElementById("nazwa_wybranego").innerText = gracze[0].nazwa;
 }
