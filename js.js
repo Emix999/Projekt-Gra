@@ -634,13 +634,21 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
-for(let i of ekwipunek){
-    i.addEventListener("click",()=> szczegoly_przedmiotu());
+for(let i=0;i<ekwipunek.length;i++){
+    ekwipunek[i].addEventListener("click",()=> szczegoly_przedmiotu(i));
 }
 
 
-function szczegoly_przedmiotu(){
+function szczegoly_przedmiotu(slot){
+    
+    let wybrany_przedmiot= menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+    if(wybrany_przedmiot.id_obrazu!=null){
     pojawienie_ekranu(document.getElementById("statystyki_przedmiotu"));
+    let nazwa=document.getElementById("nazwa_przedmiotu");
+    let opis=document.getElementById("opis_przedmiotu");
+    nazwa.innerHTML=wybrany_przedmiot.nazwa;
+    opis.innerHTML=wybrany_przedmiot.opis;
+    }
 }
 
 

@@ -423,10 +423,19 @@ body {
     flex-direction: column;
     justify-content: center;
     display: none;
+    position: relative;
 }
 #nazwa_przedmiotu{
     width: 20vh;
     height: 6vh;
     margin: 2vh;
     font-size: 5vh;
+}
+#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
+    height: 6vh;
+    width: 6vh;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+    position: absolute;
 }
