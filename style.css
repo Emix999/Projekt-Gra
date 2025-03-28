@@ -416,7 +416,9 @@ body {
 }
 
 #statystyki_przedmiotu{
-    height: 20vh;
+    margin-top: 3vh;
+    margin-bottom: auto;
+    height: 25vh;
     width: 36vh;
     background-color: green;
     display: flex;
@@ -438,4 +440,7 @@ body {
     right: 1px;
     background-size: cover;
     position: absolute;
+}
+#caly_ekwipunek{
+    flex-direction: column;
 }

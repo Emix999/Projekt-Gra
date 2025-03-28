@@ -321,18 +321,18 @@ function czy_poprawna(i) {
             odpowiedzi_przyciski[i].style.backgroundColor = "red";
         }
     }
-    
+
     przejdz_dalej.style.display = "block";
 }
 
 function wyswietl_nagrode() {
     ekran_nagrody.style.visibility = "visible";
-    ekran_nagrody.innerHTML="Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
     przejdz_dalej.style.display = 'none';
     zakoncz_ture.style.display = 'block';
 }
 
-function odwroc_pokaz_pytanie(){
+function odwroc_pokaz_pytanie() {
     ekran_gry.style.display = 'flex';
     ekran_pytania.style.display = 'none';
     ekran_nagrody.style.visibility = 'hidden';
@@ -631,23 +631,24 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
+const szczegoly_przedmiotu = document.getElementById("statystyki_przedmiotu");
 
 
-
-for(let i=0;i<ekwipunek.length;i++){
-    ekwipunek[i].addEventListener("click",()=> szczegoly_przedmiotu(i));
+for (let i = 0; i < ekwipunek.length; i++) {
+    ekwipunek[i].addEventListener("click", () => pokaz_szczegoly_przedmiotu(i));
 }
 
+document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", function () { znikniecie_ekranu(szczegoly_przedmiotu); pojawienie_ekranu(document.getElementById("caly_ekwipunek")) });
 
-function szczegoly_przedmiotu(slot){
-    
-    let wybrany_przedmiot= menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
-    if(wybrany_przedmiot.id_obrazu!=null){
-    pojawienie_ekranu(document.getElementById("statystyki_przedmiotu"));
-    let nazwa=document.getElementById("nazwa_przedmiotu");
-    let opis=document.getElementById("opis_przedmiotu");
-    nazwa.innerHTML=wybrany_przedmiot.nazwa;
-    opis.innerHTML=wybrany_przedmiot.opis;
+function pokaz_szczegoly_przedmiotu(slot) {
+    let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+    if (wybrany_przedmiot.id_obrazu != null) {
+        znikniecie_ekranu(document.getElementById("caly_ekwipunek"));
+        pojawienie_ekranu(szczegoly_przedmiotu);
+        let nazwa = document.getElementById("nazwa_przedmiotu");
+        let opis = document.getElementById("opis_przedmiotu");
+        nazwa.innerHTML = wybrany_przedmiot.nazwa;
+        opis.innerHTML = wybrany_przedmiot.opis;
     }
 }
 
