@@ -13,6 +13,7 @@ const menedzer_gry = {
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
+    tura_egzaminacyjna: false,
     koniec_tury: function () {
         if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
             this.indeks_wybranego = 0;
@@ -511,10 +512,11 @@ const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
 class sala {
-    constructor(nr, sciezka_sali, pytania) {
+    constructor(nr, sciezka_sali, pytania/*, pytania_egzaminacyjne*/) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
+        //this.pytania_egzaminacyjne = pytania_egzaminacyjne;
     }
 
     pokaz_sale() {
@@ -537,13 +539,21 @@ class zestaw_pytan {
     }
 }
 
+class zestaw_pytan_egzaminacyjnych {
+    constructor(rok_3, rok_4, rok_5) {
+        this.rok_3 = rok_3;
+        this.rok_4 = rok_4;
+        this.rok_5 = rok_5;
+    }
+}
+
 const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
     [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
-    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]
-));
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])])
+);
 const sale = [s101];
 
 for (let i = 0; i < sale.length; i++) {
