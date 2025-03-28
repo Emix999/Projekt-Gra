@@ -33,7 +33,7 @@ const menedzer_gry = {
 
         let i = 0;
         while (i < this.aktywni_gracze.length) {
-            nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
+            nr_graczy[i].value = (i + this.indeks_wybranego + 1) % (this.aktywni_gracze.length + 1);
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
@@ -333,8 +333,7 @@ function wyswietl_nagrode() {
 }
 
 function odwroc_pokaz_pytanie(){
-    ekran_gry.style.display = 'flex';
-    ekran_pytania.style.display = 'none';
+    zmiana_ekranu(ekran_pytania, mapa);
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -415,34 +414,12 @@ const ekwipunek = document.getElementsByClassName('ekwipunek');
 
 
 
-const otwarte_menu = { mapka: false, ustawienia: false, zdarzenie: false };
+const otwarte_menu = {ustawienia: false};
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 
-function obsluga_mapy(ustawienia, mapa) {
-    if (!otwarte_menu.zdarzenie) {
-        if (!otwarte_menu.mapka) {
-            if (otwarte_menu.ustawienia) {
-                obsluga_ustawien(mapa, ustawienia);
-            }
-            pojawienie_ekranu(mapa);
-            otwarte_menu.mapka = true;
-        }
-        else {
-            znikniecie_ekranu(mapa);
-            otwarte_menu.mapka = false;
-        }
-    }
-}
-
-const mapka = document.getElementById("przycisk_mapa");
-mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(mapa, ustawienia) {
+function obsluga_ustawien(ustawienia) {
     if (!otwarte_menu.ustawienia) {
-        if (otwarte_menu.mapka) {
-            obsluga_mapy(ustawienia, mapa);
-        }
         pojawienie_ekranu(ustawienia);
         otwarte_menu.ustawienia = true;
     }
@@ -453,7 +430,7 @@ function obsluga_ustawien(mapa, ustawienia) {
 }
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien(mapa, ustawienia2));
+ustawienia.addEventListener('click', () => obsluga_ustawien(ustawienia2));
 
 function debug() {
     console.log("Debug się ładuje");
@@ -541,7 +518,7 @@ class sala {
     }
 
     pokaz_sale() {
-        obsluga_mapy(ustawienia, mapa);
+        znikniecie_ekranu(mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);

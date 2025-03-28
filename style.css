@@ -254,6 +254,7 @@ body {
     height: 100vh;
     width: calc(100vw - 36vh);
     background-color: blue;
+    display: none;
 }
 
 #mapa,#ustawienia2{
@@ -261,17 +262,17 @@ body {
     height: 100vh;
     background-color: white;
     justify-content: center;
-    display: none;
-    position: absolute;
-
 }
 
 #mapa{
+    display: flex;
     background-color: white;
 }
 
 #ustawienia2{
     background-color: transparent ;
+    display: none;
+    position: absolute;
 }
 
 #przycisk_mapa,
