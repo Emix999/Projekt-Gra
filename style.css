@@ -416,7 +416,7 @@ body {
 }
 
 #statystyki_przedmiotu{
-    height: 36vh;
+    height: 20vh;
     width: 36vh;
     background-color: green;
     display: flex;
