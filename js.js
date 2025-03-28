@@ -13,6 +13,7 @@ const menedzer_gry = {
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
+    tura_egzaminacyjna: false,
     koniec_tury: function () {
         if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
             this.indeks_wybranego = 0;
@@ -33,7 +34,7 @@ const menedzer_gry = {
 
         let i = 0;
         while (i < this.aktywni_gracze.length) {
-            nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
+            nr_graczy[i].value = (i + this.indeks_wybranego + 1) % (this.aktywni_gracze.length + 1);
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
@@ -332,9 +333,8 @@ function wyswietl_nagrode() {
     zakoncz_ture.style.display = 'block';
 }
 
-function odwroc_pokaz_pytanie() {
-    ekran_gry.style.display = 'flex';
-    ekran_pytania.style.display = 'none';
+function odwroc_pokaz_pytanie(){
+    zmiana_ekranu(ekran_pytania, mapa);
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
@@ -415,34 +415,12 @@ const ekwipunek = document.getElementsByClassName('ekwipunek');
 
 
 
-const otwarte_menu = { mapka: false, ustawienia: false, zdarzenie: false };
+const otwarte_menu = {ustawienia: false};
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 
-function obsluga_mapy(ustawienia, mapa) {
-    if (!otwarte_menu.zdarzenie) {
-        if (!otwarte_menu.mapka) {
-            if (otwarte_menu.ustawienia) {
-                obsluga_ustawien(mapa, ustawienia);
-            }
-            pojawienie_ekranu(mapa);
-            otwarte_menu.mapka = true;
-        }
-        else {
-            znikniecie_ekranu(mapa);
-            otwarte_menu.mapka = false;
-        }
-    }
-}
-
-const mapka = document.getElementById("przycisk_mapa");
-mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(mapa, ustawienia) {
+function obsluga_ustawien(ustawienia) {
     if (!otwarte_menu.ustawienia) {
-        if (otwarte_menu.mapka) {
-            obsluga_mapy(ustawienia, mapa);
-        }
         pojawienie_ekranu(ustawienia);
         otwarte_menu.ustawienia = true;
     }
@@ -453,7 +431,7 @@ function obsluga_ustawien(mapa, ustawienia) {
 }
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien(mapa, ustawienia2));
+ustawienia.addEventListener('click', () => obsluga_ustawien(ustawienia2));
 
 function debug() {
     console.log("Debug się ładuje");
@@ -534,14 +512,15 @@ const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
 class sala {
-    constructor(nr, sciezka_sali, pytania) {
+    constructor(nr, sciezka_sali, pytania/*, pytania_egzaminacyjne*/) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
+        //this.pytania_egzaminacyjne = pytania_egzaminacyjne;
     }
 
     pokaz_sale() {
-        obsluga_mapy(ustawienia, mapa);
+        znikniecie_ekranu(mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
@@ -560,13 +539,21 @@ class zestaw_pytan {
     }
 }
 
+class zestaw_pytan_egzaminacyjnych {
+    constructor(rok_3, rok_4, rok_5) {
+        this.rok_3 = rok_3;
+        this.rok_4 = rok_4;
+        this.rok_5 = rok_5;
+    }
+}
+
 const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
     [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
-    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]
-));
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])])
+);
 const sale = [s101];
 
 for (let i = 0; i < sale.length; i++) {
