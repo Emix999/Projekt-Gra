@@ -8,19 +8,56 @@ gracz wybrany to taki który ma obecnie turę
 
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
+    ostatni_pokazany_przedmiot: null,
     indeks_wybranego: -1,
     rok_gry: 1,
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
     runda_egzamin_zawodowy: false,
-    aktywni_gracze_tymczasowy: [],
-    koniec_tury: function () {
-        if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
-            this.indeks_wybranego = 0;
+    indeksy_aktywnych_egzamin_zawodowy: [],
+    poczatek_tury: function () {
+        if(this.runda_egzamin_zawodowy){
+            this.poczatek_tury_egzamin_zawodowy();
+            return 0;
         }
-        else {
-            this.indeks_wybranego++;
+        else{
+            if (this.runda % 10 == 0 && this.runda != 0) {
+                this.rok_gry++;
+                this.indeksy_aktywnych_egzamin_zawodowy = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 || this.aktywni_gracze[i].zdane_lata == 3){
+                        this.indeksy_aktywnych_egzamin_zawodowy.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin_zawodowy.length > 0){
+                    this.runda_egzamin_zawodowy = true;
+                    this.poczatek_tury_egzamin_zawodowy();
+                    return 0;
+                }
+                for (let i of this.aktywni_gracze) {
+                    //warunek
+                    i.zdane_lata++;
+                }
+            }
+
+            if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
+                this.indeks_wybranego = 0;
+            }
+            else {
+                this.indeks_wybranego++;
+            }
+    
+            if (this.indeks_wybranego == 0) {
+                this.runda++;
+            }
+    
+            if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
+                this.ilosc_losowych_zdarzen = 1;
+            }
+            else {
+                this.ilosc_losowych_zdarzen = 0;
+            }
         }
 
         sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
@@ -35,69 +72,21 @@ const menedzer_gry = {
 
         let i = 0;
         while (i < this.aktywni_gracze.length) {
-            nr_graczy[i].value = (i + this.indeks_wybranego + 1) % (this.aktywni_gracze.length + 1);
+            nr_graczy[i].value = ((i + this.indeks_wybranego) % this.aktywni_gracze.length) + 1;
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
+        }        
+    },
+    poczatek_tury_egzamin_zawodowy: function() {
+        if(this.indeksy_aktywnych_egzamin_zawodowy.length == 0){
+            this.runda_egzamin_zawodowy = false;
+            this.indeks_wybranego = -1;
+            this.poczatek_tury();
+            return 1;
         }
-
-        if (this.indeks_wybranego == 0) {
-            this.runda++;
-        }
-
-        if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
-            this.ilosc_losowych_zdarzen = 1;
-        }
-        else {
-            this.ilosc_losowych_zdarzen = 0;
-        }
-
-        if (this.runda % 11 == 0) {
-            this.rok_gry++;
-            for (let i of this.aktywni_gracze) {
-                //warunek
-                i.zdane_lata++;
-            }
-        }
-
-        // if(this.runda_egzamin_zawodowy){
-        //     this.aktywni_gracze_egzamin_zawodowy.shift()
-        //     if(this.aktywni_gracze_egzamin_zawodowy.length == 0){
-        //         this.runda_egzamin_zawodowy = false;
-        //     }
-        // }
-        // else{
-        //     if(this.runda % 11 == 10){
-        //         for(let i of this.aktywni_gracze){
-        //             this.aktywni_gracze_tymczasowy = this.aktywni_gracze;
-        //             if(i.zdane_lata == 2 || i.zdane_lata == 3){
-        //                 this.aktywni_gracze_egzamin_zawodowy.push(i);
-        //             }
-        //             if(aktywni_gracze_egzamin_zawodowy.length > 1){
-        //                 this.runda_egzamin_zawodowy = true;
-        //             }
-        //         }
-        //     }
-
-        //     if (this.indeks_wybranego == 0) {
-        //         this.runda++;
-        //     }
-
-        //     if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
-        //         this.ilosc_losowych_zdarzen = 1;
-        //     }
-        //     else {
-        //         this.ilosc_losowych_zdarzen = 0;
-        //     }
-
-        //     if (this.runda % 11 == 0) {
-        //         this.rok_gry++;
-        //         for (let i of this.aktywni_gracze) {
-        //             //warunek
-        //             i.zdane_lata++;
-        //         }
-        //     }
-        // }
+        this.indeks_wybranego = this.indeksy_aktywnych_egzamin_zawodowy[0];
+        this.indeksy_aktywnych_egzamin_zawodowy.shift();
     }
 };
 
@@ -128,14 +117,15 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, obraz) {
+    constructor(nazwa, opis, id_obrazu, sanity) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
+        this.sanity=sanity;
     }
 }
 
-let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 'ziemniak.png');
+let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
 
 //Obiekty 4 graczy i ich domyślne warotści
 let gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
@@ -298,7 +288,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     slider_sfx2.value = glosnosc_sfx.value;
     glosnosc_sfx2.value = glosnosc_sfx.value;
 
-    menedzer_gry.koniec_tury();
+    menedzer_gry.poczatek_tury();
 }
 
 //Event listner przycisku Start
@@ -380,7 +370,7 @@ function odwroc_pokaz_pytanie(){
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
         odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
     }
-    menedzer_gry.koniec_tury();
+    menedzer_gry.poczatek_tury();
 }
 
 
@@ -565,7 +555,7 @@ class sala {
         sala_obraz.src = this.sciezka_sali;
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random() * this.pytania[rok].length)];
-        setTimeout(() => pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania), 3000);
+        pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania);
     }
 }
 
@@ -580,9 +570,10 @@ class zestaw_pytan {
 }
 
 class zestaw_pytan_egzamin_zawodowy {
-    constructor(rok_3, rok_4) {
+    constructor(rok_3, rok_4, klasa) {
         this.rok_3 = rok_3;
         this.rok_4 = rok_4;
+        this.klasa = klasa;
     }
 }
 
@@ -639,7 +630,6 @@ const losowe_zdarzenia = [
 ];
 
 function pokaz_zdarzenie(zdarzenie) {
-    znikniecie_ekranu(ekran_gry);
     zmiana_ekranu(mapa, ekran_zdarzenia);
     otwarte_menu.mapka = false;
     otwarte_menu.zdarzenie = true;
@@ -651,7 +641,6 @@ function zniknij_zdarzenie() {
     zmiana_ekranu(ekran_zdarzenia, mapa);
     otwarte_menu.mapka = true;
     otwarte_menu.zdarzenie = false;
-    pojawienie_ekranu(ekran_gry);
     menedzer_gry.ilosc_losowych_zdarzen--;
 }
 
@@ -667,13 +656,19 @@ const szczegoly_przedmiotu = document.getElementById("statystyki_przedmiotu");
 
 
 for (let i = 0; i < ekwipunek.length; i++) {
-    ekwipunek[i].addEventListener("click", () => pokaz_szczegoly_przedmiotu(i));
+    ekwipunek[i].addEventListener("click", () =>pokaz_szczegoly_przedmiotu(i));
 }
 
-document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", function () { znikniecie_ekranu(szczegoly_przedmiotu); pojawienie_ekranu(document.getElementById("caly_ekwipunek")) });
+document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", ()=> znikniecie_szczegolow_przedmiotu());
+
+function znikniecie_szczegolow_przedmiotu(){
+    znikniecie_ekranu(szczegoly_przedmiotu); 
+    pojawienie_ekranu(document.getElementById("caly_ekwipunek"));
+}
 
 function pokaz_szczegoly_przedmiotu(slot) {
     let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+
     if (wybrany_przedmiot.id_obrazu != null) {
         znikniecie_ekranu(document.getElementById("caly_ekwipunek"));
         pojawienie_ekranu(szczegoly_przedmiotu);
@@ -682,9 +677,20 @@ function pokaz_szczegoly_przedmiotu(slot) {
         nazwa.innerHTML = wybrany_przedmiot.nazwa;
         opis.innerHTML = wybrany_przedmiot.opis;
     }
+    menedzer_gry.ostatni_pokazany_przedmiot = slot;
 }
 
+document.getElementById("uzyj_przedmiotu").addEventListener("click",()=>uzyj_przedmiotu());
 
+
+function uzyj_przedmiotu(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity+=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot];
+    znikniecie_szczegolow_przedmiotu();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    
+    ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    document.getElementsByClassName('ekwipunek')[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+}
 
 
 
@@ -743,7 +749,11 @@ for(let i of przyciski){
 }
 */
 
+
+
 //co to ma być za heretyczny kod
+
+//zgadzam się herezja po całości...
 
 const sas = document.getElementById("start")
 

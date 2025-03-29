@@ -448,15 +448,16 @@ body {
 }
 
 #statystyki_przedmiotu{
-    margin-top: 3vh;
     margin-bottom: auto;
     height: 25vh;
-    width: 36vh;
+    width: 35vh;
+    margin: 0.5vh;
     background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: center;
     display: none;
+    margin-top: 3vh;
     position: relative;
 }
 #nazwa_przedmiotu{
