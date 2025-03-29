@@ -15,31 +15,48 @@ const menedzer_gry = {
     runda: 0,
     ilosc_losowych_zdarzen: 0,
     runda_egzamin_zawodowy: false,
-    aktywni_gracze_egzamin_zawodowy: [],
-    koniec_tury: function () {
-        if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
-            this.indeks_wybranego = 0;
+    indeksy_aktywnych_egzamin_zawodowy: [],
+    poczatek_tury: function () {
+        if(this.runda_egzamin_zawodowy){
+            this.poczatek_tury_egzamin_zawodowy();
+            return 0;
         }
-        else {
-            this.indeks_wybranego++;
-        }
+        else{
+            if (this.runda % 10 == 0 && this.runda != 0) {
+                this.rok_gry++;
+                this.indeksy_aktywnych_egzamin_zawodowy = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 || this.aktywni_gracze[i].zdane_lata == 3){
+                        this.indeksy_aktywnych_egzamin_zawodowy.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin_zawodowy.length > 0){
+                    this.runda_egzamin_zawodowy = true;
+                    this.poczatek_tury_egzamin_zawodowy();
+                    return 0;
+                }
+                for (let i of this.aktywni_gracze) {
+                    //warunek
+                    i.zdane_lata++;
+                }
+            }
 
-        if (this.indeks_wybranego == 0) {
-            this.runda++;
-        }
-
-        if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
-            this.ilosc_losowych_zdarzen = 1;
-        }
-        else {
-            this.ilosc_losowych_zdarzen = 0;
-        }
-
-        if (this.runda % 11 == 0) {
-            this.rok_gry++;
-            for (let i of this.aktywni_gracze) {
-                //warunek
-                i.zdane_lata++;
+            if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
+                this.indeks_wybranego = 0;
+            }
+            else {
+                this.indeks_wybranego++;
+            }
+    
+            if (this.indeks_wybranego == 0) {
+                this.runda++;
+            }
+    
+            if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
+                this.ilosc_losowych_zdarzen = 1;
+            }
+            else {
+                this.ilosc_losowych_zdarzen = 0;
             }
         }
 
@@ -60,6 +77,16 @@ const menedzer_gry = {
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
         }        
+    },
+    poczatek_tury_egzamin_zawodowy: function() {
+        if(this.indeksy_aktywnych_egzamin_zawodowy.length == 0){
+            this.runda_egzamin_zawodowy = false;
+            this.indeks_wybranego = -1;
+            this.poczatek_tury();
+            return 1;
+        }
+        this.indeks_wybranego = this.indeksy_aktywnych_egzamin_zawodowy[0];
+        this.indeksy_aktywnych_egzamin_zawodowy.shift();
     }
 };
 
@@ -261,7 +288,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     slider_sfx2.value = glosnosc_sfx.value;
     glosnosc_sfx2.value = glosnosc_sfx.value;
 
-    menedzer_gry.koniec_tury();
+    menedzer_gry.poczatek_tury();
 }
 
 //Event listner przycisku Start
@@ -343,7 +370,7 @@ function odwroc_pokaz_pytanie(){
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
         odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
     }
-    menedzer_gry.koniec_tury();
+    menedzer_gry.poczatek_tury();
 }
 
 
@@ -543,9 +570,10 @@ class zestaw_pytan {
 }
 
 class zestaw_pytan_egzamin_zawodowy {
-    constructor(rok_3, rok_4) {
+    constructor(rok_3, rok_4, klasa) {
         this.rok_3 = rok_3;
         this.rok_4 = rok_4;
+        this.klasa = klasa;
     }
 }
 
