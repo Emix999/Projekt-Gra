@@ -702,7 +702,11 @@ for(let i of przyciski){
 }
 */
 
+
+
 //co to ma być za heretyczny kod
+
+//zgadzam się herezja po całości...
 
 const sas = document.getElementById("start")
 
