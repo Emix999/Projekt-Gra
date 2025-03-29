@@ -8,6 +8,7 @@ gracz wybrany to taki który ma obecnie turę
 
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
+    ostatni_pokazany_przedmiot: null,
     indeks_wybranego: -1,
     rok_gry: 1,
     aktywni_gracze: [],
@@ -89,14 +90,15 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, obraz) {
+    constructor(nazwa, opis, id_obrazu, sanity) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
+        this.sanity=sanity;
     }
 }
 
-let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 'ziemniak.png');
+let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
 
 //Obiekty 4 graczy i ich domyślne warotści
 let gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
@@ -626,13 +628,19 @@ const szczegoly_przedmiotu = document.getElementById("statystyki_przedmiotu");
 
 
 for (let i = 0; i < ekwipunek.length; i++) {
-    ekwipunek[i].addEventListener("click", () => pokaz_szczegoly_przedmiotu(i));
+    ekwipunek[i].addEventListener("click", () =>pokaz_szczegoly_przedmiotu(i));
 }
 
-document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", function () { znikniecie_ekranu(szczegoly_przedmiotu); pojawienie_ekranu(document.getElementById("caly_ekwipunek")) });
+document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", ()=> znikniecie_szczegolow_przedmiotu());
+
+function znikniecie_szczegolow_przedmiotu(){
+    znikniecie_ekranu(szczegoly_przedmiotu); 
+    pojawienie_ekranu(document.getElementById("caly_ekwipunek"));
+}
 
 function pokaz_szczegoly_przedmiotu(slot) {
     let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+
     if (wybrany_przedmiot.id_obrazu != null) {
         znikniecie_ekranu(document.getElementById("caly_ekwipunek"));
         pojawienie_ekranu(szczegoly_przedmiotu);
@@ -641,9 +649,20 @@ function pokaz_szczegoly_przedmiotu(slot) {
         nazwa.innerHTML = wybrany_przedmiot.nazwa;
         opis.innerHTML = wybrany_przedmiot.opis;
     }
+    menedzer_gry.ostatni_pokazany_przedmiot = slot;
 }
 
+document.getElementById("uzyj_przedmiotu").addEventListener("click",()=>uzyj_przedmiotu());
 
+
+function uzyj_przedmiotu(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity+=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot];
+    znikniecie_szczegolow_przedmiotu();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    
+    ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    document.getElementsByClassName('ekwipunek')[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+}
 
 
 
