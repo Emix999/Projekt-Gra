@@ -14,31 +14,13 @@ const menedzer_gry = {
     runda: 0,
     ilosc_losowych_zdarzen: 0,
     runda_egzamin_zawodowy: false,
-    aktywni_gracze_tymczasowy: [],
+    aktywni_gracze_egzamin_zawodowy: [],
     koniec_tury: function () {
         if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
             this.indeks_wybranego = 0;
         }
         else {
             this.indeks_wybranego++;
-        }
-
-        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
-        iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
-        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
-        obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
-
-        for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
-            let sciezka = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
-            ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
-        }
-
-        let i = 0;
-        while (i < this.aktywni_gracze.length) {
-            nr_graczy[i].value = (i + this.indeks_wybranego + 1) % (this.aktywni_gracze.length + 1);
-            nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
-            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
-            i++;
         }
 
         if (this.indeks_wybranego == 0) {
@@ -60,44 +42,23 @@ const menedzer_gry = {
             }
         }
 
-        // if(this.runda_egzamin_zawodowy){
-        //     this.aktywni_gracze_egzamin_zawodowy.shift()
-        //     if(this.aktywni_gracze_egzamin_zawodowy.length == 0){
-        //         this.runda_egzamin_zawodowy = false;
-        //     }
-        // }
-        // else{
-        //     if(this.runda % 11 == 10){
-        //         for(let i of this.aktywni_gracze){
-        //             this.aktywni_gracze_tymczasowy = this.aktywni_gracze;
-        //             if(i.zdane_lata == 2 || i.zdane_lata == 3){
-        //                 this.aktywni_gracze_egzamin_zawodowy.push(i);
-        //             }
-        //             if(aktywni_gracze_egzamin_zawodowy.length > 1){
-        //                 this.runda_egzamin_zawodowy = true;
-        //             }
-        //         }
-        //     }
+        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
+        iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
+        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
+        obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
 
-        //     if (this.indeks_wybranego == 0) {
-        //         this.runda++;
-        //     }
+        for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
+            let sciezka = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
+            ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
+        }
 
-        //     if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
-        //         this.ilosc_losowych_zdarzen = 1;
-        //     }
-        //     else {
-        //         this.ilosc_losowych_zdarzen = 0;
-        //     }
-
-        //     if (this.runda % 11 == 0) {
-        //         this.rok_gry++;
-        //         for (let i of this.aktywni_gracze) {
-        //             //warunek
-        //             i.zdane_lata++;
-        //         }
-        //     }
-        // }
+        let i = 0;
+        while (i < this.aktywni_gracze.length) {
+            nr_graczy[i].value = ((i + this.indeks_wybranego) % this.aktywni_gracze.length) + 1;
+            nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
+            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
+            i++;
+        }        
     }
 };
 
@@ -565,7 +526,7 @@ class sala {
         sala_obraz.src = this.sciezka_sali;
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random() * this.pytania[rok].length)];
-        setTimeout(() => pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania), 3000);
+        pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania);
     }
 }
 
@@ -639,7 +600,6 @@ const losowe_zdarzenia = [
 ];
 
 function pokaz_zdarzenie(zdarzenie) {
-    znikniecie_ekranu(ekran_gry);
     zmiana_ekranu(mapa, ekran_zdarzenia);
     otwarte_menu.mapka = false;
     otwarte_menu.zdarzenie = true;
@@ -651,7 +611,6 @@ function zniknij_zdarzenie() {
     zmiana_ekranu(ekran_zdarzenia, mapa);
     otwarte_menu.mapka = true;
     otwarte_menu.zdarzenie = false;
-    pojawienie_ekranu(ekran_gry);
     menedzer_gry.ilosc_losowych_zdarzen--;
 }
 
