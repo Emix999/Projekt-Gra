@@ -13,7 +13,8 @@ const menedzer_gry = {
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
-    tura_egzaminacyjna: false,
+    runda_egzamin_zawodowy: false,
+    aktywni_gracze_tymczasowy: [],
     koniec_tury: function () {
         if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
             this.indeks_wybranego = 0;
@@ -51,13 +52,52 @@ const menedzer_gry = {
             this.ilosc_losowych_zdarzen = 0;
         }
 
-        if (this.runda % 10 == 0) {
+        if (this.runda % 11 == 0) {
             this.rok_gry++;
             for (let i of this.aktywni_gracze) {
                 //warunek
                 i.zdane_lata++;
             }
         }
+
+        // if(this.runda_egzamin_zawodowy){
+        //     this.aktywni_gracze_egzamin_zawodowy.shift()
+        //     if(this.aktywni_gracze_egzamin_zawodowy.length == 0){
+        //         this.runda_egzamin_zawodowy = false;
+        //     }
+        // }
+        // else{
+        //     if(this.runda % 11 == 10){
+        //         for(let i of this.aktywni_gracze){
+        //             this.aktywni_gracze_tymczasowy = this.aktywni_gracze;
+        //             if(i.zdane_lata == 2 || i.zdane_lata == 3){
+        //                 this.aktywni_gracze_egzamin_zawodowy.push(i);
+        //             }
+        //             if(aktywni_gracze_egzamin_zawodowy.length > 1){
+        //                 this.runda_egzamin_zawodowy = true;
+        //             }
+        //         }
+        //     }
+
+        //     if (this.indeks_wybranego == 0) {
+        //         this.runda++;
+        //     }
+
+        //     if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
+        //         this.ilosc_losowych_zdarzen = 1;
+        //     }
+        //     else {
+        //         this.ilosc_losowych_zdarzen = 0;
+        //     }
+
+        //     if (this.runda % 11 == 0) {
+        //         this.rok_gry++;
+        //         for (let i of this.aktywni_gracze) {
+        //             //warunek
+        //             i.zdane_lata++;
+        //         }
+        //     }
+        // }
     }
 };
 
@@ -539,10 +579,15 @@ class zestaw_pytan {
     }
 }
 
-class zestaw_pytan_egzaminacyjnych {
-    constructor(rok_3, rok_4, rok_5) {
+class zestaw_pytan_egzamin_zawodowy {
+    constructor(rok_3, rok_4) {
         this.rok_3 = rok_3;
         this.rok_4 = rok_4;
+    }
+}
+
+class zestaw_pytan_matura {
+    constructor(rok_5){
         this.rok_5 = rok_5;
     }
 }
