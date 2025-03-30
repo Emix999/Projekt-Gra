@@ -108,8 +108,8 @@ body {
 }
 
 .strzalka_srodek_lewo{
-    position: absolute;
     background-size: cover;
+    position: absolute;
     left: 5%;
     top: 43%; 
 }
@@ -237,7 +237,8 @@ body {
 .menu_statystyk {
     height: 100vh;
     width: 36vh;
-    background-color: red;
+    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-size: cover;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -246,10 +247,10 @@ body {
 
 .menu_statystyk * {
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    position: relative;
+/*dodać border: nonr;*/
 }
-
 .ekran_gry {
     height: 100vh;
     width: calc(100vw - 36vh);
@@ -275,31 +276,52 @@ body {
     position: absolute;
 }
 
-#przycisk_mapa,
-#ustawienia_menu_boczne {
-    height: 8vh;
-    width: 16vh;
+#przycisk_statystyki {
+    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
     margin: 0.5vh;
     margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    left: 5.5%;
 }
 
-.nr_gracza {
+#ustawienia_menu_boczne {
+    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    right: 5.5%;
+}
+
+.nr_gracza {    
     width: 4vh;
     height: 3vh;
     margin: 0.5vh;
-
+    background-color: transparent;
+    position: absolute;
 }
 
 .nazwa_gracza {
-    width: 26vh;
+    width: 25.5vh;
     height: 3vh;
     margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 .klasa_gracza {
     margin: 0.5vh;
-    width: 32vh;
+    width: 30vh;
     height: 3vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 #ekwipunek {
@@ -307,25 +329,28 @@ body {
     width: 32vh;
     height: 3vh;
     margin-top: 3vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 #sanity,
-#iq,
 #zdane_lata,
 #obecny_rok {
     margin: 0.5vh;
     height: 3vh;
     width: 15vh;
+    position: absolute;
 }
 
 .ekwipunek {
-    border: 1px solid black;
     border-collapse: collapse;
     margin: 0.5vh;
     width: 10.3vh;
     height: 6vh;
     background-size: cover;
     background-position: center;
+    background-color: transparent;
+    position: absolute;
 }
 
 .odpowiedz {
