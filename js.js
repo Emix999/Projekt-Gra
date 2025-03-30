@@ -26,7 +26,7 @@ const menedzer_gry = {
                 this.rok_gry++;
                 this.indeksy_aktywnych_egzamin_zawodowy = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 2 || this.aktywni_gracze[i].zdane_lata == 3){
+                    if((this.aktywni_gracze[i].zdane_lata == 2 || this.aktywni_gracze[i].zdane_lata == 3) && !this.aktywni_gracze[i].podszedl_do_egzaminu){
                         this.indeksy_aktywnych_egzamin_zawodowy.push(i);
                     }
                 }
@@ -38,6 +38,7 @@ const menedzer_gry = {
                 for (let i of this.aktywni_gracze) {
                     //warunek
                     i.zdane_lata++;
+                    i.podszedl_do_egzaminu = false;
                 }
             }
 
@@ -86,6 +87,7 @@ const menedzer_gry = {
             return 1;
         }
         this.indeks_wybranego = this.indeksy_aktywnych_egzamin_zawodowy[0];
+        this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
         this.indeksy_aktywnych_egzamin_zawodowy.shift();
     }
 };
@@ -113,6 +115,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdane_lata = zdane_lata;
         this.czy_aktywny = czy_aktywny;
         this.ekwipunek = ekwipunek;
+        this.podszedl_do_egzaminu = false;
     }
 }
 
@@ -301,7 +304,7 @@ class pytanie {
     constructor(tresc, odpowiedzi) {
         this.tresc = tresc;
         this.odpowiedzi = odpowiedzi;
-        // odpowiedź na indeksie zerowym jest poprawna
+        //odpowiedź na indeksie zerowym jest poprawna
     }
 }
 
@@ -542,19 +545,33 @@ const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
 class sala {
-    constructor(nr, sciezka_sali, pytania/*, pytania_egzaminacyjne*/) {
+    constructor(nr, sciezka_sali, pytania, pytania_egzamin_zawodowy = null, pytania_matura = null) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
-        //this.pytania_egzaminacyjne = pytania_egzaminacyjne;
+        this.pytania_egzamin_zawodowy = pytania_egzamin_zawodowy;
+        this.pytania_matura = pytania_matura;
     }
 
     pokaz_sale() {
+        if(menedzer_gry.runda_egzamin_zawodowy){
+            if(this.pytania_egzamin_zawodowy != null){
+                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa == this.pytania_egzamin_zawodowy.klasa){
+                    this.pokaz_sale_naprawde(this.pytania_egzamin_zawodowy);
+                }
+            }
+        }
+        else{
+            this.pokaz_sale_naprawde(this.pytania);
+        }
+    }
+
+    pokaz_sale_naprawde(pytania) {
         znikniecie_ekranu(mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
-        let pytanie_kartkowka = this.pytania[rok][Math.floor(Math.random() * this.pytania[rok].length)];
+        let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
         pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania);
     }
 }
@@ -589,6 +606,10 @@ const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
     [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])])
+    /*new zestaw_pytan_egzamin_zawodowy(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
+    )*/
 );
 const sale = [s101];
 
