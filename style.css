@@ -249,7 +249,7 @@ body {
     text-align: center;
     color: white;
     position: relative;
-/*dodać border: nonr;*/
+    border: none;
 }
 .ekran_gry {
     height: 100vh;
@@ -301,7 +301,7 @@ body {
 }
 
 .nr_gracza {    
-    width: 4vh;
+    width: 3vh;
     height: 3vh;
     margin: 0.5vh;
     background-color: transparent;
@@ -338,15 +338,17 @@ body {
 #obecny_rok {
     margin: 0.5vh;
     height: 3vh;
-    width: 15vh;
+    width: 3vh;
     position: absolute;
+    font-size: 20px;
+    background-color: transparent;
 }
 
 .ekwipunek {
     border-collapse: collapse;
     margin: 0.5vh;
-    width: 10.3vh;
-    height: 6vh;
+    width: 7.9vh;
+    height: 7.9vh;
     background-size: cover;
     background-position: center;
     background-color: transparent;
