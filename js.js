@@ -14,27 +14,55 @@ const menedzer_gry = {
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
-    runda_egzamin_zawodowy: false,
-    indeksy_aktywnych_egzamin_zawodowy: [],
+    runda_egzamin: false,
+    indeksy_aktywnych_egzamin: [],
     poczatek_tury: function () {
-        if(this.runda_egzamin_zawodowy){
-            this.poczatek_tury_egzamin_zawodowy();
+        if(this.runda_egzamin){
+            this.poczatek_tury_egzamin();
             return 0;
         }
         else{
             if (this.runda % 10 == 0 && this.runda != 0) {
-                this.rok_gry++;
-                this.indeksy_aktywnych_egzamin_zawodowy = [];
+                //egzamin zawodowy nr 1
+                this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if((this.aktywni_gracze[i].zdane_lata == 2 || this.aktywni_gracze[i].zdane_lata == 3) && !this.aktywni_gracze[i].podszedl_do_egzaminu){
-                        this.indeksy_aktywnych_egzamin_zawodowy.push(i);
+                    if(this.aktywni_gracze[i].zdane_lata == 2 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
-                if(this.indeksy_aktywnych_egzamin_zawodowy.length > 0){
-                    this.runda_egzamin_zawodowy = true;
-                    this.poczatek_tury_egzamin_zawodowy();
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
                     return 0;
                 }
+
+                //egzamin zawodowy nr 2
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 3 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+
+                //matura
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 4 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+
+                this.rok_gry++;
                 for (let i of this.aktywni_gracze) {
                     //warunek
                     i.zdane_lata++;
@@ -61,8 +89,23 @@ const menedzer_gry = {
             }
         }
 
+        this.wypisz_informacje_graczy();   
+    },
+    poczatek_tury_egzamin: function() {
+        if(this.indeksy_aktywnych_egzamin.length == 0){
+            this.runda_egzamin = false;
+            this.indeks_wybranego = -1;
+            this.poczatek_tury();
+            return 1;
+        }
+        this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
+        this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
+        this.indeksy_aktywnych_egzamin.shift();
+
+        this.wypisz_informacje_graczy();
+    },
+    wypisz_informacje_graczy: function() {
         sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
-        iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
         obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
 
@@ -77,18 +120,7 @@ const menedzer_gry = {
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
             i++;
-        }        
-    },
-    poczatek_tury_egzamin_zawodowy: function() {
-        if(this.indeksy_aktywnych_egzamin_zawodowy.length == 0){
-            this.runda_egzamin_zawodowy = false;
-            this.indeks_wybranego = -1;
-            this.poczatek_tury();
-            return 1;
-        }
-        this.indeks_wybranego = this.indeksy_aktywnych_egzamin_zawodowy[0];
-        this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
-        this.indeksy_aktywnych_egzamin_zawodowy.shift();
+        }  
     }
 };
 
@@ -545,32 +577,29 @@ const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
 class sala {
-    constructor(nr, sciezka_sali, pytania, pytania_egzamin_zawodowy = null, pytania_matura = null) {
+    constructor(nr, sciezka_sali, pytania, pytania_egzamin) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
-        this.pytania_egzamin_zawodowy = pytania_egzamin_zawodowy;
-        this.pytania_matura = pytania_matura;
+        this.pytania_egzamin = pytania_egzamin;
     }
 
     pokaz_sale() {
-        if(menedzer_gry.runda_egzamin_zawodowy){
-            if(this.pytania_egzamin_zawodowy != null){
-                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa == this.pytania_egzamin_zawodowy.klasa){
-                    this.pokaz_sale_naprawde(this.pytania_egzamin_zawodowy);
-                }
+        let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
+        if(menedzer_gry.runda_egzamin){
+            if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa == this.pytania_egzamin.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
+                this.pokaz_sale_naprawde(this.pytania_egzamin, rok);
             }
         }
         else{
-            this.pokaz_sale_naprawde(this.pytania);
+            this.pokaz_sale_naprawde(this.pytania, rok);
         }
     }
 
-    pokaz_sale_naprawde(pytania) {
+    pokaz_sale_naprawde(pytania, rok) {
         znikniecie_ekranu(mapa);
         zmiana_ekranu(ekran_gry, ekran_sali);
         sala_obraz.src = this.sciezka_sali;
-        let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
         pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania);
     }
@@ -586,17 +615,13 @@ class zestaw_pytan {
     }
 }
 
-class zestaw_pytan_egzamin_zawodowy {
-    constructor(rok_3, rok_4, klasa) {
+class zestaw_pytan_egzamin {
+    constructor(rok_3 = null, rok_4 = null, klasa = null, rok_5 = null) {
         this.rok_3 = rok_3;
         this.rok_4 = rok_4;
-        this.klasa = klasa;
-    }
-}
-
-class zestaw_pytan_matura {
-    constructor(rok_5){
+        this.klasa = klasa; //klasa jest tylko do egzaminu zawodowego
         this.rok_5 = rok_5;
+        
     }
 }
 
@@ -605,11 +630,12 @@ const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
-    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])])
-    /*new zestaw_pytan_egzamin_zawodowy(
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )*/
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        'klasa0'
+    )
 );
 const sale = [s101];
 
