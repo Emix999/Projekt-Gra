@@ -346,7 +346,7 @@ body {
     background-color: transparent;
 }
 
-.ekwipunek {
+.ekwipunek, .sklep_arsenal_obraz {
     border-collapse: collapse;
     margin: 0.5vh;
     width: 7.9vh;
@@ -354,7 +354,34 @@ body {
     background-size: cover;
     background-position: center;
     background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal{
     position: absolute;
+}
+
+.sklep_arsenal{
+    color: white;
+}
+
+#ekran_sklepu{
+    display: none;
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    flex-direction: column;
+}
+
+#wnetrze_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+}
+
+#panel_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
 }
 
 .odpowiedz {

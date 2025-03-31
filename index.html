@@ -173,6 +173,46 @@
             <img id="obraz_sala">
         </div>
 
+        <div id="ekran_sklepu">
+            <div id="wnetrze_sklepu">jakiś skibidi obrazek</div>
+            <div id="panel_sklepu">
+                <div class="flex_poziom">
+                    <div class="sklep_arsenal" style="top: 52vh; right: 95%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 52vh; right: 65%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 52vh; right: 35%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                </div>
+                <div class="flex_poziom">
+                    <div class="sklep_arsenal" style="top: 70vh; right: 95%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 70vh; right: 65%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 70vh; right: 35%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="mapa">
             <!-- Pierwsze Piętro -->
             <div id="schemat_pierwsze_pietro" style="position: relative; display: flex;">
@@ -279,7 +319,7 @@
             <div id="schemat_piwnica" style="position: relative; display: none;">
                 <img src="mapy/schemat_piwnica.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button class="przycisk_sala"
+                    <button id="przycisk_sklep"
                         style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%;">jadalnia</button>
                     <button class="przycisk_sala"
                         style="left: 50%; top: 31.833%; width: 5%; height: 8.333%;">036</button>
@@ -387,7 +427,7 @@
                 <button
                     id="zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu"
                     style="background-image: url(menu_grafiki/x_red.png) ;"></button>
-                <p readonly type="text" id="nazwa_przedmiotu"></p>
+                <p type="text" id="nazwa_przedmiotu"></p>
                 <p id="opis_przedmiotu"></p>
                 <button id="uzyj_przedmiotu">UŻYJ</button>
             </div>
