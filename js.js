@@ -726,7 +726,7 @@ const sklep = {
 }
 
 sklep_przycisk.addEventListener('click', () => sklep.pokaz());
-setTimeout(() => sklep.pokaz(), 3000);
+//setTimeout(() => sklep.pokaz(), 3000);
 
 for(let i = 0; i < sklep.arsenal.length; i++){
     sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
