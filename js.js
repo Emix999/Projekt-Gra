@@ -152,11 +152,12 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, sanity) {
+    constructor(nazwa, opis, id_obrazu, sanity, cena = 0) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
         this.sanity=sanity;
+        this.cena = cena;
     }
 }
 
@@ -692,6 +693,32 @@ function zniknij_zdarzenie() {
 }
 
 przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
+
+const sklep_przycisk = document.getElementById('przycisk_sklep');
+const ekran_sklepu = document.getElementById('ekran_sklepu');
+
+const sklep = {
+    arsenal: [
+        new przedmiot('obiadek', 'test', '', 20, 22),
+        new przedmiot('rozwiązany sprawdzian', 'test2', '', 0, 30),
+        new przedmiot('samochód Elona Muska', 'brum brum', '', 200, 200),
+        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', '', 2000, 1000),
+        new przedmiot('bomba atomowa', 'bum bum', '', 0, 10000),
+        new przedmiot('XAMPP: wersja premium', 'sql', '', 0, 100000)
+    ],
+    pokaz: function() {
+        zmiana_ekranu(mapa, ekran_sklepu);
+    }
+}
+
+sklep_przycisk.addEventListener('click', () => sklep.pokaz());
+
+
+
+
+
+
+
 
 
 
