@@ -675,7 +675,7 @@ class zdarzenie {
 const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
 const losowe_zdarzenia = [
     zdarzenie_testowe,
-    new zdarzenie('Atak terrorystyczny', 'Terroryści atakują szkołę.')
+    new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
 ];
 
 function pokaz_zdarzenie(zdarzenie) {
