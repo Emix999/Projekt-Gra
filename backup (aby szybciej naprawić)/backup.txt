@@ -1,3 +1,5 @@
+html:
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -216,7 +218,7 @@
         <div id="mapa">
             <!-- Pierwsze Piętro -->
             <div id="schemat_pierwsze_pietro" style="position: relative; display: flex;">
-                <img src="skibidi/skibidi10.png" style="width: 100%; height: auto;">
+                <img src="mapy/schemat_pierwsze_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy"
                     style="display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala"
@@ -252,7 +254,7 @@
 
             <!-- Drugie Piętro -->
             <div id="schemat_drugie_pietro" style="position: relative; display: none;">
-                <img src="skibidi/skibidi9.png" style="width: 100%; height: auto;">
+                <img src="mapy/schemat_drogie_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala"
                         style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;">201</button>
@@ -287,7 +289,7 @@
 
             <!-- Parter -->
             <div id="schemat_parter" style="position: relative; display: none;">
-                <img src="skibidi/skibidi8.png" style="width: 100%; height: auto;">
+                <img src="mapy/schemat_parter.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala"
                         style="left: 1.875%; top: 57%; width: 10%; height: 8.333%;">24</button>
@@ -317,7 +319,7 @@
 
             <!-- Piwnica -->
             <div id="schemat_piwnica" style="position: relative; display: none;">
-                <img src="skibidi/skibidi7.png" style="width: 100%; height: auto;">
+                <img src="mapy/schemat_piwnica.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button id="przycisk_sklep"
                         style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%;">jadalnia</button>
@@ -341,7 +343,7 @@
 
             <!-- Drugi Budynek -->
             <div id="schemat_drugi_budynek" style="position: relative; display: none;">
-                <img src="skibidi/skibidi6.png" style="width: 100%; height: auto;">
+                <img src="mapy/schemat_2_budynek.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button class="przycisk_sala"
                         style="left: 92.5%; top: 52.333%; width: 6.375%; height: 8.5%;">01</button>
@@ -486,3 +488,517 @@
 </body>
 
 </html>
+
+css:
+body {
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+#ekran_startowy {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_pion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_poziom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    height: 16.1vmin;
+    width: 16.1vmin;
+    top: 23%;
+    position: absolute;
+}
+
+#start {
+    width: 30vmin;
+    height: 10vmin;
+    background-image: url('menu_grafiki/start.png');
+    background-size: cover;
+    position: fixed;
+    border: none;
+    margin-bottom: 49vmin;
+}
+
+.ustawienia {
+    width: 50vmin;
+    height: 50vmin;
+    background-image: url('menu_grafiki/ustawienia.png');
+    background-size: cover;
+    position: fixed;
+    margin-top: 23vmin;
+}
+
+#muzyka_glosnosc,
+#muzyka_glosnosc2 {
+    left: 34.5%;
+    top: 16.3%;
+    height: 2vmin;
+    width: 3vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
+    border: none;
+}
+
+#muzyka_slider,
+#muzyka_slider2 {
+    left: 39.5%;
+    top: 16.1%;
+    height: 2vmin;
+    width: 21vmin;
+    position: absolute;
+}
+
+#sfx_glosnosc,
+#sfx_glosnosc2 {
+    left: 34.5%;
+    top: 24.7%;
+    height: 2vmin;
+    width: 3vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
+    border: none;
+}
+
+#sfx_slider,
+#sfx_slider2 {
+    left: 39.5%;
+    top: 24.5%;
+    height: 2vmin;
+    width: 21vmin;
+    position: absolute;
+}
+
+.przycisk_menu {
+    height: 4vmin;
+    width: 4vmin;
+}
+
+.los{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    top: 5%;
+}
+
+.strzalka_srodek_lewo{
+    background-size: cover;
+    position: absolute;
+    left: 5%;
+    top: 43%; 
+}
+
+.strzalka_srodek_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    top: 43%; 
+}
+
+.strzalka_dol_lewo{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    bottom: 5%; 
+}
+
+.strzalka_dol_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    bottom: 5%; 
+}
+
+.input_menu {
+    height: 2.4vmin;
+    width: 16.1vmin;
+    background-color: transparent;
+    color: white;
+}
+
+.nazwa_gracza_menu{
+    position: absolute;
+    top: 7.5%;
+    left: 22%;
+}
+.profil_gracza_menu{
+    position: absolute;
+    bottom: 7.5%;
+    left: 22%;
+}
+.zwijanie {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+}
+
+#przyciski_rozwijania>* {
+    position: fixed;
+    height: 15vmin;
+    width: 15vmin;
+    background-size: cover;
+    border: none;
+}
+
+#rozwin1 {
+    top: 18vmin;
+    left: 18vmin;
+    background-image: url('menu_grafiki/plus_red.png');
+}
+
+#rozwin2 {
+    top: 18vmin;
+    right: 18vmin;
+    background-image: url('menu_grafiki/plus_blue.png');
+}
+
+#rozwin3 {
+    bottom: 18vmin;
+    left: 18vmin;
+    background-image: url('menu_grafiki/plus_green.png');
+}
+
+#rozwin4 {
+    bottom: 18vmin;
+    right: 18vmin;
+    background-image: url('menu_grafiki/plus_yellow.png');
+}
+
+#menu_graczy>* {
+    position: fixed;
+    display: none;
+    background-color: brown;
+    height: 30vmin;
+    width: 30vmin;
+    text-align: center;
+    border: none;
+}
+
+#menu_gracza1 {
+    top: 11vmin;
+    left: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_red.png');
+    background-size: cover;
+}
+
+#menu_gracza2 {
+    top: 11vmin;
+    right: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_blue.png');
+    background-size: cover;
+}
+
+#menu_gracza3 {
+    bottom: 11vmin;
+    left: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_green.png');
+    background-size: cover;
+}
+
+#menu_gracza4 {
+    bottom: 11vmin;
+    right: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_yellow.png');
+    background-size: cover;
+}
+
+#gra {
+    display: none;
+    flex-direction: row;
+}
+
+.menu_statystyk {
+    height: 100vh;
+    width: 36vh;
+    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-size: cover;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.menu_statystyk * {
+    text-align: center;
+    color: white;
+    position: relative;
+    border: none;
+    font-family: Segoe UI;
+}
+.ekran_gry {
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    background-color: blue;
+    display: none;
+}
+
+#mapa,#ustawienia2{
+    width: calc(100vw - 36vh);
+    height: 100vh;
+    background-color: white;
+    justify-content: center;
+}
+
+#mapa{
+    display: flex;
+    background-color: white;
+}
+
+#ustawienia2{
+    background-color: transparent ;
+    display: none;
+    position: absolute;
+}
+
+#przycisk_statystyki {
+    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    left: 5.5%;
+}
+
+#ustawienia_menu_boczne {
+    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    right: 5.5%;
+}
+
+.nr_gracza {    
+    width: 3vh;
+    height: 3vh;
+    margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+.nazwa_gracza {
+    width: 25.5vh;
+    height: 3vh;
+    margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+.klasa_gracza {
+    margin: 0.5vh;
+    width: 30vh;
+    height: 3vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+#ekwipunek {
+    margin: 0.5vh;
+    width: 32vh;
+    height: 3vh;
+    margin-top: 3vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+#sanity,
+#pieniadze,
+#zdane_lata,
+#obecny_rok {
+    margin: 0.5vh;
+    height: 3vh;
+    width: 3vh;
+    position: absolute;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal_obraz {
+    border-collapse: collapse;
+    margin: 0.5vh;
+    width: 7.9vh;
+    height: 7.9vh;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal{
+    position: absolute;
+}
+
+.sklep_arsenal{
+    color: white;
+}
+
+#ekran_sklepu{
+    display: none;
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    flex-direction: column;
+}
+
+#wnetrze_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+}
+
+#panel_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.odpowiedz {
+    background-color: aquamarine;
+    width: 30vw;
+    height: 20vh;
+    margin: 2vw;
+}
+
+#tresc,
+#nazwa {
+    width: 66vw;
+    height: 15vh;
+    background-color: blueviolet;
+    margin-bottom: 3vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+.margines_gora {
+    margin-top: 3vh;
+}
+
+#ekran_pytania,
+#ekran_zdarzenia{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    background-color: azure;
+    display: none;
+}
+
+#opis{
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+}
+
+#ekran_nagrody{
+    position: absolute;
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+    visibility: hidden;
+}
+
+#przejdz_dalej2{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+}
+
+#przejdz_dalej, #zakoncz_ture
+{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+    display: none;
+}
+
+.gracz{
+    height: 10vh;
+    width: 10vh;
+    background-color: transparent;
+    background-size: cover;
+    display: none;
+}
+
+.mapowanie_mapy *{
+    position: absolute;
+}
+
+#ekran_sali{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    display: none;
+}
+
+#obraz_sala{
+    height: 100%;
+}
+
+#ekran_sali{
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
+}
+
+#uzyj_przedmiotu{
+    width: 10vh;
+    height: 5vh;
+    font-size: 4vh;
+}
+
+#statystyki_przedmiotu{
+    margin-bottom: auto;
+    height: 25vh;
+    width: 35vh;
+    margin: 0.5vh;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+    margin-top: 3vh;
+    position: relative;
+}
+#nazwa_przedmiotu{
+    width: 20vh;
+    height: 5vh;
+    margin: 0.5vh;
+    font-size: 4vh;
+}
+#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
+    height: 6vh;
+    width: 6vh;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+    position: absolute;
+}
+
+
+#caly_ekwipunek{
+    flex-direction: column;
+}

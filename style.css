@@ -47,7 +47,7 @@ body {
 .ustawienia {
     width: 50vmin;
     height: 50vmin;
-    background-image: url('menu_grafiki/ustawienia.png');
+    background-image: url('skibidi/skibidi8.png');
     background-size: cover;
     position: fixed;
     margin-top: 23vmin;
@@ -170,25 +170,25 @@ body {
 #rozwin1 {
     top: 18vmin;
     left: 18vmin;
-    background-image: url('menu_grafiki/plus_red.png');
+    background-image: url('skibidi/skibidi7.png');
 }
 
 #rozwin2 {
     top: 18vmin;
     right: 18vmin;
-    background-image: url('menu_grafiki/plus_blue.png');
+    background-image: url('skibidi/skibidi6.png');
 }
 
 #rozwin3 {
     bottom: 18vmin;
     left: 18vmin;
-    background-image: url('menu_grafiki/plus_green.png');
+    background-image: url('skibidi/skibidi5.png');
 }
 
 #rozwin4 {
     bottom: 18vmin;
     right: 18vmin;
-    background-image: url('menu_grafiki/plus_yellow.png');
+    background-image: url('skibidi/skibidi4.png');
 }
 
 #menu_graczy>* {
@@ -204,28 +204,28 @@ body {
 #menu_gracza1 {
     top: 11vmin;
     left: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_red.png');
+    background-image: url('skibidi/skibidi1.png');
     background-size: cover;
 }
 
 #menu_gracza2 {
     top: 11vmin;
     right: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_blue.png');
+    background-image: url('skibidi/skibidi2.png');
     background-size: cover;
 }
 
 #menu_gracza3 {
     bottom: 11vmin;
     left: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_green.png');
+    background-image: url('skibidi/skibidi3.png');
     background-size: cover;
 }
 
 #menu_gracza4 {
     bottom: 11vmin;
     right: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_yellow.png');
+    background-image: url('skibidi/skibidi4.png');
     background-size: cover;
 }
 
@@ -237,7 +237,7 @@ body {
 .menu_statystyk {
     height: 100vh;
     width: 36vh;
-    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-image: url('skibidi/skibidi5.png');
     background-size: cover;
     flex-direction: column;
     justify-content: center;
@@ -278,7 +278,7 @@ body {
 }
 
 #przycisk_statystyki {
-    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-image: url('skibidi/skibidi8.png');
     background-size: cover;
     height: 8.6vh;
     width: 15vh;
@@ -290,7 +290,7 @@ body {
 }
 
 #ustawienia_menu_boczne {
-    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-image: url('skibidi/skibidi9.png');
     background-size: cover;
     height: 8.6vh;
     width: 15vh;
