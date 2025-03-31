@@ -148,6 +148,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.czy_aktywny = czy_aktywny;
         this.ekwipunek = ekwipunek;
         this.podszedl_do_egzaminu = false;
+        this.hajs = 20;
     }
 }
 
@@ -696,23 +697,43 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 const sklep_przycisk = document.getElementById('przycisk_sklep');
 const ekran_sklepu = document.getElementById('ekran_sklepu');
+const sklep_obrazy_arsenalu = document.getElementsByClassName('sklep_arsenal_obraz');
+const sklep_nazwy_arsenalu = document.getElementsByClassName('sklep_arsenal_nazwa');
+const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena');
 
 const sklep = {
     arsenal: [
-        new przedmiot('obiadek', 'test', '', 20, 22),
-        new przedmiot('rozwiązany sprawdzian', 'test2', '', 0, 30),
-        new przedmiot('samochód Elona Muska', 'brum brum', '', 200, 200),
-        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', '', 2000, 1000),
-        new przedmiot('bomba atomowa', 'bum bum', '', 0, 10000),
-        new przedmiot('XAMPP: wersja premium', 'sql', '', 0, 100000)
+        new przedmiot('obiadek', 'test', 'ziemniak.png', 20, 22),
+        new przedmiot('rozwiązany sprawdzian', 'test2', 'ziemniak.png', 0, 30),
+        new przedmiot('samochód Elona Muska', 'brum brum', 'ziemniak.png', 200, 200),
+        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'ziemniak.png', 2000, 1000),
+        new przedmiot('bomba atomowa', 'bum bum', 'ziemniak.png', 0, 10000),
+        new przedmiot('XAMPP: wersja premium', 'sql', 'ziemniak.png', 0, 100000)
     ],
     pokaz: function() {
         zmiana_ekranu(mapa, ekran_sklepu);
+    },
+    kup: function(id_produktu){
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena){
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
+            alert('pomyślnie kupiono produkt');
+        }
+        else{
+            alert('złodzieju, nie złodziejuj');
+        }
     }
 }
 
 sklep_przycisk.addEventListener('click', () => sklep.pokaz());
+setTimeout(() => sklep.pokaz(), 3000);
 
+for(let i = 0; i < sklep.arsenal.length; i++){
+    sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
+    sklep_obrazy_arsenalu[i].addEventListener('click', () => sklep.kup(i));
+    sklep_nazwy_arsenalu[i].innerHTML = sklep.arsenal[i].nazwa;
+    sklep_ceny_arsenalu[i].innerHTML = 'cena: ' + sklep.arsenal[i].cena;
+}
 
 
 

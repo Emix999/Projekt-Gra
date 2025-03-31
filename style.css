@@ -363,10 +363,6 @@ body {
     color: white;
 }
 
-.sklep_arsenal_obraz {
-     float: left;
-}
-
 #ekran_sklepu{
     display: none;
     height: 100vh;
