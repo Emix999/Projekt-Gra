@@ -700,6 +700,8 @@ const ekran_sklepu = document.getElementById('ekran_sklepu');
 const sklep_obrazy_arsenalu = document.getElementsByClassName('sklep_arsenal_obraz');
 const sklep_nazwy_arsenalu = document.getElementsByClassName('sklep_arsenal_nazwa');
 const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena');
+const sklep_kup = document.getElementsByClassName('sklep_kup')
+const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
 const sklep = {
     arsenal: [
@@ -722,6 +724,9 @@ const sklep = {
         else{
             alert('złodzieju, nie złodziejuj');
         }
+    },
+    znikniecie: function(){
+        zmiana_ekranu(ekran_sklepu, mapa);
     }
 }
 
@@ -730,12 +735,12 @@ sklep_przycisk.addEventListener('click', () => sklep.pokaz());
 
 for(let i = 0; i < sklep.arsenal.length; i++){
     sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
-    sklep_obrazy_arsenalu[i].addEventListener('click', () => sklep.kup(i));
     sklep_nazwy_arsenalu[i].innerHTML = sklep.arsenal[i].nazwa;
     sklep_ceny_arsenalu[i].innerHTML = 'cena: ' + sklep.arsenal[i].cena;
+    sklep_kup[i].addEventListener('click', () => sklep.kup(i));
 }
 
-
+wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
 
 
 

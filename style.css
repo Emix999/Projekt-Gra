@@ -380,8 +380,6 @@ body {
     height: 50vh;
     width: calc(100vw - 36vh);
     background-color: black;
-    display: flex;
-    flex-direction: column;
 }
 
 .odpowiedz {
@@ -430,7 +428,8 @@ body {
     visibility: hidden;
 }
 
-#przejdz_dalej2{
+#przejdz_dalej2, #wyjdz_ze_sklepu
+{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
