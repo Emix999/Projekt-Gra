@@ -259,7 +259,7 @@ body {
     display: none;
 }
 
-#mapa,#ustawienia2{
+#mapa,#ustawienia2, #ekran_statystyk{
     width: calc(100vw - 36vh);
     height: 100vh;
     background-color: white;
@@ -271,10 +271,13 @@ body {
     background-color: white;
 }
 
-#ustawienia2{
-    background-color: transparent ;
+#ustawienia2, #ekran_statystyk{
     display: none;
     position: absolute;
+}
+
+#ustawienia2{
+    background-color: transparent;
 }
 
 #przycisk_statystyki {
@@ -364,7 +367,7 @@ body {
     color: white;
 }
 
-#ekran_sklepu{
+#ekran_sklepu, #ekran_zdarzenia_nielosowego{
     display: none;
     height: 100vh;
     width: calc(100vw - 36vh);
@@ -389,8 +392,7 @@ body {
     margin: 2vw;
 }
 
-#tresc,
-#nazwa {
+#tresc {
     width: 66vw;
     height: 15vh;
     background-color: blueviolet;
@@ -459,16 +461,13 @@ body {
     height: 100vh;
     width: calc(100vw - 36vh);
     display: none;
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
 }
 
 #obraz_sala{
     height: 100%;
-}
-
-#ekran_sali{
-    background-color: #212121;
-    justify-content: center;
-    align-items: center;
 }
 
 #uzyj_przedmiotu{
@@ -496,6 +495,7 @@ body {
     margin: 0.5vh;
     font-size: 4vh;
 }
+
 #zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
     height: 6vh;
     width: 6vh;
@@ -505,7 +505,21 @@ body {
     position: absolute;
 }
 
-
 #caly_ekwipunek{
     flex-direction: column;
+}
+
+#panel_zdarzenia_nielosowego {
+    height: 30vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
+}
+
+#obraz_zdarzenia_nielosowego{
+    height: 70vh;
+    width: calc(100vw - 36vh);
+}
+
+#opis_zdarzenia_nielosowego{
+    color: white;
 }

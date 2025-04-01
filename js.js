@@ -6,6 +6,60 @@ gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
 
+const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
+const nazwa = document.getElementById('nazwa');
+const opis = document.getElementById('opis');
+const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
+const ekran_zdarzenia_nielosowego = document.getElementById('ekran_zdarzenia_nielosowego');
+const opis_zdarzenia_nielosowego = document.getElementById('opis_zdarzenia_nielosowego');
+const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nielosowego');
+
+class zdarzenie {
+    constructor(opis) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+    }
+}
+
+class nielosowe_zdarzenie extends zdarzenie {
+    constructor(opis, runda){
+        super(opis);
+        this.runda = runda;
+    }
+}
+
+const zdarzenie_testowe = new zdarzenie('Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
+const losowe_zdarzenia = [
+    zdarzenie_testowe,
+    new zdarzenie('Skibidi toalety atakują szkołę.')
+];
+
+const zdarzenie_testowe2 = new nielosowe_zdarzenie('Pan Czosnowski został porwany przez skibidi toalety', 1);
+const nielosowe_zdarzenia = [
+    zdarzenie_testowe2
+]
+
+function pokaz_zdarzenie(zdarzenie) {
+    zmiana_ekranu(mapa, ekran_zdarzenia);
+    opis.innerHTML = zdarzenie.opis;
+}
+
+function zniknij_zdarzenie() {
+    zmiana_ekranu(ekran_zdarzenia, mapa);
+    menedzer_gry.ilosc_losowych_zdarzen--;
+}
+
+function pokaz_zdarzenie_nielosowe(zdarzenie){
+    zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
+    opis_zdarzenia_nielosowego.innerHTML = zdarzenie.opis;
+}
+
+function zniknij_zdarzenie_nielosowe() {
+    zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
+}
+
+przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
+
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
     ostatni_pokazany_przedmiot: null,
@@ -16,6 +70,7 @@ const menedzer_gry = {
     ilosc_losowych_zdarzen: 0,
     runda_egzamin: false,
     indeksy_aktywnych_egzamin: [],
+    nielosowe_zdarzenia: nielosowe_zdarzenia,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
@@ -79,6 +134,12 @@ const menedzer_gry = {
     
             if (this.indeks_wybranego == 0) {
                 this.runda++;
+                for(let i of nielosowe_zdarzenia){
+                    if(i.runda == this.runda){
+                        pokaz_zdarzenie_nielosowe(i);
+                        break;
+                    }
+                }
             }
     
             if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
@@ -482,14 +543,16 @@ const ekwipunek = document.getElementsByClassName('ekwipunek');
 
 
 
-const otwarte_menu = {ustawienia: false};
+const otwarte_menu = {statystyki: false, ustawienia: false};
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
+const statystyki = document.getElementById('ekran_statystyk');
 
-function obsluga_ustawien(ustawienia) {
+function obsluga_ustawien(statystyki, ustawienia) {
     if (!otwarte_menu.ustawienia) {
-        pojawienie_ekranu(ustawienia);
+        zmiana_ekranu(statystyki, ustawienia);
         otwarte_menu.ustawienia = true;
+        otwarte_menu.statystyki = false;
     }
     else {
         znikniecie_ekranu(ustawienia);
@@ -498,7 +561,22 @@ function obsluga_ustawien(ustawienia) {
 }
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien(ustawienia2));
+ustawienia.addEventListener('click', () => obsluga_ustawien(statystyki, ustawienia2));
+
+function obsluga_statystyk(ustawienia, statystyki) {
+    if (!otwarte_menu.statystyki) {
+        zmiana_ekranu(ustawienia, statystyki);
+        otwarte_menu.statystyki = true;
+        otwarte_menu.ustawienia = false;
+    }
+    else {
+        znikniecie_ekranu(ustawienia);
+        otwarte_menu.statystyki = false;
+    }
+}
+
+const statystyki_przycisk = document.getElementById("przycisk_statystyki");
+statystyki_przycisk.addEventListener('click', () => obsluga_statystyk(ustawienia2, statystyki));
 
 function debug() {
     console.log("Debug się ładuje");
@@ -656,44 +734,9 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     }
 }
 
-const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
-const nazwa = document.getElementById('nazwa');
-const opis = document.getElementById('opis');
-const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
-
 for (let przycisk of mapa_przyciski) {
     przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa), losowe_zdarzenia));
 }
-
-class zdarzenie {
-    constructor(nazwa, opis) {
-        this.nazwa = nazwa;
-        this.opis = opis;
-    }
-}
-
-const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
-const losowe_zdarzenia = [
-    zdarzenie_testowe,
-    new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
-];
-
-function pokaz_zdarzenie(zdarzenie) {
-    zmiana_ekranu(mapa, ekran_zdarzenia);
-    otwarte_menu.mapka = false;
-    otwarte_menu.zdarzenie = true;
-    nazwa.innerHTML = zdarzenie.nazwa;
-    opis.innerHTML = zdarzenie.opis;
-}
-
-function zniknij_zdarzenie() {
-    zmiana_ekranu(ekran_zdarzenia, mapa);
-    otwarte_menu.mapka = true;
-    otwarte_menu.zdarzenie = false;
-    menedzer_gry.ilosc_losowych_zdarzen--;
-}
-
-przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 const sklep_przycisk = document.getElementById('przycisk_sklep');
 const ekran_sklepu = document.getElementById('ekran_sklepu');
