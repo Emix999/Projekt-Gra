@@ -9,10 +9,12 @@ gracz wybrany to taki który ma obecnie turę
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa = document.getElementById('nazwa');
 const opis = document.getElementById('opis');
-const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
+const przejdz_dalej_zdarzenie = document.getElementById('przejdz_dalej_zdarzenie');
 const ekran_zdarzenia_nielosowego = document.getElementById('ekran_zdarzenia_nielosowego');
 const opis_zdarzenia_nielosowego = document.getElementById('opis_zdarzenia_nielosowego');
 const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nielosowego');
+const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
+const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
 
 class zdarzenie {
     constructor(opis) {
@@ -34,7 +36,7 @@ const losowe_zdarzenia = [
     new zdarzenie('Skibidi toalety atakują szkołę.')
 ];
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie('Pan Czosnowski został porwany przez skibidi toalety', 1);
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 1);
 const nielosowe_zdarzenia = [
     zdarzenie_testowe2
 ]
@@ -49,16 +51,28 @@ function zniknij_zdarzenie() {
     menedzer_gry.ilosc_losowych_zdarzen--;
 }
 
-function pokaz_zdarzenie_nielosowe(zdarzenie){
+function pokaz_zdarzenie_nielosowe(){
     zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
-    opis_zdarzenia_nielosowego.innerHTML = zdarzenie.opis;
+    opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
+    menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
+}
+
+function przewin_opis_zdarzenia_nielosowego(){
+    menedzer_gry.indeks_opisu_zdarzenia_nielosowego++;
+    opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[menedzer_gry.indeks_opisu_zdarzenia_nielosowego];
+    if(menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1){
+        zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
+    }
 }
 
 function zniknij_zdarzenie_nielosowe() {
+    zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
 }
 
-przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
+przejdz_dalej_zdarzenie.addEventListener('click', () => zniknij_zdarzenie());
+przejdz_dalej_zdarzenie_nielosowe.addEventListener('click', () => przewin_opis_zdarzenia_nielosowego());
+wylacz_zdarzenie_nielosowe.addEventListener('click', () => zniknij_zdarzenie_nielosowe());
 
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
@@ -71,6 +85,8 @@ const menedzer_gry = {
     runda_egzamin: false,
     indeksy_aktywnych_egzamin: [],
     nielosowe_zdarzenia: nielosowe_zdarzenia,
+    zdarzenie: null,
+    indeks_opisu_zdarzenia_nielosowego: 0,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
@@ -136,7 +152,8 @@ const menedzer_gry = {
                 this.runda++;
                 for(let i of nielosowe_zdarzenia){
                     if(i.runda == this.runda){
-                        pokaz_zdarzenie_nielosowe(i);
+                        this.zdarzenie = i;
+                        pokaz_zdarzenie_nielosowe();
                         break;
                     }
                 }

@@ -430,7 +430,7 @@ body {
     visibility: hidden;
 }
 
-#przejdz_dalej2, #wyjdz_ze_sklepu
+#przejdz_dalej_zdarzenie, #wyjdz_ze_sklepu
 {
     height: 10vh;
     width: 80%;
@@ -522,4 +522,15 @@ body {
 
 #opis_zdarzenia_nielosowego{
     color: white;
+}
+
+#przejdz_dalej_zdarzenie_nielosowe, #wylacz_zdarzenie_nielosowe{
+    background-color: greenyellow;
+    float: right;
+    height: 40%;
+    width: 20%;
+}
+
+#wylacz_zdarzenie_nielosowe{
+    display: none;
 }
