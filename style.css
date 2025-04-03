@@ -377,6 +377,8 @@ body {
 #wnetrze_sklepu{
     height: 50vh;
     width: calc(100vw - 36vh);
+    background-image: url("skibidi/skibidi9.png");
+    background-size: cover;
 }
 
 #panel_sklepu{
