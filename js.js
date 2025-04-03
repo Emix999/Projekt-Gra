@@ -764,7 +764,7 @@ const s_018 = new sala('018', 'sale/101.png', new zestaw_pytan(
         klasa_p
     )
 );
-const s_02 = new sala('02', 'sale/101.png', new zestaw_pytan(
+const s_030 = new sala('030', 'sale/101.png', new zestaw_pytan(
     [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
@@ -777,7 +777,7 @@ const s_02 = new sala('02', 'sale/101.png', new zestaw_pytan(
         klasa_e
     )
 );
-const s_09 = new sala('09', 'sale/101.png', new zestaw_pytan(
+const s_029 = new sala('029', 'sale/101.png', new zestaw_pytan(
     [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
@@ -842,7 +842,7 @@ const s_021 = new sala('021', 'sale/101.png', new zestaw_pytan(
         klasa_r
     )
 );
-const sale = [s_018, s_02, s_09, s_026, s_013, s_015, s_021];
+const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021];
 
 for (let i = 0; i < sale.length; i++) {
     for(let j = 0; j < sala_przyciski.length; j++){
