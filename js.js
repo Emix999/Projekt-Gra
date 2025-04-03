@@ -36,7 +36,7 @@ const losowe_zdarzenia = [
     new zdarzenie('Skibidi toalety atakują szkołę.')
 ];
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 1);
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 100);
 const nielosowe_zdarzenia = [
     zdarzenie_testowe2
 ]
@@ -196,7 +196,7 @@ const menedzer_gry = {
         while (i < this.aktywni_gracze.length) {
             nr_graczy[i].value = ((i + this.indeks_wybranego) % this.aktywni_gracze.length) + 1;
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
-            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
+            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa.nazwa;
             i++;
         }  
     }
@@ -208,7 +208,7 @@ const menedzer_gry = {
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
 const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png", "avatary/gigachad.png", "avatary/spóźniony.png"];
-const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
+// const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
@@ -240,13 +240,28 @@ class przedmiot {
     }
 }
 
-let ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
+class klasa {
+    constructor(nazwa){
+        this.nazwa = nazwa;
+    }
+}
+
+const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
+
+const klasa_a = new klasa('automatyk');
+const klasa_e = new klasa('elektronik');
+const klasa_f = new klasa('fotograf');
+const klasa_i = new klasa('informatyk');
+const klasa_p = new klasa('programista');
+const klasa_r = new klasa('robotyk');
+const klasa_t = new klasa('teleinformatyk');
+const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
-let gracz2 = new gracz("gracz2", null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-let gracz3 = new gracz("gracz3", null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-let gracz4 = new gracz("gracz4", null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+const gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+const gracz2 = new gracz("gracz2", null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+const gracz3 = new gracz("gracz3", null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+const gracz4 = new gracz("gracz4", null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -271,7 +286,7 @@ class menu_graczy {
         if (gracze[i].id_klasy == klasy.length - 1) gracze[i].id_klasy = 0;
         else gracze[i].id_klasy += 1;
         let rezultat = klasy[gracze[i].id_klasy];
-        document.getElementById(this.id_klasa).value = rezultat;
+        document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[i].klasa = rezultat;
     }
     //Strzałka w lewo zmienia klasę na poprzednią w tablicy
@@ -279,7 +294,7 @@ class menu_graczy {
         if (gracze[i].id_klasy == 0) gracze[i].id_klasy = klasy.length - 1;
         else gracze[i].id_klasy -= 1;
         let rezultat = klasy[gracze[i].id_klasy];
-        document.getElementById(this.id_klasa).value = rezultat;
+        document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[i].klasa = rezultat;
     }
     //Strzałka w lewo zmienia avatar na poprzedni w tablicy
@@ -587,7 +602,7 @@ function obsluga_statystyk(ustawienia, statystyki) {
         otwarte_menu.ustawienia = false;
     }
     else {
-        znikniecie_ekranu(ustawienia);
+        znikniecie_ekranu(statystyki);
         otwarte_menu.statystyki = false;
     }
 }
@@ -674,22 +689,37 @@ const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 const sala_obraz = document.getElementById('obraz_sala');
 
 class sala {
-    constructor(nr, sciezka_sali, pytania, pytania_egzamin) {
+    constructor(nr, sciezka_sali, pytania, klasa = null, grupa_sali, pytania_egzamin = null) {
         this.nr = nr;
         this.sciezka_sali = sciezka_sali;
         this.pytania = pytania;
+        this.klasa = klasa; //klasa jest tylko do sala zawodowych
+        this.grupa_sali = grupa_sali;
         this.pytania_egzamin = pytania_egzamin;
     }
 
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         if(menedzer_gry.runda_egzamin){
-            if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa == this.pytania_egzamin.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
+            if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.pytania_egzamin.klasa.nazwa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
                 this.pokaz_sale_naprawde(this.pytania_egzamin, rok);
+            }
+            else{
+                alert('egzamin zawodowy - nie wchodzić, jeśli nie zdajesz tutaj');
             }
         }
         else{
-            this.pokaz_sale_naprawde(this.pytania, rok);
+            if(this.grupa_sali == 'zawodowa'){
+                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa.nazwa){
+                    this.pokaz_sale_naprawde(this.pytania, rok);
+                }
+                else{
+                    alert('sala zawodowa - nie wchodzić, jeśli nie jesteś odpowiedniego zawodu');
+                }
+            }
+            else{
+                this.pokaz_sale_naprawde(this.pytania, rok);
+            }
         }
     }
 
@@ -718,27 +748,110 @@ class zestaw_pytan_egzamin {
         this.rok_4 = rok_4;
         this.klasa = klasa; //klasa jest tylko do egzaminu zawodowego
         this.rok_5 = rok_5;
-        
     }
 }
 
-const s101 = new sala('101', 'sale/101.png', new zestaw_pytan(
+const s_018 = new sala('018', 'sale/101.png', new zestaw_pytan(
     [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
     [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
     [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
     [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_p, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'klasa0'
+        klasa_p
     )
 );
-const sale = [s101];
+const s_02 = new sala('02', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_e, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_e
+    )
+);
+const s_09 = new sala('09', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_a, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_a
+    )
+);
+const s_026 = new sala('026', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_f, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_f
+    )
+);
+const s_013 = new sala('013', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_t, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_t
+    )
+);
+const s_015 = new sala('015', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_i, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_i
+    )
+);
+const s_021 = new sala('021', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_r, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_r
+    )
+);
+const sale = [s_018, s_02, s_09, s_026, s_013, s_015, s_021];
 
 for (let i = 0; i < sale.length; i++) {
-    sala_przyciski[i].sala = sale[i];
-    sala_przyciski[i].addEventListener('click', () => sale[i].pokaz_sale());
+    for(let j = 0; j < sala_przyciski.length; j++){
+        if(sala_przyciski[j].innerHTML == sale[i].nr){
+            sala_przyciski[j].sala = sale[i];
+            sala_przyciski[j].addEventListener('click', () => sale[i].pokaz_sale());
+            break;
+        }
+    }
 }
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
