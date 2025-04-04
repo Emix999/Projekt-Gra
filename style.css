@@ -459,18 +459,18 @@ body {
     position: absolute;
 }
 
-#ekran_sali{
+/* #ekran_sali{
     height: 100vh;
     width: calc(100vw - 36vh);
     display: none;
     background-color: #212121;
     justify-content: center;
     align-items: center;
-}
+} */
 
-#obraz_sala{
+/* #obraz_sala{
     height: 100%;
-}
+} */
 
 #uzyj_przedmiotu{
     width: 10vh;
