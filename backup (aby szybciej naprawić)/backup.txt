@@ -1,3 +1,5 @@
+html:
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -164,19 +166,9 @@
         </div>
 
         <div id="ekran_zdarzenia" class="flex_pion">
+            <div id="nazwa"></div>
             <div id="opis"></div>
-            <button id="przejdz_dalej_zdarzenie">Przejdź dalej</button>
-        </div>
-
-        <div id="ekran_zdarzenia_nielosowego" class="flex_pion">
-            <div id="panel_zdarzenia_nielosowego">
-                <div id="opis_zdarzenia_nielosowego"></div>
-                <button id="przejdz_dalej_zdarzenie_nielosowe">Dalej</button>
-                <button id="wylacz_zdarzenie_nielosowe">Sigma</button>
-            </div>
-            <div id="obraz_zdarzenia_nielosowego">
-                <img style="width: 100%; height: 100%;" src="skibidi/skibidi1.png">
-            </div>
+            <button id="przejdz_dalej2">Przejdź dalej</button>
         </div>
 
         <div id="ekran_sali" style="display: none;">
@@ -184,45 +176,42 @@
         </div>
 
         <div id="ekran_sklepu">
-            <div id="wnetrze_sklepu">jakiś skibidi obrazek chciałeś to masz</div>
-            <div id="panel_sklepu" class="flex_pion">
-                <div class="sklep_arsenal" style="top: 52vh; right: 95%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
+            <div id="wnetrze_sklepu">jakiś skibidi obrazek</div>
+            <div id="panel_sklepu">
+                <div class="flex_poziom">
+                    <div class="sklep_arsenal" style="top: 52vh; right: 95%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 52vh; right: 65%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 52vh; right: 35%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
                 </div>
-                <div class="sklep_arsenal" style="top: 52vh; right: 65%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
+                <div class="flex_poziom">
+                    <div class="sklep_arsenal" style="top: 70vh; right: 95%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 70vh; right: 65%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
+                    <div class="sklep_arsenal" style="top: 70vh; right: 35%;">
+                        <button class="sklep_arsenal_obraz"></button>
+                        <div class="sklep_arsenal_nazwa"></div>
+                        <div class="sklep_arsenal_cena"></div>
+                    </div>
                 </div>
-                <div class="sklep_arsenal" style="top: 52vh; right: 35%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 95%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 65%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 35%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <button id="wyjdz_ze_sklepu">Wyjdź ze sklepu</button>
             </div>
         </div>
 
@@ -415,10 +404,6 @@
             </div>
         </div>
 
-        <div id="ekran_statystyk">
-            brum brum
-        </div>
-
         <div class="menu_statystyk start">
             <div class="flex_poziom">
                 <button id="przycisk_statystyki"></button>
@@ -503,3 +488,517 @@
 </body>
 
 </html>
+
+css:
+body {
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+#ekran_startowy {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_pion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_poziom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    height: 16.1vmin;
+    width: 16.1vmin;
+    top: 23%;
+    position: absolute;
+}
+
+#start {
+    width: 30vmin;
+    height: 10vmin;
+    background-image: url('menu_grafiki/start.png');
+    background-size: cover;
+    position: fixed;
+    border: none;
+    margin-bottom: 49vmin;
+}
+
+.ustawienia {
+    width: 50vmin;
+    height: 50vmin;
+    background-image: url('menu_grafiki/ustawienia.png');
+    background-size: cover;
+    position: fixed;
+    margin-top: 23vmin;
+}
+
+#muzyka_glosnosc,
+#muzyka_glosnosc2 {
+    left: 34.5%;
+    top: 16.3%;
+    height: 2vmin;
+    width: 3vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
+    border: none;
+}
+
+#muzyka_slider,
+#muzyka_slider2 {
+    left: 39.5%;
+    top: 16.1%;
+    height: 2vmin;
+    width: 21vmin;
+    position: absolute;
+}
+
+#sfx_glosnosc,
+#sfx_glosnosc2 {
+    left: 34.5%;
+    top: 24.7%;
+    height: 2vmin;
+    width: 3vmin;
+    background-color: transparent;
+    position: absolute;
+    color:  white;
+    border: none;
+}
+
+#sfx_slider,
+#sfx_slider2 {
+    left: 39.5%;
+    top: 24.5%;
+    height: 2vmin;
+    width: 21vmin;
+    position: absolute;
+}
+
+.przycisk_menu {
+    height: 4vmin;
+    width: 4vmin;
+}
+
+.los{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    top: 5%;
+}
+
+.strzalka_srodek_lewo{
+    background-size: cover;
+    position: absolute;
+    left: 5%;
+    top: 43%; 
+}
+
+.strzalka_srodek_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    top: 43%; 
+}
+
+.strzalka_dol_lewo{
+    position: absolute;
+    background-size: cover;
+    left: 5%;
+    bottom: 5%; 
+}
+
+.strzalka_dol_prawo{
+    position: absolute;
+    background-size: cover;
+    right: 5%;
+    bottom: 5%; 
+}
+
+.input_menu {
+    height: 2.4vmin;
+    width: 16.1vmin;
+    background-color: transparent;
+    color: white;
+}
+
+.nazwa_gracza_menu{
+    position: absolute;
+    top: 7.5%;
+    left: 22%;
+}
+.profil_gracza_menu{
+    position: absolute;
+    bottom: 7.5%;
+    left: 22%;
+}
+.zwijanie {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+}
+
+#przyciski_rozwijania>* {
+    position: fixed;
+    height: 15vmin;
+    width: 15vmin;
+    background-size: cover;
+    border: none;
+}
+
+#rozwin1 {
+    top: 18vmin;
+    left: 18vmin;
+    background-image: url('menu_grafiki/plus_red.png');
+}
+
+#rozwin2 {
+    top: 18vmin;
+    right: 18vmin;
+    background-image: url('menu_grafiki/plus_blue.png');
+}
+
+#rozwin3 {
+    bottom: 18vmin;
+    left: 18vmin;
+    background-image: url('menu_grafiki/plus_green.png');
+}
+
+#rozwin4 {
+    bottom: 18vmin;
+    right: 18vmin;
+    background-image: url('menu_grafiki/plus_yellow.png');
+}
+
+#menu_graczy>* {
+    position: fixed;
+    display: none;
+    background-color: brown;
+    height: 30vmin;
+    width: 30vmin;
+    text-align: center;
+    border: none;
+}
+
+#menu_gracza1 {
+    top: 11vmin;
+    left: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_red.png');
+    background-size: cover;
+}
+
+#menu_gracza2 {
+    top: 11vmin;
+    right: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_blue.png');
+    background-size: cover;
+}
+
+#menu_gracza3 {
+    bottom: 11vmin;
+    left: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_green.png');
+    background-size: cover;
+}
+
+#menu_gracza4 {
+    bottom: 11vmin;
+    right: 11vmin;
+    background-image: url('menu_grafiki/menu_gracza_yellow.png');
+    background-size: cover;
+}
+
+#gra {
+    display: none;
+    flex-direction: row;
+}
+
+.menu_statystyk {
+    height: 100vh;
+    width: 36vh;
+    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-size: cover;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.menu_statystyk * {
+    text-align: center;
+    color: white;
+    position: relative;
+    border: none;
+    font-family: Segoe UI;
+}
+.ekran_gry {
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    background-color: blue;
+    display: none;
+}
+
+#mapa,#ustawienia2{
+    width: calc(100vw - 36vh);
+    height: 100vh;
+    background-color: white;
+    justify-content: center;
+}
+
+#mapa{
+    display: flex;
+    background-color: white;
+}
+
+#ustawienia2{
+    background-color: transparent ;
+    display: none;
+    position: absolute;
+}
+
+#przycisk_statystyki {
+    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    left: 5.5%;
+}
+
+#ustawienia_menu_boczne {
+    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    right: 5.5%;
+}
+
+.nr_gracza {    
+    width: 3vh;
+    height: 3vh;
+    margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+.nazwa_gracza {
+    width: 25.5vh;
+    height: 3vh;
+    margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+.klasa_gracza {
+    margin: 0.5vh;
+    width: 30vh;
+    height: 3vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+#ekwipunek {
+    margin: 0.5vh;
+    width: 32vh;
+    height: 3vh;
+    margin-top: 3vh;
+    background-color: transparent;
+    position: absolute;
+}
+
+#sanity,
+#pieniadze,
+#zdane_lata,
+#obecny_rok {
+    margin: 0.5vh;
+    height: 3vh;
+    width: 3vh;
+    position: absolute;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal_obraz {
+    border-collapse: collapse;
+    margin: 0.5vh;
+    width: 7.9vh;
+    height: 7.9vh;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal{
+    position: absolute;
+}
+
+.sklep_arsenal{
+    color: white;
+}
+
+#ekran_sklepu{
+    display: none;
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    flex-direction: column;
+}
+
+#wnetrze_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+}
+
+#panel_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.odpowiedz {
+    background-color: aquamarine;
+    width: 30vw;
+    height: 20vh;
+    margin: 2vw;
+}
+
+#tresc,
+#nazwa {
+    width: 66vw;
+    height: 15vh;
+    background-color: blueviolet;
+    margin-bottom: 3vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+.margines_gora {
+    margin-top: 3vh;
+}
+
+#ekran_pytania,
+#ekran_zdarzenia{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    background-color: azure;
+    display: none;
+}
+
+#opis{
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+}
+
+#ekran_nagrody{
+    position: absolute;
+    height: 50vh;
+    width: 60%;
+    background-color: burlywood;
+    visibility: hidden;
+}
+
+#przejdz_dalej2{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+}
+
+#przejdz_dalej, #zakoncz_ture
+{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+    display: none;
+}
+
+.gracz{
+    height: 10vh;
+    width: 10vh;
+    background-color: transparent;
+    background-size: cover;
+    display: none;
+}
+
+.mapowanie_mapy *{
+    position: absolute;
+}
+
+#ekran_sali{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    display: none;
+}
+
+#obraz_sala{
+    height: 100%;
+}
+
+#ekran_sali{
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
+}
+
+#uzyj_przedmiotu{
+    width: 10vh;
+    height: 5vh;
+    font-size: 4vh;
+}
+
+#statystyki_przedmiotu{
+    margin-bottom: auto;
+    height: 25vh;
+    width: 35vh;
+    margin: 0.5vh;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+    margin-top: 3vh;
+    position: relative;
+}
+#nazwa_przedmiotu{
+    width: 20vh;
+    height: 5vh;
+    margin: 0.5vh;
+    font-size: 4vh;
+}
+#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
+    height: 6vh;
+    width: 6vh;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+    position: absolute;
+}
+
+
+#caly_ekwipunek{
+    flex-direction: column;
+}

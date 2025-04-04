@@ -108,8 +108,8 @@ body {
 }
 
 .strzalka_srodek_lewo{
-    position: absolute;
     background-size: cover;
+    position: absolute;
     left: 5%;
     top: 43%; 
 }
@@ -237,7 +237,8 @@ body {
 .menu_statystyk {
     height: 100vh;
     width: 36vh;
-    background-color: red;
+    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-size: cover;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -246,51 +247,85 @@ body {
 
 .menu_statystyk * {
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    position: relative;
+    border: none;
+    font-family: Segoe UI;
 }
-
 .ekran_gry {
     height: 100vh;
     width: calc(100vw - 36vh);
     background-color: blue;
+    display: none;
 }
 
-#mapa,#ustawienia2{
+#mapa,#ustawienia2, #ekran_statystyk{
     width: calc(100vw - 36vh);
     height: 100vh;
     background-color: white;
     justify-content: center;
+}
+
+#mapa{
+    display: flex;
+    background-color: white;
+}
+
+#ustawienia2, #ekran_statystyk{
     display: none;
     position: absolute;
-
 }
 
-#przycisk_mapa,
-#ustawienia_menu_boczne {
-    height: 8vh;
-    width: 16vh;
+#ustawienia2{
+    background-color: transparent;
+}
+
+#przycisk_statystyki {
+    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
     margin: 0.5vh;
     margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    left: 5.5%;
 }
 
-.nr_gracza {
-    width: 4vh;
+#ustawienia_menu_boczne {
+    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-size: cover;
+    height: 8.6vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-bottom: 5vh;
+    position: absolute;
+    top: 0.9vh; 
+    right: 5.5%;
+}
+
+.nr_gracza {    
+    width: 3vh;
     height: 3vh;
     margin: 0.5vh;
-
+    background-color: transparent;
+    position: absolute;
 }
 
 .nazwa_gracza {
-    width: 26vh;
+    width: 25.5vh;
     height: 3vh;
     margin: 0.5vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 .klasa_gracza {
     margin: 0.5vh;
-    width: 32vh;
+    width: 30vh;
     height: 3vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 #ekwipunek {
@@ -298,23 +333,58 @@ body {
     width: 32vh;
     height: 3vh;
     margin-top: 3vh;
+    background-color: transparent;
+    position: absolute;
 }
 
 #sanity,
-#iq,
+#pieniadze,
 #zdane_lata,
 #obecny_rok {
     margin: 0.5vh;
     height: 3vh;
-    width: 15vh;
+    width: 3vh;
+    position: absolute;
+    font-size: 20px;
+    background-color: transparent;
 }
 
-.ekwipunek {
-    border: 1px solid black;
+.ekwipunek, .sklep_arsenal_obraz {
     border-collapse: collapse;
     margin: 0.5vh;
-    width: 10.3vh;
-    height: 6vh;
+    width: 7.9vh;
+    height: 7.9vh;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+}
+
+.ekwipunek, .sklep_arsenal{
+    position: absolute;
+}
+
+.sklep_arsenal{
+    color: white;
+}
+
+#ekran_sklepu, #ekran_zdarzenia_nielosowego{
+    display: none;
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    flex-direction: column;
+}
+
+#wnetrze_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+    background-image: url("skibidi/skibidi9.png");
+    background-size: cover;
+}
+
+#panel_sklepu{
+    height: 50vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
 }
 
 .odpowiedz {
@@ -324,8 +394,7 @@ body {
     margin: 2vw;
 }
 
-#tresc,
-#nazwa {
+#tresc {
     width: 66vw;
     height: 15vh;
     background-color: blueviolet;
@@ -363,18 +432,19 @@ body {
     visibility: hidden;
 }
 
-#przejdz_dalej2{
+#przejdz_dalej_zdarzenie, #wyjdz_ze_sklepu
+{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
 }
 
-#przejdz_dalej
+#przejdz_dalej, #zakoncz_ture
 {
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
-    visibility: hidden;
+    display: none;
 }
 
 .gracz{
@@ -393,9 +463,76 @@ body {
     height: 100vh;
     width: calc(100vw - 36vh);
     display: none;
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
 }
 
-#sala{
+#obraz_sala{
     height: 100%;
-    width: 100%;
+}
+
+#uzyj_przedmiotu{
+    width: 10vh;
+    height: 5vh;
+    font-size: 4vh;
+}
+
+#statystyki_przedmiotu{
+    margin-bottom: auto;
+    height: 25vh;
+    width: 35vh;
+    margin: 0.5vh;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+    margin-top: 3vh;
+    position: relative;
+}
+#nazwa_przedmiotu{
+    width: 20vh;
+    height: 5vh;
+    margin: 0.5vh;
+    font-size: 4vh;
+}
+
+#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
+    height: 6vh;
+    width: 6vh;
+    top: 1px;
+    right: 1px;
+    background-size: cover;
+    position: absolute;
+}
+
+#caly_ekwipunek{
+    flex-direction: column;
+}
+
+#panel_zdarzenia_nielosowego {
+    height: 30vh;
+    width: calc(100vw - 36vh);
+    background-color: black;
+}
+
+#obraz_zdarzenia_nielosowego{
+    height: 70vh;
+    width: calc(100vw - 36vh);
+}
+
+#opis_zdarzenia_nielosowego{
+    color: white;
+}
+
+#przejdz_dalej_zdarzenie_nielosowe, #wylacz_zdarzenie_nielosowe{
+    background-color: greenyellow;
+    float: right;
+    height: 40%;
+    width: 20%;
+}
+
+#wylacz_zdarzenie_nielosowe{
+    display: none;
 }

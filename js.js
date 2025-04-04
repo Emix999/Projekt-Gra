@@ -6,50 +6,214 @@ gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
 
+const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
+const nazwa = document.getElementById('nazwa');
+const opis = document.getElementById('opis');
+const przejdz_dalej_zdarzenie = document.getElementById('przejdz_dalej_zdarzenie');
+const ekran_zdarzenia_nielosowego = document.getElementById('ekran_zdarzenia_nielosowego');
+const opis_zdarzenia_nielosowego = document.getElementById('opis_zdarzenia_nielosowego');
+const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nielosowego');
+const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
+const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
+
+class zdarzenie {
+    constructor(opis) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+    }
+}
+
+class nielosowe_zdarzenie extends zdarzenie {
+    constructor(opis, runda){
+        super(opis);
+        this.runda = runda;
+    }
+}
+
+const zdarzenie_testowe = new zdarzenie('Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
+const losowe_zdarzenia = [
+    zdarzenie_testowe,
+    new zdarzenie('Skibidi toalety atakują szkołę.')
+];
+
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 100);
+const nielosowe_zdarzenia = [
+    zdarzenie_testowe2
+]
+
+function pokaz_zdarzenie(zdarzenie) {
+    zmiana_ekranu(mapa, ekran_zdarzenia);
+    opis.innerHTML = zdarzenie.opis;
+}
+
+function zniknij_zdarzenie() {
+    zmiana_ekranu(ekran_zdarzenia, mapa);
+    menedzer_gry.ilosc_losowych_zdarzen--;
+}
+
+function pokaz_zdarzenie_nielosowe(){
+    zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
+    opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
+    menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
+}
+
+function przewin_opis_zdarzenia_nielosowego(){
+    menedzer_gry.indeks_opisu_zdarzenia_nielosowego++;
+    opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[menedzer_gry.indeks_opisu_zdarzenia_nielosowego];
+    if(menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1){
+        zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
+    }
+}
+
+function zniknij_zdarzenie_nielosowe() {
+    zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
+    zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
+}
+
+przejdz_dalej_zdarzenie.addEventListener('click', () => zniknij_zdarzenie());
+przejdz_dalej_zdarzenie_nielosowe.addEventListener('click', () => przewin_opis_zdarzenia_nielosowego());
+wylacz_zdarzenie_nielosowe.addEventListener('click', () => zniknij_zdarzenie_nielosowe());
+
 //Deklaracja menedżera gry, który menedżeruje grą
 const menedzer_gry = {
-    indeks_wybranego: 0,
+    ostatni_pokazany_przedmiot: null,
+    indeks_wybranego: -1,
     rok_gry: 1,
     aktywni_gracze: [],
     runda: 0,
-    koniec_tury: function(){
-        if(this.indeks_wybranego == this.aktywni_gracze.length - 1){
-            this.indeks_wybranego = 0;
+    ilosc_losowych_zdarzen: 0,
+    runda_egzamin: false,
+    indeksy_aktywnych_egzamin: [],
+    nielosowe_zdarzenia: nielosowe_zdarzenia,
+    zdarzenie: null,
+    indeks_opisu_zdarzenia_nielosowego: 0,
+    poczatek_tury: function () {
+        if(this.runda_egzamin){
+            this.poczatek_tury_egzamin();
+            return 0;
         }
         else{
-            this.indeks_wybranego++;
-        }
+            if (this.runda % 10 == 0 && this.runda != 0) {
+                //egzamin zawodowy nr 1
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+
+                //egzamin zawodowy nr 2
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 3 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+
+                //matura
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 4 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+
+                this.rok_gry++;
+                for (let i of this.aktywni_gracze) {
+                    //warunek
+                    i.zdane_lata++;
+                    i.podszedl_do_egzaminu = false;
+                }
+            }
+
+            if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
+                this.indeks_wybranego = 0;
+            }
+            else {
+                this.indeks_wybranego++;
+            }
     
-        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
-        iq.value = this.aktywni_gracze[this.indeks_wybranego].iq;
-        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
-        obecny_rok.value  = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+            if (this.indeks_wybranego == 0) {
+                this.runda++;
+                for(let i of nielosowe_zdarzenia){
+                    if(i.runda == this.runda){
+                        this.zdarzenie = i;
+                        pokaz_zdarzenie_nielosowe();
+                        break;
+                    }
+                }
+            }
     
-        let i = 0;
-        while(i < this.aktywni_gracze.length){
-            nr_graczy[i].value = (i + this.indeks_wybranego) % this.aktywni_gracze.length;
-            nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
-            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa;
-            i++;
+            if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
+                this.ilosc_losowych_zdarzen = 1;
+            }
+            else {
+                this.ilosc_losowych_zdarzen = 0;
+            }
         }
 
-        if(this.indeks_wybranego == 0){
-            this.runda++;
+        this.wypisz_informacje_graczy();   
+    },
+    poczatek_tury_egzamin: function() {
+        if(this.indeksy_aktywnych_egzamin.length == 0){
+            this.runda_egzamin = false;
+            this.indeks_wybranego = -1;
+            this.poczatek_tury();
+            return 1;
         }
+        this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
+        this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
+        this.indeksy_aktywnych_egzamin.shift();
+
+        this.wypisz_informacje_graczy();
+    },
+    wypisz_informacje_graczy: function() {
+        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
+        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
+        obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+
+        for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
+            let sciezka = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
+            ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
+        }
+
+        let i = 0;
+        while (i < this.aktywni_gracze.length) {
+            nr_graczy[i].value = ((i + this.indeks_wybranego) % this.aktywni_gracze.length) + 1;
+            nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
+            klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa.nazwa;
+            i++;
+        }  
     }
 };
+
 
 
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
 const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png", "avatary/gigachad.png", "avatary/spóźniony.png"];
-const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
+// const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(id_html,nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
-        this.id_html=id_html;
+    constructor(id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+        this.id_html = id_html;
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
         this.klasa = klasa;
@@ -61,14 +225,43 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdane_lata = zdane_lata;
         this.czy_aktywny = czy_aktywny;
         this.ekwipunek = ekwipunek;
+        this.podszedl_do_egzaminu = false;
+        this.hajs = 20;
     }
 }
 
+class przedmiot {
+    constructor(nazwa, opis, id_obrazu, sanity, cena = 0) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.id_obrazu = id_obrazu;
+        this.sanity=sanity;
+        this.cena = cena;
+    }
+}
+
+class klasa {
+    constructor(nazwa){
+        this.nazwa = nazwa;
+    }
+}
+
+const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
+
+const klasa_a = new klasa('automatyk');
+const klasa_e = new klasa('elektronik');
+const klasa_f = new klasa('fotograf');
+const klasa_i = new klasa('informatyk');
+const klasa_p = new klasa('programista');
+const klasa_r = new klasa('robotyk');
+const klasa_t = new klasa('teleinformatyk');
+const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
+
 //Obiekty 4 graczy i ich domyślne warotści
-let gracz1 = new gracz("gracz1",null, 0, null, 0, null, 0, 100, 100, 0, false, ["soczek"]);
-let gracz2 = new gracz("gracz2",null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-let gracz3 = new gracz("gracz3",null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-let gracz4 = new gracz("gracz4",null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+const gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+const gracz2 = new gracz("gracz2", null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+const gracz3 = new gracz("gracz3", null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+const gracz4 = new gracz("gracz4", null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -93,7 +286,7 @@ class menu_graczy {
         if (gracze[i].id_klasy == klasy.length - 1) gracze[i].id_klasy = 0;
         else gracze[i].id_klasy += 1;
         let rezultat = klasy[gracze[i].id_klasy];
-        document.getElementById(this.id_klasa).value = rezultat;
+        document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[i].klasa = rezultat;
     }
     //Strzałka w lewo zmienia klasę na poprzednią w tablicy
@@ -101,7 +294,7 @@ class menu_graczy {
         if (gracze[i].id_klasy == 0) gracze[i].id_klasy = klasy.length - 1;
         else gracze[i].id_klasy -= 1;
         let rezultat = klasy[gracze[i].id_klasy];
-        document.getElementById(this.id_klasa).value = rezultat;
+        document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[i].klasa = rezultat;
     }
     //Strzałka w lewo zmienia avatar na poprzedni w tablicy
@@ -200,7 +393,7 @@ const gra = document.getElementById('gra');
 
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
-//Tworzy tabelę aktywnych graczy
+    //Tworzy tabelę aktywnych graczy
     for (let i of gracze) {
         if (i.czy_aktywny) {
             menedzer_gry.aktywni_gracze.push(i);
@@ -214,10 +407,10 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     }
 
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-    
-    for(i of gracze){
-        let avatar="url('"+i.avatar+"')";
-        document.getElementById(i.id_html).style.backgroundImage=avatar;
+
+    for (i of gracze) {
+        let avatar = "url('" + i.avatar + "')";
+        document.getElementById(i.id_html).style.backgroundImage = avatar;
     }
 
     slider_muzyka2.value = glosnosc_muzyki.value;
@@ -225,7 +418,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     slider_sfx2.value = glosnosc_sfx.value;
     glosnosc_sfx2.value = glosnosc_sfx.value;
 
-    menedzer_gry.runda = 1;
+    menedzer_gry.poczatek_tury();
 }
 
 //Event listner przycisku Start
@@ -238,7 +431,7 @@ class pytanie {
     constructor(tresc, odpowiedzi) {
         this.tresc = tresc;
         this.odpowiedzi = odpowiedzi;
-        // odpowiedź na indeksie zerowym jest poprawna
+        //odpowiedź na indeksie zerowym jest poprawna
     }
 }
 
@@ -247,6 +440,9 @@ class pytanie {
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 const ekran_gry = document.getElementById("ekran_gry");
 const ekran_pytania = document.getElementById("ekran_pytania");
+const przejdz_dalej = document.getElementById("przejdz_dalej");
+const ekran_nagrody = document.getElementById("ekran_nagrody");
+const zakoncz_ture = document.getElementById('zakoncz_ture');
 
 function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
@@ -259,46 +455,52 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
-    function czy_poprawna(i) {
-        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-            alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
-
-        }
-        else {
-            alert("UwUaga Debil");
-        }
-
-        for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-            if(odpowiedzi_przyciski[i].dataset.czy_poprawna=='true'){
-                odpowiedzi_przyciski[i].style.backgroundColor="green";
-            }
-            else{
-                odpowiedzi_przyciski[i].style.backgroundColor="red";
-            }
-        }
-
-        function wyswietl_nagrode() {
-            const ekran_nagrody = document.getElementById("ekran_nagrody");
-            ekran_nagrody.style.visibility = "visible";
-            ekran_nagrody.innerHTML="Twoje sanity zmieniło się o "+pytanie.sanity+". Twoje iq zmieniło się o "+pytanie.iq+".";
-        }
-        const przejdz_dalej = document.getElementById("przejdz_dalej");
-        przejdz_dalej.style.visibility = "visible";
-        przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
-    }
-
-    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
-    }
-
-
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
             console.log(przycisk.dataset.etykieta);
         }
     }
+}
 
+let czy_poprawna_odpowiedz;
+
+function czy_poprawna(i) {
+    czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
+    if (czy_poprawna_odpowiedz) {
+        alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+    }
+    else {
+        alert("UwUaga Debil");
+    }
+
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+            odpowiedzi_przyciski[i].style.backgroundColor = "green";
+        }
+        else {
+            odpowiedzi_przyciski[i].style.backgroundColor = "red";
+        }
+    }
+
+    przejdz_dalej.style.display = "block";
+}
+
+function wyswietl_nagrode() {
+    ekran_nagrody.style.visibility = "visible";
+    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+    przejdz_dalej.style.display = 'none';
+    zakoncz_ture.style.display = 'block';
+}
+
+function odwroc_pokaz_pytanie(){
+    zmiana_ekranu(ekran_pytania, mapa);
+    ekran_nagrody.style.visibility = 'hidden';
+    zakoncz_ture.style.display = 'none';
+    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+        odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
+    }
+    menedzer_gry.poczatek_tury();
 }
 
 
@@ -309,6 +511,11 @@ function przemieszaj_tablice(tablica) {
     }
 }
 
+for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+    odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
+}
+przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
+zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
 
@@ -317,7 +524,7 @@ const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
 
-function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy){
+function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
@@ -364,48 +571,46 @@ const obecny_rok = document.getElementById('obecny_rok');
 const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
+const ekwipunek = document.getElementsByClassName('ekwipunek');
 
-const otwarte_menu = {mapka: false, ustawienia: false, zdarzenie: false};
+
+
+const otwarte_menu = {statystyki: false, ustawienia: false};
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
+const statystyki = document.getElementById('ekran_statystyk');
 
-function obsluga_mapy(ustawienia, mapa){
-    if(!otwarte_menu.zdarzenie){
-        if(!otwarte_menu.mapka){
-            if(otwarte_menu.ustawienia){
-                obsluga_ustawien(mapa, ustawienia);
-            }
-            pojawienie_ekranu(mapa);
-            otwarte_menu.mapka = true;
-        }
-        else{
-            znikniecie_ekranu(mapa);
-            otwarte_menu.mapka = false;
-        }
-    }
-}
-
-const mapka = document.getElementById("przycisk_mapa");
-mapka.addEventListener('click', () => obsluga_mapy(ustawienia2, mapa));
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function obsluga_ustawien(mapa, ustawienia){
-    if(!otwarte_menu.ustawienia){
-        if(otwarte_menu.mapka){
-            obsluga_mapy(ustawienia, mapa);
-        }
-        pojawienie_ekranu(ustawienia);
+function obsluga_ustawien(statystyki, ustawienia) {
+    if (!otwarte_menu.ustawienia) {
+        zmiana_ekranu(statystyki, ustawienia);
         otwarte_menu.ustawienia = true;
+        otwarte_menu.statystyki = false;
     }
-    else{
+    else {
         znikniecie_ekranu(ustawienia);
         otwarte_menu.ustawienia = false;
     }
 }
 
 const ustawienia = document.getElementById("ustawienia_menu_boczne");
-ustawienia.addEventListener('click', () => obsluga_ustawien(mapa, ustawienia2));
+ustawienia.addEventListener('click', () => obsluga_ustawien(statystyki, ustawienia2));
 
-function debug(){
+function obsluga_statystyk(ustawienia, statystyki) {
+    if (!otwarte_menu.statystyki) {
+        zmiana_ekranu(ustawienia, statystyki);
+        otwarte_menu.statystyki = true;
+        otwarte_menu.ustawienia = false;
+    }
+    else {
+        znikniecie_ekranu(statystyki);
+        otwarte_menu.statystyki = false;
+    }
+}
+
+const statystyki_przycisk = document.getElementById("przycisk_statystyki");
+statystyki_przycisk.addEventListener('click', () => obsluga_statystyk(ustawienia2, statystyki));
+
+function debug() {
     console.log("Debug się ładuje");
 }
 
@@ -429,20 +634,20 @@ const slider_sfx = document.getElementById("sfx_slider");
 const glosnosc_sfx = document.getElementById("sfx_glosnosc");
 glosnosc_sfx.value = slider_sfx.value;
 
-const sfx=document.querySelectorAll(".sfx");
-const muzyka=document.querySelectorAll(".muzyka");
+const sfx = document.querySelectorAll(".sfx");
+const muzyka = document.querySelectorAll(".muzyka");
 
 slider_muzyka.oninput = function slider_muzyka_update() {
     glosnosc_muzyki.value = slider_muzyka.value;
-    for(let i of muzyka){
-        i.volume = slider_muzyka.value/100;
+    for (let i of muzyka) {
+        i.volume = slider_muzyka.value / 100;
     }
 }
 
 slider_sfx.oninput = function slider_sfx_update() {
     glosnosc_sfx.value = slider_sfx.value;
-    for(let i of sfx){
-        i.volume = slider_sfx.value/100;
+    for (let i of sfx) {
+        i.volume = slider_sfx.value / 100;
     }
 }
 
@@ -453,94 +658,312 @@ const glosnosc_sfx2 = document.getElementById("sfx_glosnosc2");
 
 slider_muzyka2.oninput = function slider_muzyka_update2() {
     glosnosc_muzyki2.value = slider_muzyka2.value;
-    for(let i of muzyka){
-        i.volume = slider_muzyka2.value/100;
+    for (let i of muzyka) {
+        i.volume = slider_muzyka2.value / 100;
     }
 }
 
 slider_sfx2.oninput = function slider_sfx_update2() {
     glosnosc_sfx2.value = slider_sfx2.value;
-    for(let i of sfx){
-        i.volume = slider_sfx2.value/100;
+    for (let i of sfx) {
+        i.volume = slider_sfx2.value / 100;
     }
 }
 
-function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy){
+function zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy) {
     znikniecie_ekranu(ekran_znikajacy);
     pojawienie_ekranu(ekran_pojawiajacy);
 }
 
-function pojawienie_ekranu(ekran_pojawiajacy){
+function pojawienie_ekranu(ekran_pojawiajacy) {
     ekran_pojawiajacy.style.display = "flex";
 }
 
-function znikniecie_ekranu(ekran_znikajacy){
+function znikniecie_ekranu(ekran_znikajacy) {
     ekran_znikajacy.style.display = "none";
 }
 
 const ekran_sali = document.getElementById('ekran_sali');
 const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
+const sala_obraz = document.getElementById('obraz_sala');
 
-function pokaz_sale(sciezka_sali, ekran_sali, mapa, ustawienia){
-    obsluga_mapy(ustawienia, mapa);
-    zmiana_ekranu(ekran_gry, ekran_sali);
-    sala.src = sciezka_sali;
+class sala {
+    constructor(nr, sciezka_sali, pytania, klasa = null, grupa_sali, pytania_egzamin = null) {
+        this.nr = nr;
+        this.sciezka_sali = sciezka_sali;
+        this.pytania = pytania;
+        this.klasa = klasa; //klasa jest tylko do sala zawodowych
+        this.grupa_sali = grupa_sali;
+        this.pytania_egzamin = pytania_egzamin;
+    }
+
+    pokaz_sale() {
+        let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
+        if(menedzer_gry.runda_egzamin){
+            if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.pytania_egzamin.klasa.nazwa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
+                this.pokaz_sale_naprawde(this.pytania_egzamin, rok);
+            }
+            else{
+                alert('egzamin zawodowy - nie wchodzić, jeśli nie zdajesz tutaj');
+            }
+        }
+        else{
+            if(this.grupa_sali == 'zawodowa'){
+                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa.nazwa){
+                    this.pokaz_sale_naprawde(this.pytania, rok);
+                }
+                else{
+                    alert('sala zawodowa - nie wchodzić, jeśli nie jesteś odpowiedniego zawodu');
+                }
+            }
+            else{
+                this.pokaz_sale_naprawde(this.pytania, rok);
+            }
+        }
+    }
+
+    pokaz_sale_naprawde(pytania, rok) {
+        znikniecie_ekranu(mapa);
+        zmiana_ekranu(ekran_gry, ekran_sali);
+        sala_obraz.src = this.sciezka_sali;
+        let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
+        pokaz_pytanie(pytanie_kartkowka, ekran_sali, ekran_pytania);
+    }
 }
 
-function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia){
+class zestaw_pytan {
+    constructor(rok_1, rok_2, rok_3, rok_4, rok_5) {
+        this.rok_1 = rok_1;
+        this.rok_2 = rok_2;
+        this.rok_3 = rok_3;
+        this.rok_4 = rok_4;
+        this.rok_5 = rok_5;
+    }
+}
+
+class zestaw_pytan_egzamin {
+    constructor(rok_3 = null, rok_4 = null, klasa = null, rok_5 = null) {
+        this.rok_3 = rok_3;
+        this.rok_4 = rok_4;
+        this.klasa = klasa; //klasa jest tylko do egzaminu zawodowego
+        this.rok_5 = rok_5;
+    }
+}
+
+const s_018 = new sala('018', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_p, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_p
+    )
+);
+const s_030 = new sala('030', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_e, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_e
+    )
+);
+const s_029 = new sala('029', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_a, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_a
+    )
+);
+const s_026 = new sala('026', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_f, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_f
+    )
+);
+const s_013 = new sala('013', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_t, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_t
+    )
+);
+const s_015 = new sala('015', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_i, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_i
+    )
+);
+const s_021 = new sala('021', 'sale/101.png', new zestaw_pytan(
+    [pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
+    [new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
+    [new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
+    [new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]),
+    klasa_r, 'zawodowa',
+    new zestaw_pytan_egzamin(
+        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
+        klasa_r
+    )
+);
+const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021];
+
+for (let i = 0; i < sale.length; i++) {
+    for(let j = 0; j < sala_przyciski.length; j++){
+        if(sala_przyciski[j].innerHTML == sale[i].nr){
+            sala_przyciski[j].sala = sale[i];
+            sala_przyciski[j].addEventListener('click', () => sale[i].pokaz_sale());
+            break;
+        }
+    }
+}
+
+function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
 
     //losuje, czy zdarzenie ma wystąpić i jakie
-    if(Math.floor(Math.random() * 10 /*daj se jakąś liczbę*/) == 0){
-        let zdarzenie = zdarzenia[Math.floor(Math.random()*zdarzenia.length)];
+    if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
+        let zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
         pokaz_zdarzenie(zdarzenie);
     }
 }
 
-for(let przycisk of sala_przyciski){
-    przycisk.addEventListener('click', () => pokaz_sale(przycisk.dataset.sciezka_sali, ekran_sali, mapa, ustawienia2));
-}
-
-const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
-const nazwa = document.getElementById('nazwa');
-const opis = document.getElementById('opis');
-const przejdz_dalej2 = document.getElementById('przejdz_dalej2');
-
-for(let przycisk of mapa_przyciski){
+for (let przycisk of mapa_przyciski) {
     przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa), losowe_zdarzenia));
 }
 
-class zdarzenie{
-    constructor(nazwa, opis){
-        this.nazwa = nazwa;
-        this.opis = opis;
+const sklep_przycisk = document.getElementById('przycisk_sklep');
+const ekran_sklepu = document.getElementById('ekran_sklepu');
+const sklep_obrazy_arsenalu = document.getElementsByClassName('sklep_arsenal_obraz');
+const sklep_nazwy_arsenalu = document.getElementsByClassName('sklep_arsenal_nazwa');
+const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena');
+const sklep_kup = document.getElementsByClassName('sklep_kup')
+const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
+
+const sklep = {
+    arsenal: [
+        new przedmiot('obiadek', 'test', 'ziemniak.png', 20, 22),
+        new przedmiot('rozwiązany sprawdzian', 'test2', 'ziemniak.png', 0, 30),
+        new przedmiot('samochód Elona Muska', 'brum brum', 'ziemniak.png', 200, 200),
+        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'ziemniak.png', 2000, 1000),
+        new przedmiot('bomba atomowa', 'bum bum', 'ziemniak.png', 0, 10000),
+        new przedmiot('XAMPP: wersja premium', 'sql', 'ziemniak.png', 0, 100000)
+    ],
+    pokaz: function() {
+        zmiana_ekranu(mapa, ekran_sklepu);
+    },
+    kup: function(id_produktu){
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena){
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
+            alert('pomyślnie kupiono produkt');
+        }
+        else{
+            alert('złodzieju, nie złodziejuj');
+        }
+    },
+    znikniecie: function(){
+        zmiana_ekranu(ekran_sklepu, mapa);
     }
 }
 
-const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
-const losowe_zdarzenia = [
-    zdarzenie_testowe,
-    new zdarzenie('Atak terrorystyczny', 'Terroryści atakują szkołę.')
-];
+sklep_przycisk.addEventListener('click', () => sklep.pokaz());
+//setTimeout(() => sklep.pokaz(), 3000);
 
-function pokaz_zdarzenie(zdarzenie){
-    znikniecie_ekranu(ekran_gry);
-    zmiana_ekranu(mapa, ekran_zdarzenia);
-    otwarte_menu.mapka = false;
-    otwarte_menu.zdarzenie = true;
-    nazwa.innerHTML = zdarzenie.nazwa;
-    opis.innerHTML = zdarzenie.opis;
+for(let i = 0; i < sklep.arsenal.length; i++){
+    sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
+    sklep_nazwy_arsenalu[i].innerHTML = sklep.arsenal[i].nazwa;
+    sklep_ceny_arsenalu[i].innerHTML = 'cena: ' + sklep.arsenal[i].cena;
+    sklep_kup[i].addEventListener('click', () => sklep.kup(i));
 }
 
-function zniknij_zdarzenie(){
-    zmiana_ekranu(ekran_zdarzenia, mapa);
-    otwarte_menu.mapka = true;
-    otwarte_menu.zdarzenie = false;
-    pojawienie_ekranu(ekran_gry);
+wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
+
+
+
+
+
+
+
+
+
+
+
+const szczegoly_przedmiotu = document.getElementById("statystyki_przedmiotu");
+
+
+for (let i = 0; i < ekwipunek.length; i++) {
+    ekwipunek[i].addEventListener("click", () =>pokaz_szczegoly_przedmiotu(i));
 }
 
-przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
+document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", ()=> znikniecie_szczegolow_przedmiotu());
+
+function znikniecie_szczegolow_przedmiotu(){
+    znikniecie_ekranu(szczegoly_przedmiotu); 
+    pojawienie_ekranu(document.getElementById("caly_ekwipunek"));
+}
+
+function pokaz_szczegoly_przedmiotu(slot) {
+    let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+
+    if (wybrany_przedmiot.id_obrazu != null) {
+        znikniecie_ekranu(document.getElementById("caly_ekwipunek"));
+        pojawienie_ekranu(szczegoly_przedmiotu);
+        let nazwa = document.getElementById("nazwa_przedmiotu");
+        let opis = document.getElementById("opis_przedmiotu");
+        nazwa.innerHTML = wybrany_przedmiot.nazwa;
+        opis.innerHTML = wybrany_przedmiot.opis;
+    }
+    menedzer_gry.ostatni_pokazany_przedmiot = slot;
+}
+
+document.getElementById("uzyj_przedmiotu").addEventListener("click",()=>uzyj_przedmiotu());
+
+
+function uzyj_przedmiotu(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity+=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot];
+    znikniecie_szczegolow_przedmiotu();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    
+    ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    document.getElementsByClassName('ekwipunek')[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+}
 
 
 
@@ -553,26 +976,7 @@ przejdz_dalej2.addEventListener('click', () => zniknij_zdarzenie());
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 
 
 function klatka(gracz_id, cel, predkosc=10) {
@@ -585,32 +989,31 @@ function klatka(gracz_id, cel, predkosc=10) {
 
     let skok=1;
     if(gracz_lewo>cel_lewo){
-        let x=(gracz_lewo-skok)+'px';
-        gracz.style.left = x;
+        gracz.style.left = (gracz_lewo-skok)+'px';
         akcja=true;
     }
 
     if (gracz_lewo < cel_lewo) {
-        let x=(gracz_lewo+skok)+'px';
-        gracz.style.left = x;
+        gracz.style.left = (gracz_lewo+skok)+'px';
         akcja=true;
     }
 
     if (gracz_gora > cel_gora) {
-        let y=(gracz_gora-skok)+'px';
-        gracz.style.top = y;
+        gracz.style.top = (gracz_gora-skok)+'px';
         akcja=true;
     }
 
     if (gracz_gora < cel_gora) {
-        let y=(gracz_gora+skok)+'px';
-        gracz.style.top = y;
+        gracz.style.top = (gracz_gora+skok)+'px';
         akcja=true;
-
     }
     if(akcja)setTimeout(()=>(klatka(gracz_id, cel)),predkosc);
-
 }
+
+*/
+
+
+
 /*
 let przyciski=document.querySelectorAll(".sala");
 
@@ -619,11 +1022,41 @@ for(let i of przyciski){
 }
 */
 
+
+
+//co to ma być za heretyczny kod
+
+//zgadzam się herezja po całości...
+
 const sas = document.getElementById("start")
 
-function jaki_gracz(){
+function jaki_gracz() {
     document.getElementById("nr_wybranego").innerText = gracze[0].id_html;
     document.getElementById("nazwa_wybranego").innerText = gracze[0].nazwa;
 }
 
 sas.addEventListener('click', () => jaki_gracz());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ekwipunek 
