@@ -7,7 +7,7 @@ gracz wybrany to taki który ma obecnie turę
 */
 
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
-const nazwa = document.getElementById('nazwa');
+const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
 const opis = document.getElementById('opis');
 const przejdz_dalej_zdarzenie = document.getElementById('przejdz_dalej_zdarzenie');
 const ekran_zdarzenia_nielosowego = document.getElementById('ekran_zdarzenia_nielosowego');
@@ -17,23 +17,23 @@ const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej
 const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
 
 class zdarzenie {
-    constructor(opis) {
+    constructor(nazwa, opis) {
         this.nazwa = nazwa;
         this.opis = opis;
     }
 }
 
 class nielosowe_zdarzenie extends zdarzenie {
-    constructor(opis, runda){
-        super(opis);
+    constructor(nazwa, opis, runda){
+        super(nazwa, opis);
         this.runda = runda;
     }
 }
 
-const zdarzenie_testowe = new zdarzenie('Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
+const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
 const losowe_zdarzenia = [
     zdarzenie_testowe,
-    new zdarzenie('Skibidi toalety atakują szkołę.')
+    new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
 ];
 
 const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 100);
@@ -43,6 +43,7 @@ const nielosowe_zdarzenia = [
 
 function pokaz_zdarzenie(zdarzenie) {
     zmiana_ekranu(mapa, ekran_zdarzenia);
+    nazwa_zdarzenia.innerHTML = zdarzenie.nazwa;
     opis.innerHTML = zdarzenie.opis;
 }
 
@@ -167,7 +168,7 @@ const menedzer_gry = {
             }
         }
 
-        this.wypisz_informacje_graczy();   
+        this.wypisz_informacje_graczy();
     },
     poczatek_tury_egzamin: function() {
         if(this.indeksy_aktywnych_egzamin.length == 0){
@@ -183,14 +184,11 @@ const menedzer_gry = {
         this.wypisz_informacje_graczy();
     },
     wypisz_informacje_graczy: function() {
-        sanity.value = this.aktywni_gracze[this.indeks_wybranego].sanity;
+        zaktualizuj_sanity();
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
         obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
 
-        for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
-            let sciezka = this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].id_obrazu;
-            ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
-        }
+        zaktualizuj_ekwipunek();
 
         let i = 0;
         while (i < this.aktywni_gracze.length) {
@@ -226,7 +224,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.czy_aktywny = czy_aktywny;
         this.ekwipunek = ekwipunek;
         this.podszedl_do_egzaminu = false;
-        this.hajs = 20;
+        this.hajs = 30;
     }
 }
 
@@ -444,8 +442,12 @@ const przejdz_dalej = document.getElementById("przejdz_dalej");
 const ekran_nagrody = document.getElementById("ekran_nagrody");
 const zakoncz_ture = document.getElementById('zakoncz_ture');
 
+let czy_odpowiedziano;
+
 function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+
+    czy_odpowiedziano = false;
 
     tresc.innerHTML = pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -466,29 +468,37 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
 let czy_poprawna_odpowiedz;
 
 function czy_poprawna(i) {
-    czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
-    if (czy_poprawna_odpowiedz) {
-        alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
-    }
-    else {
-        alert("UwUaga Debil");
-    }
-
-    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-            odpowiedzi_przyciski[i].style.backgroundColor = "green";
+    if(!czy_odpowiedziano){
+        czy_odpowiedziano = true;
+        czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
+        if (czy_poprawna_odpowiedz) {
+            alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
         }
         else {
-            odpowiedzi_przyciski[i].style.backgroundColor = "red";
+            alert("UwUaga Debil");
         }
-    }
 
-    przejdz_dalej.style.display = "block";
+        for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+            if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+                odpowiedzi_przyciski[i].style.backgroundColor = "green";
+            }
+            else {
+                odpowiedzi_przyciski[i].style.backgroundColor = "red";
+            }
+        }
+
+        przejdz_dalej.style.display = "block";
+    }
+    else{
+        alert('kolejna odpowiedź się nie liczy');
+    }
 }
 
 function wyswietl_nagrode() {
     ekran_nagrody.style.visibility = "visible";
-    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + pytanie.sanity;
+    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += (czy_poprawna_odpowiedz ? 10 : -20);
+    zaktualizuj_sanity();
     przejdz_dalej.style.display = 'none';
     zakoncz_ture.style.display = 'block';
 }
@@ -939,6 +949,7 @@ const sklep = {
         if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena){
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
+            zaktualizuj_ekwipunek();
             alert('pomyślnie kupiono produkt');
         }
         else{
@@ -961,6 +972,19 @@ for(let i = 0; i < sklep.arsenal.length; i++){
 }
 
 wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
+
+function zaktualizuj_ekwipunek(){
+    for (let i = 0; i < menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length; i++) {
+        let sciezka = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i].id_obrazu;
+        ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
+    }
+}
+
+function zaktualizuj_sanity(){
+    sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+}
+
+
 
 
 

@@ -418,13 +418,11 @@ body {
     left: 47%;
 }
 
-#tresc {
-    position: absolute;
-    top: 9.3vh;
-    left: 13.65%;
-    width: 56.3vw;
-    height: 24.1vh;
-    background-color: transparent;
+#tresc, #nazwa_zdarzenia {
+    width: 66vw;
+    height: 15vh;
+    background-color: blueviolet;
+    margin-bottom: 3vw;
     justify-content: center;
     align-items: center;
     text-align: center;
