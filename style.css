@@ -37,7 +37,7 @@ body {
 #start {
     width: 30vmin;
     height: 10vmin;
-    background-image: url('menu_grafiki/start.png');
+    background-image: url('grafiki/menu_grafiki/start.png');
     background-size: cover;
     position: fixed;
     border: none;
@@ -47,7 +47,7 @@ body {
 .ustawienia {
     width: 50vmin;
     height: 50vmin;
-    background-image: url('menu_grafiki/ustawienia.png');
+    background-image: url('grafiki/menu_grafiki/ustawienia.png');
     background-size: cover;
     position: fixed;
     margin-top: 23vmin;
@@ -170,25 +170,25 @@ body {
 #rozwin1 {
     top: 18vmin;
     left: 18vmin;
-    background-image: url('menu_grafiki/plus_red.png');
+    background-image: url('grafiki/menu_grafiki/plus_red.png');
 }
 
 #rozwin2 {
     top: 18vmin;
     right: 18vmin;
-    background-image: url('menu_grafiki/plus_blue.png');
+    background-image: url('grafiki/menu_grafiki/plus_blue.png');
 }
 
 #rozwin3 {
     bottom: 18vmin;
     left: 18vmin;
-    background-image: url('menu_grafiki/plus_green.png');
+    background-image: url('grafiki/menu_grafiki/plus_green.png');
 }
 
 #rozwin4 {
     bottom: 18vmin;
     right: 18vmin;
-    background-image: url('menu_grafiki/plus_yellow.png');
+    background-image: url('grafiki/menu_grafiki/plus_yellow.png');
 }
 
 #menu_graczy>* {
@@ -204,28 +204,28 @@ body {
 #menu_gracza1 {
     top: 11vmin;
     left: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_red.png');
+    background-image: url('grafiki/menu_grafiki/menu_gracza_red.png');
     background-size: cover;
 }
 
 #menu_gracza2 {
     top: 11vmin;
     right: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_blue.png');
+    background-image: url('grafiki/menu_grafiki/menu_gracza_blue.png');
     background-size: cover;
 }
 
 #menu_gracza3 {
     bottom: 11vmin;
     left: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_green.png');
+    background-image: url('grafiki/menu_grafiki/menu_gracza_green.png');
     background-size: cover;
 }
 
 #menu_gracza4 {
     bottom: 11vmin;
     right: 11vmin;
-    background-image: url('menu_grafiki/menu_gracza_yellow.png');
+    background-image: url('grafiki/menu_grafiki/menu_gracza_yellow.png');
     background-size: cover;
 }
 
@@ -237,7 +237,7 @@ body {
 .menu_statystyk {
     height: 100vh;
     width: 36vh;
-    background-image: url('menu_boczne_grafiki/menu_boczne_tlo.png');
+    background-image: url('grafiki/menu_boczne_grafiki/menu_boczne_tlo.png');
     background-size: cover;
     flex-direction: column;
     justify-content: center;
@@ -281,7 +281,7 @@ body {
 }
 
 #przycisk_statystyki {
-    background-image: url('menu_boczne_grafiki/Statystyki.png');
+    background-image: url('grafiki/menu_boczne_grafiki/Statystyki.png');
     background-size: cover;
     height: 8.6vh;
     width: 15vh;
@@ -293,7 +293,7 @@ body {
 }
 
 #ustawienia_menu_boczne {
-    background-image: url('menu_boczne_grafiki/Ustawienia.png');
+    background-image: url('grafiki/menu_boczne_grafiki/Ustawienia.png');
     background-size: cover;
     height: 8.6vh;
     width: 15vh;
@@ -377,7 +377,6 @@ body {
 #wnetrze_sklepu{
     height: 50vh;
     width: calc(100vw - 36vh);
-    background-image: url("skibidi/skibidi9.png");
     background-size: cover;
 }
 
@@ -437,7 +436,7 @@ body {
 #ekran_pytania{
     height: 100vh;
     width: calc(100vw - 36vh);
-    background-image: url('pytanie.png');
+    background-image: url('grafiki/pytanie.png');
     display: none;  
     background-repeat: no-repeat;
     background-size:calc(100vw - 36vh) 100vh;

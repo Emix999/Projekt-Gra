@@ -205,7 +205,7 @@ const menedzer_gry = {
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
 const nazwy = ["test0", "test1", "test2"];
-const avatary = ["avatary/gigachad.png", "avatary/kujon.png", "avatary/pala.png", "avatary/gigachad.png", "avatary/spóźniony.png"];
+const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "grafiki/avatary/pala.png", "grafiki/avatary/gigachad.png", "grafiki/avatary/spóźniony.png"];
 // const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
@@ -244,7 +244,7 @@ class klasa {
     }
 }
 
-const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'ziemniak.png', 20);
+const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'grafiki/przedmioty/ziemniak.png', 20);
 
 const klasa_a = new klasa('automatyk');
 const klasa_e = new klasa('elektronik');
@@ -935,12 +935,12 @@ const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
 const sklep = {
     arsenal: [
-        new przedmiot('obiadek', 'test', 'ziemniak.png', 20, 22),
-        new przedmiot('rozwiązany sprawdzian', 'test2', 'ziemniak.png', 0, 30),
-        new przedmiot('samochód Elona Muska', 'brum brum', 'ziemniak.png', 200, 200),
-        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'ziemniak.png', 2000, 1000),
-        new przedmiot('bomba atomowa', 'bum bum', 'ziemniak.png', 0, 10000),
-        new przedmiot('XAMPP: wersja premium', 'sql', 'ziemniak.png', 0, 100000)
+        new przedmiot('obiadek', 'test', 'grafiki/przedmioty/ziemniak.png', 20, 22),
+        new przedmiot('rozwiązany sprawdzian', 'test2', 'grafiki/przedmioty/ziemniak.png', 0, 30),
+        new przedmiot('samochód Elona Muska', 'brum brum', 'grafiki/przedmioty/ziemniak.png', 200, 200),
+        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'grafiki/przedmioty/ziemniak.png', 2000, 1000),
+        new przedmiot('bomba atomowa', 'bum bum', 'grafiki/przedmioty/ziemniak.png', 0, 10000),
+        new przedmiot('XAMPP: wersja premium', 'sql', 'grafiki/przedmioty/ziemniak.png', 0, 100000)
     ],
     pokaz: function() {
         zmiana_ekranu(mapa, ekran_sklepu);
