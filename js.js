@@ -186,7 +186,7 @@ const menedzer_gry = {
     wypisz_informacje_graczy: function() {
         zaktualizuj_sanity();
         zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
-        obecny_rok.value = this.aktywni_gracze[this.indeks_wybranego].obecny_rok;
+        obecny_rok.value = this.rok_gry;
 
         zaktualizuj_ekwipunek();
 
@@ -256,18 +256,19 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, null, 0, null, 0, 100, 100, 0, false, [ziemniak]);
-const gracz2 = new gracz("gracz2", null, 0, null, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-const gracz3 = new gracz("gracz3", null, 0, null, 0, null, 0, 100, 100, 0, false, ["latarka"]);
-const gracz4 = new gracz("gracz4", null, 0, null, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["piwo"]);
+const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
 //menu wyboru gracza i wszystkie jego funcje
 class menu_graczy {
-    constructor(id_menu, id_rozwin, id_zwin, id_losuj_nazwe, id_nazwa, id_klasa_lewo, id_klasa, id_klasa_prawo, id_avatar_lewo, id_avatar, id_avatar_prawo) {
+    constructor(id_menu, id_gracza, id_rozwin, id_zwin, id_losuj_nazwe, id_nazwa, id_klasa_lewo, id_klasa, id_klasa_prawo, id_avatar_lewo, id_avatar, id_avatar_prawo) {
         // to coś powoduje można się odwoływać do tych elementów o wartościach dla konkretnych graczy wewnątrz obieków
         this.id_menu = id_menu;
+        this.id_gracza = id_gracza;
         this.id_rozwin = id_rozwin;
         this.id_zwin = id_zwin;
         this.id_losuj_nazwe = id_losuj_nazwe;
@@ -278,65 +279,67 @@ class menu_graczy {
         this.id_avatar_lewo = id_avatar_lewo;
         this.id_avatar = id_avatar;
         this.id_avatar_prawo = id_avatar_prawo;
+
+        document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
     }
     //Strzałka w prawo zmienia klasę na następną w tablicy
-    klasa_prawo(i) {
-        if (gracze[i].id_klasy == klasy.length - 1) gracze[i].id_klasy = 0;
-        else gracze[i].id_klasy += 1;
-        let rezultat = klasy[gracze[i].id_klasy];
+    klasa_prawo() {
+        if (gracze[this.id_gracza].id_klasy == klasy.length - 1) gracze[this.id_gracza].id_klasy = 0;
+        else gracze[this.id_gracza].id_klasy += 1;
+        let rezultat = klasy[gracze[this.id_gracza].id_klasy];
         document.getElementById(this.id_klasa).value = rezultat.nazwa;
-        gracze[i].klasa = rezultat;
+        gracze[this.id_gracza].klasa = rezultat;
     }
     //Strzałka w lewo zmienia klasę na poprzednią w tablicy
-    klasa_lewo(i) {
-        if (gracze[i].id_klasy == 0) gracze[i].id_klasy = klasy.length - 1;
-        else gracze[i].id_klasy -= 1;
-        let rezultat = klasy[gracze[i].id_klasy];
+    klasa_lewo() {
+        if (gracze[this.id_gracza].id_klasy == 0) gracze[this.id_gracza].id_klasy = klasy.length - 1;
+        else gracze[this.id_gracza].id_klasy -= 1;
+        let rezultat = klasy[gracze[this.id_gracza].id_klasy];
         document.getElementById(this.id_klasa).value = rezultat.nazwa;
-        gracze[i].klasa = rezultat;
+        gracze[this.id_gracza].klasa = rezultat;
     }
     //Strzałka w lewo zmienia avatar na poprzedni w tablicy
-    avatar_lewo(i) {
-        if (gracze[i].id_avatara == 0) gracze[i].id_avatara = avatary.length - 1;
-        else gracze[i].id_avatara -= 1;
-        let rezultat = avatary[gracze[i].id_avatara];
+    avatar_lewo() {
+        if (gracze[this.id_gracza].id_avatara == 0) gracze[this.id_gracza].id_avatara = avatary.length - 1;
+        else gracze[this.id_gracza].id_avatara -= 1;
+        let rezultat = avatary[gracze[this.id_gracza].id_avatara];
         document.getElementById(this.id_avatar).src = rezultat;
-        gracze[i].avatar = rezultat;
+        gracze[this.id_gracza].avatar = rezultat;
     }
     //Strzałka w prawo zmienia avatar na następny w tablicy
-    avatar_prawo(i) {
-        if (gracze[i].id_avatara == avatary.length - 1) gracze[i].id_avatara = 0;
-        else gracze[i].id_avatara += 1;
-        let rezultat = avatary[gracze[i].id_avatara];
+    avatar_prawo() {
+        if (gracze[this.id_gracza].id_avatara == avatary.length - 1) gracze[this.id_gracza].id_avatara = 0;
+        else gracze[this.id_gracza].id_avatara += 1;
+        let rezultat = avatary[gracze[this.id_gracza].id_avatara];
         document.getElementById(this.id_avatar).src = rezultat;
-        gracze[i].avatar = rezultat;
+        gracze[this.id_gracza].avatar = rezultat;
     }
     //losowanie nazwy dla gracza z tablicy nazw
-    losowanie_nazwy(i) {
+    losowanie_nazwy() {
         let losowa_liczba = Math.floor(Math.random() * nazwy.length);
         let wylosowane_imie = nazwy[losowa_liczba];
         document.getElementById(this.id_nazwa).value = wylosowane_imie;
-        gracze[i].nazwa = wylosowane_imie;
-        gracze[i].id_nazwy = losowa_liczba;
+        gracze[this.id_gracza].nazwa = wylosowane_imie;
+        gracze[this.id_gracza].id_nazwy = losowa_liczba;
     }
     //Rozwijanie menu gracza po kliknięciu przycisku plus
-    rozwin_menu(i) {
+    rozwin_menu() {
         document.getElementById(this.id_menu).style.display = 'block';
         document.getElementById(this.id_rozwin).style.display = 'none';
-        gracze[i].czy_aktywny = true;
+        gracze[this.id_gracza].czy_aktywny = true;
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
-    zwin_menu(i) {
+    zwin_menu() {
         document.getElementById(this.id_menu).style.display = 'none';
         document.getElementById(this.id_rozwin).style.display = 'block';
-        gracze[i].czy_aktywny = false;
+        gracze[this.id_gracza].czy_aktywny = false;
     }
 }
 
-let menu_gracz1 = new menu_graczy('menu_gracza1', 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
-let menu_gracz2 = new menu_graczy('menu_gracza2', 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
-let menu_gracz3 = new menu_graczy('menu_gracza3', 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
-let menu_gracz4 = new menu_graczy('menu_gracza4', 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
+const menu_gracz1 = new menu_graczy('menu_gracza1', 0, 'rozwin1', 'zwijanie1', 'los_nazwy1', 'nazwa_gracza1_menu', 'klasa_lewo1', 'klasa1_menu', 'klasa_prawo1', 'avatar_lewo1', 'avatar1_menu', 'avatar_prawo1');
+const menu_gracz2 = new menu_graczy('menu_gracza2', 1, 'rozwin2', 'zwijanie2', 'los_nazwy2', 'nazwa_gracza2_menu', 'klasa_lewo2', 'klasa2_menu', 'klasa_prawo2', 'avatar_lewo2', 'avatar2_menu', 'avatar_prawo2');
+const menu_gracz3 = new menu_graczy('menu_gracza3', 2, 'rozwin3', 'zwijanie3', 'los_nazwy3', 'nazwa_gracza3_menu', 'klasa_lewo3', 'klasa3_menu', 'klasa_prawo3', 'avatar_lewo3', 'avatar3_menu', 'avatar_prawo3');
+const menu_gracz4 = new menu_graczy('menu_gracza4', 3, 'rozwin4', 'zwijanie4', 'los_nazwy4', 'nazwa_gracza4_menu', 'klasa_lewo4', 'klasa4_menu', 'klasa_prawo4', 'avatar_lewo4', 'avatar4_menu', 'avatar_prawo4');
 
 const tablica_menu = [menu_gracz1, menu_gracz2, menu_gracz3, menu_gracz4];
 
@@ -354,34 +357,34 @@ function dodaj_sluchacza(przycisk,funkcja){
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_rozwin);
-    obiekt.addEventListener("click", () => tablica_menu[i].rozwin_menu(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].rozwin_menu());
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_zwin);
-    obiekt.addEventListener("click", () => tablica_menu[i].zwin_menu(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].zwin_menu());
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_losuj_nazwe);
-    obiekt.addEventListener("click", () => tablica_menu[i].losowanie_nazwy(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].losowanie_nazwy());
 }
 
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_klasa_prawo);
-    obiekt.addEventListener("click", () => tablica_menu[i].klasa_prawo(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].klasa_prawo());
 }
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_klasa_lewo);
-    obiekt.addEventListener("click", () => tablica_menu[i].klasa_lewo(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].klasa_lewo());
 }
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_avatar_lewo);
-    obiekt.addEventListener("click", () => tablica_menu[i].avatar_lewo(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].avatar_lewo());
 }
 for (let i = 0; i < liczba_graczy; i++) {
     let obiekt = document.getElementById(tablica_menu[i].id_avatar_prawo);
-    obiekt.addEventListener("click", () => tablica_menu[i].avatar_prawo(i));
+    obiekt.addEventListener("click", () => tablica_menu[i].avatar_prawo());
 }
 
 //Przycisk Start
@@ -480,10 +483,10 @@ function czy_poprawna(i) {
 
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.backgroundColor = "green";
+                odpowiedzi_przyciski[i].style.color = "lightGreen";
             }
             else {
-                odpowiedzi_przyciski[i].style.backgroundColor = "red";
+                odpowiedzi_przyciski[i].style.color = "red";
             }
         }
 
@@ -508,7 +511,7 @@ function odwroc_pokaz_pytanie(){
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].style.backgroundColor = "aquamarine";
+        odpowiedzi_przyciski[i].style.backgroundColor = "transparent";
     }
     menedzer_gry.poczatek_tury();
 }
@@ -696,8 +699,16 @@ function znikniecie_ekranu(ekran_znikajacy) {
 const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
+class przedmiot_szkolny {
+    constructor(nazwa, pytania, pytania_egzamin){
+        this.nazwa = nazwa;
+        this.pytania = pytania;
+        this.pytania_egzamin = pytania_egzamin;
+    }
+}
+
 class sala {
-    constructor(nr, klasa = null, przedmiot, rodzaj_sali, pytania_egzamin = null) {
+    constructor(nr, klasa = null, przedmiot, rodzaj_sali, pytania_egzamin) {
         this.nr = nr;
         this.klasa = klasa; //klasa jest tylko do sala zawodowych
         this.przedmiot = przedmiot;
@@ -709,7 +720,7 @@ class sala {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         if(menedzer_gry.runda_egzamin){
             if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.pytania_egzamin.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
-                this.pokaz_sale_naprawde(zestaw_pytan_testowy, rok);
+                this.pokaz_sale_naprawde(this.pytania_egzamin, rok);
             }
             else{
                 alert('egzamin zawodowy - nie wchodzić, jeśli nie zdajesz tutaj');
@@ -718,21 +729,21 @@ class sala {
         else{
             if(this.rodzaj_sali == 'zawodowa'){
                 if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa){
-                    this.pokaz_sale_naprawde(zestaw_pytan_testowy, rok);
+                    this.pokaz_sale_naprawde(this.przedmiot.pytania, rok);
                 }
                 else{
                     alert('sala zawodowa - nie wchodzić, jeśli nie jesteś odpowiedniego zawodu');
                 }
             }
             else{
-                this.pokaz_sale_naprawde(zestaw_pytan_testowy, rok);
+                this.pokaz_sale_naprawde(this.przedmiot.pytania, rok);
             }
         }
     }
 
     pokaz_sale_naprawde(pytania, rok) {
         znikniecie_ekranu(mapa);
-        let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
+        let pytanie_kartkowka = this.przedmiot.pytania[rok][Math.floor(Math.random() * this.przedmiot.pytania[rok].length)];
         pokaz_pytanie(pytanie_kartkowka, ekran_gry, ekran_pytania);
     }
 }
@@ -748,70 +759,221 @@ class zestaw_pytan {
 }
 
 class zestaw_pytan_egzamin {
-    constructor(rok_3 = null, rok_4 = null, klasa = null, rok_5 = null) {
+    constructor(rok_3 = null, rok_4 = null, rok_5 = null) {
         this.rok_3 = rok_3;
         this.rok_4 = rok_4;
-        this.klasa = klasa; //klasa jest tylko do egzaminu zawodowego
         this.rok_5 = rok_5;
     }
 }
 
-const zestaw_pytan_testowy = new zestaw_pytan([pytanie_testowe, new pytanie('W którym roku powstali czarni?', ['0', '100', '200', '300'])],
-[new pytanie('2 * 2 = ?', ['4', '5', '3', '2'])],
-[new pytanie('2 ^ 2 = ?', ['4', '5', '3', '2'])],
-[new pytanie('2 / 2 = ?', ['1', '4', '3', '2'])],
-[new pytanie('sqrt(2) = ?', ['sqrt(2)', '1', '4', '2'])]);
+const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla programisty rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla programisty rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla programisty rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla programisty rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla programisty rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla elektronika rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla elektronika rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla elektronika rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla elektronika rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla elektronika rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla automatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla automatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla automatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla automatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla automatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla fotografa rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla fotografa rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla fotografa rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla fotografa rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla fotografa rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla teleinformatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla teleinformatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla teleinformatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla teleinformatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla teleinformatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla informatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla informatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla informatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla informatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla informatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie dla robotyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla robotyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla robotyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla robotyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie dla robotyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
+        null
+    ));
+const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z matematyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z matematyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z matematyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z matematyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z matematyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        null, null,
+        [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
+    ));
+const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z geografii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z geografii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z geografii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z geografii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z geografii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+));
+const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z biologii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z biologii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z biologii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z biologii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z biologii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+));
+const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z polskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z polskiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z polskiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z polskiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z polskiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        null, null,
+        [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
+    ));
+const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z informatyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z informatyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z informatyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z informatyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z informatyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
+const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z historii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z historii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z historii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z historii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z historii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
+const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z angielskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z angielskiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z angielskiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z angielskiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z angielskiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin(
+        null, null,
+        [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
+    ));
+const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z niemieckiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z niemieckiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z niemieckiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z niemieckiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z niemieckiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
+const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z chemii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z chemii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z chemii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z chemii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z chemii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
+const wf = new przedmiot_szkolny('wf', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z wf-u rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z wf-u rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z wf-u rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z wf-u rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z wf-u rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
+const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
+    [new pytanie('przykładowe pytanie z fizyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z fizyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z fizyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z fizyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
+    [new pytanie('przykładowe pytanie z fizyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    ), new zestaw_pytan_egzamin());
 
-const s_018 = new sala('018', 'programista', 'programista', 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'programista'
-    )
-);
-const s_030 = new sala('030', 'elektronik', 'elektronik', 'zawodowa',
+const s_018 = new sala('018', 'programista', programista, 'zawodowa');
+const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'elektronik'
     )
 );
-const s_029 = new sala('029', 'automatyk', 'automatyk', 'zawodowa',
+const s_029 = new sala('029', 'automatyk', automatyk, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'automatyk'
     )
 );
-const s_026 = new sala('026', 'fotograf', 'fotograf', 'zawodowa',
+const s_026 = new sala('026', 'fotograf', fotograf, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'fotograf'
     )
 );
-const s_013 = new sala('013', 'teleinformatyk', 'teleinformatyk', 'zawodowa',
+const s_013 = new sala('013', 'teleinformatyk', teleinformatyk, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'teleinformatyk'
     )
 );
-const s_015 = new sala('015', 'informatyk', 'informatyk', 'zawodowa',
+const s_015 = new sala('015', 'informatyk', informatyk, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'informatyk'
     )
 );
-const s_021 = new sala('021', 'robotyk', 'robotyk', 'zawodowa',
+const s_021 = new sala('021', 'robotyk', robotyk, 'zawodowa',
     new zestaw_pytan_egzamin(
         [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
         'robotyk'
     )
 );
-const s_206 = new sala('206', null, 'matematyka', 'ogólna',
+const s_206 = new sala('206', null, matematyka, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -819,7 +981,7 @@ const s_206 = new sala('206', null, 'matematyka', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_202 = new sala('202', null, 'geografia', 'ogólna',
+const s_202 = new sala('202', null, geografia, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -827,7 +989,7 @@ const s_202 = new sala('202', null, 'geografia', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_201 = new sala('201', null, 'biologia', 'ogólna',
+const s_201 = new sala('201', null, biologia, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -835,7 +997,7 @@ const s_201 = new sala('201', null, 'biologia', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_103 = new sala('103', null, 'polski', 'ogólna',
+const s_103 = new sala('103', null, polski, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -843,7 +1005,7 @@ const s_103 = new sala('103', null, 'polski', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_102a = new sala('102a', null, 'informatyka', 'ogólna',
+const s_102a = new sala('102a', null, informatyka, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -851,7 +1013,7 @@ const s_102a = new sala('102a', null, 'informatyka', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_208 = new sala('208', null, 'historia', 'ogólna',
+const s_208 = new sala('208', null, historia, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -859,7 +1021,7 @@ const s_208 = new sala('208', null, 'historia', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_036 = new sala('036', null, 'angielski', 'ogólna',
+const s_036 = new sala('036', null, angielski, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -867,7 +1029,7 @@ const s_036 = new sala('036', null, 'angielski', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_04 = new sala('04', null, 'niemiecki', 'ogólna',
+const s_04 = new sala('04', null, niemiecki, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -875,7 +1037,7 @@ const s_04 = new sala('04', null, 'niemiecki', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_211 = new sala('211', null, 'chemia', 'ogólna',
+const s_211 = new sala('211', null, chemia, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -883,7 +1045,7 @@ const s_211 = new sala('211', null, 'chemia', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_wf = new sala('sala gimnastyczna', null, 'wf', 'ogólna',
+const s_wf = new sala('sala gimnastyczna', null, wf, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
@@ -891,7 +1053,7 @@ const s_wf = new sala('sala gimnastyczna', null, 'wf', 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_210 = new sala('210', null, 'fizyka', 'ogólna',
+const s_210 = new sala('210', null, fizyka, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
         null,
