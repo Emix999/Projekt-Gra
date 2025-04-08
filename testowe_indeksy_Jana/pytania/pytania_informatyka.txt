@@ -1,0 +1,304 @@
+Klasa 1 – podstawy informatyki, sprzęt, systemy operacyjne
+Co jest podstawową jednostką informacji w informatyce?
+A. Bit
+B. Bajt
+C. Piksel
+D. Znak
+
+Które z poniższych urządzeń jest urządzeniem wejściowym?
+A. Klawiatura
+B. Monitor
+C. Drukarka
+D. Głośnik
+
+Który system operacyjny jest oparty na jądrze Linux?
+A. Ubuntu
+B. Windows
+C. macOS
+D. DOS
+
+Co oznacza skrót CPU?
+A. Central Processing Unit
+B. Computer Power Unit
+C. Central Program Utility
+D. Computer Program Unit
+
+Jakie rozszerzenie ma plik wykonywalny w systemie Windows?
+A. .exe
+B. .doc
+C. .txt
+D. .jpg
+
+Jakie urządzenie służy do długotrwałego przechowywania danych?
+A. Dysk twardy
+B. RAM
+C. Cache
+D. Procesor
+
+Który z języków programowania jest językiem wysokiego poziomu?
+A. Python
+B. Assembler
+C. Maszynowy
+D. Binary
+
+Co oznacza skrót RAM?
+A. Random Access Memory
+B. Read All Memory
+C. Real Application Module
+D. Run Access Memory
+
+Jaką funkcję pełni system operacyjny?
+A. Zarządza sprzętem i zasobami
+B. Wykonuje tylko gry
+C. Projektuje grafikę
+D. Tworzy muzykę
+
+Co to jest BIOS?
+A. Program startowy płyty głównej
+B. Format pliku graficznego
+C. Aplikacja biurowa
+D. Typ pamięci RAM
+
+Klasa 2 – sieci komputerowe, systemy operacyjne, bazy danych
+Jak nazywa się unikalny adres karty sieciowej?
+A. MAC
+B. IP
+C. DNS
+D. DHCP
+
+Co oznacza skrót IP?
+A. Internet Protocol
+B. Internal Processor
+C. Input Port
+D. Internet Plug
+
+Które urządzenie łączy różne sieci?
+A. Router
+B. Switch
+C. Hub
+D. Karta graficzna
+
+Który system operacyjny jest darmowy i open-source?
+A. Linux
+B. Windows
+C. macOS
+D. iOS
+
+Co oznacza skrót SQL?
+A. Structured Query Language
+B. System Quick Loader
+C. Save Query Location
+D. Sequential Queue Line
+
+Jakiego polecenia używa się w systemie Windows do sprawdzenia połączenia sieciowego?
+A. ping
+B. touch
+C. mkdir
+D. sudo
+
+Co przechowuje dane w relacyjnej bazie danych?
+A. Tabela
+B. Folder
+C. Plik
+D. Strona
+
+Jakie rozszerzenie ma typowy plik bazy danych MS Access?
+A. .accdb
+B. .docx
+C. .xlsx
+D. .pptx
+
+Która z poniższych usług umożliwia automatyczne przydzielanie adresów IP?
+A. DHCP
+B. FTP
+C. SMTP
+D. HTML
+
+Który protokół służy do przesyłania stron internetowych?
+A. HTTP
+B. SSH
+C. FTP
+D. IPX
+
+Klasa 3 – programowanie, algorytmy, aplikacje biurowe
+Która pętla w Pythonie służy do iteracji po kolekcji?
+A. for
+B. while
+C. switch
+D. repeat
+
+Jaką wartość logiczną zwraca operator porównania ==?
+A. True lub False
+B. Zmienną
+C. Liczbę
+D. Tekst
+
+Który z poniższych typów danych w Pythonie reprezentuje tekst?
+A. str
+B. int
+C. bool
+D. float
+
+Który symbol oznacza przypisanie wartości w Pythonie?
+A. =
+B. ==
+C. :=
+D. ===
+
+Jaka funkcja w Pythonie służy do wyświetlania danych?
+A. print()
+B. echo
+C. out()
+D. show()
+
+Co oznacza skrót IDE?
+A. Integrated Development Environment
+B. Internal Data Extension
+C. Internet Development Engine
+D. Input Data Encoder
+
+Który program służy do tworzenia prezentacji?
+A. Microsoft PowerPoint
+B. Microsoft Excel
+C. Notepad++
+D. Paint
+
+Co oznacza skrót HTML?
+A. HyperText Markup Language
+B. High Tech Modern Layout
+C. Hyperlink Text Memory Language
+D. Hidden Text Metadata Language
+
+Jak nazywa się podstawowy element algorytmu?
+A. Instrukcja
+B. Folder
+C. Plik
+D. Procesor
+
+Co robi instrukcja warunkowa?
+A. Sprawdza warunek i wykonuje określone działania
+B. Zawsze kończy program
+C. Tworzy wykres
+D. Łączy dwa pliki
+
+Klasa 4 – systemy, bezpieczeństwo, administracja, projektowanie
+Co oznacza skrót DNS?
+A. Domain Name System
+B. Digital Network Service
+C. Data Node Server
+D. Domain Numbering Scheme
+
+Jaki port jest standardowo używany przez HTTP?
+A. 80
+B. 21
+C. 443
+D. 25
+
+Który z poniższych systemów to system operacyjny serwera?
+A. Windows Server
+B. Windows 10 Home
+C. Android
+D. iOS
+
+Które z poniższych haseł jest najbezpieczniejsze?
+A. !P@ssW0rd#2024
+B. 123456
+C. qwerty
+D. admin
+
+Co oznacza pojęcie „firewall”?
+A. Zabezpieczenie sieci przed nieautoryzowanym dostępem
+B. Program graficzny
+C. Przeglądarka internetowa
+D. Sterownik drukarki
+
+Co to jest szyfrowanie danych?
+A. Zabezpieczenie danych przed odczytem przez osoby trzecie
+B. Formatowanie dysku
+C. Nadpisywanie danych
+D. Usuwanie plików
+
+Które rozszerzenie ma plik archiwum?
+A. .zip
+B. .exe
+C. .docx
+D. .jpg
+
+Co oznacza skrót SSL?
+A. Secure Sockets Layer
+B. Simple Secure Link
+C. Safe Server Login
+D. Structured Server Layer
+
+Które polecenie w Linuksie służy do zmiany katalogu?
+A. cd
+B. ls
+C. rm
+D. mv
+
+Jak nazywa się procedura przywracania danych po awarii?
+A. Backup
+B. Delete
+C. Format
+D. Restart
+
+Klasa 5 – projekty, systemy w chmurze, devops, konteneryzacja
+Co oznacza skrót SaaS?
+A. Software as a Service
+B. Server as a System
+C. Script and System
+D. Storage and Access
+
+Która z usług to przykład przechowywania danych w chmurze?
+A. Google Drive
+B. Excel
+C. Paint
+D. BIOS
+
+Jak nazywa się platforma do zarządzania kontenerami?
+A. Kubernetes
+B. Photoshop
+C. Word
+D. Access
+
+Co umożliwia Docker?
+A. Tworzenie i uruchamianie kontenerów
+B. Edycję zdjęć
+C. Pisanie dokumentów
+D. Montaż filmów
+
+Co oznacza skrót CI/CD?
+A. Continuous Integration / Continuous Deployment
+B. Central Interface / Custom Data
+C. Core Integration / Client Database
+D. Computer Input / Code Debugging
+
+Co oznacza Git w programowaniu?
+A. System kontroli wersji
+B. Kompilator
+C. Przeglądarka
+D. Antywirus
+
+Jaki plik konfiguracyjny znajduje się w repozytorium Git?
+A. .gitignore
+B. config.sys
+C. index.html
+D. setup.exe
+
+Jakie polecenie tworzy nowe repozytorium Git?
+A. git init
+B. git copy
+C. git new
+D. git start
+
+Co oznacza push w Git?
+A. Wysłanie zmian do zdalnego repozytorium
+B. Usunięcie pliku
+C. Zatrzymanie działania
+D. Wydruk kodu
+
+Jak nazywa się proces uruchamiania aplikacji w chmurze bez zarządzania serwerami?
+A. Serverless
+B. Hosting
+C. Caching
+D. Domaining

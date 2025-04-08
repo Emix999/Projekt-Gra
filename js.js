@@ -105,7 +105,7 @@ const menedzer_gry = {
                 if(this.indeksy_aktywnych_egzamin.length > 0){
                     this.runda_egzamin = true;
                     this.poczatek_tury_egzamin();
-                    return 0;
+                    return;
                 }
 
                 //egzamin zawodowy nr 2
@@ -175,7 +175,7 @@ const menedzer_gry = {
             this.runda_egzamin = false;
             this.indeks_wybranego = -1;
             this.poczatek_tury();
-            return 1;
+            return;
         }
         this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
         this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
@@ -511,7 +511,7 @@ function odwroc_pokaz_pytanie(){
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].style.backgroundColor = "transparent";
+        odpowiedzi_przyciski[i].style.color = "white";
     }
     menedzer_gry.poczatek_tury();
 }
@@ -1045,14 +1045,6 @@ const s_211 = new sala('211', null, chemia, 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const s_wf = new sala('sala gimnastyczna', null, wf, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
 const s_210 = new sala('210', null, fizyka, 'ogólna',
     new zestaw_pytan_egzamin(
         null,
@@ -1061,7 +1053,7 @@ const s_210 = new sala('210', null, fizyka, 'ogólna',
         [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
     )
 );
-const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_208, s_036, s_04, s_211, s_wf, s_210];
+const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_208, s_036, s_04, s_211, s_210];
 
 for (let i = 0; i < sale.length; i++) {
     for(let j = 0; j < sala_przyciski.length; j++){
