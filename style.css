@@ -268,7 +268,7 @@ body {
 
 #mapa{
     display: flex;
-    background-color: white;
+    background-color:#1F1F1F;
 }
 
 #ustawienia2, #ekran_statystyk{
@@ -496,6 +496,7 @@ body {
     position: fixed;
     background-image: url("grafiki/Przejdz_dalej.png");
     border: none;
+    display: none;
 }
 
 #zakoncz_ture{
@@ -510,6 +511,7 @@ body {
     position: fixed;
     background-image: url("grafiki/Zakończ_ture.png");
     border: none;
+    display: none;
 }
 
 .gracz{
@@ -600,4 +602,9 @@ body {
 
 #wylacz_zdarzenie_nielosowe{
     display: none;
+}
+
+.przycisk_mapa{
+    background-size: cover;
+    border: none;
 }
