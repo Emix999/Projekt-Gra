@@ -428,14 +428,6 @@ przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
 
-class pytanie {
-    constructor(tresc, odpowiedzi) {
-        this.tresc = tresc;
-        this.odpowiedzi = odpowiedzi;
-        //odpowiedź na indeksie zerowym jest poprawna
-    }
-}
-
 
 
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
@@ -708,12 +700,11 @@ class przedmiot_szkolny {
 }
 
 class sala {
-    constructor(nr, klasa = null, przedmiot, rodzaj_sali, pytania_egzamin) {
+    constructor(nr, klasa = null, przedmiot, rodzaj_sali) {
         this.nr = nr;
         this.klasa = klasa; //klasa jest tylko do sala zawodowych
         this.przedmiot = przedmiot;
         this.rodzaj_sali = rodzaj_sali;
-        this.pytania_egzamin = pytania_egzamin;
     }
 
     pokaz_sale() {
@@ -892,11 +883,7 @@ const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z historii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
     ), new zestaw_pytan_egzamin());
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z angielskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z angielskiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z angielskiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z angielskiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z angielskiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
@@ -938,121 +925,21 @@ const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa',
         'elektronik'
     )
 );
-const s_029 = new sala('029', 'automatyk', automatyk, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'automatyk'
-    )
-);
-const s_026 = new sala('026', 'fotograf', fotograf, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'fotograf'
-    )
-);
-const s_013 = new sala('013', 'teleinformatyk', teleinformatyk, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'teleinformatyk'
-    )
-);
-const s_015 = new sala('015', 'informatyk', informatyk, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'informatyk'
-    )
-);
-const s_021 = new sala('021', 'robotyk', robotyk, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'robotyk'
-    )
-);
-const s_206 = new sala('206', null, matematyka, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_202 = new sala('202', null, geografia, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_201 = new sala('201', null, biologia, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_103 = new sala('103', null, polski, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_102a = new sala('102a', null, informatyka, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_208 = new sala('208', null, historia, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_036 = new sala('036', null, angielski, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_04 = new sala('04', null, niemiecki, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_211 = new sala('211', null, chemia, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
-const s_210 = new sala('210', null, fizyka, 'ogólna',
-    new zestaw_pytan_egzamin(
-        null,
-        null,
-        null,
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])]
-    )
-);
+const s_029 = new sala('029', 'automatyk', automatyk, 'zawodowa');
+const s_026 = new sala('026', 'fotograf', fotograf, 'zawodowa');
+const s_013 = new sala('013', 'teleinformatyk', teleinformatyk, 'zawodowa');
+const s_015 = new sala('015', 'informatyk', informatyk, 'zawodowa');
+const s_021 = new sala('021', 'robotyk', robotyk, 'zawodowa',);
+const s_206 = new sala('206', null, matematyka, 'ogólna');
+const s_202 = new sala('202', null, geografia, 'ogólna');
+const s_201 = new sala('201', null, biologia, 'ogólna');
+const s_103 = new sala('103', null, polski, 'ogólna');
+const s_102a = new sala('102a', null, informatyka, 'ogólna');
+const s_208 = new sala('208', null, historia, 'ogólna');
+const s_036 = new sala('036', null, angielski, 'ogólna');
+const s_04 = new sala('04', null, niemiecki, 'ogólna');
+const s_211 = new sala('211', null, chemia, 'ogólna');
+const s_210 = new sala('210', null, fizyka, 'ogólna');
 const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_208, s_036, s_04, s_211, s_210];
 
 for (let i = 0; i < sale.length; i++) {
