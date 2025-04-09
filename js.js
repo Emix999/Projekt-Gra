@@ -91,27 +91,26 @@ const menedzer_gry = {
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
-            return 0;
         }
         else{
             if (this.runda % 10 == 0 && this.runda != 0) {
                 //egzamin zawodowy nr 1
                 this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 2 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
                 if(this.indeksy_aktywnych_egzamin.length > 0){
                     this.runda_egzamin = true;
                     this.poczatek_tury_egzamin();
-                    return;
+                    return 0;
                 }
 
                 //egzamin zawodowy nr 2
                 this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 3 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                    if(this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
@@ -124,7 +123,7 @@ const menedzer_gry = {
                 //matura
                 this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 4 && !this.aktywni_gracze[i].podszedl_do_egzaminu){
+                    if(this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
@@ -136,9 +135,11 @@ const menedzer_gry = {
 
                 this.rok_gry++;
                 for (let i of this.aktywni_gracze) {
-                    //warunek
-                    i.zdane_lata++;
-                    i.podszedl_do_egzaminu = false;
+                    if(i.zdane_lata != 5){
+                        //warunek
+                        i.zdane_lata++;
+                    }
+                    i.podszedl_do_egzaminu = [];
                 }
             }
 
@@ -159,6 +160,27 @@ const menedzer_gry = {
                     }
                 }
             }
+
+            while(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5){
+                //niech ktoś to naprawi na, kiedy wszyscy gracze skończą grę
+                if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
+                    this.indeks_wybranego = 0;
+                }
+                else {
+                    this.indeks_wybranego++;
+                }
+        
+                if (this.indeks_wybranego == 0) {
+                    this.runda++;
+                    for(let i of nielosowe_zdarzenia){
+                        if(i.runda == this.runda){
+                            this.zdarzenie = i;
+                            pokaz_zdarzenie_nielosowe();
+                            break;
+                        }
+                    }
+                }
+            }
     
             if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
                 this.ilosc_losowych_zdarzen = 1;
@@ -166,19 +188,22 @@ const menedzer_gry = {
             else {
                 this.ilosc_losowych_zdarzen = 0;
             }
-        }
 
-        this.wypisz_informacje_graczy();
+            this.wypisz_informacje_graczy();
+        }
     },
     poczatek_tury_egzamin: function() {
+        this.ilosc_losowych_zdarzen = 0;
         if(this.indeksy_aktywnych_egzamin.length == 0){
             this.runda_egzamin = false;
             this.indeks_wybranego = -1;
             this.poczatek_tury();
-            return;
+            return 0;
         }
         this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
-        this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu = true;
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata != 4){
+            this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu.push('zawodowy');
+        }
         this.indeksy_aktywnych_egzamin.shift();
 
         this.wypisz_informacje_graczy();
@@ -223,7 +248,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdane_lata = zdane_lata;
         this.czy_aktywny = czy_aktywny;
         this.ekwipunek = ekwipunek;
-        this.podszedl_do_egzaminu = false;
+        this.podszedl_do_egzaminu = [];
         this.hajs = 30;
     }
 }
@@ -257,8 +282,8 @@ const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
 const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
-const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["piwo"]);
-const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["latarka"]);
+const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
@@ -461,13 +486,18 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
 }
 
 let czy_poprawna_odpowiedz;
+let czy_skonczyl_gre;
 
 function czy_poprawna(i) {
     if(!czy_odpowiedziano){
         czy_odpowiedziano = true;
+        czy_skonczyl_gre = false;
         czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
         if (czy_poprawna_odpowiedz) {
             alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+            if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.length == 3){
+                czy_skonczyl_gre = true;
+            }
         }
         else {
             alert("UwUaga Debil");
@@ -492,6 +522,10 @@ function czy_poprawna(i) {
 function wyswietl_nagrode() {
     ekran_nagrody.style.visibility = "visible";
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');
+    if(czy_skonczyl_gre){
+        ekran_nagrody.innerHTML += "<br><br> Brawo! Udało ci się zdać maturę i ukończyć grę";
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata = 5;
+    }
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += (czy_poprawna_odpowiedz ? 10 : -20);
     zaktualizuj_sanity();
     przejdz_dalej.style.display = 'none';
@@ -710,11 +744,14 @@ class sala {
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
         if(menedzer_gry.runda_egzamin){
-            if(this.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.pytania_egzamin.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4)){
-                this.pokaz_sale_naprawde(this.pytania_egzamin, rok);
+            if(this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)){
+                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4){
+                    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.push(this.przedmiot.nazwa);
+                }        
+                this.pokaz_sale_naprawde(this.przedmiot.pytania_egzamin, rok);
             }
             else{
-                alert('egzamin zawodowy - nie wchodzić, jeśli nie zdajesz tutaj');
+                alert('egzamin - nie wchodzić, jeśli nie zdajesz tutaj');
             }
         }
         else{
@@ -734,7 +771,7 @@ class sala {
 
     pokaz_sale_naprawde(pytania, rok) {
         znikniecie_ekranu(mapa);
-        let pytanie_kartkowka = this.przedmiot.pytania[rok][Math.floor(Math.random() * this.przedmiot.pytania[rok].length)];
+        let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
         pokaz_pytanie(pytanie_kartkowka, ekran_gry, ekran_pytania);
     }
 }
@@ -835,28 +872,16 @@ const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
         null
     ));
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z matematyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z matematyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z matematyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z matematyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z matematyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
     ));
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z geografii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z geografii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z geografii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z geografii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z geografii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
     ), new zestaw_pytan_egzamin());
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z biologii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z biologii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z biologii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z biologii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z biologii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
     ), new zestaw_pytan_egzamin());
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z polskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -869,11 +894,7 @@ const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
         [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
     ));
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z informatyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z informatyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z informatyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z informatyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z informatyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
     ), new zestaw_pytan_egzamin());
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z historii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -902,13 +923,6 @@ const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z chemii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z chemii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
     ), new zestaw_pytan_egzamin());
-const wf = new przedmiot_szkolny('wf', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z wf-u rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z wf-u rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z wf-u rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z wf-u rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z wf-u rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
-    ), new zestaw_pytan_egzamin());
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z fizyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z fizyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -918,13 +932,7 @@ const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     ), new zestaw_pytan_egzamin());
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
-const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa',
-    new zestaw_pytan_egzamin(
-        [new pytanie('skibidi sigma', ['tak', 'nie', 'null', 'niewiem'])],
-        [new pytanie('brum rbum', ['3! *  4! = 12^2', 'nie weim', 'nie zgadzam się', 'tak, dokładnie'])],
-        'elektronik'
-    )
-);
+const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
 const s_029 = new sala('029', 'automatyk', automatyk, 'zawodowa');
 const s_026 = new sala('026', 'fotograf', fotograf, 'zawodowa');
 const s_013 = new sala('013', 'teleinformatyk', teleinformatyk, 'zawodowa');
