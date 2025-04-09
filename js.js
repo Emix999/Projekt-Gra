@@ -850,14 +850,14 @@ const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z geografii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z geografii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z geografii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
-));
+    ), new zestaw_pytan_egzamin());
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z biologii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z biologii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z biologii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z biologii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z biologii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
-));
+    ), new zestaw_pytan_egzamin());
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z polskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie z polskiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
