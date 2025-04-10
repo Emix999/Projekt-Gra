@@ -79,7 +79,7 @@ wylacz_zdarzenie_nielosowe.addEventListener('click', () => zniknij_zdarzenie_nie
 const menedzer_gry = {
     ostatni_pokazany_przedmiot: null,
     indeks_wybranego: -1,
-    rok_gry: 1,
+    rok_gry: 0,
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
@@ -88,80 +88,13 @@ const menedzer_gry = {
     nielosowe_zdarzenia: nielosowe_zdarzenia,
     zdarzenie: null,
     indeks_opisu_zdarzenia_nielosowego: 0,
+    kolejny_rok: false,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
         }
         else{
-            if (this.runda % 10 == 0 && this.runda != 0) {
-                //egzamin zawodowy nr 1
-                this.indeksy_aktywnych_egzamin = [];
-                for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 2 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
-                        this.indeksy_aktywnych_egzamin.push(i);
-                    }
-                }
-                if(this.indeksy_aktywnych_egzamin.length > 0){
-                    this.runda_egzamin = true;
-                    this.poczatek_tury_egzamin();
-                    return 0;
-                }
-
-                //egzamin zawodowy nr 2
-                this.indeksy_aktywnych_egzamin = [];
-                for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
-                        this.indeksy_aktywnych_egzamin.push(i);
-                    }
-                }
-                if(this.indeksy_aktywnych_egzamin.length > 0){
-                    this.runda_egzamin = true;
-                    this.poczatek_tury_egzamin();
-                    return 0;
-                }
-
-                //matura
-                this.indeksy_aktywnych_egzamin = [];
-                for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
-                        this.indeksy_aktywnych_egzamin.push(i);
-                    }
-                }
-                if(this.indeksy_aktywnych_egzamin.length > 0){
-                    this.runda_egzamin = true;
-                    this.poczatek_tury_egzamin();
-                    return 0;
-                }
-
-                this.rok_gry++;
-                for (let i of this.aktywni_gracze) {
-                    if(i.zdane_lata != 5){
-                        //warunek
-                        i.zdane_lata++;
-                    }
-                    i.podszedl_do_egzaminu = [];
-                }
-            }
-
-            if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
-                this.indeks_wybranego = 0;
-            }
-            else {
-                this.indeks_wybranego++;
-            }
-    
-            if (this.indeks_wybranego == 0) {
-                this.runda++;
-                for(let i of nielosowe_zdarzenia){
-                    if(i.runda == this.runda){
-                        this.zdarzenie = i;
-                        pokaz_zdarzenie_nielosowe();
-                        break;
-                    }
-                }
-            }
-
-            while(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5){
+            do{
                 //niech ktoś to naprawi na, kiedy wszyscy gracze skończą grę
                 if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
                     this.indeks_wybranego = 0;
@@ -179,6 +112,61 @@ const menedzer_gry = {
                             break;
                         }
                     }
+                    if (this.runda % 10 == 0) {
+                        this.kolejny_rok = true;
+                    }
+                }
+                
+            } while (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5)
+            if(this.indeks_wybranego == 0 && this.runda % 10 == 0){
+                //egzamin zawodowy nr 1
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }                        
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+    
+                //egzamin zawodowy nr 2
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+    
+                //matura
+                this.indeksy_aktywnych_egzamin = [];
+                for(let i = 0; i < this.aktywni_gracze.length; i++){
+                    if(this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
+                        this.indeksy_aktywnych_egzamin.push(i);
+                    }
+                }
+                if(this.indeksy_aktywnych_egzamin.length > 0){
+                    this.runda_egzamin = true;
+                    this.poczatek_tury_egzamin();
+                    return 0;
+                }
+            }
+
+            if(this.kolejny_rok){
+                this.rok_gry++;
+                for (let i of this.aktywni_gracze) {
+                    if(i.zdane_lata != 5){
+                        //warunek
+                        i.zdane_lata++;
+                    }
+                    i.podszedl_do_egzaminu = [];
                 }
             }
     
@@ -193,13 +181,15 @@ const menedzer_gry = {
         }
     },
     poczatek_tury_egzamin: function() {
-        this.ilosc_losowych_zdarzen = 0;
         if(this.indeksy_aktywnych_egzamin.length == 0){
             this.runda_egzamin = false;
             this.indeks_wybranego = -1;
+            this.runda--;
             this.poczatek_tury();
             return 0;
         }
+
+        this.ilosc_losowych_zdarzen = 0;
         this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
         if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata != 4){
             this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu.push('zawodowy');
