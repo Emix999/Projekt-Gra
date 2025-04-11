@@ -343,3 +343,204 @@ const rok5_matematyka = [
   new pytanie("Złożenie funkcji f(g(x)) to:", ["funkcja złożona", "funkcja liniowa", "funkcja trygonometryczna", "funkcja stała"]),
   new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązania:", ["x = kπ", "x = π/2 + kπ", "x = 2kπ", "x = π/3 + 2kπ"])
 ];
+
+//pytania z niemickiego
+
+const rok1_niemiecki = [
+  new pytanie("Jakie jest niemieckie słowo na „dom”?", ["*Haus", "Auto", "Schule", "Buch"]),
+  new pytanie("Jakie słowo oznacza „przyjaciel” w języku niemieckim?", ["*Freund", "Bruder", "Hund", "Lehrer"]),
+  new pytanie("Które z poniższych słów jest czasownikiem w niemieckim?", ["*gehen", "Haus", "schnell", "Apfel"]),
+  new pytanie("Jak przetłumaczyć „dobry wieczór” na niemiecki?", ["*Guten Abend", "Gute Nacht", "Guten Morgen", "Hallo"]),
+  new pytanie("Które z poniższych słów jest przymiotnikiem w języku niemieckim?", ["*schnell", "gehen", "Apfel", "Stadt"]),
+  new pytanie("Jakie jest niemieckie słowo na „kawa”?", ["*Kaffee", "Tee", "Wasser", "Saft"]),
+  new pytanie("Jak powiedzieć „Jak się masz?” po niemiecku?", ["*Wie geht’s dir?", "Wie heißt du?", "Woher kommst du?", "Was machst du?"]),
+  new pytanie("Które z poniższych słów oznacza „szkoła” po niemiecku?", ["*Schule", "Universität", "Werkstatt", "Krankenhaus"]),
+  new pytanie("Jak powiedzieć „jestem studentem” po niemiecku?", ["*Ich bin Student", "Ich bin Lehrer", "Ich bin Arzt", "Ich bin Freund"]),
+  new pytanie("Jakie jest niemieckie słowo na „książka”?", ["*Buch", "Auto", "Tisch", "Lampe"])
+];
+
+const rok2_niemiecki = [
+  new pytanie("Jak brzmi forma czasownika „być” w pierwszej osobie liczby pojedynczej?", ["*bin", "bist", "ist", "sind"]),
+  new pytanie("Jak przetłumaczyć „dobranoc” na niemiecki?", ["*Gute Nacht", "Guten Morgen", "Hallo", "Tschüss"]),
+  new pytanie("Jakie słowo oznacza „słowo” po niemiecku?", ["*Wort", "Satz", "Buch", "Zeitung"]),
+  new pytanie("Jakie słowo oznacza „zegar” w języku niemieckim?", ["*Uhr", "Stuhl", "Tisch", "Fenster"]),
+  new pytanie("Które z poniższych słów oznacza „miasto”?", ["*Stadt", "Dorf", "Land", "Straße"]),
+  new pytanie("Jak przetłumaczyć „mój dom” na niemiecki?", ["*Mein Haus", "Mein Auto", "Mein Freund", "Mein Hund"]),
+  new pytanie("Jakie słowo oznacza „nauczyciel” po niemiecku?", ["*Lehrer", "Schüler", "Arzt", "Fahrer"]),
+  new pytanie("Jak powiedzieć po niemiecku „mam 20 lat”?", ["*Ich bin 20 Jahre alt", "Ich habe 20 Jahre", "Ich bin zwanzig Jahre alt", "Ich habe zwanzig Jahre"]),
+  new pytanie("Jakie jest niemieckie słowo na „pies”?", ["*Hund", "Katze", "Vogel", "Fisch"]),
+  new pytanie("Jak powiedzieć po niemiecku „kocham cię”?", ["*Ich liebe dich", "Ich habe dich gern", "Du bist mein Freund", "Ich mag dich"])
+];
+
+const rok3_niemiecki = [
+  new pytanie("Które z poniższych słów oznacza „wiatr”?", ["*Wind", "Regen", "Sonne", "Schnee"]),
+  new pytanie("Jak przetłumaczyć „jestem zmęczony” na niemiecki?", ["*Ich bin müde", "Ich habe Hunger", "Ich bin froh", "Ich habe Durst"]),
+  new pytanie("Jakie jest niemieckie słowo na „dziękuję”?", ["*Danke", "Bitte", "Entschuldigung", "Tschüss"]),
+  new pytanie("Jak powiedzieć po niemiecku „gdzie jest dworzec”?", ["*Wo ist der Bahnhof?", "Wo ist das Hotel?", "Wo ist die Schule?", "Wo ist der Park?"]),
+  new pytanie("Jakie jest niemieckie słowo na „okno”?", ["*Fenster", "Tür", "Wand", "Tisch"]),
+  new pytanie("Jakie słowo oznacza „woda” po niemiecku?", ["*Wasser", "Saft", "Tee", "Kaffee"]),
+  new pytanie("Jakie słowo oznacza „chleb” w języku niemieckim?", ["*Brot", "Käse", "Apfel", "Butter"]),
+  new pytanie("Które z poniższych słów oznacza „piłka”?", ["*Ball", "Auto", "Haus", "Tisch"]),
+  new pytanie("Jakie słowo oznacza „samochód” w języku niemieckim?", ["*Auto", "Fahrrad", "Bus", "Zug"]),
+  new pytanie("Jakie jest niemieckie słowo na „telefon”?", ["*Telefon", "Fernseher", "Radio", "Computer"])
+];
+
+const rok4_niemiecki = [
+  new pytanie("Jak powiedzieć „on ma na imię Peter” po niemiecku?", ["*Er heißt Peter", "Er ist Peter", "Er hat Peter", "Er nennt sich Peter"]),
+  new pytanie("Jak powiedzieć po niemiecku „mieszkam w Berlinie”?", ["*Ich wohne in Berlin", "Ich komme aus Berlin", "Ich gehe nach Berlin", "Ich fahre nach Berlin"]),
+  new pytanie("Jakie jest niemieckie słowo na „wielki”?", ["*groß", "klein", "schnell", "lang"]),
+  new pytanie("Jakie jest niemieckie słowo na „piękny”?", ["*schön", "hässlich", "klein", "groß"]),
+  new pytanie("Jak przetłumaczyć „to jest moje” na niemiecki?", ["*Das ist meins", "Das ist mein", "Es ist mein", "Es ist meine"]),
+  new pytanie("Jakie jest niemieckie słowo na „godzina”?", ["*Stunde", "Minute", "Tag", "Jahr"]),
+  new pytanie("Jakie jest niemieckie słowo na „rzeczy”?", ["*Dinge", "Sachen", "Bücher", "Zeitungen"]),
+  new pytanie("Jak przetłumaczyć „proszę” na niemiecki?", ["*Bitte", "Danke", "Entschuldigung", "Hallo"]),
+  new pytanie("Jakie jest niemieckie słowo na „domek”?", ["*Häuschen", "Auto", "Haus", "Garten"]),
+  new pytanie("Jak powiedzieć po niemiecku „mój tata ma 45 lat”?", ["*Mein Vater ist 45 Jahre alt", "Mein Vater hat 45 Jahre", "Mein Vater ist alt 45 Jahre", "Mein Vater ist 45 Jahre jung"])
+];
+
+const rok5_niemiecki = [
+  new pytanie("Jakie jest niemieckie słowo na „kalendarz”?", ["*Kalender", "Uhren", "Tische", "Bücher"]),
+  new pytanie("Jakie słowo oznacza „klucz” w języku niemieckim?", ["*Schlüssel", "Tür", "Fenster", "Stuhl"]),
+  new pytanie("Jakie jest niemieckie słowo na „telewizor”?", ["*Fernseher", "Computer", "Radio", "Telefon"]),
+  new pytanie("Jak przetłumaczyć „mam nadzieję” na niemiecki?", ["*Ich hoffe", "Ich denke", "Ich weiß", "Ich glaube"]),
+  new pytanie("Jak powiedzieć po niemiecku „czy masz chwilę?”", ["*Hast du einen Moment?", "Hast du Zeit?", "Hast du Lust?", "Gehst du mit mir?"]),
+  new pytanie("Jakie jest niemieckie słowo na „wschód”?", ["*Osten", "Westen", "Süden", "Norden"]),
+  new pytanie("Jak powiedzieć po niemiecku „idę do pracy”?", ["*Ich gehe zur Arbeit", "Ich gehe nach Hause", "Ich gehe zur Schule", "Ich gehe ins Kino"]),
+  new pytanie("Jakie jest niemieckie słowo na „zupa”?", ["*Suppe", "Salat", "Brot", "Fleisch"]),
+  new pytanie("Jak przetłumaczyć „to jest trudne” na niemiecki?", ["*Das ist schwer", "Das ist einfach", "Das ist interessant", "Das ist leicht"]),
+  new pytanie("Jak powiedzieć po niemiecku „czy możesz mi pomóc”?", ["*Kannst du mir helfen?", "Kannst du das machen?", "Bist du fertig?", "Willst du das tun?"])
+];
+
+//pytania z chemii
+
+const rok1_chemia = [
+  new pytanie("Cząsteczki wody są:", ["polarnymi cząsteczkami", "niepolarnymi cząsteczkami", "gazami", "metalami"]),
+  new pytanie("Reakcja spalania to proces, w którym:", ["substancja reaguje z tlenem", "następuje wydzielanie ciepła i światła", "nie powstają nowe substancje", "zachodzi reakcja z wodą"]),
+  new pytanie("Który z poniższych gazów jest bezbarwny, bezwonny i trudno rozpuszczalny w wodzie?", ["Azot", "Tlen", "Dwutlenek węgla", "Wodór"]),
+  new pytanie("Cząsteczki substancji są najmniejsze jednostkami, które zachowują:", ["właściwości chemiczne substancji", "energię potencjalną", "masę", "tylko właściwości fizyczne"]),
+  new pytanie("Tlenek węgla(IV) to:", ["CO₂", "CO", "O₂", "C₆H₁₂O₆"]),
+  new pytanie("Jaka jest liczba atomów w cząsteczce H₂O?", ["3", "4", "2", "5"]),
+  new pytanie("Najmniejsza jednostka chemiczna, która może uczestniczyć w reakcjach chemicznych, to:", ["cząsteczka", "atom", "jądro", "proton"]),
+  new pytanie("Który z poniższych pierwiastków jest metalem?", ["Sód", "Tlen", "Węgiel", "Azot"]),
+  new pytanie("Substancja, która może oddać proton (H⁺), to:", ["kwas", "zasada", "sól", "woda"]),
+  new pytanie("Jakie jest pH neutralnej substancji?", ["7", "14", "0", "3"])
+];
+
+const rok2_chemia = [
+  new pytanie("Kwas solny to związek chemiczny o wzorze:", ["HCl", "H₂SO₄", "NaOH", "HNO₃"]),
+  new pytanie("Wiązanie chemiczne, w którym elektrony są dzielone przez atomy, to wiązanie:", ["kowalencyjne", "jonowe", "metaliczne", "elektrostatyczne"]),
+  new pytanie("Woda jest dobrym rozpuszczalnikiem, ponieważ:", ["jest cząsteczką polarną", "jest gazem", "ma niską temperaturę wrzenia", "jest cieczą niepolarną"]),
+  new pytanie("Wzór na masę molową związku chemicznego to:", ["suma mas molowych atomów wchodzących w skład cząsteczki", "różnica mas atomowych", "iloczyn liczby atomów i liczby Avogadra", "masa jednej cząsteczki"]),
+  new pytanie("Otrzymywanie soli przez reakcję kwasu z zasadą to proces zwany:", ["neutralizacją", "redukcją", "estryfikacją", "spalaniem"]),
+  new pytanie("Jakie ładunki mają jony wody (H₂O)?", ["brak ładunku (są neutralne)", "dodatni", "ujemny", "zmienny"]),
+  new pytanie("Jakie jest pH kwasu siarkowego (H₂SO₄)?", ["poniżej 7", "7", "powyżej 7", "14"]),
+  new pytanie("Rozpuszczalność substancji w wodzie zależy głównie od:", ["polarności cząsteczek", "masy cząsteczkowej", "temperatury", "koloru substancji"]),
+  new pytanie("Reakcja utleniania polega na:", ["oddaniu elektronów", "przyjęciu elektronów", "oddaniu protonów", "przyjęciu protonów"]),
+  new pytanie("Główna różnica między kwasem a zasadą to:", ["kwas oddaje protony, zasada je przyjmuje", "kwas przyjmuje protony, zasada je oddaje", "kwas ma pH 7, zasada poniżej 7", "kwas jest substancją organiczną, zasada nie"])
+];
+
+const rok3_chemia = [
+  new pytanie("Jakie jest pH kwasu siarkowego (H₂SO₄)?", ["poniżej 7", "7", "powyżej 7", "14"]),
+  new pytanie("Rozpuszczalność substancji w wodzie zależy głównie od:", ["polarności cząsteczek", "masy cząsteczkowej", "temperatury", "koloru substancji"]),
+  new pytanie("Reakcja utleniania polega na:", ["oddaniu elektronów", "przyjęciu elektronów", "oddaniu protonów", "przyjęciu protonów"]),
+  new pytanie("Główna różnica między kwasem a zasadą to:", ["kwas oddaje protony, zasada je przyjmuje", "kwas przyjmuje protony, zasada je oddaje", "kwas ma pH 7, zasada poniżej 7", "kwas jest substancją organiczną, zasada nie"]),
+  new pytanie("Otrzymywanie gazu wodorowego (H₂) w reakcji metalu z kwasem to reakcja:", ["redoks", "hydrolizy", "estryfikacji", "substytucji"]),
+  new pytanie("Który z poniższych gazów jest cięższy od powietrza?", ["Dwutlenek węgla (CO₂)", "Azot (N₂)", "Tlen (O₂)", "Wodór (H₂)"]),
+  new pytanie("Jaka jest liczba moli w 32 gramach tlenu (O₂)? (Masa molowa O₂ = 32 g/mol)", ["1 mol", "2 mole", "0,5 mola", "32 mole"]),
+  new pytanie("Reakcja syntezy to proces, w którym:", ["dwa lub więcej reagentów łączą się w jeden produkt", "rozkłada się jeden reagent na dwa produkty", "substancja zmienia stan skupienia", "reagenty reagują w obecności katalizatora"]),
+  new pytanie("Najmniejszą jednostką substancji chemicznej jest:", ["atom", "cząsteczka", "cząsteczka wody", "jądro atomowe"]),
+  new pytanie("Woda jest dobrym rozpuszczalnikiem, ponieważ:", ["ma cząsteczkę polarną", "ma wysoką temperaturę wrzenia", "jest cieczą o dużej gęstości", "ma dużą lepkość"])
+];
+
+const rok4_chemia = [
+  new pytanie("Który z pierwiastków jest gazem szlachetnym?", ["Hel", "Wodór", "Węgiel", "Azot"]),
+  new pytanie("Cząsteczka CO₂ jest:", ["cząsteczką niepolarną", "cząsteczką polarną", "jonem", "cząsteczką stałą"]),
+  new pytanie("Kiedy reakcja chemiczna jest egzotermiczna?", ["Gdy wydziela się ciepło", "Gdy pochłania ciepło", "Gdy nie zmienia temperatury", "Gdy powstają gazy"]),
+  new pytanie("Reakcja kwasu i zasady daje w wyniku:", ["sól i wodę", "dwutlenek węgla i wodę", "tylko wodę", "tylko kwas"]),
+  new pytanie("Jaką rolę pełni katalizator w reakcji chemicznej?", ["Przyspiesza reakcję, nie biorąc udziału w produkcie", "Spowalnia reakcję", "Utrzymuje reakcję na stałym poziomie", "Zmienia wszystkie reagenty w produkty"]),
+  new pytanie("Która z poniższych substancji jest kwasem organicznym?", ["Kwas octowy", "Kwas siarkowy", "Kwas solny", "Kwas azotowy"]),
+  new pytanie("Roztwór nasycony to taki, w którym:", ["nie można rozpuścić więcej substancji", "zawiera największą możliwą ilość rozpuszczalnika", "substancja nie reaguje", "roztwór jest przejrzysty"]),
+  new pytanie("Atom węgla w cząsteczce metanu (CH₄) ma:", ["4 wiązania kowalencyjne", "3 wiązania kowalencyjne", "2 wiązania kowalencyjne", "1 wiązanie kowalencyjne"]),
+  new pytanie("Który z pierwiastków jest najczęściej używany do produkcji energii jądrowej?", ["Uran", "Hel", "Węgiel", "Ołów"]),
+  new pytanie("Która z poniższych substancji jest przykładem zasady?", ["NaOH", "HCl", "H₂SO₄", "NH₃"])
+];
+
+const rok5_chemia = [
+  new pytanie("Wiązanie jonowe zachodzi, gdy:", ["jeden atom oddaje, a drugi przyjmuje elektron", "atomy dzielą się elektronami", "atomy tworzą pary elektronowe", "atomy nie mają ładunków"]),
+  new pytanie("Zjawisko sublimacji polega na:", ["przejściu substancji z ciała stałego bezpośrednio w gaz", "przejściu substancji z cieczy w gaz", "przejściu substancji z gazu w ciecz", "przejściu substancji z ciała stałego w ciecz"]),
+  new pytanie("Które z poniższych pierwiastków tworzy gaz szlachetny?", ["Hel", "Wodór", "Tlen", "Azot"]),
+  new pytanie("Reakcja metal + kwas → sól + wodór to przykład reakcji:", ["redoks", "zmydlania", "syntezy", "estryfikacji"]),
+  new pytanie("Wzór chemiczny tlenku azotu(V) to:", ["N₂O₅", "NO₂", "N₂O₃", "NO"]),
+  new pytanie("Co to jest reakcja przyłączenia?", ["Reakcja, w której cząsteczki reagują z cząsteczką prostą lub inną cząsteczką", "Reakcja, w której tworzą się cząsteczki z dwóch prostych reagentów", "Reakcja, w której cząsteczka rozpada się na dwa produkty", "Reakcja, w której następuje wymiana miejscami atomów w reagentach"]),
+  new pytanie("Z jakiego pierwiastka składa się kwas siarkowy?", ["Siarki i tlenu", "Węgla i wodoru", "Wodoru i azotu", "Azotu i wodoru"]),
+  new pytanie("Które z poniższych jest przykładem reakcji syntezy?", ["2H₂ + O₂ → 2H₂O", "2H₂O → 2H₂ + O₂", "NaCl → Na + Cl₂", "HCl + NaOH → NaCl + H₂O"]),
+  new pytanie("Jaką temperaturę ma punkt topnienia wody?", ["0°C", "32°C", "100°C", "-10°C"]),
+  new pytanie("Co to jest mol?", ["Jednostka ilości substancji", "Jednostka masy", "Jednostka objętości", "Jednostka temperatury"])
+];
+
+//pytania z polskiego
+
+const rok1_polski = [
+  new pytanie("Kto jest autorem „Pana Tadeusza”?", ["Adam Mickiewicz", "Juliusz Słowacki", "Bolesław Prus", "Henryk Sienkiewicz"]),
+  new pytanie("Epoka romantyzmu przypada na wiek:", ["XIX", "XVIII", "XVII", "XX"]),
+  new pytanie("„Lalka” to utwór reprezentujący:", ["Realizm", "Romantyzm", "Barok", "Pozytywizm"]),
+  new pytanie("Epitet to:", ["Określenie rzeczownika", "Przesada", "Zestawienie dwóch rzeczy", "pytanie"]),
+  new pytanie("Przysłowie to:", ["Utrwalona mądrość ludowa", "Nazwa własna", "Forma rozkazu", "Styl poetycki"]),
+  new pytanie("Zdanie pojedyncze to:", ["Zdanie z jednym orzeczeniem", "Zdanie z przecinkiem", "Zdanie z wykrzyknikiem", "Zdanie podrzędne"]),
+  new pytanie("Podmiot to:", ["Wykonawca czynności", "Określenie czasu", "Dopełnienie", "Przydawka"]),
+  new pytanie("W zdaniu „Programista pisze kod.” orzeczeniem jest:", ["pisze", "kod", "programista", "i"]),
+  new pytanie("Młoda Polska to epoka:", ["Modernizmu", "Baroku", "Romantyzmu", "Oświecenia"]),
+  new pytanie("Synonim słowa „szybko” to:", ["Błyskawicznie", "Wolno", "Leniwie", "Beznamiętnie"])
+];
+
+const rok2_polski = [
+  new pytanie("Autor „Dziadów” to:", ["Adam Mickiewicz", "Juliusz Słowacki", "Cyprian Kamil Norwid", "Stefan Żeromski"]),
+  new pytanie("Oksymoron to:", ["Zestawienie przeciwieństw", "Powtórzenie", "Przenośnia", "Epitet"]),
+  new pytanie("Archaizm to:", ["Wyraz przestarzały", "Neologizm", "Wyraz obcy", "Slang"]),
+  new pytanie("W wyrazie „liście” występuje:", ["Zmiękczenie", "Zdrobniałość", "Archaizm", "Spójnik"]),
+  new pytanie("„Zemsta” Aleksandra Fredry to:", ["Komedia", "Tragedia", "Ballada", "Opowiadanie"]),
+  new pytanie("Zdanie oznajmujące to:", ["Zdanie informujące", "Zdanie pytające", "Rozkazujące", "Wykrzyknikowe"]),
+  new pytanie("Przyrostkiem w wyrazie „zabawka” jest:", ["-ka", "-zab", "-aw", "-ba"]),
+  new pytanie("Przeciwieństwo słowa „duży” to:", ["Mały", "Ogromny", "Szeroki", "Gruby"]),
+  new pytanie("Styl urzędowy charakteryzuje się:", ["Precyzją i zwięzłością", "Humorem", "Uczuciowością", "Swobodą"]),
+  new pytanie("Synonim słowa „myśleć” to:", ["Rozważać", "Grać", "Jeść", "Spać"])
+];
+
+const rok3_polski = [
+  new pytanie("Autor „Potopu” to:", ["Henryk Sienkiewicz", "Eliza Orzeszkowa", "Stefan Żeromski", "Józef Ignacy Kraszewski"]),
+  new pytanie("Czasownik określa:", ["Czynność lub stan", "Liczbę", "Osobę", "Rzecz"]),
+  new pytanie("Liczba mnoga wyrazu „program” to:", ["Programy", "Programów", "Programie", "Programem"]),
+  new pytanie("Które z poniższych to rzeczownik?", ["Komputer", "Pisać", "Biegać", "Ładny"]),
+  new pytanie("Kto napisał „Latarnika”?", ["Henryk Sienkiewicz", "Bolesław Prus", "Adam Mickiewicz", "Juliusz Słowacki"]),
+  new pytanie("Ballada to:", ["Gatunek łączący lirykę, epikę i dramat", "Esej naukowy", "Styl muzyczny", "Rodzaj felietonu"]),
+  new pytanie("Sonet to:", ["Utwór o ścisłej budowie wersowej", "Powieść", "Piosenka", "Reportaż"]),
+  new pytanie("W języku polskim występują:", ["3 rodzaje gramatyczne", "2 rodzaje gramatyczne", "4 rodzaje gramatyczne", "1 rodzaj gramatyczny"]),
+  new pytanie("„Wesele” napisał:", ["Stanisław Wyspiański", "Stefan Żeromski", "Bolesław Leśmian", "Tadeusz Różewicz"]),
+  new pytanie("Najstarsza epoka literacka to:", ["Antyk", "Romantyzm", "Młoda Polska", "Pozytywizm"])
+];
+
+const rok4_polski = [
+  new pytanie("Które z dzieł uznawane jest za manifest romantyzmu w Polsce?", ["„Oda do młodości”", "„Kordian”", "„Nie-Boska komedia”", "„Wielka Improwizacja”"]),
+  new pytanie("W którym z utworów występuje motyw wallenrodyzmu?", ["„Konrad Wallenrod”", "„Dziady cz. III”", "„Kordian”", "„Grażyna”"]),
+  new pytanie("Kto wprowadził do języka polskiego zasady ortografii i interpunkcji w XVI wieku?", ["Jan Kochanowski", "Mikołaj Rej", "Andrzej Frycz Modrzewski", "Piotr Skarga"]),
+  new pytanie("Który z autorów reprezentuje klasycyzm?", ["Ignacy Krasicki", "Juliusz Słowacki", "Stanisław Wyspiański", "Cyprian Kamil Norwid"]),
+  new pytanie("Czym jest anafora?", ["Powtórzeniem tego samego wyrazu na początku kolejnych wersów", "Przeciwstawieniem", "Zestawieniem wyrazów", "Wtrąceniem komentarza"]),
+  new pytanie("Który z bohaterów literackich jest przykładem tragizmu romantycznego?", ["Konrad z „Dziadów cz. III”", "Wokulski z „Lalki”", "Rejent z „Zemsty”", "Zenon z „Granicy”"]),
+  new pytanie("Który autor pisał fraszki i treny?", ["Jan Kochanowski", "Mikołaj Rej", "Ignacy Krasicki", "Adam Mickiewicz"]),
+  new pytanie("Co oznacza termin „stylizacja językowa”?", ["Celowe naśladowanie cech językowych danej epoki, środowiska lub grupy społecznej", "Tworzenie języka technicznego", "Mieszanie języków", "Unikanie archaizmów"]),
+  new pytanie("Który dramat ma budowę klasyczną (jedność czasu, miejsca, akcji)?", ["„Odprawa posłów greckich”", "„Dziady cz. III”", "„Wesele”", "„Nie-Boska komedia”"]),
+  new pytanie("Neologizm to:", ["Nowo utworzony wyraz", "Wyraz przestarzały", "Błąd stylistyczny", "Wyraz zapożyczony"])
+];
+
+const rok5_polski = [
+  new pytanie("Główne cechy języka urzędowego to:", ["Bezosobowość i precyzja", "Emocjonalność i obrazowość", "Rytmiczność i rym", "Patos i ironia"]),
+  new pytanie("Alegoria to:", ["Stałe, jednoznaczne znaczenie symboliczne", "Dowolna metafora", "Słowo nacechowane emocjonalnie", "Błąd językowy"]),
+  new pytanie("Główna cecha dramatu romantycznego to:", ["Synkretyzm rodzajowy i kompozycyjna swoboda", "Jedność czasu i miejsca", "Zachowanie klasycznych zasad", "Brak dialogów"]),
+  new pytanie("Które z dzieł NIE zawiera narratora wszechwiedzącego?", ["„Dziady cz. III”", "„Lalka”", "„Nad Niemnem”", "„Chłopi”"]),
+  new pytanie("W którym zdaniu występuje imiesłów przysłówkowy współczesny?", ["Programując, słuchał muzyki.", "Był programistą z zawodu.", "Pisząc, napisał wiele.", "Zapis kodu był błędny."]),
+  new pytanie("Który autor był współtwórcą „Skamandra”?", ["Julian Tuwim", "Zbigniew Herbert", "Bolesław Leśmian", "Tadeusz Różewicz"]),
+  new pytanie("Jaką funkcję pełni język w haśle reklamowym?", ["Impresywną", "Informacyjną", "Poetycką", "Fatatywną"]),
+  new pytanie("Kto jest autorem „Pieśni IX” („Nie porzucaj nadzieje...”)?", ["Jan Kochanowski", "Mikołaj Sęp-Szarzyński", "Ignacy Krasicki", "Franciszek Karpiński"]),
+  new pytanie("Neologizm to:", ["Nowo utworzony wyraz", "Wyraz przestarzały", "Błąd stylistyczny", "Wyraz zapożyczony"]),
+  new pytanie("Które zdanie zawiera apostrofę?", ["Litwo! Ojczyzno moja!", "Ojczyzna jest piękna.", "Mówię do ciebie poważnie.", "Polska to mój dom."])
+];

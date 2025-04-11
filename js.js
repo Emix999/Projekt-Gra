@@ -89,11 +89,24 @@ const menedzer_gry = {
     zdarzenie: null,
     indeks_opisu_zdarzenia_nielosowego: 0,
     kolejny_rok: false,
+    czy_koniec_gry: false,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
         }
         else{
+            this.czy_koniec_gry = true;
+            for(let i of this.aktywni_gracze){
+                if(i.zdane_lata != 5){
+                    this.czy_koniec_gry = false;
+                    break;
+                }
+            }
+            if(this.czy_koniec_gry){
+                this.koniec_gry();
+                return 1;
+            }
+
             do{
                 //niech ktoś to naprawi na, kiedy wszyscy gracze skończą grę
                 if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
@@ -112,22 +125,23 @@ const menedzer_gry = {
                             break;
                         }
                     }
-                    if (this.runda % 10 == 0) {
+                    if ((this.runda - 1) % 10 == 0) {
                         this.kolejny_rok = true;
                     }
                 }
                 
             } while (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5)
-            if(this.indeks_wybranego == 0 && this.runda % 10 == 0){
+            if(this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0){
                 //egzamin zawodowy nr 1
                 this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 2 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
+                    if(this.aktywni_gracze[i].zdane_lata == 2 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
                         this.indeksy_aktywnych_egzamin.push(i);
                     }                        
                 }
                 if(this.indeksy_aktywnych_egzamin.length > 0){
                     this.runda_egzamin = true;
+                    this.runda--;
                     this.poczatek_tury_egzamin();
                     return 0;
                 }
@@ -141,6 +155,7 @@ const menedzer_gry = {
                 }
                 if(this.indeksy_aktywnych_egzamin.length > 0){
                     this.runda_egzamin = true;
+                    this.runda--;
                     this.poczatek_tury_egzamin();
                     return 0;
                 }
@@ -154,12 +169,14 @@ const menedzer_gry = {
                 }
                 if(this.indeksy_aktywnych_egzamin.length > 0){
                     this.runda_egzamin = true;
+                    this.runda--;
                     this.poczatek_tury_egzamin();
                     return 0;
                 }
             }
 
             if(this.kolejny_rok){
+                this.kolejny_rok = false;
                 this.rok_gry++;
                 for (let i of this.aktywni_gracze) {
                     if(i.zdane_lata != 5){
@@ -184,7 +201,6 @@ const menedzer_gry = {
         if(this.indeksy_aktywnych_egzamin.length == 0){
             this.runda_egzamin = false;
             this.indeks_wybranego = -1;
-            this.runda--;
             this.poczatek_tury();
             return 0;
         }
@@ -211,7 +227,10 @@ const menedzer_gry = {
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa.nazwa;
             i++;
-        }  
+        }
+    },
+    koniec_gry: function(){
+        console.log('skibidi koniec gry');
     }
 };
 
@@ -874,11 +893,7 @@ const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
     ), new zestaw_pytan_egzamin());
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z polskiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z polskiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z polskiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z polskiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z polskiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
@@ -900,18 +915,10 @@ const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
         [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
     ));
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z niemieckiego rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z niemieckiego rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z niemieckiego rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z niemieckiego rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z niemieckiego rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki
     ), new zestaw_pytan_egzamin());
 const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z chemii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z chemii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z chemii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z chemii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z chemii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
     ), new zestaw_pytan_egzamin());
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     [new pytanie('przykładowe pytanie z fizyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
