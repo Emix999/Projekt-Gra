@@ -1079,7 +1079,6 @@ function uzyj_przedmiotu() {
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     znikniecie_szczegolow_przedmiotu();
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot);
-
     aktualizacja_menu_bocznego();
 }
 
