@@ -347,68 +347,68 @@ const rok5_matematyka = [
 //pytania z niemickiego
 
 const rok1_niemiecki = [
-  new pytanie("Jakie jest niemieckie słowo na „dom”?", ["*Haus", "Auto", "Schule", "Buch"]),
-  new pytanie("Jakie słowo oznacza „przyjaciel” w języku niemieckim?", ["*Freund", "Bruder", "Hund", "Lehrer"]),
-  new pytanie("Które z poniższych słów jest czasownikiem w niemieckim?", ["*gehen", "Haus", "schnell", "Apfel"]),
-  new pytanie("Jak przetłumaczyć „dobry wieczór” na niemiecki?", ["*Guten Abend", "Gute Nacht", "Guten Morgen", "Hallo"]),
-  new pytanie("Które z poniższych słów jest przymiotnikiem w języku niemieckim?", ["*schnell", "gehen", "Apfel", "Stadt"]),
-  new pytanie("Jakie jest niemieckie słowo na „kawa”?", ["*Kaffee", "Tee", "Wasser", "Saft"]),
-  new pytanie("Jak powiedzieć „Jak się masz?” po niemiecku?", ["*Wie geht’s dir?", "Wie heißt du?", "Woher kommst du?", "Was machst du?"]),
-  new pytanie("Które z poniższych słów oznacza „szkoła” po niemiecku?", ["*Schule", "Universität", "Werkstatt", "Krankenhaus"]),
-  new pytanie("Jak powiedzieć „jestem studentem” po niemiecku?", ["*Ich bin Student", "Ich bin Lehrer", "Ich bin Arzt", "Ich bin Freund"]),
-  new pytanie("Jakie jest niemieckie słowo na „książka”?", ["*Buch", "Auto", "Tisch", "Lampe"])
+  new pytanie("Jakie jest niemieckie słowo na „dom”?", ["Haus", "Auto", "Schule", "Buch"]),
+  new pytanie("Jakie słowo oznacza „przyjaciel” w języku niemieckim?", ["Freund", "Bruder", "Hund", "Lehrer"]),
+  new pytanie("Które z poniższych słów jest czasownikiem w niemieckim?", ["gehen", "Haus", "schnell", "Apfel"]),
+  new pytanie("Jak przetłumaczyć „dobry wieczór” na niemiecki?", ["Guten Abend", "Gute Nacht", "Guten Morgen", "Hallo"]),
+  new pytanie("Które z poniższych słów jest przymiotnikiem w języku niemieckim?", ["schnell", "gehen", "Apfel", "Stadt"]),
+  new pytanie("Jakie jest niemieckie słowo na „kawa”?", ["Kaffee", "Tee", "Wasser", "Saft"]),
+  new pytanie("Jak powiedzieć „Jak się masz?” po niemiecku?", ["Wie geht’s dir?", "Wie heißt du?", "Woher kommst du?", "Was machst du?"]),
+  new pytanie("Które z poniższych słów oznacza „szkoła” po niemiecku?", ["Schule", "Universität", "Werkstatt", "Krankenhaus"]),
+  new pytanie("Jak powiedzieć „jestem studentem” po niemiecku?", ["Ich bin Student", "Ich bin Lehrer", "Ich bin Arzt", "Ich bin Freund"]),
+  new pytanie("Jakie jest niemieckie słowo na „książka”?", ["Buch", "Auto", "Tisch", "Lampe"])
 ];
 
 const rok2_niemiecki = [
-  new pytanie("Jak brzmi forma czasownika „być” w pierwszej osobie liczby pojedynczej?", ["*bin", "bist", "ist", "sind"]),
-  new pytanie("Jak przetłumaczyć „dobranoc” na niemiecki?", ["*Gute Nacht", "Guten Morgen", "Hallo", "Tschüss"]),
-  new pytanie("Jakie słowo oznacza „słowo” po niemiecku?", ["*Wort", "Satz", "Buch", "Zeitung"]),
-  new pytanie("Jakie słowo oznacza „zegar” w języku niemieckim?", ["*Uhr", "Stuhl", "Tisch", "Fenster"]),
-  new pytanie("Które z poniższych słów oznacza „miasto”?", ["*Stadt", "Dorf", "Land", "Straße"]),
-  new pytanie("Jak przetłumaczyć „mój dom” na niemiecki?", ["*Mein Haus", "Mein Auto", "Mein Freund", "Mein Hund"]),
-  new pytanie("Jakie słowo oznacza „nauczyciel” po niemiecku?", ["*Lehrer", "Schüler", "Arzt", "Fahrer"]),
-  new pytanie("Jak powiedzieć po niemiecku „mam 20 lat”?", ["*Ich bin 20 Jahre alt", "Ich habe 20 Jahre", "Ich bin zwanzig Jahre alt", "Ich habe zwanzig Jahre"]),
-  new pytanie("Jakie jest niemieckie słowo na „pies”?", ["*Hund", "Katze", "Vogel", "Fisch"]),
-  new pytanie("Jak powiedzieć po niemiecku „kocham cię”?", ["*Ich liebe dich", "Ich habe dich gern", "Du bist mein Freund", "Ich mag dich"])
+  new pytanie("Jak brzmi forma czasownika „być” w pierwszej osobie liczby pojedynczej?", ["bin", "bist", "ist", "sind"]),
+  new pytanie("Jak przetłumaczyć „dobranoc” na niemiecki?", ["Gute Nacht", "Guten Morgen", "Hallo", "Tschüss"]),
+  new pytanie("Jakie słowo oznacza „słowo” po niemiecku?", ["Wort", "Satz", "Buch", "Zeitung"]),
+  new pytanie("Jakie słowo oznacza „zegar” w języku niemieckim?", ["Uhr", "Stuhl", "Tisch", "Fenster"]),
+  new pytanie("Które z poniższych słów oznacza „miasto”?", ["Stadt", "Dorf", "Land", "Straße"]),
+  new pytanie("Jak przetłumaczyć „mój dom” na niemiecki?", ["Mein Haus", "Mein Auto", "Mein Freund", "Mein Hund"]),
+  new pytanie("Jakie słowo oznacza „nauczyciel” po niemiecku?", ["Lehrer", "Schüler", "Arzt", "Fahrer"]),
+  new pytanie("Jak powiedzieć po niemiecku „mam 20 lat”?", ["Ich bin 20 Jahre alt", "Ich habe 20 Jahre", "Ich bin zwanzig Jahre alt", "Ich habe zwanzig Jahre"]),
+  new pytanie("Jakie jest niemieckie słowo na „pies”?", ["Hund", "Katze", "Vogel", "Fisch"]),
+  new pytanie("Jak powiedzieć po niemiecku „kocham cię”?", ["Ich liebe dich", "Ich habe dich gern", "Du bist mein Freund", "Ich mag dich"])
 ];
 
 const rok3_niemiecki = [
-  new pytanie("Które z poniższych słów oznacza „wiatr”?", ["*Wind", "Regen", "Sonne", "Schnee"]),
-  new pytanie("Jak przetłumaczyć „jestem zmęczony” na niemiecki?", ["*Ich bin müde", "Ich habe Hunger", "Ich bin froh", "Ich habe Durst"]),
-  new pytanie("Jakie jest niemieckie słowo na „dziękuję”?", ["*Danke", "Bitte", "Entschuldigung", "Tschüss"]),
-  new pytanie("Jak powiedzieć po niemiecku „gdzie jest dworzec”?", ["*Wo ist der Bahnhof?", "Wo ist das Hotel?", "Wo ist die Schule?", "Wo ist der Park?"]),
-  new pytanie("Jakie jest niemieckie słowo na „okno”?", ["*Fenster", "Tür", "Wand", "Tisch"]),
-  new pytanie("Jakie słowo oznacza „woda” po niemiecku?", ["*Wasser", "Saft", "Tee", "Kaffee"]),
-  new pytanie("Jakie słowo oznacza „chleb” w języku niemieckim?", ["*Brot", "Käse", "Apfel", "Butter"]),
-  new pytanie("Które z poniższych słów oznacza „piłka”?", ["*Ball", "Auto", "Haus", "Tisch"]),
-  new pytanie("Jakie słowo oznacza „samochód” w języku niemieckim?", ["*Auto", "Fahrrad", "Bus", "Zug"]),
-  new pytanie("Jakie jest niemieckie słowo na „telefon”?", ["*Telefon", "Fernseher", "Radio", "Computer"])
+  new pytanie("Które z poniższych słów oznacza „wiatr”?", ["Wind", "Regen", "Sonne", "Schnee"]),
+  new pytanie("Jak przetłumaczyć „jestem zmęczony” na niemiecki?", ["Ich bin müde", "Ich habe Hunger", "Ich bin froh", "Ich habe Durst"]),
+  new pytanie("Jakie jest niemieckie słowo na „dziękuję”?", ["Danke", "Bitte", "Entschuldigung", "Tschüss"]),
+  new pytanie("Jak powiedzieć po niemiecku „gdzie jest dworzec”?", ["Wo ist der Bahnhof?", "Wo ist das Hotel?", "Wo ist die Schule?", "Wo ist der Park?"]),
+  new pytanie("Jakie jest niemieckie słowo na „okno”?", ["Fenster", "Tür", "Wand", "Tisch"]),
+  new pytanie("Jakie słowo oznacza „woda” po niemiecku?", ["Wasser", "Saft", "Tee", "Kaffee"]),
+  new pytanie("Jakie słowo oznacza „chleb” w języku niemieckim?", ["Brot", "Käse", "Apfel", "Butter"]),
+  new pytanie("Które z poniższych słów oznacza „piłka”?", ["Ball", "Auto", "Haus", "Tisch"]),
+  new pytanie("Jakie słowo oznacza „samochód” w języku niemieckim?", ["Auto", "Fahrrad", "Bus", "Zug"]),
+  new pytanie("Jakie jest niemieckie słowo na „telefon”?", ["Telefon", "Fernseher", "Radio", "Computer"])
 ];
 
 const rok4_niemiecki = [
-  new pytanie("Jak powiedzieć „on ma na imię Peter” po niemiecku?", ["*Er heißt Peter", "Er ist Peter", "Er hat Peter", "Er nennt sich Peter"]),
-  new pytanie("Jak powiedzieć po niemiecku „mieszkam w Berlinie”?", ["*Ich wohne in Berlin", "Ich komme aus Berlin", "Ich gehe nach Berlin", "Ich fahre nach Berlin"]),
-  new pytanie("Jakie jest niemieckie słowo na „wielki”?", ["*groß", "klein", "schnell", "lang"]),
-  new pytanie("Jakie jest niemieckie słowo na „piękny”?", ["*schön", "hässlich", "klein", "groß"]),
-  new pytanie("Jak przetłumaczyć „to jest moje” na niemiecki?", ["*Das ist meins", "Das ist mein", "Es ist mein", "Es ist meine"]),
-  new pytanie("Jakie jest niemieckie słowo na „godzina”?", ["*Stunde", "Minute", "Tag", "Jahr"]),
-  new pytanie("Jakie jest niemieckie słowo na „rzeczy”?", ["*Dinge", "Sachen", "Bücher", "Zeitungen"]),
-  new pytanie("Jak przetłumaczyć „proszę” na niemiecki?", ["*Bitte", "Danke", "Entschuldigung", "Hallo"]),
-  new pytanie("Jakie jest niemieckie słowo na „domek”?", ["*Häuschen", "Auto", "Haus", "Garten"]),
-  new pytanie("Jak powiedzieć po niemiecku „mój tata ma 45 lat”?", ["*Mein Vater ist 45 Jahre alt", "Mein Vater hat 45 Jahre", "Mein Vater ist alt 45 Jahre", "Mein Vater ist 45 Jahre jung"])
+  new pytanie("Jak powiedzieć „on ma na imię Peter” po niemiecku?", ["Er heißt Peter", "Er ist Peter", "Er hat Peter", "Er nennt sich Peter"]),
+  new pytanie("Jak powiedzieć po niemiecku „mieszkam w Berlinie”?", ["Ich wohne in Berlin", "Ich komme aus Berlin", "Ich gehe nach Berlin", "Ich fahre nach Berlin"]),
+  new pytanie("Jakie jest niemieckie słowo na „wielki”?", ["groß", "klein", "schnell", "lang"]),
+  new pytanie("Jakie jest niemieckie słowo na „piękny”?", ["schön", "hässlich", "klein", "groß"]),
+  new pytanie("Jak przetłumaczyć „to jest moje” na niemiecki?", ["Das ist meins", "Das ist mein", "Es ist mein", "Es ist meine"]),
+  new pytanie("Jakie jest niemieckie słowo na „godzina”?", ["Stunde", "Minute", "Tag", "Jahr"]),
+  new pytanie("Jakie jest niemieckie słowo na „rzeczy”?", ["Dinge", "Sachen", "Bücher", "Zeitungen"]),
+  new pytanie("Jak przetłumaczyć „proszę” na niemiecki?", ["Bitte", "Danke", "Entschuldigung", "Hallo"]),
+  new pytanie("Jakie jest niemieckie słowo na „domek”?", ["Häuschen", "Auto", "Haus", "Garten"]),
+  new pytanie("Jak powiedzieć po niemiecku „mój tata ma 45 lat”?", ["Mein Vater ist 45 Jahre alt", "Mein Vater hat 45 Jahre", "Mein Vater ist alt 45 Jahre", "Mein Vater ist 45 Jahre jung"])
 ];
 
 const rok5_niemiecki = [
-  new pytanie("Jakie jest niemieckie słowo na „kalendarz”?", ["*Kalender", "Uhren", "Tische", "Bücher"]),
-  new pytanie("Jakie słowo oznacza „klucz” w języku niemieckim?", ["*Schlüssel", "Tür", "Fenster", "Stuhl"]),
-  new pytanie("Jakie jest niemieckie słowo na „telewizor”?", ["*Fernseher", "Computer", "Radio", "Telefon"]),
-  new pytanie("Jak przetłumaczyć „mam nadzieję” na niemiecki?", ["*Ich hoffe", "Ich denke", "Ich weiß", "Ich glaube"]),
-  new pytanie("Jak powiedzieć po niemiecku „czy masz chwilę?”", ["*Hast du einen Moment?", "Hast du Zeit?", "Hast du Lust?", "Gehst du mit mir?"]),
-  new pytanie("Jakie jest niemieckie słowo na „wschód”?", ["*Osten", "Westen", "Süden", "Norden"]),
-  new pytanie("Jak powiedzieć po niemiecku „idę do pracy”?", ["*Ich gehe zur Arbeit", "Ich gehe nach Hause", "Ich gehe zur Schule", "Ich gehe ins Kino"]),
-  new pytanie("Jakie jest niemieckie słowo na „zupa”?", ["*Suppe", "Salat", "Brot", "Fleisch"]),
-  new pytanie("Jak przetłumaczyć „to jest trudne” na niemiecki?", ["*Das ist schwer", "Das ist einfach", "Das ist interessant", "Das ist leicht"]),
-  new pytanie("Jak powiedzieć po niemiecku „czy możesz mi pomóc”?", ["*Kannst du mir helfen?", "Kannst du das machen?", "Bist du fertig?", "Willst du das tun?"])
+  new pytanie("Jakie jest niemieckie słowo na „kalendarz”?", ["Kalender", "Uhren", "Tische", "Bücher"]),
+  new pytanie("Jakie słowo oznacza „klucz” w języku niemieckim?", ["Schlüssel", "Tür", "Fenster", "Stuhl"]),
+  new pytanie("Jakie jest niemieckie słowo na „telewizor”?", ["Fernseher", "Computer", "Radio", "Telefon"]),
+  new pytanie("Jak przetłumaczyć „mam nadzieję” na niemiecki?", ["Ich hoffe", "Ich denke", "Ich weiß", "Ich glaube"]),
+  new pytanie("Jak powiedzieć po niemiecku „czy masz chwilę?”", ["Hast du einen Moment?", "Hast du Zeit?", "Hast du Lust?", "Gehst du mit mir?"]),
+  new pytanie("Jakie jest niemieckie słowo na „wschód”?", ["Osten", "Westen", "Süden", "Norden"]),
+  new pytanie("Jak powiedzieć po niemiecku „idę do pracy”?", ["Ich gehe zur Arbeit", "Ich gehe nach Hause", "Ich gehe zur Schule", "Ich gehe ins Kino"]),
+  new pytanie("Jakie jest niemieckie słowo na „zupa”?", ["Suppe", "Salat", "Brot", "Fleisch"]),
+  new pytanie("Jak przetłumaczyć „to jest trudne” na niemiecki?", ["Das ist schwer", "Das ist einfach", "Das ist interessant", "Das ist leicht"]),
+  new pytanie("Jak powiedzieć po niemiecku „czy możesz mi pomóc”?", ["Kannst du mir helfen?", "Kannst du das machen?", "Bist du fertig?", "Willst du das tun?"])
 ];
 
 //pytania z chemii
@@ -543,4 +543,137 @@ const rok5_polski = [
   new pytanie("Kto jest autorem „Pieśni IX” („Nie porzucaj nadzieje...”)?", ["Jan Kochanowski", "Mikołaj Sęp-Szarzyński", "Ignacy Krasicki", "Franciszek Karpiński"]),
   new pytanie("Neologizm to:", ["Nowo utworzony wyraz", "Wyraz przestarzały", "Błąd stylistyczny", "Wyraz zapożyczony"]),
   new pytanie("Które zdanie zawiera apostrofę?", ["Litwo! Ojczyzno moja!", "Ojczyzna jest piękna.", "Mówię do ciebie poważnie.", "Polska to mój dom."])
+];
+
+//pytania z fizyki
+
+const rok1_fizyka = [
+  new pytanie("Jednostką siły w układzie SI jest:", ["niuton (N)", "kilogram (kg)", "metr na sekundę (m/s)", "dżul (J)"]),
+  new pytanie("Przyspieszenie ziemskie ma wartość:", ["około 9,81 m/s²", "100 m/s²", "1 m/s²", "0,1 m/s²"]),
+  new pytanie("Ciało porusza się ruchem jednostajnym prostoliniowym, gdy:", ["jego prędkość jest stała", "jego przyspieszenie rośnie", "jego tor to okrąg", "jego masa się zmienia"]),
+  new pytanie("Prędkość to wielkość:", ["wektorowa", "skalarna", "niemerzalna", "zmienna"]),
+  new pytanie("Masa to miara:", ["bezwładności ciała", "siły ciężkości", "przyspieszenia", "energii"]),
+  new pytanie("Tor ruchu to:", ["linia, po której porusza się ciało", "droga podzielona przez czas", "kierunek siły", "linia styczna do wektora prędkości"]),
+  new pytanie("Ruch jednostajnie przyspieszony to ruch, w którym:", ["przyspieszenie jest stałe", "prędkość jest stała", "siła maleje", "masa rośnie"]),
+  new pytanie("Siła tarcia zależy od:", ["rodzaju powierzchni", "koloru ciała", "temperatury", "objętości"]),
+  new pytanie("Zasada bezwładności to:", ["I zasada dynamiki Newtona", "II zasada dynamiki Newtona", "III zasada dynamiki Newtona", "zasada energii"]),
+  new pytanie("Siła wypadkowa to:", ["suma wszystkich sił działających na ciało", "najmniejsza siła w układzie", "tylko siła grawitacji", "tylko siła tarcia"])
+];
+
+const rok2_fizyka = [
+  new pytanie("Praca to:", ["iloczyn siły i przesunięcia", "iloczyn masy i przyspieszenia", "iloczyn energii i czasu", "iloczyn siły i masy"]),
+  new pytanie("Jednostką pracy jest:", ["dżul (J)", "wat (W)", "niuton (N)", "kilogram (kg)"]),
+  new pytanie("Energia kinetyczna zależy od:", ["masy i prędkości", "masy i wysokości", "temperatury", "ciśnienia"]),
+  new pytanie("Energia potencjalna grawitacyjna zależy od:", ["masy, wysokości i g", "prędkości", "ciśnienia", "temperatury"]),
+  new pytanie("Moc to:", ["praca wykonana w jednostce czasu", "siła razy droga", "masa razy przyspieszenie", "droga podzielona przez czas"]),
+  new pytanie("Jednostką mocy jest:", ["wat (W)", "dżul (J)", "niuton (N)", "kelwin (K)"]),
+  new pytanie("Zasada zachowania energii mówi, że:", ["energia nie ginie, tylko zmienia postać", "masa może zanikać", "praca zależy od kierunku", "siła równa się zero"]),
+  new pytanie("Siła ciężkości działa:", ["pionowo w dół", "poziomo", "prostopadle do kierunku ruchu", "zawsze do góry"]),
+  new pytanie("Przyciąganie grawitacyjne występuje między:", ["wszystkimi ciałami mającymi masę", "tylko między Ziemią a Księżycem", "tylko w laboratorium", "tylko w próżni"]),
+  new pytanie("Przyspieszenie w ruchu jednostajnie opóźnionym jest:", ["stałe, ale skierowane przeciwnie do ruchu", "rosnące", "zerowe", "skierowane w bok"])
+];
+
+const rok3_fizyka = [
+  new pytanie("Temperatura w kelwinach to:", ["stopnie Celsjusza + 273", "stopnie Celsjusza - 100", "2 razy stopnie Celsjusza", "stopnie Celsjusza / 2"]),
+  new pytanie("Ciepło właściwe to ilość ciepła potrzebna do:", ["podgrzania 1 kg substancji o 1°C", "zmiany ciała stałego w ciecz", "spalenia substancji", "ogrzenia powietrza w pokoju"]),
+  new pytanie("Fala mechaniczna potrzebuje:", ["ośrodka do rozchodzenia się", "próżni", "światła", "pola magnetycznego"]),
+  new pytanie("Amplituda drgań to:", ["maksymalne wychylenie z położenia równowagi", "czas jednego drgania", "długość fali", "masa układu"]),
+  new pytanie("Częstotliwość to:", ["liczba drgań w jednostce czasu", "długość fali", "prędkość dźwięku", "gęstość ośrodka"]),
+  new pytanie("Zjawisko odbicia fali polega na:", ["powrocie fali po napotkaniu przeszkody", "zniknięciu fali", "zmianie temperatury", "zwiększeniu energii"]),
+  new pytanie("Fale dźwiękowe to fale:", ["podłużne", "poprzeczne", "elektromagnetyczne", "świetlne"]),
+  new pytanie("Zjawisko rezonansu występuje, gdy:", ["częstotliwość drgań wymuszonych jest równa częstotliwości własnej", "fala się odbija", "zmienia się długość fali", "zmniejsza się temperatura"]),
+  new pytanie("Energia wewnętrzna ciała zależy od:", ["ruchu cząsteczek i ich wzajemnych oddziaływań", "objętości", "koloru", "pola magnetycznego"]),
+  new pytanie("Proces parowania zachodzi:", ["na powierzchni cieczy w każdej temperaturze", "tylko w 100°C", "tylko w próżni", "tylko przy podgrzewaniu"])
+];
+
+const rok4_fizyka = [
+  new pytanie("Prąd elektryczny to:", ["uporządkowany ruch ładunków elektrycznych", "przepływ ciepła", "zmiana ciśnienia", "przepływ gazu"]),
+  new pytanie("Jednostką natężenia prądu jest:", ["amper (A)", "wolt (V)", "om (Ω)", "dżul (J)"]),
+  new pytanie("Napięcie to:", ["różnica potencjałów", "ilość elektronów", "energia kinetyczna", "moc urządzenia"]),
+  new pytanie("Prawo Ohma opisuje zależność:", ["napięcia, natężenia i oporu", "mocy i energii", "ładunku i napięcia", "ciepła i czasu"]),
+  new pytanie("Opór elektryczny zależy od:", ["rodzaju i długości przewodnika", "napięcia", "natężenia", "kierunku prądu"]),
+  new pytanie("Jednostką oporu elektrycznego jest:", ["om (Ω)", "amper (A)", "wat (W)", "niuton (N)"]),
+  new pytanie("Źródło napięcia to np.:", ["bateria", "opornik", "kondensator", "żarówka"]),
+  new pytanie("Pole magnetyczne wokół przewodnika z prądem ma kształt:", ["okręgów wokół przewodnika", "prostych linii", "sinusoidy", "kwadratu"]),
+  new pytanie("Siła elektromotoryczna to:", ["energia przekształcana w źródle prądu", "siła tarcia", "masa elektronów", "liczba ładunków"]),
+  new pytanie("Silnik elektryczny działa na zasadzie:", ["oddziaływania pola magnetycznego i prądu", "spalania paliwa", "działania sił sprężystości", "ciepła przemiany"])
+];
+
+const rok5_fizyka = [
+  new pytanie("Światło jest falą:", ["elektromagnetyczną", "mechaniczną", "dźwiękową", "sprężystą"]),
+  new pytanie("Zwierciadło wypukłe powoduje:", ["powstanie obrazu pozornego, pomniejszonego", "powstanie obrazu rzeczywistego", "powstanie obrazu odwróconego", "powstanie cienia"]),
+  new pytanie("Soczewka skupiająca to taka, która:", ["skupia promienie światła w jednym punkcie", "rozprasza światło", "odbija światło", "tworzy cień"]),
+  new pytanie("Załamanie światła zachodzi na granicy:", ["dwóch ośrodków optycznych", "w próżni", "tylko w lustrze", "tylko w soczewkach"]),
+  new pytanie("Dyfrakcja to:", ["ugięcie fali na przeszkodzie", "odbicie światła", "absorpcja światła", "wzmocnienie prądu"]),
+  new pytanie("Interferencja to:", ["nakładanie się fal", "rozpraszanie dźwięku", "odbijanie światła", "załamanie dźwięku"]),
+  new pytanie("Foton to:", ["kwant światła", "cząstka materii", "elektron", "neutron"]),
+  new pytanie("Efekt fotoelektryczny to:", ["emisja elektronów pod wpływem światła", "emisja dźwięku", "wzrost temperatury", "zmiana barwy"]),
+  new pytanie("Dualizm korpuskularno-falowy oznacza, że:", ["światło ma cechy fali i cząstki", "dźwięk i światło są tym samym", "światło to fala dźwiękowa", "cząstki nie mają masy"]),
+  new pytanie("Promieniowanie jonizujące to np.:", ["promieniowanie gamma", "światło widzialne", "fale radiowe", "podczerwień"])
+];
+
+//pytania z historii
+const rok1_historia = [
+  new pytanie("Kiedy odbył się chrzest Polski?", ["966", "1000", "1025", "1138"]),
+  new pytanie("Kim był Mieszko I?", ["Pierwszym historycznym władcą Polski", "Pierwszym królem Polski", "Twórcą Unii Lubelskiej", "Papieżem"]),
+  new pytanie("Jakie plemię zjednoczył Mieszko I?", ["Polan", "Wiślan", "Mazowszan", "Pomorzan"]),
+  new pytanie("Jakie państwo przyjęło chrzest w 988 roku?", ["Ruś Kijowska", "Węgry", "Czechy", "Polska"]),
+  new pytanie("Co oznaczała zasada senioratu?", ["Władzę miał najstarszy z rodu", "Tron dziedziczył syn króla", "Wybierano króla przez szlachtę", "Królem był najmłodszy syn"]),
+  new pytanie("Kiedy miała miejsce bitwa pod Grunwaldem?", ["1410", "1320", "1385", "1493"]),
+  new pytanie("Kto zawarł unię w Krewie?", ["Polska i Litwa", "Polska i Czechy", "Polska i Węgry", "Litwa i Ruś"]),
+  new pytanie("Jakie miasto było stolicą Królestwa Polskiego za Kazimierza Wielkiego?", ["Kraków", "Poznań", "Gniezno", "Warszawa"]),
+  new pytanie("Kto ufundował Akademię Krakowską?", ["Kazimierz Wielki", "Władysław Łokietek", "Bolesław Krzywousty", "Władysław Jagiełło"]),
+  new pytanie("Jakie było hasło rycerstwa w średniowieczu?", ["Bóg, honor, ojczyzna", "Pokój i miłość", "Życie i chwała", "Ojczyzna i rodzina"])
+];
+
+const rok2_historia = [
+  new pytanie("Kiedy uchwalono Konstytucję 3 maja?", ["1791", "1789", "1793", "1795"]),
+  new pytanie("Kto był twórcą hymnu Polski?", ["Józef Wybicki", "Tadeusz Kościuszko", "Adam Mickiewicz", "Stanisław Staszic"]),
+  new pytanie("Kiedy odbył się III rozbiór Polski?", ["1795", "1793", "1772", "1791"]),
+  new pytanie("Kto był przywódcą powstania kościuszkowskiego?", ["Tadeusz Kościuszko", "Jan Henryk Dąbrowski", "Kazimierz Pułaski", "Józef Poniatowski"]),
+  new pytanie("Co oznaczało hasło „Wolność, Równość, Braterstwo”?", ["Rewolucję francuską", "Powstanie listopadowe", "Reformację", "Rozbiory"]),
+  new pytanie("Kto był cesarzem Francuzów w XIX wieku?", ["Napoleon Bonaparte", "Ludwik XVI", "Ludwik XVIII", "Karol X"]),
+  new pytanie("Co powstało na ziemiach polskich dzięki Napoleonowi?", ["Księstwo Warszawskie", "Królestwo Polskie", "Rzeczpospolita Krakowska", "Rada Regencyjna"]),
+  new pytanie("Kiedy wybuchło powstanie listopadowe?", ["1830", "1831", "1846", "1863"]),
+  new pytanie("Kto był przywódcą powstania styczniowego?", ["Romuald Traugutt", "Adam Mickiewicz", "Józef Piłsudski", "Edward Rydz-Śmigły"]),
+  new pytanie("Jakie państwo zniosło pańszczyznę w XIX w.?", ["Austria", "Polska", "Prusy", "Francja"])
+];
+
+const rok3_historia = [
+  new pytanie("Kiedy wybuchła I wojna światowa?", ["1914", "1915", "1918", "1939"]),
+  new pytanie("Jakie państwo było zaborcą Polski?", ["Rosja", "Francja", "Włochy", "Anglia"]),
+  new pytanie("Kiedy Polska odzyskała niepodległość?", ["1918", "1914", "1920", "1939"]),
+  new pytanie("Kto był naczelnikiem państwa po 1918 r.?", ["Józef Piłsudski", "Roman Dmowski", "Ignacy Paderewski", "Edward Rydz-Śmigły"]),
+  new pytanie("Kiedy miała miejsce Bitwa Warszawska?", ["1920", "1918", "1939", "1921"]),
+  new pytanie("Co oznaczało pojęcie „Dwudziestolecie Międzywojenne”?", ["Okres między I a II wojną światową", "Czasy średniowieczne", "Epokę napoleońską", "Lata po wojnie"]),
+  new pytanie("Kiedy Hitler doszedł do władzy?", ["1933", "1929", "1939", "1945"]),
+  new pytanie("Jaki ustrój panował w ZSRR za Lenina i Stalina?", ["Komunizm", "Monarchia", "Demokracja", "Feudalizm"]),
+  new pytanie("Jakie było hasło faszyzmu?", ["Państwo ponad wszystko", "Wolność i demokracja", "Pacyfizm i jedność", "Praca i pokój"]),
+  new pytanie("Kiedy wybuchła II wojna światowa?", ["1939", "1940", "1941", "1945"])
+];
+
+const rok4_historia = [
+  new pytanie("Co rozpoczęło II wojnę światową?", ["Atak Niemiec na Polskę", "Bitwa o Anglię", "Kapitulacja Francji", "Bitwa pod Stalingradem"]),
+  new pytanie("Kiedy miało miejsce powstanie warszawskie?", ["1944", "1939", "1945", "1943"]),
+  new pytanie("Kto był premierem Wielkiej Brytanii podczas II wojny?", ["Winston Churchill", "Neville Chamberlain", "Anthony Eden", "Margaret Thatcher"]),
+  new pytanie("Jak nazywał się plan ataku Niemiec na ZSRR?", ["Barbarossa", "Overlord", "Desert Storm", "Husky"]),
+  new pytanie("Co zakończyło II wojnę światową?", ["Zrzucenie bomb atomowych", "Bitwa o Berlin", "Konferencja w Jałcie", "Procesy norymberskie"]),
+  new pytanie("Kiedy utworzono ONZ?", ["1945", "1939", "1941", "1947"]),
+  new pytanie("Jak nazywała się zimna wojna?", ["Konflikt ideologiczny USA–ZSRR", "Wojna w zimie", "Wojna światowa", "Konflikt religijny"]),
+  new pytanie("Kto był przywódcą ZSRR w czasie zimnej wojny?", ["Stalin", "Lenin", "Putin", "Chruszczow"]),
+  new pytanie("Co oznacza termin „żelazna kurtyna”?", ["Podział Europy po II wojnie", "Linia frontu", "Granica Niemiec", "Cenzura prasy"]),
+  new pytanie("Jakie państwo było w NATO?", ["USA", "ZSRR", "Jugosławia", "Chiny"])
+];
+
+const rok5_historia = [
+  new pytanie("Kiedy wybuchło powstanie „Solidarności”?", ["1980", "1976", "1981", "1989"]),
+  new pytanie("Kto był liderem Solidarności?", ["Lech Wałęsa", "Tadeusz Mazowiecki", "Wojciech Jaruzelski", "Bronisław Komorowski"]),
+  new pytanie("Kiedy wprowadzono stan wojenny w Polsce?", ["1981", "1980", "1983", "1989"]),
+  new pytanie("Kiedy upadł komunizm w Polsce?", ["1989", "1981", "1990", "1980"]),
+  new pytanie("Kiedy Polska wstąpiła do Unii Europejskiej?", ["2004", "1999", "2001", "2007"]),
+  new pytanie("Kiedy Polska przystąpiła do NATO?", ["1999", "2004", "1995", "1993"]),
+  new pytanie("Kto został pierwszym demokratycznym prezydentem Polski po 1989?", ["Lech Wałęsa", "Aleksander Kwaśniewski", "Jarosław Kaczyński", "Tadeusz Mazowiecki"]),
+  new pytanie("Jakie wydarzenie miało miejsce w 2001 roku w USA?", ["Ataki na WTC", "Wybuch wojny secesyjnej", "Kryzys finansowy", "Wojna w Wietnamie"]),
+  new pytanie("Kto był papieżem z Polski?", ["Jan Paweł II", "Benedykt XVI", "Jan XXIII", "Franciszek"]),
+  new pytanie("Jakie państwo rozpadło się w latach 90.?", ["ZSRR", "USA", "Kanada", "Francja"])
 ];
