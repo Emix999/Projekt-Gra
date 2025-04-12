@@ -954,7 +954,7 @@ const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_2
 
 for (let i = 0; i < sale.length; i++) {
     for(let j = 0; j < sala_przyciski.length; j++){
-        if(sala_przyciski[j].innerHTML == sale[i].nr){
+        if(sala_przyciski[j].id == sale[i].nr){
             sala_przyciski[j].sala = sale[i];
             sala_przyciski[j].addEventListener('click', () => sale[i].pokaz_sale());
             break;

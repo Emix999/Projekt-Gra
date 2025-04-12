@@ -338,7 +338,15 @@ body {
 }
 
 #sanity,
-#pieniadze,
+#pieniadze{
+    margin: 0.5vh;
+    height: 3vh;
+    width: 4vh;
+    position: absolute;
+    font-size: 20px;
+    background-color: transparent;
+}
+
 #zdane_lata,
 #obecny_rok {
     margin: 0.5vh;
@@ -605,6 +613,8 @@ body {
     display: none;
 }
 
+.przycisk_sala, 
+#przycisk_sklep,
 .przycisk_mapa{
     background-size: cover;
     border: none;
