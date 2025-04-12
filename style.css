@@ -542,21 +542,23 @@ body {
 #uzyj_przedmiotu{
     width: 10vh;
     height: 5vh;
-    font-size: 4vh;
+    background-size: cover;
 }
 
 #statystyki_przedmiotu{
-    margin-bottom: auto;
-    height: 25vh;
+    height: 35vh;
     width: 35vh;
     margin: 0.5vh;
     background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-size: cover;
     display: none;
+    right: 0;
+    top: 28vh;
     margin-top: 3vh;
-    position: relative;
+    position: absolute;
 }
 #nazwa_przedmiotu{
     width: 20vh;
@@ -564,7 +566,6 @@ body {
     margin: 0.5vh;
     font-size: 4vh;
 }
-
 #zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
     height: 6vh;
     width: 6vh;
