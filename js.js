@@ -1051,10 +1051,10 @@ const szczegoly_przedmiotu = document.getElementById("statystyki_przedmiotu");
 
 
 for (let i = 0; i < ekwipunek.length; i++) {
-    ekwipunek[i].addEventListener("click", () =>pokaz_szczegoly_przedmiotu(i));
+    ekwipunek[i].addEventListener("click", () => pokaz_szczegoly_przedmiotu(i));
 }
 
-document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", ()=> znikniecie_szczegolow_przedmiotu());
+document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", () => znikniecie_szczegolow_przedmiotu());
 
 function znikniecie_szczegolow_przedmiotu(){
     znikniecie_ekranu(szczegoly_przedmiotu); 
@@ -1063,28 +1063,38 @@ function znikniecie_szczegolow_przedmiotu(){
 
 function pokaz_szczegoly_przedmiotu(slot) {
     let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
-
-    if (wybrany_przedmiot.id_obrazu != null) {
-        znikniecie_ekranu(document.getElementById("caly_ekwipunek"));
-        pojawienie_ekranu(szczegoly_przedmiotu);
-        let nazwa = document.getElementById("nazwa_przedmiotu");
-        let opis = document.getElementById("opis_przedmiotu");
-        nazwa.innerHTML = wybrany_przedmiot.nazwa;
-        opis.innerHTML = wybrany_przedmiot.opis;
+    try{
+        if (wybrany_przedmiot.id_obrazu != undefined) {
+            znikniecie_ekranu(document.getElementById('caly_ekwipunek'));
+            pojawienie_ekranu(szczegoly_przedmiotu);
+            let nazwa = document.getElementById("nazwa_przedmiotu");
+            let opis = document.getElementById("opis_przedmiotu");
+            nazwa.innerHTML = wybrany_przedmiot.nazwa;
+            opis.innerHTML = wybrany_przedmiot.opis;
+            menedzer_gry.ostatni_pokazany_przedmiot = slot;
+        }
     }
-    menedzer_gry.ostatni_pokazany_przedmiot = slot;
+    catch{};
 }
 
-document.getElementById("uzyj_przedmiotu").addEventListener("click",()=>uzyj_przedmiotu());
+document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_przedmiotu());
 
 
-function uzyj_przedmiotu(){
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity+=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot];
+function uzyj_przedmiotu() {
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
-    
-    ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot]=null;
-    document.getElementsByClassName('ekwipunek')[menedzer_gry.ostatni_pokazany_przedmiot]=null;
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot);
+
+    aktualizacja_menu_bocznego();
+}
+
+function aktualizacja_menu_bocznego() {
+    sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+    zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
+    obecny_rok.value = menedzer_gry.obecny_rok;
+    for (let i = 0; i < ekwipunek.length; i++) {
+        ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i]+"')";
+    }
 }
 
 
