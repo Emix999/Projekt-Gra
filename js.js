@@ -1058,6 +1058,7 @@ function znikniecie_szczegolow_przedmiotu(){
 
 function pokaz_szczegoly_przedmiotu(slot) {
     let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
+    try{
         if (wybrany_przedmiot.id_obrazu != undefined) {
             znikniecie_ekranu(document.getElementById('caly_ekwipunek'));
             pojawienie_ekranu(szczegoly_przedmiotu);
@@ -1067,6 +1068,8 @@ function pokaz_szczegoly_przedmiotu(slot) {
             opis.innerHTML = wybrany_przedmiot.opis;
             menedzer_gry.ostatni_pokazany_przedmiot = slot;
         }
+    }
+    catch{};
 }
 
 document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_przedmiotu());
@@ -1075,7 +1078,7 @@ document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_
 function uzyj_przedmiotu() {
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot] = null;
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot);
 
     aktualizacja_menu_bocznego();
 }
