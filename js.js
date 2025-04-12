@@ -940,12 +940,12 @@ const s_202 = new sala('202', null, geografia, 'ogólna');
 const s_201 = new sala('201', null, biologia, 'ogólna');
 const s_103 = new sala('103', null, polski, 'ogólna');
 const s_102a = new sala('102a', null, informatyka, 'ogólna');
-const s_208 = new sala('208', null, historia, 'ogólna');
+const s_19 = new sala('19', null, historia, 'ogólna');
 const s_036 = new sala('036', null, angielski, 'ogólna');
-const s_04 = new sala('04', null, niemiecki, 'ogólna');
+const s_22 = new sala('22', null, niemiecki, 'ogólna');
 const s_211 = new sala('211', null, chemia, 'ogólna');
 const s_210 = new sala('210', null, fizyka, 'ogólna');
-const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_208, s_036, s_04, s_211, s_210];
+const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_19, s_036, s_22, s_211, s_210];
 
 for (let i = 0; i < sale.length; i++) {
     for(let j = 0; j < sala_przyciski.length; j++){
