@@ -477,8 +477,8 @@ body {
     visibility: hidden;
 }
 
-#przejdz_dalej_zdarzenie, #wyjdz_ze_sklepu
-{
+
+#przejdz_dalej_zdarzenie,#wyjdz_ze_sklepu{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
