@@ -907,11 +907,7 @@ const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
     ), new zestaw_pytan_egzamin());
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z historii rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z historii rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z historii rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z historii rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z historii rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_historia, rok2_historia, rok3_historia, rok4_historia, rok5_historia
     ), new zestaw_pytan_egzamin());
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
@@ -926,11 +922,7 @@ const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
     ), new zestaw_pytan_egzamin());
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie z fizyki rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z fizyki rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z fizyki rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z fizyki rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie z fizyki rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
     ), new zestaw_pytan_egzamin());
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
@@ -1090,9 +1082,14 @@ function uzyj_przedmiotu() {
 function aktualizacja_menu_bocznego() {
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
-    obecny_rok.value = menedzer_gry.obecny_rok;
+    obecny_rok.value = menedzer_gry.rok_gry;
     for (let i = 0; i < ekwipunek.length; i++) {
-        ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i]+"')";
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length <= i){
+            ekwipunek[i].style.backgroundImage = 'none';
+        }
+        else{
+            ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i]+"')";
+        }
     }
 }
 
