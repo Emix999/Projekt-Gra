@@ -496,6 +496,7 @@ function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
 
 let czy_poprawna_odpowiedz;
 let czy_skonczyl_gre;
+let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
 
 function czy_poprawna(i) {
     if(!czy_odpowiedziano){
@@ -504,12 +505,16 @@ function czy_poprawna(i) {
         czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
         if (czy_poprawna_odpowiedz) {
             alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_gratulacje');
+            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
             if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.length == 3){
                 czy_skonczyl_gre = true;
             }
         }
         else {
             alert("UwUaga Debil");
+            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_debil');
+            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
         }
 
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
