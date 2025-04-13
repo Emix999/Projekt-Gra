@@ -613,6 +613,7 @@ const rok5_fizyka = [
 ];
 
 //pytania z historii
+
 const rok1_historia = [
   new pytanie("Kiedy odbył się chrzest Polski?", ["966", "1000", "1025", "1138"]),
   new pytanie("Kim był Mieszko I?", ["Pierwszym historycznym władcą Polski", "Pierwszym królem Polski", "Twórcą Unii Lubelskiej", "Papieżem"]),
