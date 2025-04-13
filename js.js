@@ -1,6 +1,6 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
-
+const SAS = "Olek";
 /*
 gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
@@ -290,7 +290,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak, ziemniak, ziemniak, ziemniak]);
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
@@ -1075,20 +1075,22 @@ document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_
 function uzyj_przedmiotu() {
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot);
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiotm,1);
     aktualizacja_menu_bocznego();
 }
 
+//Nie dotykać bo działa i nie wiemy dlaczego działa
+//Łatwo zepsućs
 function aktualizacja_menu_bocznego() {
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
     obecny_rok.value = menedzer_gry.rok_gry;
     for (let i = 0; i < ekwipunek.length; i++) {
-        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length <= i){
-            ekwipunek[i].style.backgroundImage = 'none';
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i){
+            ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i].id_obrazu+"')";
         }
         else{
-            ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i]+"')";
+            ekwipunek[i].style.backgroundImage = '';
         }
     }
 }
