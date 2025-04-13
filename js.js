@@ -621,7 +621,7 @@ const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 const ekwipunek = document.getElementsByClassName('ekwipunek');
-const pieniadze = document.getElementsByClassName('pieniadze');
+const pieniadze = document.getElementById('pieniadze');
 
 
 const otwarte_menu = {statystyki: false, ustawienia: false};
