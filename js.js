@@ -215,11 +215,7 @@ const menedzer_gry = {
         this.wypisz_informacje_graczy();
     },
     wypisz_informacje_graczy: function() {
-        zaktualizuj_sanity();
-        zdane_lata.value = this.aktywni_gracze[this.indeks_wybranego].zdane_lata;
-        obecny_rok.value = this.rok_gry;
-
-        zaktualizuj_ekwipunek();
+        aktualizacja_menu_bocznego();
 
         let i = 0;
         while (i < this.aktywni_gracze.length) {
@@ -625,7 +621,7 @@ const nr_graczy = document.getElementsByClassName('nr_gracza');
 const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 const ekwipunek = document.getElementsByClassName('ekwipunek');
-
+const pieniadze = document.getElementsByClassName('pieniadze');
 
 
 const otwarte_menu = {statystyki: false, ustawienia: false};
@@ -1084,6 +1080,7 @@ function uzyj_przedmiotu() {
 function aktualizacja_menu_bocznego() {
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
+    pieniadze.value= menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
     obecny_rok.value = menedzer_gry.rok_gry;
     for (let i = 0; i < ekwipunek.length; i++) {
         if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i){
