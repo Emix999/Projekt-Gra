@@ -6,6 +6,9 @@ gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
 
+//blokuje możliwość scrollowania
+document.body.classList.add('no-scroll'); 
+
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
 const opis = document.getElementById('opis');
@@ -195,6 +198,8 @@ const menedzer_gry = {
             }
 
             this.wypisz_informacje_graczy();
+            //do debugowania
+            this.koniec_gry();
         }
     },
     poczatek_tury_egzamin: function() {
@@ -226,7 +231,12 @@ const menedzer_gry = {
         }
     },
     koniec_gry: function(){
-        console.log('skibidi koniec gry');
+        zmiana_ekranu(gra, ekran_koncowy);
+        napisy_koncowe.style.animationPlayState = 'running';
+        setTimeout(() => this.koniec_gry_naprawde(), 20000);
+    },
+    koniec_gry_naprawde: function(){
+        zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
     }
 };
 
@@ -1022,6 +1032,10 @@ function zaktualizuj_ekwipunek(){
 function zaktualizuj_sanity(){
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
 }
+
+const ekran_koncowy = document.getElementById('ekran_koncowy');
+const napisy_koncowe = document.getElementById('napisy_koncowe');
+const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
 
 
 

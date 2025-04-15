@@ -8,7 +8,7 @@ body {
     height: 100vh;
     width: 100vw;
     position: fixed;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -618,4 +618,45 @@ body {
 .przycisk_mapa{
     background-size: cover;
     border: none;
+}
+
+#ekran_koncowy {
+    display: none;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    height: 100vh;
+    width: 100vw;
+}
+  
+#napisy_koncowe {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    animation: scrollowanie_napisow_koncowych 15s linear forwards;
+    animation-play-state: paused;
+}
+  
+@keyframes scrollowanie_napisow_koncowych {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+#ekran_koncowy_naprawde{
+    background-image: url('grafiki/menu_grafiki/CO\ ROBIMY\ 22.02.2025.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: none;
 }
