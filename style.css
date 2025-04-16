@@ -477,6 +477,15 @@ body {
     background-repeat: no-repeat;
     background-size:calc(100vw - 36vh) 100vh;
 }
+
+#ekran_dialogu{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    display: none;
+    background-color: azure;
+    flex-direction: column;
+}
+
 #ekran_zdarzenia{
     height: 100vh;
     width: calc(100vw - 36vh);
@@ -499,10 +508,14 @@ body {
 }
 
 
-#przejdz_dalej_zdarzenie,#wyjdz_ze_sklepu{
+#przejdz_dalej_zdarzenie,#wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
+}
+
+#zakoncz_dialog{
+    display: none;
 }
 
 #przejdz_dalej{

@@ -93,11 +93,16 @@ const menedzer_gry = {
     indeks_opisu_zdarzenia_nielosowego: 0,
     kolejny_rok: false,
     czy_koniec_gry: false,
+    indeks_opisu_dialogu: 0,
+    indeks_gracza_ktory_dostaje_dialog_nielosowy: null,
+    dialog: null,
+    pytanie: null,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
         }
         else{
+            //zakończenie gry
             this.czy_koniec_gry = true;
             for(let i of this.aktywni_gracze){
                 if(i.zdane_lata != 5){
@@ -119,6 +124,7 @@ const menedzer_gry = {
                     this.indeks_wybranego++;
                 }
         
+                //kolejna runda
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
                     for(let i of nielosowe_zdarzenia){
@@ -128,12 +134,22 @@ const menedzer_gry = {
                             break;
                         }
                     }
+                    this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
+                    for(let i of dialogi_nielosowe){
+                        if(i.runda == this.runda){
+                            this.dialog = i;
+                            this.indeks_gracza_ktory_dostaje_dialog_nielosowy = this.aktywni_gracze[Math.floor(Math.random() * this.aktywni_gracze.length)]
+                            break;
+                        }
+                    }
                     if ((this.runda - 1) % 10 == 0) {
                         this.kolejny_rok = true;
                     }
                 }
                 
             } while (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5)
+            
+            //sprawdza, czy jest runda egzaminacyjna
             if(this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0){
                 //egzamin zawodowy nr 1
                 this.indeksy_aktywnych_egzamin = [];
@@ -178,6 +194,7 @@ const menedzer_gry = {
                 }
             }
 
+            //zwiększa rok gry
             if(this.kolejny_rok){
                 this.kolejny_rok = false;
                 this.rok_gry++;
@@ -189,7 +206,8 @@ const menedzer_gry = {
                     i.podszedl_do_egzaminu = [];
                 }
             }
-    
+
+            //zdarzenia losowe
             if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
                 this.ilosc_losowych_zdarzen = 1;
             }
@@ -492,16 +510,16 @@ const zakoncz_ture = document.getElementById('zakoncz_ture');
 
 let czy_odpowiedziano;
 
-function pokaz_pytanie(pytanie, ekran_znikajacy, ekran_pojawiajacy) {
+function pokaz_pytanie(ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
 
     czy_odpowiedziano = false;
 
-    tresc.innerHTML = pytanie.tresc;
+    tresc.innerHTML = menedzer_gry.pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
     przemieszaj_tablice(mozliwe_indeksy);
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + pytanie.odpowiedzi[mozliwe_indeksy[i]];
+        odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + menedzer_gry.pytanie.odpowiedzi[mozliwe_indeksy[i]];
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
@@ -759,10 +777,11 @@ const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
 class przedmiot_szkolny {
-    constructor(nazwa, pytania, pytania_egzamin){
+    constructor(nazwa, pytania, pytania_egzamin, dialogi = null){
         this.nazwa = nazwa;
         this.pytania = pytania;
         this.pytania_egzamin = pytania_egzamin;
+        this.dialogi = dialogi;
     }
 }
 
@@ -803,9 +822,9 @@ class sala {
     }
 
     pokaz_sale_naprawde(pytania, rok) {
-        znikniecie_ekranu(mapa);
         let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
-        pokaz_pytanie(pytanie_kartkowka, ekran_gry, ekran_pytania);
+        menedzer_gry.pytanie = pytanie_kartkowka;
+        pokaz_dialog();
     }
 }
 
@@ -1049,6 +1068,46 @@ function zaktualizuj_sanity(){
 const ekran_koncowy = document.getElementById('ekran_koncowy');
 const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
+
+class dialog_nielosowy{
+    constructor(tekst, runda){
+        this.tekst = tekst;
+        this.runda = runda;
+    }
+};
+
+const ekran_dialogu = document.getElementById('ekran_dialogu');
+const tekst_dialogu = document.getElementById('tekst_dialogu');
+const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
+const zakoncz_dialog = document.getElementById('zakoncz_dialog');
+const dialog_testowy = ['skibidi', 'tak, skibidi', 'nie, skibidi sihgma'];
+const dialogi_losowe = [dialog_testowy];
+const dialog2 = new dialog_nielosowy(['hej', 'słyszeliście że', 'Pan Czosnowksi został porawany przez skibidi toalety?'], 1)
+const dialogi_nielosowe = [dialog_testowy]
+
+function pokaz_dialog(){
+    if(menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy == null){
+        menedzer_gry.dialog = dialogi_losowe[Math.floor(Math.random() * dialogi_losowe.length)]
+    }
+    zmiana_ekranu(mapa, ekran_dialogu);
+    tekst_dialogu.innerHTML = menedzer_gry.dialog[0];
+    menedzer_gry.indeks_opisu_dialogu = 0;
+}
+
+function przewin_dialog(){
+    menedzer_gry.indeks_opisu_dialogu++;
+    tekst_dialogu.innerHTML = menedzer_gry.dialog[menedzer_gry.indeks_opisu_dialogu];
+    if(menedzer_gry.indeks_opisu_dialogu == menedzer_gry.dialog.length - 1){
+        zmiana_ekranu(przejdz_dalej_dialog, zakoncz_dialog);
+    }
+}
+
+function zniknij_dialog(){
+    pokaz_pytanie(ekran_dialogu, ekran_pytania);
+}
+
+przejdz_dalej_dialog.addEventListener('click', () => przewin_dialog());
+zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
 
 
 
