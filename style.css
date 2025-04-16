@@ -8,9 +8,15 @@ body {
     height: 100vh;
     width: 100vw;
     position: fixed;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+}
+
+#tlo_menu_glowne{
+    height: 100vh;
+    width: 100vw;
+    filter: blur(3px);
 }
 
 .flex_pion {
@@ -259,11 +265,18 @@ body {
     display: none;
 }
 
-#mapa,#ustawienia2, #ekran_statystyk{
+#mapa,#ustawienia2{
     width: calc(100vw - 36vh);
     height: 100vh;
     background-color: white;
     justify-content: center;
+}
+
+#ekran_statystyk{
+    width: 30vw;
+    height: 10vh;
+    justify-content: center;
+    background-color: aqua;
 }
 
 #mapa{
@@ -548,8 +561,11 @@ body {
 } */
 
 #uzyj_przedmiotu{
-    width: 10vh;
-    height: 5vh;
+    position: absolute;
+    top: 84.5%;
+    left: 31%;
+    width: 13.4vh;
+    height: 4.15vh;
     background-size: cover;
 }
 
@@ -557,7 +573,6 @@ body {
     height: 35vh;
     width: 35vh;
     margin: 0.5vh;
-    background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -569,18 +584,30 @@ body {
     position: absolute;
 }
 #nazwa_przedmiotu{
-    width: 20vh;
-    height: 5vh;
+    position: absolute;
+    top: 4.3%;
+    left: 5%;
+    width: 24.3vh;
+    height: 3.7vh;
     margin: 0.5vh;
-    font-size: 4vh;
+    font-size: 3vh;
 }
 #zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
-    height: 6vh;
-    width: 6vh;
-    top: 1px;
-    right: 1px;
+    height: 4.3vh;
+    width: 4.3vh;
+    top: 5.1%;
+    right: 6%;
     background-size: cover;
     position: absolute;
+}
+
+#opis_przedmiotu{
+    position: absolute;
+    top: 21%;
+    left: 6.9%;
+    height: 19.5vh;
+    width: 30.2vh;
+    font-size: 1.5vh;
 }
 
 #caly_ekwipunek{
@@ -618,4 +645,45 @@ body {
 .przycisk_mapa{
     background-size: cover;
     border: none;
+}
+
+#ekran_koncowy {
+    display: none;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    height: 100vh;
+    width: 100vw;
+}
+  
+#napisy_koncowe {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    animation: scrollowanie_napisow_koncowych 15s linear forwards;
+    animation-play-state: paused;
+}
+  
+@keyframes scrollowanie_napisow_koncowych {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+#ekran_koncowy_naprawde{
+    background-image: url('grafiki/menu_grafiki/CO\ ROBIMY\ 22.02.2025.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: none;
 }
