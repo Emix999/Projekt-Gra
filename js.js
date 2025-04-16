@@ -198,8 +198,6 @@ const menedzer_gry = {
             }
 
             this.wypisz_informacje_graczy();
-            //do debugowania
-            this.koniec_gry();
         }
     },
     poczatek_tury_egzamin: function() {
