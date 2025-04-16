@@ -244,7 +244,21 @@ const menedzer_gry = {
 
 //Deklaracja tablic z nazwami klas i danymi zewnętrznych indeksów
 const liczba_graczy = 4;
-const nazwy = ["test0", "test1", "test2"];
+const nazwy = [
+    "Adam", "Adrian", "Aleksander", "Andrzej", "Antoni", "Artur", "Bartłomiej", "Błażej",
+    "Bogdan", "Bogumił", "Bożydar", "Bogusław", "Bolesław", "Bronisław", "Cezary", "Czesław",
+    "Damian", "Daniel", "Dariusz", "Dawid", "Dominik", "Edward", "Emil", "Ferdynand", "Filip",
+    "Franciszek", "Fryderyk", "Gabriel", "Gerard", "Gracjan", "Grzegorz", "Gustaw", "Henryk",
+    "Herbert", "Hubert", "Ignacy", "Igor", "Ireneusz", "Jacek", "Jakub", "Jan", "Janusz",
+    "Jarosław", "Jerzy", "Joachim", "Józef", "Julian", "Juliusz", "Justyn", "Kacper", "Kajetan",
+    "Karol", "Kazimierz", "Konrad", "Krystian", "Krzysztof", "Lech", "Leon", "Leszek", "Lucjan",
+    "Ludwik", "Łukasz", "Maciej", "Maksymilian", "Marcel", "Marcin", "Marek", "Mariusz",
+    "Mateusz", "Michał", "Mieczysław", "Mirosław", "Nikodem", "Oskar", "Patryk", "Paweł",
+    "Piotr", "Przemysław", "Radosław", "Rafał", "Robert", "Roman", "Ryszard", "Sebastian",
+    "Stanisław", "Stefan", "Szymon", "Tadeusz", "Tomasz", "Tymon", "Wacław", "Waldemar",
+    "Wiesław", "Wiktor", "Władysław", "Włodzimierz", "Zbigniew", "Zenon", "Zygmunt", "Mździungwa",
+    "Ziemniak", "Sans", "Barnaba", "Nie wiem", "Brum brum"
+  ];
 const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "grafiki/avatary/pala.png", "grafiki/avatary/gigachad.png", "grafiki/avatary/spóźniony.png"];
 // const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
@@ -321,6 +335,7 @@ class menu_graczy {
         this.id_avatar_prawo = id_avatar_prawo;
 
         document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
+        this.losowanie_nazwy();
     }
     //Strzałka w prawo zmienia klasę na następną w tablicy
     klasa_prawo() {
