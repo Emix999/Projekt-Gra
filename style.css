@@ -438,7 +438,7 @@ body {
     left: 47%;
 }
 
-#tresc{
+#tresc, #nazwa_zdarzenia{
     display: flex;
     position: absolute;
     top: 9.3vh;
@@ -449,21 +449,11 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 60px;
+    font-size: 6vh;
     color: white;
 }
 
-#nazwa_zdarzenia {
-    width: 66vw;
-    height: 15vh;
-    background-color: blueviolet;
-    margin-bottom: 3vw;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 100px;
-    color: white;
-}
+
 
 .margines_gora {
     margin-top: 3vh;
@@ -489,26 +479,68 @@ body {
 #ekran_zdarzenia{
     height: 100vh;
     width: calc(100vw - 36vh);
-    background-color: azure;
-    display: none;
+    background-image: url('grafiki/zdażenie.png');
+    display: none;  
+    background-repeat: no-repeat;
+    background-size:calc(100vw - 36vh) 100vh;
 }
 
 #opis{
-    height: 50vh;
-    width: 60%;
-    background-color: burlywood;
+    display: flex;
+    position: absolute;
+    top: 38.2vh;
+    left: 7%;
+    width: 69.3vw;
+    height: 45.5vh;
+    background-color: transparent;
+    justify-content: center;
+    text-align: center;
+    font-size: 4vh;
+    color: white;
 }
 
 #ekran_nagrody{
     position: absolute;
-    height: 50vh;
-    width: 60%;
-    background-color: burlywood;
+    height: 29vh;
+    width: 40vh;
+    background-image: url("grafiki/statystyki_pytania.png");
     visibility: hidden;
+    background-size: cover;
 }
 
+#ilosc_pytan{
+    position: absolute;
+    height: 3vh;
+    width: 4vh;
+    top: 10%;
+    left: 10%;
+}
 
-#przejdz_dalej_zdarzenie,#wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{
+#ilosc_poprawnych_odpowiedzi{
+    position: absolute;
+    height: 3vh;
+    width: 4vh;
+    top: 10%;
+    left: 10%;
+}
+
+#ocena{
+    position: absolute;
+    height: 3vh;
+    width: 4vh;
+    top: 10%;
+    left: 10%;
+}
+
+#zmiana_sanity{
+    position: absolute;
+    height: 3vh;
+    width: 4vh;
+    top: 10%;
+    left: 10%;
+}
+
+ #wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
@@ -532,6 +564,20 @@ body {
     border: none;
     display: none;
 }
+
+#przejdz_dalej_zdarzenie{
+    background-color: #5E5E5E;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 87vh;
+    left: 34.7vw;
+    height: 7vh;
+    width: 14vw;
+    position: fixed;
+    background-image: url("grafiki/Przejdz_dalej.png");
+    border: none;
+}/* jakby ktoś się zastanawiał dlaczego przejdz dalej i przejdz dalej zdażenie nie są razem, to dlatego że jeden musi mieć display none, a drógi nie może (a w htmlu nie chciało mi się zmieniać (ale pewnie kiedyś to zrobę w ramach optymalizacji jak nie zapomnę))*/
 
 #zakoncz_ture{
     background-color: #5E5E5E;
