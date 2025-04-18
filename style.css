@@ -540,14 +540,10 @@ body {
     left: 10%;
 }
 
- #wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{
+#wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
-}
-
-#zakoncz_dialog{
-    display: none;
 }
 
 #przejdz_dalej{

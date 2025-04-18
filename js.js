@@ -82,7 +82,7 @@ wylacz_zdarzenie_nielosowe.addEventListener('click', () => zniknij_zdarzenie_nie
 const menedzer_gry = {
     ostatni_pokazany_przedmiot: null,
     indeks_wybranego: -1,
-    rok_gry: 0,
+    rok_gry: 1,
     aktywni_gracze: [],
     runda: 0,
     ilosc_losowych_zdarzen: 0,
@@ -93,10 +93,11 @@ const menedzer_gry = {
     indeks_opisu_zdarzenia_nielosowego: 0,
     kolejny_rok: false,
     czy_koniec_gry: false,
-    indeks_opisu_dialogu: 0,
     indeks_gracza_ktory_dostaje_dialog_nielosowy: null,
     dialog: null,
+    dialog_nielosowy: null,
     pytanie: null,
+    przedmiot_szkolny: null,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
@@ -137,12 +138,12 @@ const menedzer_gry = {
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for(let i of dialogi_nielosowe){
                         if(i.runda == this.runda){
-                            this.dialog = i;
-                            this.indeks_gracza_ktory_dostaje_dialog_nielosowy = this.aktywni_gracze[Math.floor(Math.random() * this.aktywni_gracze.length)]
+                            this.dialog_nielosowy = i;
+                            this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
                         }
                     }
-                    if ((this.runda - 1) % 10 == 0) {
+                    if ((this.runda - 1) % 10 == 0 && this.runda != 1) {
                         this.kolejny_rok = true;
                     }
                 }
@@ -777,7 +778,7 @@ const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
 class przedmiot_szkolny {
-    constructor(nazwa, pytania, pytania_egzamin, dialogi = null){
+    constructor(nazwa, pytania, pytania_egzamin, dialogi){
         this.nazwa = nazwa;
         this.pytania = pytania;
         this.pytania_egzamin = pytania_egzamin;
@@ -822,6 +823,7 @@ class sala {
     }
 
     pokaz_sale_naprawde(pytania, rok) {
+        menedzer_gry.przedmiot_szkolny = this.przedmiot;
         let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
         menedzer_gry.pytanie = pytanie_kartkowka;
         pokaz_dialog();
@@ -846,6 +848,19 @@ class zestaw_pytan_egzamin {
     }
 }
 
+class dialog{
+    constructor(tekst){
+        this.tekst = tekst;
+    }
+}
+
+class dialog_nielosowy{
+    constructor(tekst, runda){
+        this.tekst = tekst;
+        this.runda = runda;
+    }
+};
+
 const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla programisty rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla programisty rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -856,7 +871,7 @@ const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z Telickiego'])]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla elektronika rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla elektronika rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -867,7 +882,7 @@ const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z elele'])]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla automatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla automatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -878,7 +893,7 @@ const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z aut'])]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla fotografa rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla fotografa rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -889,7 +904,7 @@ const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z aparatu'])]);
 const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla teleinformatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla teleinformatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -900,7 +915,7 @@ const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z sieci'])]);
 const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla informatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla informatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -911,7 +926,7 @@ const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z komputrów'])]);
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
     [new pytanie('przykładowe pytanie dla robotyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
     [new pytanie('przykładowe pytanie dla robotyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
@@ -922,46 +937,46 @@ const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
         [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
-    ));
+    ), [new dialog(['dialog przykładowy z robotów'])]);
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
-    ));
+    ), [new dialog(['dialog przykładowy z logarutmów'])]);
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z geji'])]);
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z biologii'])]);
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
-    ));
+    ), [new dialog(['dialog przykładowy z piekła'])]);
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z infoinfo'])]);
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     rok1_historia, rok2_historia, rok3_historia, rok4_historia, rok5_historia
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z histeriri'])]);
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
     ), new zestaw_pytan_egzamin(
         null, null,
         [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
-    ));
+    ), [new dialog(['dialog przykładowy z anglika'])]);
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
     rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z nazistów'])]);
 const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z bomb'])]);
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
-    ), new zestaw_pytan_egzamin());
+    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
 const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
@@ -991,6 +1006,30 @@ for (let i = 0; i < sale.length; i++) {
         }
     }
 }
+
+const ekran_dialogu = document.getElementById('ekran_dialogu');
+const tekst_dialogu = document.getElementById('tekst_dialogu');
+const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
+const zakoncz_dialog = document.getElementById('zakoncz_dialog');
+const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', 1);
+const dialogi_nielosowe = [dialog2];
+
+function pokaz_dialog(){
+    if(menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy != menedzer_gry.indeks_wybranego){
+        menedzer_gry.dialog = menedzer_gry.przedmiot_szkolny.dialogi[Math.floor(Math.random() * menedzer_gry.przedmiot_szkolny.dialogi.length)];
+    }
+    else{
+        menedzer_gry.dialog = menedzer_gry.dialog_nielosowy;
+    }
+    zmiana_ekranu(mapa, ekran_dialogu);
+    tekst_dialogu.innerHTML = menedzer_gry.dialog.tekst;
+}
+
+function zniknij_dialog(){
+    pokaz_pytanie(ekran_dialogu, ekran_pytania);
+}
+
+zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
@@ -1068,46 +1107,6 @@ function zaktualizuj_sanity(){
 const ekran_koncowy = document.getElementById('ekran_koncowy');
 const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
-
-class dialog_nielosowy{
-    constructor(tekst, runda){
-        this.tekst = tekst;
-        this.runda = runda;
-    }
-};
-
-const ekran_dialogu = document.getElementById('ekran_dialogu');
-const tekst_dialogu = document.getElementById('tekst_dialogu');
-const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
-const zakoncz_dialog = document.getElementById('zakoncz_dialog');
-const dialog_testowy = ['skibidi', 'tak, skibidi', 'nie, skibidi sihgma'];
-const dialogi_losowe = [dialog_testowy];
-const dialog2 = new dialog_nielosowy(['hej', 'słyszeliście że', 'Pan Czosnowksi został porawany przez skibidi toalety?'], 1)
-const dialogi_nielosowe = [dialog_testowy]
-
-function pokaz_dialog(){
-    if(menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy == null){
-        menedzer_gry.dialog = dialogi_losowe[Math.floor(Math.random() * dialogi_losowe.length)]
-    }
-    zmiana_ekranu(mapa, ekran_dialogu);
-    tekst_dialogu.innerHTML = menedzer_gry.dialog[0];
-    menedzer_gry.indeks_opisu_dialogu = 0;
-}
-
-function przewin_dialog(){
-    menedzer_gry.indeks_opisu_dialogu++;
-    tekst_dialogu.innerHTML = menedzer_gry.dialog[menedzer_gry.indeks_opisu_dialogu];
-    if(menedzer_gry.indeks_opisu_dialogu == menedzer_gry.dialog.length - 1){
-        zmiana_ekranu(przejdz_dalej_dialog, zakoncz_dialog);
-    }
-}
-
-function zniknij_dialog(){
-    pokaz_pytanie(ekran_dialogu, ekran_pytania);
-}
-
-przejdz_dalej_dialog.addEventListener('click', () => przewin_dialog());
-zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
 
 
 
