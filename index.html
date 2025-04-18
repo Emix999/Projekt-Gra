@@ -152,12 +152,12 @@
         <div id="ekran_pytania" class="flex_pion">
             <div id="tresc"></div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_a" data-etykieta=""></button>
-                <button class="odpowiedz" id="odpowiedz_b" data-etykieta=""></button>
+                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
+                <button class="odpowiedz" id="odpowiedz_b" data-etykieta="C"></button>
             </div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_c" data-etykieta=""></button>
-                <button class="odpowiedz" id="odpowiedz_d" data-etykieta=""></button>
+                <button class="odpowiedz" id="odpowiedz_c" data-etykieta="B"></button>
+                <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
             </div>
             <button id="przejdz_dalej"></button>
             <button id="zakoncz_ture"></button>
@@ -277,16 +277,16 @@
                     <button class="przycisk_sala" id="201"
                         style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url('grafiki/mapy/201.png');"></button>
                     <button class="przycisk_sala" id="202"
-                        style="left: 14.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url('grafiki/mapy/202.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 14.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url('grafiki/mapy/202.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%;">203</button>
                     <button class="przycisk_sala"
                         style="left: 40.625%; top: 31.833%; width: 10%; height: 8.333%;">204</button>
                     <button class="przycisk_sala"
-                        style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>
-                    <button class="przycisk_sala"
+                        style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>-->
+                    <button class="przycisk_sala" id="206"
                         style="left: 61.125%; top: 31.833%; width: 10.1%; height: 8.333%;">206</button>
-                    <button class="przycisk_sala"
+                    <!--<button class="przycisk_sala"
                         style="left: 71.5%; top: 35.667%; width: 10%; height: 8.333%;">207</button>
                     <button class="przycisk_sala"
                         style="left: 81.75%; top: 35.667%; width: 10%; height: 8.333%;">208</button>
@@ -312,14 +312,14 @@
                     <button class="przycisk_sala"
                         style="left: 1.875%; top: 57%; width: 10%; height: 8.333%;">24</button>-->
                     <button class="przycisk_sala" id="22"
-                        style="left: 18.125%; top: 57%; width: 9.5%; height: 8.333%; background-image: url('grafiki/mapy/22.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 18.125%; top: 57%; width: 9.5%; height: 8.333%; background-image: url('grafiki/mapy/22.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 28%; top: 57%; width: 17%; height: 8.333%;">studio RTV</button>
                     <button class="przycisk_sala"
                         style="left: 45.25%; top: 57%; width: 9.625%; height: 8.333%;">20</button>-->
                     <button class="przycisk_sala" id="19"
-                        style="left: 55.25%; top: 57%; width: 11.5%; height: 8.333%; background-image: url('grafiki/mapy/19.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 55.25%; top: 57%; width: 11.5%; height: 8.333%; background-image: url('grafiki/mapy/19.png');"></button>
+                    <!--<button class="przycisk_sala"
                     style="left: 69%; top: 14.833%; width: 10.875%; height: 28.667%;">sala gimnastyczna</button>
                     <button class="przycisk_sala"
                         style="left: 74.625%; top: 44%; width: 5.25%; height: 4.5%;">15</button>
@@ -341,8 +341,8 @@
                     <button id="przycisk_sklep"
                         style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%; background-image: url('grafiki/mapy/Bufet.png');"></button>
                     <button class="przycisk_sala" id="036"
-                        style="left: 50%; top: 31.833%; width: 5%; height: 8.333%; background-image: url('grafiki/mapy/036.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 50%; top: 31.833%; width: 5%; height: 8.333%; background-image: url('grafiki/mapy/036.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 92.125%; top: 48.167%; width: 4.625%; height: 8.333%;">25</button>
                     <button class="przycisk_sala"
                         style="left: 1.75%; top: 31.833%; width: 6.375%; height: 8.333%;">01</button>-->
@@ -383,14 +383,16 @@
                     <button class="przycisk_sala" id="013"
                         style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%; background-image: url('grafiki/mapy/013.png');"></button>
                     <button class="przycisk_sala" id="015"
-                        style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%; background-image: url('grafiki/mapy/015.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%; background-image: url('grafiki/mapy/015.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>-->
+                    <button class="przycisk_sala" id="017"
+                        style="left: 25%; top: 26.333%; width: 6.25%; height: 19.333%; display: none;">017</button>
                     <button class="przycisk_sala" id="018"
                         style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%; background-image: url('grafiki/mapy/018.png');"></button>
                     <button class="przycisk_sala" id="021"
-                        style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%; background-image: url('grafiki/mapy/021.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%; background-image: url('grafiki/mapy/021.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>
                     <button class="przycisk_sala"
                         style="left: 45.875%; top: 26.333%; width: 12.5%; height: 19.333%;">SCEM</button>
@@ -399,8 +401,8 @@
                     <button class="przycisk_sala" id="026"
                         style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%; background-image: url('grafiki/mapy/026.png');"></button>
                     <button class="przycisk_sala" id="030"
-                        style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%; background-image: url('grafiki/mapy/030.png');"></button><!--
-                    <button class="przycisk_sala"
+                        style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%; background-image: url('grafiki/mapy/030.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>-->
                     <button class="przycisk_sala" id="029"
                         style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%; background-image: url('grafiki/mapy/029.png');"></button>

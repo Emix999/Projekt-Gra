@@ -26,10 +26,14 @@ class zdarzenie {
     }
 }
 
-class nielosowe_zdarzenie extends zdarzenie {
-    constructor(nazwa, opis, runda){
-        super(nazwa, opis);
+class nielosowe_zdarzenie {
+    constructor(nazwa, opis, runda, czy_przy_schodach, czy_po_porwaniu, funkcja_wywołana = null){
+        this.nazwa = nazwa;
+        this.opis = opis;
         this.runda = runda;
+        this.czy_przy_schodach = czy_przy_schodach;
+        this.czy_po_porwaniu = czy_po_porwaniu;
+        this.funkcja = funkcja_wywołana;
     }
 }
 
@@ -39,15 +43,17 @@ const losowe_zdarzenia = [
     new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
 ];
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie(['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 100);
-const nielosowe_zdarzenia = [
-    zdarzenie_testowe2
-]
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 1, false, false, () => porwanie_czosnowskiego());
+const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true);
+const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 2, false, true, () => pojdz_do_sali_017());
+const nielosowe_zdarzenia = [zdarzenie_testowe2, zdarzenie_testowe3, zdarzenie_testowe4];
 
-function pokaz_zdarzenie(zdarzenie) {
+const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, false, null);
+
+function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
-    nazwa_zdarzenia.innerHTML = zdarzenie.nazwa;
-    opis.innerHTML = zdarzenie.opis;
+    nazwa_zdarzenia.innerHTML = menedzer_gry.zdarzenie.nazwa;
+    opis.innerHTML = menedzer_gry.zdarzenie.opis;
 }
 
 function zniknij_zdarzenie() {
@@ -59,6 +65,9 @@ function pokaz_zdarzenie_nielosowe(){
     zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
+    if(menedzer_gry.zdarzenie.opis.length == 1){
+        zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
+    }
 }
 
 function przewin_opis_zdarzenia_nielosowego(){
@@ -72,6 +81,17 @@ function przewin_opis_zdarzenia_nielosowego(){
 function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
+    if(menedzer_gry.czy_otwarto_017){
+        for(let i of sala_przyciski){
+            pojawienie_ekranu(i);
+        }
+        for(let i of mapa_przyciski){
+            pojawienie_ekranu(i);
+        }
+        znikniecie_ekranu(document.getElementById('017'));
+        menedzer_gry.czy_otwarto_017 = false;
+        menedzer_gry.poczatek_tury();
+    }
 }
 
 przejdz_dalej_zdarzenie.addEventListener('click', () => zniknij_zdarzenie());
@@ -88,8 +108,8 @@ const menedzer_gry = {
     ilosc_losowych_zdarzen: 0,
     runda_egzamin: false,
     indeksy_aktywnych_egzamin: [],
-    nielosowe_zdarzenia: nielosowe_zdarzenia,
     zdarzenie: null,
+    zdarzenie_nielosowe: null,
     indeks_opisu_zdarzenia_nielosowego: 0,
     kolejny_rok: false,
     czy_koniec_gry: false,
@@ -98,6 +118,10 @@ const menedzer_gry = {
     dialog_nielosowy: null,
     pytanie: null,
     przedmiot_szkolny: null,
+    indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
+    czy_po_porwaniu: false,
+    czy_otwarto_017: false,
+    pietro: document.getElementById('schemat_pierwsze_pietro'),
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
@@ -129,27 +153,38 @@ const menedzer_gry = {
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
                     for(let i of nielosowe_zdarzenia){
-                        if(i.runda == this.runda){
+                        if(i.runda == this.runda && !i.czy_przy_schodach){
                             this.zdarzenie = i;
+                            i.funkcja();
                             pokaz_zdarzenie_nielosowe();
+                            break;
+                        }
+                    }
+                    this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
+                    for(let i of nielosowe_zdarzenia){
+                        if(i.czy_po_porwaniu == this.czy_po_porwaniu){
+                            this.zdarzenie_nielosowe = i;
+                            this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
                         }
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for(let i of dialogi_nielosowe){
-                        if(i.runda == this.runda){
+                        if(i.czy_po_porwaniu == this.czy_po_porwaniu){
                             this.dialog_nielosowy = i;
                             this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
                         }
                     }
+                    if(this.czy_otwarto_017){
+                        this.runda_017();
+                    }
                     if ((this.runda - 1) % 10 == 0 && this.runda != 1) {
                         this.kolejny_rok = true;
                     }
                 }
-                
             } while (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5)
-            
+
             //sprawdza, czy jest runda egzaminacyjna
             if(this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0){
                 //egzamin zawodowy nr 1
@@ -254,6 +289,18 @@ const menedzer_gry = {
     },
     koniec_gry_naprawde: function(){
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
+    },
+    runda_017: function(){
+        this.runda--;
+        zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
+        this.pietro = document.getElementById('schemat_drugi_budynek');
+        for(let i of sala_przyciski){
+            znikniecie_ekranu(i);
+        }
+        for(let i of mapa_przyciski){
+            znikniecie_ekranu(i);
+        }
+        pojawienie_ekranu(document.getElementById('017'));
     }
 };
 
@@ -520,7 +567,7 @@ function pokaz_pytanie(ekran_znikajacy, ekran_pojawiajacy) {
     let mozliwe_indeksy = [0, 1, 2, 3];
     przemieszaj_tablice(mozliwe_indeksy);
     for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].innerHTML = '<span>' + odpowiedzi_przyciski[i].dataset.etykieta + '</span>' + menedzer_gry.pytanie.odpowiedzi[mozliwe_indeksy[i]];
+        odpowiedzi_przyciski[i].innerHTML = menedzer_gry.pytanie.odpowiedzi[mozliwe_indeksy[i]];
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
@@ -796,7 +843,10 @@ class sala {
 
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
-        if(menedzer_gry.runda_egzamin){
+        if(menedzer_gry.czy_po_porwani && this.nr == '201'){
+            console.log('nie ma pana Czosnowskiego');
+        }
+        else if(menedzer_gry.runda_egzamin){
             if(this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)){
                 if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4){
                     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.push(this.przedmiot.nazwa);
@@ -849,15 +899,15 @@ class zestaw_pytan_egzamin {
 }
 
 class dialog{
-    constructor(tekst){
-        this.tekst = tekst;
+    constructor(opis){
+        this.opis = opis;
     }
 }
 
 class dialog_nielosowy{
-    constructor(tekst, runda){
-        this.tekst = tekst;
-        this.runda = runda;
+    constructor(opis, czy_po_porwaniu){
+        this.opis = opis;
+        this.czy_po_porwaniu = czy_po_porwaniu;
     }
 };
 
@@ -1011,7 +1061,7 @@ const ekran_dialogu = document.getElementById('ekran_dialogu');
 const tekst_dialogu = document.getElementById('tekst_dialogu');
 const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
 const zakoncz_dialog = document.getElementById('zakoncz_dialog');
-const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', 1);
+const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
 const dialogi_nielosowe = [dialog2];
 
 function pokaz_dialog(){
@@ -1022,7 +1072,7 @@ function pokaz_dialog(){
         menedzer_gry.dialog = menedzer_gry.dialog_nielosowy;
     }
     zmiana_ekranu(mapa, ekran_dialogu);
-    tekst_dialogu.innerHTML = menedzer_gry.dialog.tekst;
+    tekst_dialogu.innerHTML = menedzer_gry.dialog.opis;
 }
 
 function zniknij_dialog(){
@@ -1033,11 +1083,18 @@ zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
 
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
+    menedzer_gry.pietro = mapa_pojawiajaca;
 
-    //losuje, czy zdarzenie ma wystąpić i jakie
-    if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
-        let zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
-        pokaz_zdarzenie(zdarzenie);
+    //sprawdza, czy zdarzenie ma wystąpić i jakie
+    if(menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe){
+        menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe;
+        menedzer_gry.zdarzenie_nielosowe = null;
+        pokaz_zdarzenie();
+        menedzer_gry.zdarzenie = null;
+    }
+    else if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
+        menedzer_gry.zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
+        pokaz_zdarzenie();
     }
 }
 
@@ -1108,7 +1165,20 @@ const ekran_koncowy = document.getElementById('ekran_koncowy');
 const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
 
+function porwanie_czosnowskiego(){
+    menedzer_gry.czy_po_porwaniu = true;
+}
 
+function pojdz_do_sali_017(){
+    menedzer_gry.czy_otwarto_017 = true;
+}
+
+function wejdz_do_sali_017(){
+    menedzer_gry.zdarzenie = zdarzenie_017;
+    pokaz_zdarzenie_nielosowe();
+}
+
+document.getElementById('017').addEventListener('click', () => wejdz_do_sali_017());
 
 
 
