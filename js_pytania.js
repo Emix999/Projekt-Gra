@@ -678,3 +678,338 @@ const rok5_historia = [
   new pytanie("Kto był papieżem z Polski?", ["Jan Paweł II", "Benedykt XVI", "Jan XXIII", "Franciszek"]),
   new pytanie("Jakie państwo rozpadło się w latach 90.?", ["ZSRR", "USA", "Kanada", "Francja"])
 ];
+
+//pytania z programisty
+
+const rok1_programista = [
+  new pytanie("Jakiego typu danymi operuje typ `int` w języku Python?", ["Liczby całkowite", "Tekst", "Liczby zmiennoprzecinkowe", "Wartości logiczne"]),
+  new pytanie("Który z podanych systemów operacyjnych jest typu open source?", ["Linux", "Windows", "macOS", "Chrome OS"]),
+  new pytanie("Który skrót oznacza centralną jednostkę obliczeniową komputera?", ["CPU", "RAM", "HDD", "SSD"]),
+  new pytanie("Co oznacza skrót HTML?", ["HyperText Markup Language", "Hyperlink Text Mode Language", "HighText Media Language", "Hyper Transfer Mode Layout"]),
+  new pytanie("Który element służy do przechowywania informacji w pamięci RAM?", ["Komórki pamięci", "Procesory", "Zasilacze", "Karty graficzne"]),
+  new pytanie("Które z urządzeń jest urządzeniem wejścia?", ["Klawiatura", "Monitor", "Drukarka", "Głośniki"]),
+  new pytanie("Do czego służy pętla `for` w języku Python?", ["Do wykonywania instrukcji określoną liczbę razy", "Do deklarowania zmiennych", "Do przerywania programu", "Do zamykania aplikacji"]),
+  new pytanie("Co oznacza skrót URL?", ["Uniform Resource Locator", "Unique Routing Link", "User Registered Login", "Universal Random Locator"]),
+  new pytanie("Co przechowuje BIOS?", ["Podstawowe instrukcje uruchamiania komputera", "Dane użytkownika", "Gry i aplikacje", "Dokumenty systemowe"]),
+  new pytanie("Co to jest zmienna w programowaniu?", ["Rezerwacja miejsca w pamięci na dane", "Nazwa pliku", "Typ urządzenia", "Typ dokumentu"])
+];
+
+const rok2_programista = [
+  new pytanie("Jakim znacznikiem w HTML tworzy się nagłówek pierwszego poziomu?", ["<h1>", "<head>", "<title>", "<header>"]),
+  new pytanie("Który znacznik HTML służy do osadzania obrazu?", ["<img>", "<picture>", "<src>", "<media>"]),
+  new pytanie("Które rozszerzenie dotyczy arkusza stylów CSS?", [".css", ".html", ".xml", ".php"]),
+  new pytanie("Które polecenie w systemie Linux służy do wyświetlenia listy plików?", ["ls", "cp", "rm", "mv"]),
+  new pytanie("Jakiego typu jest właściwość `background-color` w CSS?", ["Styl tła", "Styl tekstu", "Rozmiar czcionki", "Typ obramowania"]),
+  new pytanie("Co oznacza `float: left;` w CSS?", ["Ustawia element do lewej strony", "Wyrównuje tekst do lewej", "Zmienia czcionkę", "Ustawia marginesy"]),
+  new pytanie("Jakie rozszerzenie posiada plik zawierający kod PHP?", [".php", ".html", ".txt", ".js"]),
+  new pytanie("Co oznacza skrót SQL?", ["Structured Query Language", "Simple Query Logic", "Select Quick Language", "System Query Layout"]),
+  new pytanie("Jakie polecenie w SQL służy do pobrania danych z tabeli?", ["SELECT", "INSERT", "DELETE", "UPDATE"]),
+  new pytanie("W jakim języku tworzony jest arkusz stylów?", ["CSS", "HTML", "JS", "SQL"])
+];
+
+const rok3_programista = [
+  new pytanie("Co oznacza `echo` w PHP?", ["Wyświetlenie tekstu", "Zatrzymanie programu", "Łączenie z bazą", "Tworzenie tabeli"]),
+  new pytanie("Jakiego protokołu używa strona z szyfrowanym połączeniem?", ["HTTPS", "HTTP", "FTP", "TCP"]),
+  new pytanie("Jaką metodą HTTP przesyłamy dane z formularza?", ["POST", "GET", "PUSH", "DELETE"]),
+  new pytanie("W jakim języku najczęściej pisze się backend aplikacji webowej?", ["PHP", "HTML", "CSS", "XML"]),
+  new pytanie("Która funkcja w PHP łączy się z bazą MySQL?", ["mysqli_connect()", "mysql_open()", "db_connect()", "sql_connect()"]),
+  new pytanie("Jaka struktura danych zawiera pary klucz-wartość w PHP?", ["Tablica asocjacyjna", "Lista", "Stos", "Drzewo"]),
+  new pytanie("Jakim językiem opisujemy strukturę dokumentu HTML?", ["HTML", "CSS", "SQL", "PHP"]),
+  new pytanie("Do czego służy `$_POST` w PHP?", ["Do odczytu danych z formularza", "Do zapisu plików", "Do wysyłki e-mail", "Do wczytywania arkuszy stylów"]),
+  new pytanie("Które polecenie SQL wprowadza dane do tabeli?", ["INSERT", "SELECT", "DROP", "ALTER"]),
+  new pytanie("Jaki znacznik zamyka paragraf w HTML?", ["</p>", "</para>", "</pt>", "</txt>"])
+];
+
+const rok4_programista = [
+  new pytanie("Jakiego typu relację opisuje klucz obcy?", ["Zależność między tabelami", "Kolejność zapytań", "Wielkość danych", "Typ sortowania"]),
+  new pytanie("Co robi instrukcja `JOIN` w SQL?", ["Łączy tabele", "Tworzy nową tabelę", "Usuwa dane", "Modyfikuje strukturę"]),
+  new pytanie("Jakiego języka używa się do tworzenia interaktywnych elementów na stronie?", ["JavaScript", "HTML", "CSS", "XML"]),
+  new pytanie("Jakie zdarzenie JavaScript reaguje na kliknięcie?", ["onclick", "onhover", "onload", "onsubmit"]),
+  new pytanie("Co robi `try...catch` w JavaScript?", ["Obsługuje błędy", "Tworzy funkcję", "Zmienia klasę", "Ładuje obraz"]),
+  new pytanie("Jakiej metody używa się do zamiany JSON na obiekt w JavaScript?", ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.encode()"]),
+  new pytanie("Jak zapisuje się komentarz jednoliniowy w JavaScript?", ["// komentarz", "* komentarz", "<!-- komentarz", "## komentarz"]),
+  new pytanie("Co oznacza `NULL` w bazie danych?", ["Brak wartości", "Zero", "Fałsz", "Typ tekstowy"]),
+  new pytanie("Co robi `ALTER TABLE` w SQL?", ["Modyfikuje strukturę tabeli", "Usuwa dane", "Kopiuje dane", "Nadaje uprawnienia"]),
+  new pytanie("Który język służy do tworzenia backendu w Node.js?", ["JavaScript", "PHP", "SQL", "Python"])
+];
+
+const rok5_programista = [
+  new pytanie("Co oznacza test jednostkowy?", ["Testuje pojedynczą funkcję lub moduł", "Testuje całą aplikację", "Testuje sieć", "Testuje bazę danych"]),
+  new pytanie("Co to jest framework?", ["Zestaw narzędzi programistycznych", "Program graficzny", "Format danych", "Typ serwera"]),
+  new pytanie("Co oznacza skrót API?", ["Application Programming Interface", "Automated Programming Index", "Advanced Protocol Integration", "Array Process Instruction"]),
+  new pytanie("Co to jest repozytorium Git?", ["Miejsce przechowywania kodu", "Baza danych", "Kompilator", "Język programowania"]),
+  new pytanie("Co oznacza `commit` w systemie Git?", ["Zapis zmian", "Anulowanie zmian", "Wycofanie danych", "Przesyłanie plików"]),
+  new pytanie("Jak zabezpieczyć dane logowania w aplikacji?", ["Hashowanie haseł", "Zapisywanie haseł jako tekst", "Użycie ciasteczek bez ochrony", "Przechowywanie haseł w URL"]),
+  new pytanie("Czym jest test integracyjny?", ["Test sprawdzający współpracę modułów", "Test pojedynczego przycisku", "Test bazy danych", "Test graficzny"]),
+  new pytanie("Jaka biblioteka JavaScript służy do testowania aplikacji?", ["Jest", "jQuery", "Bootstrap", "Axios"]),
+  new pytanie("Co oznacza skrót CRUD w kontekście baz danych?", ["Create, Read, Update, Delete", "Copy, Run, Undo, Delete", "Connect, Replace, Update, Drop", "Compile, Run, Update, Delete"]),
+  new pytanie("Jaka jest funkcja pliku `.env` w projekcie?", ["Przechowuje zmienne środowiskowe", "Styluje stronę", "Zawiera grafikę", "Uruchamia serwer"])
+];
+
+//pytania z informatyków
+
+const rok1_informatyk = [
+  new pytanie("Jakie urządzenie jest odpowiedzialne za wykonywanie operacji arytmetycznych i logicznych w komputerze?", ["Procesor", "Pamięć RAM", "Dysk twardy", "Karta graficzna"]),
+  new pytanie("Co oznacza skrót RAM?", ["Random Access Memory", "Read And Modify", "Real Access Mode", "Rapid Access Module"]),
+  new pytanie("Który system operacyjny jest przykładem systemu z rodziny Unix?", ["Linux", "Windows", "DOS", "Android"]),
+  new pytanie("Co to jest BIOS?", ["Podstawowy system wejścia/wyjścia", "Program do edycji tekstów", "Graficzny interfejs użytkownika", "System plików"]),
+  new pytanie("Który z portów jest używany do podłączania urządzeń peryferyjnych, takich jak drukarki?", ["USB", "HDMI", "VGA", "RJ-45"]),
+  new pytanie("Co to jest karta sieciowa?", ["Urządzenie umożliwiające komunikację z siecią", "Urządzenie wyświetlające obraz", "Moduł zasilający komputer", "Nośnik danych"]),
+  new pytanie("Jaką funkcję pełni zasilacz w komputerze?", ["Zamienia napięcie z gniazdka na odpowiednie dla podzespołów", "Przechowuje dane", "Steruje pracą procesora", "Obsługuje urządzenia wejścia/wyjścia"]),
+  new pytanie("Który element odpowiada za długotrwałe przechowywanie danych?", ["Dysk twardy", "RAM", "Procesor", "BIOS"]),
+  new pytanie("Co to jest system plików?", ["Struktura organizacji danych na nośniku", "Program antywirusowy", "Sterownik drukarki", "Aplikacja biurowa"]),
+  new pytanie("Co oznacza skrót GUI?", ["Graficzny interfejs użytkownika", "Globalny interfejs użytkownika", "Główna jednostka informacyjna", "Generator uniwersalny"])
+];
+
+const rok2_informatyk = [
+  new pytanie("Co oznacza skrót IP w kontekście sieci komputerowej?", ["Internet Protocol", "Internal Processing", "Internet Password", "Interface Point"]),
+  new pytanie("Które urządzenie służy do łączenia kilku sieci komputerowych?", ["Router", "Monitor", "Karta graficzna", "Klawiatura"]),
+  new pytanie("Jaki typ kabla jest najczęściej używany w sieciach lokalnych?", ["Skrętka", "HDMI", "USB", "Koaksjalny"]),
+  new pytanie("Jaki adres IP należy do klasy C?", ["192.168.1.1", "10.0.0.1", "172.16.0.1", "224.0.0.1"]),
+  new pytanie("Które urządzenie przydziela adresy IP w sieci lokalnej?", ["Serwer DHCP", "DNS", "Switch", "NAS"]),
+  new pytanie("Co oznacza skrót LAN?", ["Local Area Network", "Logical Application Node", "Long Access Network", "Line Active Node"]),
+  new pytanie("Który protokół służy do tłumaczenia nazw domenowych na adresy IP?", ["DNS", "DHCP", "FTP", "SSH"]),
+  new pytanie("Jakiego protokołu używa bezpieczna wersja HTTP?", ["HTTPS", "FTP", "SMTP", "SSH"]),
+  new pytanie("Jakie urządzenie działa w warstwie 2 modelu OSI?", ["Switch", "Router", "Modem", "Serwer WWW"]),
+  new pytanie("Jaką funkcję pełni firewall?", ["Chroni sieć przed nieautoryzowanym dostępem", "Otwiera połączenia z Internetem", "Zwiększa zasięg Wi-Fi", "Przechowuje pliki"])
+];
+
+const rok3_informatyk = [
+  new pytanie("Jakim znacznikiem otwieramy dokument HTML?", ["<html>", "<head>", "<title>", "<body>"]),
+  new pytanie("Co oznacza skrót CSS?", ["Cascading Style Sheets", "Computer Style Script", "Custom Style Source", "Creative Sheet System"]),
+  new pytanie("Który znacznik służy do tworzenia hiperłącza?", ["<a>", "<p>", "<link>", "<href>"]),
+  new pytanie("Jakiego atrybutu użyjemy, aby ustawić kolor tła w CSS?", ["background-color", "color", "font-color", "bg"]),
+  new pytanie("Co oznacza znacznik <h1> w HTML?", ["Nagłówek pierwszego poziomu", "Obrazek", "Akapit", "Link"]),
+  new pytanie("Jak zapiszemy komentarz w HTML?", ["<!-- komentarz -->", "// komentarz", "/* komentarz */", "# komentarz"]),
+  new pytanie("Jak zapisać klasę w CSS?", [".nazwaKlasy", "#nazwaKlasy", "@nazwaKlasy", "$nazwaKlasy"]),
+  new pytanie("Co wykonuje język JavaScript w przeglądarce?", ["Skrypty po stronie klienta", "Skrypty po stronie serwera", "Stylizację strony", "Kompilację kodu"]),
+  new pytanie("Jak rozpocząć blok skryptu w HTML?", ["<script>", "<js>", "<style>", "<code>"]),
+  new pytanie("Co robi funkcja alert() w JavaScript?", ["Wyświetla okno dialogowe", "Ukrywa element", "Przekierowuje stronę", "Ładuje obraz"])
+];
+
+const rok4_informatyk = [
+  new pytanie("Co oznacza skrót SQL?", ["Structured Query Language", "Simple Query Logic", "Standard Question Line", "Scripted Query Loader"]),
+  new pytanie("Jakie polecenie SQL służy do pobierania danych?", ["SELECT", "INSERT", "DELETE", "UPDATE"]),
+  new pytanie("Jakim rozszerzeniem zazwyczaj zapisujemy skrypty PHP?", [".php", ".html", ".js", ".css"]),
+  new pytanie("Które polecenie dodaje nowy rekord do bazy danych?", ["INSERT", "SELECT", "DROP", "ALTER"]),
+  new pytanie("Jakim znakiem rozpoczyna się zmienna w PHP?", ["$", "#", "@", "&"]),
+  new pytanie("Co to jest serwer Apache?", ["Serwer HTTP", "Baza danych", "Edytor kodu", "Przeglądarka"]),
+  new pytanie("Jakie polecenie usuwa tabelę w MySQL?", ["DROP TABLE", "DELETE TABLE", "REMOVE TABLE", "ERASE TABLE"]),
+  new pytanie("Jaką funkcję PHP użyjesz do połączenia z bazą danych MySQL?", ["mysqli_connect()", "connect_mysql()", "db_connect()", "mysql_open()"]),
+  new pytanie("Jak zakończysz instrukcję PHP?", [";", ":", ",", "."]),
+  new pytanie("Co oznacza polecenie SQL UPDATE?", ["Modyfikacja danych", "Dodanie danych", "Usunięcie danych", "Pobranie danych"])
+];
+
+const rok5_informatyk = [
+  new pytanie("Co to jest CMS?", ["System zarządzania treścią", "System kontroli jakości", "Kod modułu skryptowego", "System monitorowania"]),
+  new pytanie("Przykład popularnego systemu CMS to:", ["WordPress", "Excel", "Gmail", "AutoCAD"]),
+  new pytanie("Co oznacza skrót HTTPS?", ["Hypertext Transfer Protocol Secure", "Hypertext Type Platform Service", "High Transfer Protocol System", "Host Text Terminal Protocol"]),
+  new pytanie("Jakie narzędzie służy do kontroli wersji kodu?", ["Git", "PHPMyAdmin", "FileZilla", "Word"]),
+  new pytanie("Jak nazywa się bezpieczne połączenie z serwerem zdalnym przez terminal?", ["SSH", "HTTP", "FTP", "DNS"]),
+  new pytanie("Co oznacza termin RWD w projektowaniu stron?", ["Responsive Web Design", "Rapid Web Deployment", "Real Web Display", "Ready Web Developer"]),
+  new pytanie("Jakie rozszerzenie ma plik z kopią zapasową bazy danych MySQL?", [".sql", ".xml", ".csv", ".bak"]),
+  new pytanie("Co oznacza atak typu phishing?", ["Podszywanie się pod inną osobę lub firmę", "Uszkadzanie sprzętu", "Skanowanie portów", "Wysyłanie SPAMu"]),
+  new pytanie("Co oznacza skrót API?", ["Application Programming Interface", "Advanced Protocol Integration", "Active Program Identifier", "App Personal Interface"]),
+  new pytanie("Jakiego narzędzia użyjesz do przesyłania plików na serwer przez FTP?", ["FileZilla", "Excel", "Chrome", "Word"])
+];
+
+//pytania z automatyków
+
+const rok1_automatyk = [
+  new pytanie("Jakie napięcie znamionowe ma standardowe gniazdo jednofazowe w Polsce?", ["230 V", "110 V", "400 V", "12 V"]),
+  new pytanie("Co to jest przewód fazowy w instalacji elektrycznej?", ["Przewód doprowadzający napięcie", "Przewód ochronny", "Przewód neutralny", "Przewód uziemiający"]),
+  new pytanie("Jakiego koloru jest przewód ochronny PE?", ["Żółto-zielony", "Niebieski", "Brązowy", "Czarny"]),
+  new pytanie("Do czego służy miernik uniwersalny?", ["Do pomiaru napięcia, prądu i oporu", "Do cięcia przewodów", "Do wykrywania metali", "Do lutowania"]),
+  new pytanie("Co oznacza symbol jednostki oporu elektrycznego?", ["Ω", "V", "A", "W"]),
+  new pytanie("Co mierzy się w amperach?", ["Natężenie prądu", "Napięcie", "Opór", "Moc"]),
+  new pytanie("Jakie zabezpieczenie chroni instalację przed przeciążeniem?", ["Bezpiecznik nadprądowy", "Wyłącznik różnicowoprądowy", "Woltomierz", "Transformator"]),
+  new pytanie("Jaki materiał najczęściej stosuje się do produkcji przewodów elektrycznych?", ["Miedź", "Aluminium", "Żelazo", "Cynk"]),
+  new pytanie("Jaka jest jednostka napięcia elektrycznego?", ["Volt", "Amper", "Ohm", "Wat"]),
+  new pytanie("Co robi transformator?", ["Zmienia poziom napięcia", "Mierzy natężenie", "Chroni przed porażeniem", "Wytwarza prąd"])
+];
+
+const rok2_automatyk = [
+  new pytanie("Który z elementów układu zabezpiecza silnik przed przeciążeniem?", ["Przekaźnik termiczny", "Wyłącznik różnicowoprądowy", "Przekaźnik czasowy", "Stycznik"]),
+  new pytanie("Do czego służy stycznik?", ["Do załączania i wyłączania obwodów", "Do pomiaru napięcia", "Do rozdziału faz", "Do uziemiania"]),
+  new pytanie("Jaka funkcję pełni wyłącznik różnicowoprądowy?", ["Chroni przed porażeniem", "Mierzy opór", "Zwiększa napięcie", "Redukuje prąd"]),
+  new pytanie("Co to jest prąd stały?", ["Prąd o niezmiennym kierunku przepływu", "Prąd o zmiennym kierunku", "Prąd przemienny", "Prąd harmoniczny"]),
+  new pytanie("Jakie urządzenie służy do prostowania prądu przemiennego?", ["Prostownik", "Transformator", "Silnik", "Przekaźnik"]),
+  new pytanie("Jakie napięcie międzyfazowe występuje w sieci trójfazowej?", ["400 V", "230 V", "110 V", "12 V"]),
+  new pytanie("Co robi kondensator?", ["Magazynuje ładunek", "Zwiększa prąd", "Wytwarza napięcie", "Ogranicza napięcie"]),
+  new pytanie("Jakie jest podstawowe źródło energii w elektrowni cieplnej?", ["Węgiel", "Woda", "Wiatr", "Słońce"]),
+  new pytanie("Jaką funkcję pełni uzwojenie pierwotne w transformatorze?", ["Odbiera napięcie wejściowe", "Oddaje napięcie wyjściowe", "Obniża napięcie", "Łączy fazy"]),
+  new pytanie("Co oznacza skrót AC?", ["Prąd przemienny", "Prąd stały", "Prąd warstwowy", "Prąd spadkowy"])
+];
+
+const rok3_automatyk = [
+  new pytanie("Co to jest falownik?", ["Urządzenie zmieniające częstotliwość prądu", "Urządzenie zabezpieczające silnik", "Przełącznik faz", "Przekaźnik napięciowy"]),
+  new pytanie("Jaki typ silnika stosowany jest najczęściej w przemyśle?", ["Silnik asynchroniczny", "Silnik szeregowy", "Silnik prądu stałego", "Silnik krokowy"]),
+  new pytanie("Jakie napięcie zasila typowy silnik trójfazowy?", ["400 V", "230 V", "12 V", "110 V"]),
+  new pytanie("Jakie parametry mierzy cęgi prądowe?", ["Prąd", "Napięcie", "Opór", "Częstotliwość"]),
+  new pytanie("Jak oznacza się ochronę przeciwporażeniową?", ["PE", "N", "L", "PEN"]),
+  new pytanie("Co to jest PLC?", ["Sterownik programowalny", "Kondensator", "Bezpiecznik", "Transformator"]),
+  new pytanie("Do czego służy amperomierz?", ["Do pomiaru natężenia prądu", "Do pomiaru napięcia", "Do pomiaru oporu", "Do pomiaru częstotliwości"]),
+  new pytanie("Co oznacza symbol L1, L2, L3?", ["Fazy w układzie trójfazowym", "Przewody ochronne", "Przewody neutralne", "Oznaczenie uziemienia"]),
+  new pytanie("Co to jest zwarcie?", ["Połączenie o bardzo małym oporze", "Zbyt wysoka rezystancja", "Otwarty obwód", "Przeciążenie instalacji"]),
+  new pytanie("Jaką funkcję ma wyłącznik silnikowy?", ["Chroni silnik przed przeciążeniem i zwarciem", "Mierzy obroty", "Włącza wentylację", "Reguluje napięcie"])
+];
+
+const rok4_automatyk = [
+  new pytanie("Co to jest sieć TN-C?", ["Sieć z połączonym przewodem neutralnym i ochronnym", "Sieć bez przewodu ochronnego", "Sieć z oddzielonym przewodem PE", "Sieć jednofazowa"]),
+  new pytanie("Jakie urządzenie służy do kompensacji mocy biernej?", ["Bateria kondensatorów", "Transformator", "Prostownik", "Silnik"]),
+  new pytanie("Co to jest SCADA?", ["System nadzorujący pracę instalacji", "Typ zabezpieczenia", "Typ przewodu", "Element układu rozruchowego"]),
+  new pytanie("Co oznacza IP w oznaczeniach urządzeń?", ["Stopień ochrony obudowy", "Moc znamionowa", "Napięcie", "Prąd rozruchowy"]),
+  new pytanie("Jaki przepis określa zasady bezpiecznej pracy przy urządzeniach elektrycznych?", ["PPN-EN 50110", "KSH", "KPA", "ISO 9001"]),
+  new pytanie("Co to jest harmonogram konserwacji?", ["Plan przeglądów urządzeń", "Lista narzędzi", "Cennik usług", "Katalog części"]),
+  new pytanie("Jaką funkcję pełni uziemienie?", ["Odprowadza ładunki do ziemi", "Zwiększa napięcie", "Łączy fazy", "Przerywa obwód"]),
+  new pytanie("Co oznacza oznaczenie CE na urządzeniu?", ["Zgodność z normami UE", "Producent z Chin", "Certyfikat gwarancji", "Oznaczenie napięcia"]),
+  new pytanie("Jaki dokument należy sporządzić po wykonaniu instalacji?", ["Protokół pomiarów", "Rachunek", "Umowę serwisową", "Instrukcję obsługi"]),
+  new pytanie("Jakie urządzenie zmienia energię elektryczną na mechaniczną?", ["Silnik", "Transformator", "Akumulator", "Przekaźnik"])
+];
+
+const rok5_automatyk = [
+  new pytanie("Co to jest bilans mocy?", ["Zestawienie zużycia i produkcji energii", "Cennik usług", "Program konserwacji", "Plan instalacji"]),
+  new pytanie("Co oznacza napięcie znamionowe urządzenia?", ["Napięcie, przy którym urządzenie pracuje prawidłowo", "Maksymalne napięcie wytrzymywane", "Minimalne napięcie rozruchowe", "Napięcie awaryjne"]),
+  new pytanie("Co należy zrobić przed pracą przy urządzeniu pod napięciem?", ["Odłączyć zasilanie", "Sprawdzić cennik", "Włączyć silnik", "Zgasić światło"]),
+  new pytanie("Jak oznacza się przekładnik prądowy?", ["np. 100/5 A", "230 V", "400 Hz", "0,75 kW"]),
+  new pytanie("Co to jest analiza termowizyjna?", ["Badanie rozkładu temperatury", "Pomiary natężenia", "Sprawdzenie IP", "Pomiar długości przewodu"]),
+  new pytanie("Jaką funkcję pełni rezystancja izolacji?", ["Zapobiega przepływowi prądu", "Zwiększa moc", "Wzmacnia napięcie", "Reguluje częstotliwość"]),
+  new pytanie("Co oznacza schemat jednokreskowy?", ["Uproszczony rysunek instalacji", "Instrukcję obsługi", "Cennik materiałów", "Plan montażu"]),
+  new pytanie("Co to jest moc czynna?", ["Moc przekształcana na pracę użyteczną", "Moc strat", "Moc bierna", "Moc chwilowa"]),
+  new pytanie("Jakie narzędzie stosuje się do wykonywania otworów w puszkach?", ["Wykrojnik", "Wkrętak", "Przekładnik", "Miernik"]),
+  new pytanie("Jakie działanie ma stycznik z podtrzymaniem?", ["Utrzymuje obwód zamknięty po załączeniu", "Odłącza zasilanie przy zwarciu", "Reguluje napięcie", "Włącza światło"])
+];
+
+//pytania z robotyków
+
+const rok1_robotyk = [
+  new pytanie("Który z poniższych przewodów jest najczęściej stosowany w instalacjach domowych?", ["YDY", "YAKY", "LgY", "OMY"]),
+  new pytanie("Jakie napięcie znamionowe ma przewód YDY 3x1,5?", ["450/750 V", "300/500 V", "600/1000 V", "250/400 V"]),
+  new pytanie("Który z poniższych elementów służy do ochrony przed porażeniem prądem elektrycznym?", ["Wyłącznik różnicowoprądowy", "Wyłącznik nadprądowy", "Przekaźnik czasowy", "Stycznik"]),
+  new pytanie("Jakie jest oznaczenie przewodu ochronnego w instalacji elektrycznej?", ["PE", "N", "L", "PEN"]),
+  new pytanie("Który z poniższych materiałów jest najlepszym przewodnikiem elektryczności?", ["Miedź", "Aluminium", "Żelazo", "Stal"]),
+  new pytanie("Jakie jest podstawowe prawo opisujące zależność między napięciem, prądem i oporem?", ["Prawo Ohma", "Prawo Kirchhoffa", "Prawo Coulomba", "Prawo Faradaya"]),
+  new pytanie("Który z poniższych elementów służy do zabezpieczenia obwodu przed przeciążeniem?", ["Bezpiecznik topikowy", "Przekaźnik", "Transformator", "Dioda"]),
+  new pytanie("Jakie jest standardowe napięcie w gniazdku elektrycznym w Polsce?", ["230 V", "110 V", "400 V", "12 V"]),
+  new pytanie("Który z poniższych przyrządów służy do pomiaru napięcia?", ["Woltomierz", "Amperomierz", "Omomierz", "Watomierz"]),
+  new pytanie("Jakie jest oznaczenie przewodu neutralnego w instalacji elektrycznej?", ["N", "L", "PE", "PEN"])
+];
+
+const rok2_robotyk = [
+  new pytanie("Który z poniższych przewodów jest stosowany w instalacjach oświetleniowych?", ["YDY 3x1,5", "YDY 3x2,5", "YKY 3x4", "OMY 2x0,75"]),
+  new pytanie("Jakie jest minimalne przekroje przewodów dla obwodów gniazd wtyczkowych?", ["2,5 mm²", "1,5 mm²", "4 mm²", "6 mm²"]),
+  new pytanie("Który z poniższych elementów służy do łączenia przewodów w puszce instalacyjnej?", ["Złączka instalacyjna", "Przekaźnik", "Stycznik", "Transformator"]),
+  new pytanie("Jakie jest oznaczenie przewodu fazowego w instalacji elektrycznej?", ["L", "N", "PE", "PEN"]),
+  new pytanie("Który z poniższych przyrządów służy do pomiaru natężenia prądu?", ["Amperomierz", "Woltomierz", "Omomierz", "Watomierz"]),
+  new pytanie("Jakie jest standardowe napięcie międzyfazowe w sieci trójfazowej w Polsce?", ["400 V", "230 V", "110 V", "12 V"]),
+  new pytanie("Który z poniższych elementów służy do ochrony obwodu przed zwarciem?", ["Wyłącznik nadprądowy", "Przekaźnik czasowy", "Stycznik", "Transformator"]),
+  new pytanie("Jakie jest oznaczenie przewodu ochronno-neutralnego w instalacji elektrycznej?", ["PEN", "PE", "N", "L"]),
+  new pytanie("Który z poniższych przyrządów służy do pomiaru oporu elektrycznego?", ["Omomierz", "Woltomierz", "Amperomierz", "Watomierz"]),
+  new pytanie("Jakie jest oznaczenie przewodu ochronnego w instalacji elektrycznej?", ["PE", "N", "L", "PEN"])
+];
+
+const rok3_robotyk = [
+  new pytanie("Który z poniższych elementów służy do rozruchu silnika trójfazowego?", ["Stycznik", "Przekaźnik", "Transformator", "Dioda"]),
+  new pytanie("Jakie jest oznaczenie uzwojenia głównego w silniku jednofazowym?", ["U1-U2", "Z1-Z2", "W1-W2", "V1-V2"]),
+  new pytanie("Który z poniższych elementów służy do zabezpieczenia silnika przed przeciążeniem?", ["Przekaźnik termiczny", "Stycznik", "Transformator", "Dioda"]),
+  new pytanie("Jakie napięcie zasila standardowy silnik trójfazowy w Polsce?", ["400 V", "230 V", "110 V", "500 V"]),
+  new pytanie("Który z poniższych układów zabezpiecza maszynę przed pracą bez fazy?", ["Przekaźnik kontroli faz", "Przekaźnik czasowy", "Wyłącznik nadprądowy", "Dioda zabezpieczająca"]),
+  new pytanie("Jakie oznaczenie mają styki pomocnicze normalnie otwarte?", ["NO", "NC", "PO", "PN"]),
+  new pytanie("Który z elementów służy do zdalnego załączania silnika?", ["Przycisk zasilający + stycznik", "Woltomierz", "Bezpiecznik topikowy", "Transformator"]),
+  new pytanie("Jaki układ stosuje się do rozruchu silnika metodą gwiazda-trójkąt?", ["Styczniki + przekaźnik czasowy", "Tylko stycznik", "Dwa wyłączniki nadprądowe", "Transformator zasilający"]),
+  new pytanie("Jakie napięcie jest typowe dla sterowania w układzie automatyki przemysłowej?", ["24 V DC", "230 V AC", "400 V AC", "12 V AC"]),
+  new pytanie("Która struktura programowa pozwala wykonać cykl działania w PLC?", ["Pętla cykliczna", "Funkcja matematyczna", "Program BIOS", "Komenda WHILE"])
+];
+
+const rok4_robotyk = [
+  new pytanie("Który z poniższych języków jest stosowany do programowania PLC w standardzie IEC 61131-3?", ["LAD", "HTML", "BASIC", "CSS"]),
+  new pytanie("Jakie oznaczenie ma wejście cyfrowe w sterowniku PLC?", ["I", "Q", "M", "T"]),
+  new pytanie("Który z elementów służy do odczytu sygnału z czujnika indukcyjnego?", ["Wejście cyfrowe PLC", "Wyjście analogowe", "Przekaźnik czasowy", "Port szeregowy"]),
+  new pytanie("Jaki typ sygnału generuje czujnik analogowy?", ["4-20 mA", "0/1", "12 V", "PWM"]),
+  new pytanie("Do czego służy HMI w systemie automatyki?", ["Do wizualizacji i obsługi systemu", "Do zabezpieczania zasilania", "Do montażu przekaźników", "Do rozruchu silnika"]),
+  new pytanie("Które z poniższych urządzeń najczęściej komunikuje się przez Modbus?", ["PLC", "Transformator", "Bezpiecznik", "Przycisk"]),
+  new pytanie("Jakie oznaczenie ma wyjście cyfrowe w sterowniku PLC?", ["Q", "I", "A", "M"]),
+  new pytanie("Jakie napięcie standardowo stosuje się dla wyjść cyfrowych PLC?", ["24 V DC", "230 V AC", "400 V AC", "12 V AC"]),
+  new pytanie("Jaką funkcję pełni przekaźnik SSR?", ["Bezkontaktowe załączanie obwodów", "Przetwarzanie sygnału cyfrowego na analogowy", "Pomiar temperatury", "Zmiana częstotliwości napięcia"]),
+  new pytanie("Jaka struktura programowa pozwala wykonać cykl działania w PLC?", ["Pętla cykliczna", "Funkcja matematyczna", "Program BIOS", "Komenda WHILE"])
+];
+
+const rok5_robotyk = [
+  new pytanie("Który z poniższych przyrządów służy do pomiaru rezystancji izolacji?", ["Miernik rezystancji izolacji", "Amperomierz", "Watomierz", "Stycznik"]),
+  new pytanie("Jakie jest wymagane minimalne napięcie testowe przy pomiarze izolacji 230 V?", ["500 V", "250 V", "1000 V", "150 V"]),
+  new pytanie("Który z poniższych urządzeń pozwala na bezinwazyjny pomiar prądu?", ["Cęgi amperomierza", "Woltomierz", "Omomierz", "Multimetr analogowy"]),
+  new pytanie("Który z parametrów sprawdza się podczas pomiaru impedancji pętli zwarcia?", ["Zs", "Rs", "Us", "Cs"]),
+  new pytanie("Co należy sprawdzić przed dopuszczeniem maszyny do eksploatacji?", ["Stan techniczny i dokumentację", "Kolor obudowy", "Producenta silnika", "Typ przewodów"]),
+  new pytanie("Który z niżej wymienionych pomiarów dotyczy skuteczności ochrony przeciwporażeniowej?", ["Pomiar impedancji pętli zwarcia", "Pomiar napięcia obwodu", "Pomiar pojemności", "Pomiar natężenia prądu"]),
+  new pytanie("Który z elementów automatyki odpowiada za zbieranie danych z wielu czujników?", ["Sterownik PLC", "Przekaźnik", "Cewka stycznika", "Transformator"]),
+  new pytanie("Jak często należy przeprowadzać przeglądy maszyn zgodnie z przepisami BHP?", ["Okresowo wg dokumentacji technicznej", "Raz na 10 lat", "Tylko po awarii", "Na żądanie klienta"]),
+  new pytanie("Który z niżej wymienionych czynników może obniżyć jakość pomiaru?", ["Zakłócenia elektromagnetyczne", "Rodzaj przewodnika", "Napięcie nominalne", "Kolor przewodów"]),
+  new pytanie("Które z poniższych urządzeń służy do sprawdzania ciągłości przewodów?", ["Miernik ciągłości obwodu", "Przekaźnik", "Cewka", "Transformator"])
+];
+
+//pytania z elektroników
+
+const rok1_elektronik = [
+  new pytanie("Jakie napięcie wyjściowe ma stabilizator napięcia 7805?", ["5V", "9V", "12V", "15V"]),
+  new pytanie("Który symbol graficzny przedstawia tyrystor?", ["Symbol A", "Symbol B", "Symbol C", "Symbol D"]),
+  new pytanie("Co oznacza skrót 'LED'?", ["Light Emitting Diode", "Low Energy Device", "Linear Electric Device", "Light Energy Detector"]),
+  new pytanie("Jaki jest podstawowy element układu logicznego?", ["Bramka logiczna", "Przekaźnik", "Transformator", "Kondensator"]),
+  new pytanie("Który materiał jest najlepszym przewodnikiem elektryczności?", ["Srebro", "Miedź", "Aluminium", "Złoto"]),
+  new pytanie("Jakie jest napięcie sieciowe w Polsce?", ["230V", "110V", "400V", "12V"]),
+  new pytanie("Który przyrząd służy do pomiaru napięcia?", ["Woltomierz", "Amperomierz", "Omomierz", "Oscyloskop"]),
+  new pytanie("Co oznacza skrót 'AC' w kontekście prądu?", ["Prąd przemienny", "Prąd stały", "Prąd zmienny", "Prąd jednofazowy"]),
+  new pytanie("Który element magazynuje energię w polu elektrycznym?", ["Kondensator", "Cewka", "Rezystor", "Diody"]),
+  new pytanie("Jakie jest oznaczenie jednostki oporu elektrycznego?", ["Ω", "V", "A", "W"])
+];
+
+const rok2_elektronik = [
+  new pytanie("Który element służy do ograniczania prądu w obwodzie?", ["Rezystor", "Diody", "Transformator", "Przekaźnik"]),
+  new pytanie("Co oznacza skrót 'DC' w kontekście prądu?", ["Prąd stały", "Prąd przemienny", "Prąd zmienny", "Prąd jednofazowy"]),
+  new pytanie("Który przyrząd służy do pomiaru natężenia prądu?", ["Amperomierz", "Woltomierz", "Omomierz", "Oscyloskop"]),
+  new pytanie("Który element magazynuje energię w polu magnetycznym?", ["Cewka", "Kondensator", "Rezystor", "Diody"]),
+  new pytanie("Co oznacza skrót 'PCB'?", ["Płytka drukowana", "Przekaźnik", "Kondensator", "Bateria"]),
+  new pytanie("Który element służy do prostowania prądu przemiennego?", ["Diody", "Rezystor", "Cewka", "Kondensator"]),
+  new pytanie("Co oznacza skrót 'LCD'?", ["Wyświetlacz ciekłokrystaliczny", "Diody", "Kondensator", "Przekaźnik"]),
+  new pytanie("Który element służy do przechowywania ładunku elektrycznego?", ["Kondensator", "Cewka", "Rezystor", "Diody"]),
+  new pytanie("Co oznacza skrót 'CPU'?", ["Jednostka centralna", "Pamięć RAM", "Karta graficzna", "Dysk twardy"]),
+  new pytanie("Który element służy do przełączania obwodów elektrycznych?", ["Przekaźnik", "Diody", "Kondensator", "Cewka"])
+];
+
+const rok3_elektronik = [
+  new pytanie("Który element służy do filtrowania sygnałów?", ["Kondensator", "Rezystor", "Diody", "Przekaźnik"]),
+  new pytanie("Co oznacza skrót 'USB'?", ["Uniwersalna magistrala szeregowa", "Przekaźnik", "Kondensator", "Diody"]),
+  new pytanie("Który element służy do przechowywania danych?", ["Pamięć RAM", "Procesor", "Karta graficzna", "Zasilacz"]),
+  new pytanie("Co oznacza skrót 'HDMI'?", ["Interfejs multimedialny wysokiej rozdzielczości", "Przekaźnik", "Kondensator", "Diody"]),
+  new pytanie("Który element służy do zwiększania napięcia?", ["Transformator", "Rezystor", "Diody", "Przekaźnik"]),
+  new pytanie("Co oznacza skrót 'Wi-Fi'?", ["Bezprzewodowa sieć lokalna", "Przekaźnik", "Kondensator", "Diody"]),
+  new pytanie("Który element służy do zmiany napięcia przemiennego na stałe?", ["Prostownik", "Transformator", "Przekaźnik", "Diody"]),
+  new pytanie("Co oznacza skrót 'LAN'?", ["Sieć lokalna", "Przekaźnik", "Kondensator", "Diody"]),
+  new pytanie("Który element służy do ochrony obwodu przed przeciążeniem?", ["Bezpiecznik", "Rezystor", "Diody", "Przekaźnik"]),
+  new pytanie("Co oznacza skrót 'GPS'?", ["Globalny system pozycjonowania", "Przekaźnik", "Kondensator", "Diody"])
+];
+
+const rok4_elektronik = [
+  new pytanie("Który układ służy do zmiany napięcia stałego na przemienne?", ["Falownik", "Prostownik", "Stabilizator", "Transformator"]),
+  new pytanie("Co oznacza skrót 'IoT'?", ["Internet rzeczy", "Sieć lokalna", "Zasilacz", "Programator"]),
+  new pytanie("Który element steruje przepływem prądu w tranzystorze?", ["Bramka (Gate)", "Kolektor", "Emiter", "Baza"]),
+  new pytanie("Jakie zjawisko jest podstawą działania transformatora?", ["Indukcja elektromagnetyczna", "Przewodnictwo", "Polaryzacja", "Rezystancja"]),
+  new pytanie("Co oznacza skrót 'EEPROM'?", ["Pamięć nieulotna programowalna elektrycznie", "Procesor", "Port szeregowy", "Kondensator"]),
+  new pytanie("Który element odpowiada za przetwarzanie sygnału analogowego na cyfrowy?", ["Przetwornik ADC", "Diody", "Rezystor", "Przekaźnik"]),
+  new pytanie("Jaki sygnał generuje enkoder inkrementalny?", ["Impulsy kwadraturowe", "Napięcie stałe", "Sygnał PWM", "Sygnał sinusoidalny"]),
+  new pytanie("Co oznacza skrót 'PWM'?", ["Modulacja szerokości impulsu", "Prąd zmienny", "Filtrowanie sygnału", "Transformacja napięcia"]),
+  new pytanie("Który element jest najczęściej używany w zasilaczach impulsowych?", ["Tranzystor MOSFET", "Rezystor", "Kondensator", "Dioda Zenera"]),
+  new pytanie("Co oznacza skrót 'FTP' w sieciach komputerowych?", ["Protokół przesyłania plików", "Zasilacz awaryjny", "Transmisja danych", "Modem"])
+];
+
+const rok5_elektronik = [
+  new pytanie("Który protokół komunikacyjny stosowany jest w automatyce przemysłowej?", ["Modbus", "HDMI", "USB", "HTTP"]),
+  new pytanie("Co oznacza skrót 'PLC'?", ["Programowalny sterownik logiczny", "Pamięć RAM", "Przekaźnik", "Silnik krokowy"]),
+  new pytanie("Jaką funkcję pełni stycznik?", ["Załączanie/wyłączanie obwodu", "Pomiar napięcia", "Przesył danych", "Magazynowanie energii"]),
+  new pytanie("Co to jest HMI?", ["Interfejs człowiek-maszyna", "Interfejs graficzny", "Zasilacz", "Transformator"]),
+  new pytanie("Co oznacza skrót 'CAN' w automatyce?", ["Magistrala komunikacyjna", "Cewka", "Kondensator", "Pamięć"]),
+  new pytanie("Który czujnik służy do wykrywania obecności metalowych obiektów?", ["Indukcyjny", "Optyczny", "Ultradźwiękowy", "Poziomu"]),
+  new pytanie("Co oznacza skrót 'SCADA'?", ["System nadzoru i akwizycji danych", "Program sterujący", "Układ logiczny", "Transformator"]),
+  new pytanie("Który silnik wymaga sterowania krokowego?", ["Silnik krokowy", "Silnik AC", "Silnik DC", "Silnik synchroniczny"]),
+  new pytanie("Co oznacza skrót 'RS-485'?", ["Magistrala komunikacyjna", "Typ czujnika", "Pamięć EEPROM", "Protokół internetowy"]),
+  new pytanie("Co mierzy enkoder absolutny?", ["Dokładne położenie kątowe", "Prędkość", "Napięcie", "Obciążenie"])
+];

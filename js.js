@@ -913,33 +913,21 @@ class dialog_nielosowy{
 };
 
 const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla programisty rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla programisty rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla programisty rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla programisty rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla programisty rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_programista, rok2_programista, rok3_programista, rok4_programista, rok5_programista
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
     ), [new dialog(['dialog przykładowy z Telickiego'])]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla elektronika rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla elektronika rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla elektronika rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla elektronika rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla elektronika rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_elektronik, rok2_elektronik, rok3_elektronik, rok4_elektronik, rok5_elektronik
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
     ), [new dialog(['dialog przykładowy z elele'])]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla automatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla automatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla automatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla automatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla automatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
@@ -968,22 +956,14 @@ const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
         null
     ), [new dialog(['dialog przykładowy z sieci'])]);
 const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla informatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla informatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla informatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla informatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla informatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_informatyk, rok2_informatyk, rok3_informatyk, rok4_informatyk, rok5_informatyk
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z informatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
     ), [new dialog(['dialog przykładowy z komputrów'])]);
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla robotyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla robotyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla robotyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla robotyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla robotyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_robotyk, rok2_robotyk, rok3_robotyk, rok4_robotyk, rok5_robotyk
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
@@ -1089,9 +1069,8 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     //sprawdza, czy zdarzenie ma wystąpić i jakie
     if(menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe){
         menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe;
-        menedzer_gry.zdarzenie_nielosowe = null;
         pokaz_zdarzenie();
-        menedzer_gry.zdarzenie = null;
+        menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
     }
     else if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
         menedzer_gry.zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
