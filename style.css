@@ -404,7 +404,8 @@ body {
 #panel_sklepu{
     height: 50vh;
     width: calc(100vw - 36vh);
-    background-color: black;
+    background-image: url("grafiki/sklep_arsenal.png");
+    background-size: cover;
 }
 
 .odpowiedz {
