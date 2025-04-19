@@ -27,12 +27,12 @@ class zdarzenie {
 }
 
 class nielosowe_zdarzenie {
-    constructor(nazwa, opis, runda, czy_przy_schodach, czy_po_porwaniu, funkcja_wywołana = null){
+    constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana){
         this.nazwa = nazwa;
         this.opis = opis;
         this.runda = runda;
         this.czy_przy_schodach = czy_przy_schodach;
-        this.czy_po_porwaniu = czy_po_porwaniu;
+        this.czy_czosnowski_porwany = czy_czosnowski_porwany;
         this.funkcja = funkcja_wywołana;
     }
 }
@@ -44,11 +44,11 @@ const losowe_zdarzenia = [
 ];
 
 const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 1, false, false, () => porwanie_czosnowskiego());
-const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true);
+const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true, null);
 const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 2, false, true, () => pojdz_do_sali_017());
-const nielosowe_zdarzenia = [zdarzenie_testowe2, zdarzenie_testowe3, zdarzenie_testowe4];
-
-const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, false, null);
+const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4];
+const nielosowe_zdarzenia_schody = [zdarzenie_testowe3];
+const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, null, null);
 
 function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
@@ -81,7 +81,7 @@ function przewin_opis_zdarzenia_nielosowego(){
 function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
-    if(menedzer_gry.czy_otwarto_017){
+    if(menedzer_gry.zdarzenie == zdarzenie_017){
         for(let i of sala_przyciski){
             pojawienie_ekranu(i);
         }
@@ -90,6 +90,7 @@ function zniknij_zdarzenie_nielosowe() {
         }
         znikniecie_ekranu(document.getElementById('017'));
         menedzer_gry.czy_otwarto_017 = false;
+        menedzer_gry.czy_czosnowski_porwany = false;
         menedzer_gry.poczatek_tury();
     }
 }
@@ -119,7 +120,7 @@ const menedzer_gry = {
     pytanie: null,
     przedmiot_szkolny: null,
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
-    czy_po_porwaniu: false,
+    czy_czosnowski_porwany: false,
     czy_otwarto_017: false,
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     poczatek_tury: function () {
@@ -152,8 +153,8 @@ const menedzer_gry = {
                 //kolejna runda
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
-                    for(let i of nielosowe_zdarzenia){
-                        if(i.runda == this.runda && !i.czy_przy_schodach){
+                    for(let i of nielosowe_zdarzenia_nie_schody){
+                        if(i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
                             this.zdarzenie = i;
                             i.funkcja();
                             pokaz_zdarzenie_nielosowe();
@@ -161,8 +162,8 @@ const menedzer_gry = {
                         }
                     }
                     this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
-                    for(let i of nielosowe_zdarzenia){
-                        if(i.czy_po_porwaniu == this.czy_po_porwaniu){
+                    for(let i of nielosowe_zdarzenia_schody){
+                        if(i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
@@ -170,7 +171,7 @@ const menedzer_gry = {
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for(let i of dialogi_nielosowe){
-                        if(i.czy_po_porwaniu == this.czy_po_porwaniu){
+                        if(i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
                             this.dialog_nielosowy = i;
                             this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
@@ -905,9 +906,9 @@ class dialog{
 }
 
 class dialog_nielosowy{
-    constructor(opis, czy_po_porwaniu){
+    constructor(opis, czy_czosnowski_porwany){
         this.opis = opis;
-        this.czy_po_porwaniu = czy_po_porwaniu;
+        this.czy_czosnowski_porwany = czy_czosnowski_porwany;
     }
 };
 
@@ -1166,7 +1167,7 @@ const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
 
 function porwanie_czosnowskiego(){
-    menedzer_gry.czy_po_porwaniu = true;
+    menedzer_gry.czy_czosnowski_porwany = true;
 }
 
 function pojdz_do_sali_017(){
