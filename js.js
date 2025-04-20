@@ -944,22 +944,14 @@ const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
         null
     ), [new dialog(['dialog przykładowy z aut'])]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla fotografa rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla fotografa rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla fotografa rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla fotografa rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla fotografa rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_fotograf, rok2_fotograf, rok3_fotograf, rok4_fotograf, rok5_fotograf
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z fotografakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
     ), [new dialog(['dialog przykładowy z aparatu'])]);
 const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
-    [new pytanie('przykładowe pytanie dla teleinformatyka rok 1', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla teleinformatyka rok 2', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla teleinformatyka rok 3', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla teleinformatyka rok 4', ['tak', 'sigma', 'brum burm', 'skibidi'])],
-    [new pytanie('przykładowe pytanie dla teleinformatyka rok 5', ['tak', 'sigma', 'brum burm', 'skibidi'])]
+    rok1_teleinformatyk, rok2_teleinformatyk, rok3_teleinformatyk, rok4_teleinformatyk, rok5_teleinformatyk
     ), new zestaw_pytan_egzamin(
         [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z teleinformatykaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],

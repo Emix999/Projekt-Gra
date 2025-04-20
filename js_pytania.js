@@ -1013,3 +1013,137 @@ const rok5_elektronik = [
   new pytanie("Co oznacza skrót 'RS-485'?", ["Magistrala komunikacyjna", "Typ czujnika", "Pamięć EEPROM", "Protokół internetowy"]),
   new pytanie("Co mierzy enkoder absolutny?", ["Dokładne położenie kątowe", "Prędkość", "Napięcie", "Obciążenie"])
 ];
+
+//pytania z fotografa
+
+const rok1_fotograf = [
+  new pytanie("Jaką funkcję pełni mikser audio?", ["Łączy i reguluje sygnały dźwiękowe", "Wyświetla obraz", "Służy do obróbki wideo", "Generuje światło"]),
+  new pytanie("Co to jest kabel XLR?", ["Kabel mikrofonowy z blokadą", "Kabel do sieci LAN", "Kabel wideo HDMI", "Przewód zasilający"]),
+  new pytanie("Do czego służy statyw mikrofonowy?", ["Do stabilnego ustawienia mikrofonu", "Do podłączenia kamery", "Do przesyłania sygnału", "Do ochrony przed wiatrem"]),
+  new pytanie("Co to jest decybel (dB)?", ["Jednostka poziomu dźwięku", "Jednostka czasu", "Rodzaj mikrofonu", "Element obudowy"]),
+  new pytanie("Jak działa mikrofon dynamiczny?", ["Przekształca fale akustyczne na sygnał elektryczny przez cewkę", "Potrzebuje zasilania phantom", "Działa tylko z przedwzmacniaczem", "Jest używany wyłącznie w studiach"]),
+  new pytanie("Co oznacza skrót AV?", ["Audio i wideo", "Akumulator wzmocniony", "Automatyczne włączenie", "Adapter wideo"]),
+  new pytanie("Który z poniższych urządzeń odtwarza dźwięk?", ["Głośnik", "Mikrofon", "Mieszacz", "Kamera"]),
+  new pytanie("Co to jest jack 3.5 mm?", ["Popularne złącze słuchawkowe", "Złącze zasilania", "Przewód HDMI", "Kabel koncentryczny"]),
+  new pytanie("Jaki element zabezpiecza mikrofon przed wiatrem?", ["Gąbka lub osłona przeciwwiatrowa", "Kabel", "Wzmacniacz", "Przycisk mute"]),
+  new pytanie("Do czego służy karta dźwiękowa?", ["Do przetwarzania sygnału audio w komputerze", "Do zapisu obrazu", "Do sterowania światłem", "Do transmisji internetowej"])
+];
+
+const rok2_fotograf = [
+  new pytanie("Co to jest konsoleta dźwiękowa?", ["Urządzenie do miksowania sygnałów audio", "Kamera z mikrofonem", "Monitor odsłuchowy", "Statyw do światła"]),
+  new pytanie("Co oznacza 'phantom power'?", ["Zasilanie mikrofonów po kablu XLR", "Zasilanie rejestratora", "Energia z akumulatora", "Zasilanie z USB"]),
+  new pytanie("Jakie złącze często stosuje się w kamerach wideo?", ["HDMI", "USB", "VGA", "RJ-45"]),
+  new pytanie("Co to jest DI-box?", ["Urządzenie dopasowujące sygnał instrumentalny do wejścia mikrofonowego", "Przejściówka wideo", "Adapter do gniazdka", "Rejestrator"]),
+  new pytanie("Co to jest patchbay?", ["Panel do łączenia sygnałów audio", "Mieszacz wideo", "Mikrofon z funkcją Bluetooth", "Kamera z wbudowanym rejestratorem"]),
+  new pytanie("Jakim kolorem oznacza się kabel sygnału audio lewego kanału?", ["Białym", "Czerwonym", "Niebieskim", "Zielonym"]),
+  new pytanie("Co to jest SPL?", ["Poziom ciśnienia akustycznego", "Złącze sygnałowe", "Typ głośnika", "Format zapisu"]),
+  new pytanie("Które z urządzeń konwertuje sygnał analogowy na cyfrowy?", ["Interfejs audio", "Głośnik", "Wzmacniacz", "Kondensator"]),
+  new pytanie("Co oznacza impedancja w kontekście audio?", ["Opór elektryczny w obwodzie sygnału dźwiękowego", "Poziom głośności", "Jakość dźwięku", "Ilość kanałów"]),
+  new pytanie("Co to jest bufor odsłuchowy?", ["Opóźnienie zapobiegające zacinaniu się dźwięku", "Miejsce nagrywania", "Rejestrator zapasowy", "Tryb stereo"])
+];
+
+const rok3_fotograf = [
+  new pytanie("Co oznacza skrót DAW?", ["Digital Audio Workstation", "Dynamic Audio Wave", "Device for Audio Writing", "Direct Auto Workflow"]),
+  new pytanie("Co to jest limiter?", ["Urządzenie ograniczające szczytowe wartości sygnału", "Przedwzmacniacz", "Mikrofon z regulacją czułości", "Przełącznik głośności"]),
+  new pytanie("Co oznacza sampling rate 44,1 kHz?", ["44100 próbek dźwięku na sekundę", "Maksymalna głośność dźwięku", "Głębokość bitowa", "Długość pliku audio"]),
+  new pytanie("Do czego służy equalizer?", ["Do korekcji częstotliwości dźwięku", "Do zwiększania głośności", "Do dodawania pogłosu", "Do miksowania wideo"]),
+  new pytanie("Co to jest reverb?", ["Efekt pogłosu", "Efekt opóźnienia", "Tłumik sygnału", "Rodzaj mikrofonu"]),
+  new pytanie("Jakie jest typowe pasmo słyszalności człowieka?", ["20 Hz – 20 kHz", "50 Hz – 10 kHz", "100 Hz – 15 kHz", "10 Hz – 30 kHz"]),
+  new pytanie("Jakie oprogramowanie służy do produkcji dźwięku?", ["Ableton Live", "Photoshop", "AutoCAD", "Premiere Pro"]),
+  new pytanie("Co to jest szum własny mikrofonu?", ["Sygnał generowany przez urządzenie bez źródła dźwięku", "Dźwięk otoczenia", "Głośność mowy", "Dźwięk tła z nagrania"]),
+  new pytanie("Co robi kompresor dźwięku?", ["Wyrównuje dynamikę sygnału", "Zwiększa ton wysokich częstotliwości", "Wyłącza mikrofon", "Usuwa szumy"]),
+  new pytanie("Jak działa mikrofon pojemnościowy?", ["Przekształca fale akustyczne za pomocą kondensatora", "Za pomocą cewki", "Na zasadzie nacisku", "Mechanicznie"])
+];
+
+const rok4_fotograf = [
+  new pytanie("Co to jest masterowanie?", ["Ostatni etap obróbki audio przed publikacją", "Nagrywanie instrumentów", "Tworzenie sesji", "Ustawianie mikrofonów"]),
+  new pytanie("Co oznacza dBFS?", ["Poziom odniesienia sygnału cyfrowego", "Głośność rzeczywista", "Format audio", "Częstotliwość próbki"]),
+  new pytanie("Co to jest fade in?", ["Powolne zwiększanie głośności", "Natychmiastowe wyciszenie", "Usunięcie szumu", "Kompresja pliku"]),
+  new pytanie("Co oznacza bouncing ścieżek?", ["Eksport miksu do jednego pliku", "Usuwanie pogłosu", "Zmiana nazwy ścieżek", "Dodanie nowego kanału"]),
+  new pytanie("Jakie pasmo dotyczy wokalu męskiego?", ["80 Hz – 300 Hz", "20 Hz – 80 Hz", "500 Hz – 1 kHz", "1 kHz – 5 kHz"]),
+  new pytanie("Co to jest automatyka w DAW?", ["Zmiana parametrów ścieżki w czasie", "Włączenie metronomu", "Tworzenie nowego projektu", "Konwersja formatu"]),
+  new pytanie("Co to jest plik WAV?", ["Format nieskompresowany audio", "Składnik miksu", "Format MIDI", "Rodzaj interfejsu"]),
+  new pytanie("Co oznacza MIDI?", ["Musical Instrument Digital Interface", "Multitrack Interconnected Device Input", "Micro Dynamic Inverter", "Monitor In Digital Input"]),
+  new pytanie("Co to jest ducking?", ["Tłumienie jednego sygnału, gdy pojawia się drugi", "Przesuwanie panoramy", "Podbijanie wysokich tonów", "Włączanie metronomu"]),
+  new pytanie("Co to jest flanger?", ["Efekt modulacyjny z przesunięciem fazy", "Kompresor", "Zestaw mikrofonów", "Złącze wideo"])
+];
+
+const rok5_fotograf = [
+  new pytanie("Co to jest stagebox?", ["Multicore z wejściami/wyjściami audio na scenie", "Oświetlenie sceniczne", "Obudowa wzmacniacza", "Mikrofon do perkusji"]),
+  new pytanie("Jak działa system in-ear monitoring?", ["Umożliwia odsłuch sceniczny przez słuchawki", "Wzmacnia mikrofony", "Nagrywa dźwięk stereo", "Steruje światłem"]),
+  new pytanie("Co to jest rider techniczny?", ["Dokument opisujący wymagania techniczne wykonawcy", "Lista utworów", "Zestaw kabli", "Plan marketingowy"]),
+  new pytanie("Co to jest latency?", ["Opóźnienie sygnału", "Głośność mikrofonu", "Częstotliwość próbki", "Rodzaj kabla"]),
+  new pytanie("Co oznacza gain staging?", ["Ustawianie poziomów sygnału na różnych etapach", "Rozmieszczanie mikrofonów", "Wybór instrumentów", "Zmiana formatu"]),
+  new pytanie("Co to jest multitrack recording?", ["Nagrywanie wielu ścieżek jednocześnie", "Tworzenie efektów", "Kopiowanie dźwięku", "Odtwarzanie stereo"]),
+  new pytanie("Jaką rolę pełni realizator dźwięku na koncercie?", ["Odpowiada za jakość dźwięku na żywo", "Ustawia światła", "Obsługuje kamerę", "Pisze scenariusz"]),
+  new pytanie("Co to jest soundcheck?", ["Próba dźwięku przed wydarzeniem", "Naprawa kabla", "Odsłuch miksu", "Montaż oświetlenia"]),
+  new pytanie("Jakie złącze często stosuje się do transmisji cyfrowej audio?", ["AES/EBU", "RCA", "VGA", "HDMI"]),
+  new pytanie("Jakie jest zadanie monitora scenicznego?", ["Umożliwia muzykom słyszenie siebie", "Wzmacnia bas", "Steruje kamerą", "Przechowuje dane"])
+];
+
+//pytania z teleinformatyka
+
+const rok1_teleinformatyk = [
+  new pytanie("Co oznacza skrót LAN?", ["Local Area Network", "Large Access Network", "Low Application Node", "Link Adapter Network"]),
+  new pytanie("Który z portów służy do podłączenia kabla sieciowego?", ["RJ-45", "VGA", "HDMI", "USB"]),
+  new pytanie("Jak nazywa się urządzenie dzielące sygnał internetowy na kilka komputerów?", ["Router", "Modem", "Switch", "Repeater"]),
+  new pytanie("Który system operacyjny jest typu open-source?", ["Linux", "Windows", "macOS", "DOS"]),
+  new pytanie("Co oznacza skrót IP?", ["Internet Protocol", "Internal Path", "Internet Port", "Interconnected Points"]),
+  new pytanie("Jak nazywa się proces instalowania systemu operacyjnego?", ["Instalacja", "Formatowanie", "Reset", "Synchronizacja"]),
+  new pytanie("Co oznacza skrót DNS?", ["Domain Name System", "Data Network Service", "Digital Name Server", "Direct Node Setup"]),
+  new pytanie("Co oznacza skrót BIOS?", ["Basic Input Output System", "Binary Integrated Operating System", "Basic Internal Operating Software", "Boot Integrated Output Service"]),
+  new pytanie("Jaka karta umożliwia połączenie komputera z siecią?", ["Karta sieciowa", "Karta graficzna", "Karta dźwiękowa", "Karta rozszerzeń"]),
+  new pytanie("Co to jest ping w sieci komputerowej?", ["Narzędzie do sprawdzania dostępności hosta", "Program do drukowania", "Komenda do wyświetlania katalogów", "Protokół szyfrowania danych"]),
+];
+
+const rok2_teleinformatyk = [
+  new pytanie("Który z adresów IP jest adresem prywatnym?", ["192.168.0.1", "8.8.8.8", "172.217.0.46", "1.1.1.1"]),
+  new pytanie("Co oznacza skrót DHCP?", ["Dynamic Host Configuration Protocol", "Data Hosting Control Panel", "Digital Hardware Control Program", "Direct Host Connection Protocol"]),
+  new pytanie("Jak sprawdzić konfigurację IP w systemie Windows?", ["ipconfig", "netdir", "ping", "tracert"]),
+  new pytanie("Jakie urządzenie łączy różne sieci i kieruje ruchem?", ["Router", "Switch", "Access Point", "Modem"]),
+  new pytanie("Co robi protokół TCP?", ["Zapewnia połączenie i kontrolę transmisji", "Kompresuje dane", "Ochronia przed wirusami", "Szyfruje pakiety"]),
+  new pytanie("Co to jest maska podsieci 255.255.255.0?", ["Maska klasy C", "Maska klasy A", "Maska klasy B", "Brak maski"]),
+  new pytanie("Jakim poleceniem w Linuksie sprawdzisz trasę pakietu?", ["traceroute", "ping", "ifconfig", "netstat"]),
+  new pytanie("Jaki protokół używany jest do przesyłania plików?", ["FTP", "HTTP", "DNS", "SMTP"]),
+  new pytanie("Co oznacza NAT?", ["Translacja adresów sieciowych", "Nowy adres terminala", "Sieć adresowana logicznie", "Połączenie lokalne"]),
+  new pytanie("Jakie rozszerzenie ma plik wsadowy w Windows?", ["bat", "exe", "sys", "dll"]),
+];
+
+const rok3_teleinformatyk = [
+  new pytanie("Jakie uprawnienia ma konto 'root' w Linuxie?", ["Administratora", "Użytkownika gościa", "Ograniczone", "Tylko do odczytu"]),
+  new pytanie("Jakie narzędzie służy do zarządzania usługami w Windows?", ["services.msc", "tasklist", "cmd.exe", "gpedit.msc"]),
+  new pytanie("Jak w Linuksie nadać uprawnienia pliku?", ["chmod", "edit", "setperm", "modperm"]),
+  new pytanie("Co to jest Active Directory?", ["Usługa katalogowa Windows Server", "Firewall systemowy", "Baza danych użytkowników Linux", "System plików"]),
+  new pytanie("Który protokół szyfruje transmisję WWW?", ["HTTPS", "HTTP", "FTP", "Telnet"]),
+  new pytanie("Co oznacza RAID 1?", ["Odbicie lustrzane danych", "Podział danych na paski", "Łączenie wielu dysków w jeden", "Backup sieciowy"]),
+  new pytanie("Co robi komenda 'netstat'?", ["Pokazuje aktywne połączenia sieciowe", "Restartuje kartę sieciową", "Tworzy nową trasę sieciową", "Konfiguruje IP"]),
+  new pytanie("Jak zabezpieczyć komputer przed wirusami?", ["Zainstalować antywirusa", "Usunąć pliki TEMP", "Zwiększyć RAM", "Zainstalować drukarkę"]),
+  new pytanie("Czym jest domena w sieci?", ["Zbiór komputerów pod wspólnym zarządzaniem", "Typ dysku twardego", "Nazwa użytkownika", "Firewall sieciowy"]),
+  new pytanie("Co to jest logowanie zdalne?", ["Dostęp do systemu przez sieć", "Instalacja systemu z pendrive", "Formatowanie dysku", "Test sieci LAN"]),
+];
+
+const rok4_teleinformatyk = [
+  new pytanie("Co oznacza skrót WAN?", ["Wide Area Network", "Web Access Network", "Wireless Address Node", "Wide Application Notation"]),
+  new pytanie("Co to jest adresacja statyczna?", ["Ręczne przypisanie adresu IP", "Dynamiczne IP przez DHCP", "Adres tymczasowy", "Adres NAT"]),
+  new pytanie("Jakie urządzenie działa w trzeciej warstwie modelu OSI?", ["Router", "Switch", "Repeater", "Modem"]),
+  new pytanie("Co oznacza termin TTL w pakiecie IP?", ["Czas życia pakietu", "Typ transmisji", "Adres źródłowy", "Rozmiar pakietu"]),
+  new pytanie("Który protokół odpowiada za automatyczne przypisywanie IP?", ["DHCP", "DNS", "FTP", "SNMP"]),
+  new pytanie("Co oznacza komenda 'tracert' w Windows?", ["Śledzi trasę pakietu", "Restartuje kartę sieciową", "Wyłącza serwer DHCP", "Mierzy prędkość Internetu"]),
+  new pytanie("Jakie urządzenie łączy różne sieci lokalne w WAN?", ["Router", "Switch", "Access Point", "HUB"]),
+  new pytanie("Jakie medium transmisyjne zapewnia największy zasięg?", ["Światłowód", "Skrętka", "Wi-Fi", "Ethernet"]),
+  new pytanie("Co oznacza skrót VPN?", ["Virtual Private Network", "Visual Port Node", "Virtual Public Net", "Verified Path Network"]),
+  new pytanie("Jakiego protokołu używają strony WWW?", ["HTTP", "FTP", "SSH", "SMB"]),
+];
+
+const rok5_teleinformatyk = [
+  new pytanie("Który protokół routingu dynamicznego jest wewnętrzny?", ["OSPF", "BGP", "RIP", "EIGRP"]),
+  new pytanie("Jakie zabezpieczenie pozwala na tworzenie tunelu między sieciami?", ["VPN", "Firewall", "NAT", "DHCP"]),
+  new pytanie("Jak działa NAT?", ["Tłumaczy prywatne adresy IP na publiczne", "Tworzy podsieci", "Monitoruje pasmo", "Blokuje porty"]),
+  new pytanie("Co oznacza skrót ACL w sieci?", ["Access Control List", "Automatic Client Locator", "Advanced Configuration Layer", "Access Client Link"]),
+  new pytanie("Które z poniższych narzędzi służy do monitorowania sieci?", ["Wireshark", "GIMP", "Visual Studio", "Notepad++"]),
+  new pytanie("Co oznacza termin 'routing'?", ["Przesyłanie pakietów między sieciami", "Tworzenie kopii zapasowych", "Instalacja systemu", "Ładowanie stron WWW"]),
+  new pytanie("Co to jest VLAN?", ["Wirtualna sieć lokalna", "Rodzaj routera", "Kabel sieciowy", "Typ tunelu VPN"]),
+  new pytanie("Jak nazywa się atak przechwytujący dane w sieci?", ["Man in the Middle", "Ping Flood", "DHCP Snooping", "MAC Filtering"]),
+  new pytanie("Co oznacza szyfrowanie WPA2?", ["Zabezpieczenie sieci Wi-Fi", "Format pliku", "Typ zasilania", "Adres fizyczny"]),
+  new pytanie("Jaki jest główny cel stosowania firewalli?", ["Ochrona sieci przed nieautoryzowanym dostępem", "Udostępnianie plików", "Tworzenie podsieci", "Konfiguracja DHCP"]),
+];
