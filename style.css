@@ -370,11 +370,21 @@ body {
     background-color: transparent;
 }
 
-.ekwipunek, .sklep_arsenal_obraz {
+.ekwipunek {
     border-collapse: collapse;
     margin: 0.5vh;
     width: 7.9vh;
     height: 7.9vh;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+}
+
+.sklep_arsenal_obraz{
+    position: absolute;
+    border-collapse: collapse;
+    width: 5.12%;
+    height: 10.7vh;
     background-size: cover;
     background-position: center;
     background-color: transparent;
@@ -386,6 +396,19 @@ body {
 
 .sklep_arsenal{
     color: white;
+}
+
+.sklep_kup{
+    top: 60.7vh; 
+    left: 13.73%;
+    position: absolute;
+    border-collapse: collapse;
+    width: 5.8%;
+    height: 5.8vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url("grafiki/kup.png");  
+    border: none;
 }
 
 #ekran_sklepu, #ekran_zdarzenia_nielosowego{
@@ -405,7 +428,8 @@ body {
     height: 50vh;
     width: calc(100vw - 36vh);
     background-image: url("grafiki/sklep_arsenal.png");
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size:calc(100vw - 36vh) 50vh;
 }
 
 .odpowiedz {
@@ -510,35 +534,51 @@ body {
 }
 
 #ilosc_pytan{
+    background-color: transparent;
     position: absolute;
     height: 3vh;
     width: 4vh;
-    top: 10%;
-    left: 10%;
+    top: 11%;
+    left: 35.5%;
+    color: white;
+    font-size: 2vh;
+    border: none;
 }
 
 #ilosc_poprawnych_odpowiedzi{
+    background-color: transparent;
     position: absolute;
     height: 3vh;
     width: 4vh;
-    top: 10%;
-    left: 10%;
+    top: 34%;
+    left: 86%;
+    color: white;
+    font-size: 2vh;
+    border: none;
 }
 
 #ocena{
+    background-color: transparent;
     position: absolute;
     height: 3vh;
-    width: 4vh;
-    top: 10%;
-    left: 10%;
+    width: 6vh;
+    top: 56.5%;
+    left: 25%;
+    color: white;
+    font-size: 2vh;
+    border: none;
 }
 
 #zmiana_sanity{
+    background-color: transparent;
     position: absolute;
     height: 3vh;
     width: 4vh;
-    top: 10%;
-    left: 10%;
+    top: 79%;
+    left: 65%;
+    color: white;
+    font-size: 2vh;
+    border: none;
 }
 
 #wyjdz_ze_sklepu, #przejdz_dalej_dialog, #zakoncz_dialog{

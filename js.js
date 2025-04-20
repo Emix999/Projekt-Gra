@@ -555,6 +555,10 @@ const ekran_gry = document.getElementById("ekran_gry");
 const ekran_pytania = document.getElementById("ekran_pytania");
 const przejdz_dalej = document.getElementById("przejdz_dalej");
 const ekran_nagrody = document.getElementById("ekran_nagrody");
+const ilosc_pytan = document.getElementById("ilosc_pytan");
+const ilosc_poprawnych_odpowiedzi = document.getElementById("ilosc_poprawnych_odpowiedzi");
+const ocena = document.getElementById("ocena");
+const zmiana_sanity = document.getElementById("zmiana_sanity");
 const zakoncz_ture = document.getElementById('zakoncz_ture');
 
 let czy_odpowiedziano;
@@ -590,7 +594,7 @@ function czy_poprawna(i) {
         czy_skonczyl_gre = false;
         czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
         if (czy_poprawna_odpowiedz) {
-            alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
+            //alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
             efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_gratulacje');
             efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
             if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.length == 3){
@@ -598,7 +602,7 @@ function czy_poprawna(i) {
             }
         }
         else {
-            alert("UwUaga Debil");
+           //alert("UwUaga Debil");
             efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_debil');
             efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
         }
@@ -615,13 +619,19 @@ function czy_poprawna(i) {
         przejdz_dalej.style.display = "block";
     }
     else{
-        alert('kolejna odpowiedź się nie liczy');
+        //alert('kolejna odpowiedź się nie liczy');
     }
 }
 
 function wyswietl_nagrode() {
     ekran_nagrody.style.visibility = "visible";
-    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');
+    ilosc_pytan.value = '1';
+    ilosc_poprawnych_odpowiedzi.value = (czy_poprawna_odpowiedz ? '1' : '0');
+    ocena.value = (czy_poprawna_odpowiedz ? '100%' : '0%');
+    zmiana_sanity.value = (czy_poprawna_odpowiedz ? '+10' : '-20');
+    console.log(ilosc_pytan)
+    /*
+    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     if(czy_skonczyl_gre){
         ekran_nagrody.innerHTML += "<br><br> Brawo! Udało ci się zdać maturę i ukończyć grę";
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata = 5;
