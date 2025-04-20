@@ -587,21 +587,6 @@ body {
     background-color: greenyellow;
 }
 
-#przejdz_dalej{
-    background-color: #5E5E5E;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    top: 87vh;
-    left: 34.7vw;
-    height: 7vh;
-    width: 14vw;
-    position: fixed;
-    background-image: url("grafiki/Przejdz_dalej.png");
-    border: none;
-    display: none;
-}
-
 #przejdz_dalej_zdarzenie{
     background-color: #5E5E5E;
     background-size: contain;

@@ -43,9 +43,9 @@ const losowe_zdarzenia = [
     new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
 ];
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 1, false, false, () => porwanie_czosnowskiego());
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 32, false, false, () => porwanie_czosnowskiego());
 const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true, null);
-const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 2, false, true, () => pojdz_do_sali_017());
+const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 35, false, true, () => pojdz_do_sali_017());
 const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4];
 const nielosowe_zdarzenia_schody = [zdarzenie_testowe3];
 const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, null, null);
@@ -117,7 +117,11 @@ const menedzer_gry = {
     indeks_gracza_ktory_dostaje_dialog_nielosowy: null,
     dialog: null,
     dialog_nielosowy: null,
+    pytania_kandydujace: null,
     pytanie: null,
+    ilosc_pytan: 0,
+    ile_jeszcze_pytan: 0,
+    czy_poprawne_odpowiedzi: null,
     przedmiot_szkolny: null,
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
     czy_czosnowski_porwany: false,
@@ -553,7 +557,6 @@ const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
 const pytanie_testowe = new pytanie('2 + 2 = ?', ['4', '2', '3', '5']);
 const ekran_gry = document.getElementById("ekran_gry");
 const ekran_pytania = document.getElementById("ekran_pytania");
-const przejdz_dalej = document.getElementById("przejdz_dalej");
 const ekran_nagrody = document.getElementById("ekran_nagrody");
 const ilosc_pytan = document.getElementById("ilosc_pytan");
 const ilosc_poprawnych_odpowiedzi = document.getElementById("ilosc_poprawnych_odpowiedzi");
@@ -561,12 +564,18 @@ const ocena = document.getElementById("ocena");
 const zmiana_sanity = document.getElementById("zmiana_sanity");
 const zakoncz_ture = document.getElementById('zakoncz_ture');
 
-let czy_odpowiedziano;
+function rozpocznij_pytania(){
+    zmiana_ekranu(ekran_dialogu, ekran_pytania);
+    menedzer_gry.czy_poprawne_odpowiedzi = [];
+    menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
+    pokaz_pytanie();
+}
 
-function pokaz_pytanie(ekran_znikajacy, ekran_pojawiajacy) {
-    zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-
-    czy_odpowiedziano = false;
+function pokaz_pytanie() {
+    let indeks_pytania = Math.floor(Math.random() * menedzer_gry.pytania_kandydujace.length);
+    menedzer_gry.pytanie = menedzer_gry.pytania_kandydujace[indeks_pytania];
+    menedzer_gry.pytania_kandydujace.splice(indeks_pytania, 1);
+    menedzer_gry.ile_jeszcze_pytan--;
 
     tresc.innerHTML = menedzer_gry.pytanie.tresc;
     let mozliwe_indeksy = [0, 1, 2, 3];
@@ -580,65 +589,43 @@ function pokaz_pytanie(ekran_znikajacy, ekran_pojawiajacy) {
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
             console.log(przycisk.dataset.etykieta);
+            break;
         }
     }
 }
 
-let czy_poprawna_odpowiedz;
-let czy_skonczyl_gre;
 let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
 
-function czy_poprawna(i) {
-    if(!czy_odpowiedziano){
-        czy_odpowiedziano = true;
-        czy_skonczyl_gre = false;
-        czy_poprawna_odpowiedz = odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true';
-        if (czy_poprawna_odpowiedz) {
-            //alert("GRanulacje kjhsdgafdjkhdsgadfkjhsdagfdkjdshgkhgfagfkhdgkjdafg");
-            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_gratulacje');
-            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
-            if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.length == 3){
-                czy_skonczyl_gre = true;
-            }
-        }
-        else {
-           //alert("UwUaga Debil");
-            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota = document.getElementById('audio_debil');
-            efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota.play();
-        }
-
-        for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-            if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.color = "lightGreen";
-            }
-            else {
-                odpowiedzi_przyciski[i].style.color = "red";
-            }
-        }
-
-        przejdz_dalej.style.display = "block";
+function kolejne_pytanie(i){
+    if(odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true'){
+        menedzer_gry.czy_poprawne_odpowiedzi.push(true);
     }
     else{
-        //alert('kolejna odpowiedź się nie liczy');
+        menedzer_gry.czy_poprawne_odpowiedzi.push(false);
+    }
+    if(menedzer_gry.ile_jeszcze_pytan == 0){
+        koniec_pytan();
+    }
+    else{
+        pokaz_pytanie();
     }
 }
 
-function wyswietl_nagrode() {
+function koniec_pytan(){
+    tresc.style.display = 'none';
+    for(let i of odpowiedzi_przyciski){
+        i.style.display = 'none';
+    }
     ekran_nagrody.style.visibility = "visible";
-    ilosc_pytan.value = '1';
-    ilosc_poprawnych_odpowiedzi.value = (czy_poprawna_odpowiedz ? '1' : '0');
-    ocena.value = (czy_poprawna_odpowiedz ? '100%' : '0%');
-    zmiana_sanity.value = (czy_poprawna_odpowiedz ? '+10' : '-20');
-    console.log(ilosc_pytan)
+    ilosc_pytan.value = menedzer_gry.ilosc_pytan;
+    ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
+    ocena.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan) + '%';
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
-    if(czy_skonczyl_gre){
-        ekran_nagrody.innerHTML += "<br><br> Brawo! Udało ci się zdać maturę i ukończyć grę";
-        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata = 5;
-    }
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += (czy_poprawna_odpowiedz ? 10 : -20);
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
     zaktualizuj_sanity();
-    przejdz_dalej.style.display = 'none';
+    zmiana_sanity.value = (zmiana_sanity.value >= 0 ? '+' : '') + zmiana_sanity.value;
     zakoncz_ture.style.display = 'block';
 }
 
@@ -646,12 +633,12 @@ function odwroc_pokaz_pytanie(){
     zmiana_ekranu(ekran_pytania, mapa);
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
-    for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-        odpowiedzi_przyciski[i].style.color = "white";
+    tresc.style.display = 'block';
+    for(let i of odpowiedzi_przyciski){
+        i.style.display = 'block';
     }
     menedzer_gry.poczatek_tury();
 }
-
 
 function przemieszaj_tablice(tablica) {
     for (let i = tablica.length - 1; i >= 0; i--) {
@@ -661,9 +648,8 @@ function przemieszaj_tablice(tablica) {
 }
 
 for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
-    odpowiedzi_przyciski[i].addEventListener("click", () => czy_poprawna(i));
+    odpowiedzi_przyciski[i].addEventListener("click", () => kolejne_pytanie(i));
 }
-przejdz_dalej.addEventListener("click", () => wyswietl_nagrode());
 zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
@@ -854,8 +840,8 @@ class sala {
 
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
-        if(menedzer_gry.czy_po_porwani && this.nr == '201'){
-            console.log('nie ma pana Czosnowskiego');
+        if(menedzer_gry.czy_czosnowski_porwany && this.nr == '201'){
+            alert('nie ma pana Czosnowskiego');
         }
         else if(menedzer_gry.runda_egzamin){
             if(this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)){
@@ -885,8 +871,8 @@ class sala {
 
     pokaz_sale_naprawde(pytania, rok) {
         menedzer_gry.przedmiot_szkolny = this.przedmiot;
-        let pytanie_kartkowka = pytania[rok][Math.floor(Math.random() * pytania[rok].length)];
-        menedzer_gry.pytanie = pytanie_kartkowka;
+        menedzer_gry.pytania_kandydujace = pytania[rok];
+        menedzer_gry.ilosc_pytan = (!menedzer_gry.runda_egzamin ? 1 : (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4 ? 7 : 5));
         pokaz_dialog();
     }
 }
@@ -939,7 +925,11 @@ const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
     ), new zestaw_pytan_egzamin(
-        [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
+        [new pytanie('1', ['1', '2', '3', '4']),
+        new pytanie('2', ['1', '2', '3', '4']),
+        new pytanie('3', ['1', '2', '3', '4']),
+        new pytanie('4', ['1', '2', '3', '4']),
+        new pytanie('5', ['1', '2', '3', '4'])],
         [new pytanie('przykładowe pytanie egzaminacyjne z automatykakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
         null
     ), [new dialog(['dialog przykładowy z aut'])]);
@@ -1059,7 +1049,7 @@ function pokaz_dialog(){
 }
 
 function zniknij_dialog(){
-    pokaz_pytanie(ekran_dialogu, ekran_pytania);
+    rozpocznij_pytania();
 }
 
 zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
