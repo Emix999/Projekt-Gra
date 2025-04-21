@@ -1087,7 +1087,7 @@ sklep_przycisk.addEventListener('click', () => sklep.pokaz());
 for(let i = 0; i < sklep.arsenal.length; i++){
     sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
     sklep_nazwy_arsenalu[i].innerHTML = sklep.arsenal[i].nazwa;
-    sklep_ceny_arsenalu[i].innerHTML = 'cena: ' + sklep.arsenal[i].cena;
+    sklep_ceny_arsenalu[i].innerHTML = sklep.arsenal[i].cena;
     sklep_kup[i].addEventListener('click', () => sklep.kup(i));
 }
 
