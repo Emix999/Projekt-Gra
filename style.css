@@ -4,6 +4,10 @@ body {
     padding: 0;
 }
 
+.statystyki{
+    height: ;
+}
+
 #ekran_startowy {
     height: 100vh;
     width: 100vw;
@@ -273,10 +277,11 @@ body {
 }
 
 #ekran_statystyk{
-    width: 30vw;
-    height: 10vh;
-    justify-content: center;
-    background-color: aqua;
+    width: 35vw;
+    height: 20vh;
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
 }
 
 #mapa{

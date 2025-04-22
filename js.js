@@ -728,6 +728,8 @@ function obsluga_statystyk(ustawienia, statystyki) {
     }
 }
 
+
+
 const statystyki_przycisk = document.getElementById("przycisk_statystyki");
 statystyki_przycisk.addEventListener('click', () => obsluga_statystyk(ustawienia2, statystyki));
 
