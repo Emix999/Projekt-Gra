@@ -7,7 +7,7 @@ gracz wybrany to taki który ma obecnie turę
 */
 
 //blokuje możliwość scrollowania
-document.body.classList.add('no-scroll'); 
+document.body.classList.add('no-scroll');
 
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
@@ -27,7 +27,7 @@ class zdarzenie {
 }
 
 class nielosowe_zdarzenie {
-    constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana){
+    constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.runda = runda;
@@ -61,19 +61,19 @@ function zniknij_zdarzenie() {
     menedzer_gry.ilosc_losowych_zdarzen--;
 }
 
-function pokaz_zdarzenie_nielosowe(){
+function pokaz_zdarzenie_nielosowe() {
     zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
-    if(menedzer_gry.zdarzenie.opis.length == 1){
+    if (menedzer_gry.zdarzenie.opis.length == 1) {
         zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
 }
 
-function przewin_opis_zdarzenia_nielosowego(){
+function przewin_opis_zdarzenia_nielosowego() {
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego++;
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[menedzer_gry.indeks_opisu_zdarzenia_nielosowego];
-    if(menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1){
+    if (menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1) {
         zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
 }
@@ -81,11 +81,11 @@ function przewin_opis_zdarzenia_nielosowego(){
 function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
-    if(menedzer_gry.zdarzenie == zdarzenie_017){
-        for(let i of sala_przyciski){
+    if (menedzer_gry.zdarzenie == zdarzenie_017) {
+        for (let i of sala_przyciski) {
             pojawienie_ekranu(i);
         }
-        for(let i of mapa_przyciski){
+        for (let i of mapa_przyciski) {
             pojawienie_ekranu(i);
         }
         znikniecie_ekranu(document.getElementById('017'));
@@ -129,31 +129,31 @@ const menedzer_gry = {
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
     poczatek_tury: function () {
-        if(this.runda_egzamin){
+        if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
-        else{
+        else {
             //zakończenie gry
             this.czy_koniec_gry = true;
-            for(let i of this.aktywni_gracze){
-                if(i.zdane_lata != 5){
+            for (let i of this.aktywni_gracze) {
+                if (i.zdane_lata != 5) {
                     this.czy_koniec_gry = false;
                     break;
                 }
             }
-            if(this.czy_koniec_gry){
+            if (this.czy_koniec_gry) {
                 this.koniec_gry();
                 return 1;
             }
 
             //czy wszyscy są na terapii
             this.czy_wszyscy_na_terapii = true
-            for(let i of this.aktywni_gracze){
-                if(i.czy_na_terapii == false){
+            for (let i of this.aktywni_gracze) {
+                if (i.czy_na_terapii == false) {
                     this.czy_wszyscy_na_terapii = false;
                 }
             }
-            if(this.czy_wszyscy_na_terapii){
+            if (this.czy_wszyscy_na_terapii) {
                 this.rok_gry++;
                 for (let i of this.aktywni_gracze) {
                     i.czy_na_terapii = false;
@@ -161,19 +161,21 @@ const menedzer_gry = {
                 //dać reset zdanych przedmiotów
             }
 
-            do{
+            do {
                 if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
                     this.indeks_wybranego = 0;
                 }
                 else {
                     this.indeks_wybranego++;
                 }
-        
+
                 //kolejna runda
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
-                    for(let i of nielosowe_zdarzenia_nie_schody){
-                        if(i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
+
+                    aktualizacja_menu_bocznego();
+                    for (let i of nielosowe_zdarzenia_nie_schody) {
+                        if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
                             i.funkcja();
                             pokaz_zdarzenie_nielosowe();
@@ -181,22 +183,22 @@ const menedzer_gry = {
                         }
                     }
                     this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
-                    for(let i of nielosowe_zdarzenia_schody){
-                        if(i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
+                    for (let i of nielosowe_zdarzenia_schody) {
+                        if (i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
                         }
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
-                    for(let i of dialogi_nielosowe){
-                        if(i.czy_czosnowski_porwany == this.czy_czosnowski_porwany){
+                    for (let i of dialogi_nielosowe) {
+                        if (i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.dialog_nielosowy = i;
                             this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
                         }
                     }
-                    if(this.czy_otwarto_017){
+                    if (this.czy_otwarto_017) {
                         this.runda_017();
                     }
                     if ((this.runda - 1) % 10 == 0 && this.runda != 1) {
@@ -204,31 +206,31 @@ const menedzer_gry = {
                     }
                 }
             } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii)
-            
+
             //sprawdza, czy jest runda egzaminacyjna
-            if(this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0){
+            if (this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0) {
                 //egzamin zawodowy
                 this.indeksy_aktywnych_egzamin = [];
-                for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
+                for (let i = 0; i < this.aktywni_gracze.length; i++) {
+                    if (this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1) {
                         this.indeksy_aktywnych_egzamin.push(i);
-                    }                        
+                    }
                 }
-                if(this.indeksy_aktywnych_egzamin.length > 0){
+                if (this.indeksy_aktywnych_egzamin.length > 0) {
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
                     return 0;
                 }
-    
+
                 //matura
                 this.indeksy_aktywnych_egzamin = [];
-                for(let i = 0; i < this.aktywni_gracze.length; i++){
-                    if(this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3){
+                for (let i = 0; i < this.aktywni_gracze.length; i++) {
+                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3) {
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
-                if(this.indeksy_aktywnych_egzamin.length > 0){
+                if (this.indeksy_aktywnych_egzamin.length > 0) {
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
@@ -237,24 +239,37 @@ const menedzer_gry = {
             }
 
             //zwiększa rok gry
-            if(this.kolejny_rok){
+            if (this.kolejny_rok) {
                 this.kolejny_rok = false;
                 this.rok_gry++;
-                zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
-                for(i of gracze){
-                    i.hajs+=30;
-                    i.zdana_matematyka=0;
-                    i.zdane_ogolne=0;
-                    i.zdane_zawodowe=0;
-                    i.zdany_polski=0;
-                }
+
                 
+
+                zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
+                for (i of gracze) {
+                    i.hajs += 30;
+                    i.zdana_matematyka = 0;
+                    i.zdane_ogolne = 0;
+                    i.zdane_zawodowe = 0;
+                    i.zdany_polski = 0;
+                }
+                let j=0;
                 for (let i of this.aktywni_gracze) {
-                    if(i.zdane_lata != 5){
-                        //warunek
-                        i.zdane_lata++;
+                    
+                    if (i.zdane_lata != 5) {
+                        document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
+                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2){
+                            document.getElementsByClassName('zdal')[j].value='ZDANE';
+                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
+                            i.zdane_lata++;
+                        }
+                        else{
+                            document.getElementsByClassName('zdal')[j].value='OBLANE';
+                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
+                        }
                     }
                     i.podszedl_do_egzaminu = [];
+                    j++;
                 }
 
                 for (let i of this.aktywni_gracze) {
@@ -274,8 +289,8 @@ const menedzer_gry = {
             this.wypisz_informacje_graczy();
         }
     },
-    poczatek_tury_egzamin: function() {
-        if(this.indeksy_aktywnych_egzamin.length == 0){
+    poczatek_tury_egzamin: function () {
+        if (this.indeksy_aktywnych_egzamin.length == 0) {
             this.runda_egzamin = false;
             this.indeks_wybranego = -1;
             this.poczatek_tury();
@@ -284,14 +299,14 @@ const menedzer_gry = {
 
         this.ilosc_losowych_zdarzen = 0;
         this.indeks_wybranego = this.indeksy_aktywnych_egzamin[0];
-        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata != 4){
+        if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata != 4) {
             this.aktywni_gracze[this.indeks_wybranego].podszedl_do_egzaminu.push('zawodowy');
         }
         this.indeksy_aktywnych_egzamin.shift();
 
         this.wypisz_informacje_graczy();
     },
-    wypisz_informacje_graczy: function() {
+    wypisz_informacje_graczy: function () {
         aktualizacja_menu_bocznego();
 
         let i = 0;
@@ -302,22 +317,22 @@ const menedzer_gry = {
             i++;
         }
     },
-    koniec_gry: function(){
+    koniec_gry: function () {
         zmiana_ekranu(gra, ekran_koncowy);
         napisy_koncowe.style.animationPlayState = 'running';
         setTimeout(() => this.koniec_gry_naprawde(), 20000);
     },
-    koniec_gry_naprawde: function(){
+    koniec_gry_naprawde: function () {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
     },
-    runda_017: function(){
+    runda_017: function () {
         this.runda--;
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
-        for(let i of sala_przyciski){
+        for (let i of sala_przyciski) {
             znikniecie_ekranu(i);
         }
-        for(let i of mapa_przyciski){
+        for (let i of mapa_przyciski) {
             znikniecie_ekranu(i);
         }
         pojawienie_ekranu(document.getElementById('017'));
@@ -342,7 +357,7 @@ const nazwy = [
     "Stanisław", "Stefan", "Szymon", "Tadeusz", "Tomasz", "Tymon", "Wacław", "Waldemar",
     "Wiesław", "Wiktor", "Władysław", "Włodzimierz", "Zbigniew", "Zenon", "Zygmunt", "Mździungwa",
     "Ziemniak", "Sans", "Barnaba", "Nie wiem", "Brum brum"
-  ];
+];
 const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "grafiki/avatary/pala.png", "grafiki/avatary/gigachad.png", "grafiki/avatary/spóźniony.png"];
 // const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
@@ -364,10 +379,10 @@ class gracz {//gracz i wszystkie jego parametry
         this.podszedl_do_egzaminu = [];
         this.hajs = 30;
         this.czy_na_terapii = false;
-        this.zdane_zawodowe=0;
-        this.zdane_ogolne=0;
-        this.zdany_polski=0;
-        this.zdana_matematyka=0;
+        this.zdane_zawodowe = 0;
+        this.zdane_ogolne = 0;
+        this.zdany_polski = 0;
+        this.zdana_matematyka = 0;
     }
 }
 
@@ -376,13 +391,13 @@ class przedmiot {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
-        this.sanity=sanity;
+        this.sanity = sanity;
         this.cena = cena;
     }
 }
 
 class klasa {
-    constructor(nazwa){
+    constructor(nazwa) {
         this.nazwa = nazwa;
     }
 }
@@ -584,7 +599,7 @@ const ocena = document.getElementById("ocena");
 const zmiana_sanity = document.getElementById("zmiana_sanity");
 const zakoncz_ture = document.getElementById('zakoncz_ture');
 
-function rozpocznij_pytania(){
+function rozpocznij_pytania() {
     zmiana_ekranu(ekran_dialogu, ekran_pytania);
     menedzer_gry.czy_poprawne_odpowiedzi = [];
     menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
@@ -614,48 +629,48 @@ function pokaz_pytanie() {
     }
 }
 
-function kolejne_pytanie(i){
-    if(odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true'){
+function kolejne_pytanie(i) {
+    if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
         menedzer_gry.czy_poprawne_odpowiedzi.push(true);
     }
-    else{
+    else {
         menedzer_gry.czy_poprawne_odpowiedzi.push(false);
     }
-    if(menedzer_gry.ile_jeszcze_pytan == 0){
+    if (menedzer_gry.ile_jeszcze_pytan == 0) {
         koniec_pytan();
     }
-    else{
+    else {
         pokaz_pytanie();
     }
 }
 
 let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
 
-function koniec_pytan(){
+function koniec_pytan() {
     tresc.style.display = 'none';
-    for(let i of odpowiedzi_przyciski){
+    for (let i of odpowiedzi_przyciski) {
         i.style.display = 'none';
     }
     ekran_nagrody.style.visibility = "visible";
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
-    wypisywana_ocena=menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
-    if(wypisywana_ocena>=70){
-        if(menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa){
+    wypisywana_ocena = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
+    if (wypisywana_ocena >= 70) {
+        if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
         }
-        if(menedzer_gry.przedmiot_szkolny.nazwa == matematyka.nazwa){
+        if (menedzer_gry.przedmiot_szkolny.nazwa == matematyka.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdana_matematyka++;
         }
-        if(menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa){
+        if (menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
         }
-        if(menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa){
-            gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
+        if (menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa) {
+            gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-100);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-10);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -664,12 +679,12 @@ function koniec_pytan(){
     zakoncz_ture.style.display = 'block';
 }
 
-function odwroc_pokaz_pytanie(){
+function odwroc_pokaz_pytanie() {
     zmiana_ekranu(ekran_pytania, mapa);
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
     tresc.style.display = 'block';
-    for(let i of odpowiedzi_przyciski){
+    for (let i of odpowiedzi_przyciski) {
         i.style.display = 'block';
     }
     menedzer_gry.poczatek_tury();
@@ -743,9 +758,11 @@ const nazwy_gracza = document.getElementsByClassName('nazwa_gracza');
 const klasy_graczy = document.getElementsByClassName('klasa_gracza');
 const ekwipunek = document.getElementsByClassName('ekwipunek');
 const pieniadze = document.getElementById('pieniadze');
+const zdane_zawodowe = document.getElementById('obecnie_zdane_zawodowe');
+const zdane_ogolne = document.getElementById('obecnie_zdane_ogolne');
+const zdane_maturalne = document.getElementById('obecnie_zdane_maturalne');
 
-
-const otwarte_menu = {statystyki: false, ustawienia: false};
+const otwarte_menu = { statystyki: false, ustawienia: false };
 const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 const statystyki = document.getElementById('ekran_statystyk');
@@ -859,7 +876,7 @@ const sala_przyciski = document.getElementsByClassName('przycisk_sala');
 const mapa_przyciski = document.getElementsByClassName('przycisk_mapa');
 
 class przedmiot_szkolny {
-    constructor(nazwa, pytania, pytania_egzamin, dialogi){
+    constructor(nazwa, pytania, pytania_egzamin, dialogi) {
         this.nazwa = nazwa;
         this.pytania = pytania;
         this.pytania_egzamin = pytania_egzamin;
@@ -877,30 +894,30 @@ class sala {
 
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
-        if(menedzer_gry.czy_czosnowski_porwany && this.nr == '201'){
+        if (menedzer_gry.czy_czosnowski_porwany && this.nr == '201') {
             alert('nie ma pana Czosnowskiego');
         }
-        else if(menedzer_gry.runda_egzamin){
-            if(this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)){
-                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4){
+        else if (menedzer_gry.runda_egzamin) {
+            if (this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)) {
+                if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) {
                     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.push(this.przedmiot.nazwa);
-                }        
+                }
                 this.pokaz_sale_naprawde(this.przedmiot.pytania_egzamin, rok);
             }
-            else{
+            else {
                 alert('egzamin - nie wchodzić, jeśli nie zdajesz tutaj');
             }
         }
-        else{
-            if(this.rodzaj_sali == 'zawodowa'){
-                if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa){
+        else {
+            if (this.rodzaj_sali == 'zawodowa') {
+                if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa) {
                     this.pokaz_sale_naprawde(this.przedmiot.pytania, rok);
                 }
-                else{
+                else {
                     alert('sala zawodowa - nie wchodzić, jeśli nie jesteś odpowiedniego zawodu');
                 }
             }
-            else{
+            else {
                 this.pokaz_sale_naprawde(this.przedmiot.pytania, rok);
             }
         }
@@ -931,14 +948,14 @@ class zestaw_pytan_egzamin {
     }
 }
 
-class dialog{
-    constructor(opis){
+class dialog {
+    constructor(opis) {
         this.opis = opis;
     }
 }
 
-class dialog_nielosowy{
-    constructor(opis, czy_czosnowski_porwany){
+class dialog_nielosowy {
+    constructor(opis, czy_czosnowski_porwany) {
         this.opis = opis;
         this.czy_czosnowski_porwany = czy_czosnowski_porwany;
     }
@@ -946,78 +963,78 @@ class dialog_nielosowy{
 
 const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
     rok1_programista, rok2_programista, rok3_programista, rok4_programista, rok5_programista
-    ), new zestaw_pytan_egzamin(
-        egzamin_programista, null
-    ), [new dialog(['dialog przykładowy z Telickiego'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_programista, null
+), [new dialog(['dialog przykładowy z Telickiego'])]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
     rok1_elektronik, rok2_elektronik, rok3_elektronik, rok4_elektronik, rok5_elektronik
-    ), new zestaw_pytan_egzamin(
-        egzamin_elektronik, null
-    ), [new dialog(['dialog przykładowy z elele'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_elektronik, null
+), [new dialog(['dialog przykładowy z elele'])]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
-    ), new zestaw_pytan_egzamin(
-        egzamin_automatyk, null
-    ), [new dialog(['dialog przykładowy z aut'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_automatyk, null
+), [new dialog(['dialog przykładowy z aut'])]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
     rok1_fotograf, rok2_fotograf, rok3_fotograf, rok4_fotograf, rok5_fotograf
-    ), new zestaw_pytan_egzamin(
-        egzamin_fotograf, null
-    ), [new dialog(['dialog przykładowy z aparatu'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_fotograf, null
+), [new dialog(['dialog przykładowy z aparatu'])]);
 const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
     rok1_teleinformatyk, rok2_teleinformatyk, rok3_teleinformatyk, rok4_teleinformatyk, rok5_teleinformatyk
-    ), new zestaw_pytan_egzamin(
-        egzamin_teleinformatyk, null
-    ), [new dialog(['dialog przykładowy z sieci'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_teleinformatyk, null
+), [new dialog(['dialog przykładowy z sieci'])]);
 const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
     rok1_informatyk, rok2_informatyk, rok3_informatyk, rok4_informatyk, rok5_informatyk
-    ), new zestaw_pytan_egzamin(
-        egzamin_informatyk, null
-    ), [new dialog(['dialog przykładowy z komputrów'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_informatyk, null
+), [new dialog(['dialog przykładowy z komputrów'])]);
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
     rok1_robotyk, rok2_robotyk, rok3_robotyk, rok4_robotyk, rok5_robotyk
-    ), new zestaw_pytan_egzamin(
-        egzamin_robotyk, null
-    ), [new dialog(['dialog przykładowy z robotów'])]);
+), new zestaw_pytan_egzamin(
+    egzamin_robotyk, null
+), [new dialog(['dialog przykładowy z robotów'])]);
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
-    ), new zestaw_pytan_egzamin(
-        null,
-        [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
-    ), [new dialog(['dialog przykładowy z logarutmów'])]);
+), new zestaw_pytan_egzamin(
+    null,
+    [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
+), [new dialog(['dialog przykładowy z logarutmów'])]);
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z geji'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z geji'])]);
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z biologii'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z biologii'])]);
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
-    ), new zestaw_pytan_egzamin(
-        null,
-        [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
-    ), [new dialog(['dialog przykładowy z piekła'])]);
+), new zestaw_pytan_egzamin(
+    null,
+    [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
+), [new dialog(['dialog przykładowy z piekła'])]);
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z infoinfo'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z infoinfo'])]);
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     rok1_historia, rok2_historia, rok3_historia, rok4_historia, rok5_historia
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z histeriri'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z histeriri'])]);
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
-    ), new zestaw_pytan_egzamin(
-        null,
-        [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
-    ), [new dialog(['dialog przykładowy z anglika'])]);
+), new zestaw_pytan_egzamin(
+    null,
+    [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
+), [new dialog(['dialog przykładowy z anglika'])]);
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
     rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z nazistów'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z nazistów'])]);
 const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z bomb'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z bomb'])]);
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
-    ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
+), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
 const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
@@ -1041,8 +1058,8 @@ const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_2
 
 
 for (let i = 0; i < sale.length; i++) {
-    for(let j = 0; j < sala_przyciski.length; j++){
-        if(sala_przyciski[j].id == sale[i].nr){
+    for (let j = 0; j < sala_przyciski.length; j++) {
+        if (sala_przyciski[j].id == sale[i].nr) {
             sala_przyciski[j].sala = sale[i];
             sala_przyciski[j].addEventListener('click', () => sale[i].pokaz_sale());
             break;
@@ -1058,20 +1075,23 @@ const zakoncz_dialog = document.getElementById('zakoncz_dialog');
 const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
 const dialogi_nielosowe = [dialog2];
 
-przejdz_dalej_nowy_rok.addEventListener('click', () => zmiana_ekranu(document.getElementById('ekran_kolejnego_roku'),mapa));
 
-function pokaz_dialog(){
-    if(menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy != menedzer_gry.indeks_wybranego){
+przejdz_dalej_nowy_rok.addEventListener('click', () => zmiana_ekranu(document.getElementById('ekran_kolejnego_roku'), mapa));
+
+
+
+function pokaz_dialog() {
+    if (menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy != menedzer_gry.indeks_wybranego) {
         menedzer_gry.dialog = menedzer_gry.przedmiot_szkolny.dialogi[Math.floor(Math.random() * menedzer_gry.przedmiot_szkolny.dialogi.length)];
     }
-    else{
+    else {
         menedzer_gry.dialog = menedzer_gry.dialog_nielosowy;
     }
     zmiana_ekranu(mapa, ekran_dialogu);
     tekst_dialogu.innerHTML = menedzer_gry.dialog.opis;
 }
 
-function zniknij_dialog(){
+function zniknij_dialog() {
     rozpocznij_pytania();
 }
 
@@ -1082,7 +1102,7 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     menedzer_gry.pietro = mapa_pojawiajaca;
 
     //sprawdza, czy zdarzenie ma wystąpić i jakie
-    if(menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe){
+    if (menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe) {
         menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe;
         pokaz_zdarzenie();
         menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
@@ -1114,21 +1134,21 @@ const sklep = {
         new przedmiot('bomba atomowa', 'bum bum', 'grafiki/przedmioty/ziemniak.png', 0, 10000),
         new przedmiot('XAMPP: wersja premium', 'sql', 'grafiki/przedmioty/ziemniak.png', 0, 100000)
     ],
-    pokaz: function() {
+    pokaz: function () {
         zmiana_ekranu(mapa, ekran_sklepu);
     },
-    kup: function(id_produktu){
-        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena){
+    kup: function (id_produktu) {
+        if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena) {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
             zaktualizuj_ekwipunek();
             alert('pomyślnie kupiono produkt');
         }
-        else{
+        else {
             alert('złodzieju, nie złodziejuj');
         }
     },
-    znikniecie: function(){
+    znikniecie: function () {
         zmiana_ekranu(ekran_sklepu, mapa);
     }
 }
@@ -1136,7 +1156,7 @@ const sklep = {
 sklep_przycisk.addEventListener('click', () => sklep.pokaz());
 //setTimeout(() => sklep.pokaz(), 3000);
 
-for(let i = 0; i < sklep.arsenal.length; i++){
+for (let i = 0; i < sklep.arsenal.length; i++) {
     sklep_obrazy_arsenalu[i].style.backgroundImage = 'url("' + sklep.arsenal[i].id_obrazu + '")';
     sklep_nazwy_arsenalu[i].innerHTML = sklep.arsenal[i].nazwa;
     sklep_ceny_arsenalu[i].innerHTML = sklep.arsenal[i].cena;
@@ -1145,21 +1165,21 @@ for(let i = 0; i < sklep.arsenal.length; i++){
 
 wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
 
-function zaktualizuj_ekwipunek(){
+function zaktualizuj_ekwipunek() {
     for (let i = 0; i < menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length; i++) {
         let sciezka = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i].id_obrazu;
         ekwipunek[i].style.backgroundImage = "url('" + sciezka + "')";
     }
 }
 
-function zaktualizuj_sanity(){
+function zaktualizuj_sanity() {
     let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity
-    if(wartosc_sanity <= 0){
+    if (wartosc_sanity <= 0) {
         wartosc_sanity = 0;
         alert('musisz pójść na terapię');
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
     }
-    else if(wartosc_sanity > 200){
+    else if (wartosc_sanity > 200) {
         wartosc_sanity = 200;
     }
     sanity.value = wartosc_sanity;
@@ -1169,15 +1189,15 @@ const ekran_koncowy = document.getElementById('ekran_koncowy');
 const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
 
-function porwanie_czosnowskiego(){
+function porwanie_czosnowskiego() {
     menedzer_gry.czy_czosnowski_porwany = true;
 }
 
-function pojdz_do_sali_017(){
+function pojdz_do_sali_017() {
     menedzer_gry.czy_otwarto_017 = true;
 }
 
-function wejdz_do_sali_017(){
+function wejdz_do_sali_017() {
     menedzer_gry.zdarzenie = zdarzenie_017;
     pokaz_zdarzenie_nielosowe();
 }
@@ -1203,14 +1223,14 @@ for (let i = 0; i < ekwipunek.length; i++) {
 
 document.getElementById("zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu").addEventListener("click", () => znikniecie_szczegolow_przedmiotu());
 
-function znikniecie_szczegolow_przedmiotu(){
-    znikniecie_ekranu(szczegoly_przedmiotu); 
+function znikniecie_szczegolow_przedmiotu() {
+    znikniecie_ekranu(szczegoly_przedmiotu);
     pojawienie_ekranu(document.getElementById("caly_ekwipunek"));
 }
 
 function pokaz_szczegoly_przedmiotu(slot) {
     let wybrany_przedmiot = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[slot];
-    try{
+    try {
         if (wybrany_przedmiot.id_obrazu != undefined) {
             znikniecie_ekranu(document.getElementById('caly_ekwipunek'));
             pojawienie_ekranu(szczegoly_przedmiotu);
@@ -1221,7 +1241,7 @@ function pokaz_szczegoly_przedmiotu(slot) {
             menedzer_gry.ostatni_pokazany_przedmiot = slot;
         }
     }
-    catch{};
+    catch { };
 }
 
 document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_przedmiotu());
@@ -1230,7 +1250,7 @@ document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_
 function uzyj_przedmiotu() {
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiotm,1);
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiotm, 1);
     aktualizacja_menu_bocznego();
 }
 
@@ -1239,13 +1259,18 @@ function uzyj_przedmiotu() {
 function aktualizacja_menu_bocznego() {
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
-    pieniadze.value= menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
+    pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
     obecny_rok.value = menedzer_gry.rok_gry;
+
+    zdane_ogolne.value = gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
+    zdane_zawodowe.value = gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
+    zdane_maturalne.value = gracze[menedzer_gry.indeks_wybranego].zdany_polski + i.zdana_matematyka;
+
     for (let i = 0; i < ekwipunek.length; i++) {
-        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i){
-            ekwipunek[i].style.backgroundImage = "url('"+menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i].id_obrazu+"')";
+        if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i) {
+            ekwipunek[i].style.backgroundImage = "url('" + menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[i].id_obrazu + "')";
         }
-        else{
+        else {
             ekwipunek[i].style.backgroundImage = '';
         }
     }

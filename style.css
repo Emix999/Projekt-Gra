@@ -526,6 +526,21 @@ body {
     background-size: cover;
     background-position: center;
 }
+.imie_zdanego, .zdal{
+    background-color: transparent;
+    height: 5vh;
+    font-size: 4vh;
+    width: 23vh;
+}
+.gracz_zdal{
+    height: 25vh;
+    width: 25vh;
+    background-color: transparent;
+    background-color: aquamarine;
+    margin: 2vh;
+    text-align: center;
+    font-size: 3vh;
+}
 
 #ekran_kolejnego_roku{
     height: 100vh;
