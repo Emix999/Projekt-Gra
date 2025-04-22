@@ -4,10 +4,6 @@ body {
     padding: 0;
 }
 
-.statystyki{
-    height: ;
-}
-
 #ekran_startowy {
     height: 100vh;
     width: 100vw;
@@ -432,6 +428,19 @@ body {
     width: calc(100vw - 36vh);
     flex-direction: column;
 }
+#przejdz_dalej_ekran_roku{
+    background-color: #5E5E5E;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 87vh;
+    left: 34.7vw;
+    height: 7vh;
+    width: 14vw;
+    position: fixed;
+    background-image: url("grafiki/Przejdz_dalej.png");
+    border: none;
+}
 
 #wnetrze_sklepu{
     height: 50vh;
@@ -516,6 +525,14 @@ body {
     flex-direction: column;
     background-size: cover;
     background-position: center;
+}
+
+#ekran_kolejnego_roku{
+    height: 100vh;
+    width: calc(100vw - 36vh);
+    display: none;  
+    background-repeat: no-repeat;
+    background-size:calc(100vw - 36vh) 100vh;
 }
 
 #ekran_zdarzenia{

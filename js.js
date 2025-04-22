@@ -225,6 +225,15 @@ const menedzer_gry = {
             if(this.kolejny_rok){
                 this.kolejny_rok = false;
                 this.rok_gry++;
+                zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
+                for(i of gracze){
+                    i.hajs+=30;
+                    i.zdana_matematyka=0;
+                    i.zdane_ogolne=0;
+                    i.zdane_zawodowe=0;
+                    i.zdany_polski=0;
+                }
+                
                 for (let i of this.aktywni_gracze) {
                     if(i.zdane_lata != 5){
                         //warunek
@@ -334,6 +343,10 @@ class gracz {//gracz i wszystkie jego parametry
         this.ekwipunek = ekwipunek;
         this.podszedl_do_egzaminu = [];
         this.hajs = 30;
+        this.zdane_zawodowe=0;
+        this.zdane_ogolne=0;
+        this.zdany_polski=0;
+        this.zdana_matematyka=0;
     }
 }
 
@@ -605,7 +618,22 @@ function koniec_pytan(){
     ekran_nagrody.style.visibility = "visible";
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
-    ocena.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan) + '%';
+    wypisywana_ocena=menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
+    if(wypisywana_ocena>=70){
+        if(menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa){
+            gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
+        }
+        if(menedzer_gry.przedmiot_szkolny.nazwa == matematyka.nazwa){
+            gracze[menedzer_gry.indeks_wybranego].zdana_matematyka++;
+        }
+        if(menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa){
+            gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
+        }
+        if(menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa||menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa){
+            gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
+        }
+    }
+    ocena.value = wypisywana_ocena + '%';
     zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
@@ -989,6 +1017,8 @@ const s_211 = new sala('211', null, chemia, 'ogólna');
 const s_210 = new sala('210', null, fizyka, 'ogólna');
 const sale = [s_018, s_030, s_029, s_026, s_013, s_015, s_021, s_206, s_202, s_201, s_103, s_102a, s_19, s_036, s_22, s_211, s_210];
 
+
+
 for (let i = 0; i < sale.length; i++) {
     for(let j = 0; j < sala_przyciski.length; j++){
         if(sala_przyciski[j].id == sale[i].nr){
@@ -1002,9 +1032,12 @@ for (let i = 0; i < sale.length; i++) {
 const ekran_dialogu = document.getElementById('ekran_dialogu');
 const tekst_dialogu = document.getElementById('tekst_dialogu');
 const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
+const przejdz_dalej_nowy_rok = document.getElementById('przejdz_dalej_ekran_roku');
 const zakoncz_dialog = document.getElementById('zakoncz_dialog');
 const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
 const dialogi_nielosowe = [dialog2];
+
+przejdz_dalej_nowy_rok.addEventListener('click', () => zmiana_ekranu(document.getElementById('ekran_kolejnego_roku'),mapa));
 
 function pokaz_dialog(){
     if(menedzer_gry.indeks_gracza_ktory_dostaje_dialog_nielosowy != menedzer_gry.indeks_wybranego){
