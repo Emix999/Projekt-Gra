@@ -127,6 +127,7 @@ const menedzer_gry = {
     czy_czosnowski_porwany: false,
     czy_otwarto_017: false,
     pietro: document.getElementById('schemat_pierwsze_pietro'),
+    czy_wszyscy_na_terapii: true,
     poczatek_tury: function () {
         if(this.runda_egzamin){
             this.poczatek_tury_egzamin();
@@ -145,8 +146,22 @@ const menedzer_gry = {
                 return 1;
             }
 
+            //czy wszyscy są na terapii
+            this.czy_wszyscy_na_terapii = true
+            for(let i of this.aktywni_gracze){
+                if(i.czy_na_terapii == false){
+                    this.czy_wszyscy_na_terapii = false;
+                }
+            }
+            if(this.czy_wszyscy_na_terapii){
+                this.rok_gry++;
+                for (let i of this.aktywni_gracze) {
+                    i.czy_na_terapii = false;
+                }
+                //dać reset zdanych przedmiotów
+            }
+
             do{
-                //niech ktoś to naprawi na, kiedy wszyscy gracze skończą grę
                 if (this.indeks_wybranego == this.aktywni_gracze.length - 1) {
                     this.indeks_wybranego = 0;
                 }
@@ -188,11 +203,11 @@ const menedzer_gry = {
                         this.kolejny_rok = true;
                     }
                 }
-            } while (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 5)
-
+            } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii)
+            
             //sprawdza, czy jest runda egzaminacyjna
             if(this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0){
-                //egzamin zawodowy nr 1
+                //egzamin zawodowy
                 this.indeksy_aktywnych_egzamin = [];
                 for(let i = 0; i < this.aktywni_gracze.length; i++){
                     if(this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 1){
@@ -232,6 +247,11 @@ const menedzer_gry = {
                     }
                     i.podszedl_do_egzaminu = [];
                 }
+
+                for (let i of this.aktywni_gracze) {
+                    i.czy_na_terapii = false;
+                }
+                //dać reset zdanych przedmiotów
             }
 
             //zdarzenia losowe
@@ -334,6 +354,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.ekwipunek = ekwipunek;
         this.podszedl_do_egzaminu = [];
         this.hajs = 30;
+        this.czy_na_terapii = false;
     }
 }
 
@@ -606,7 +627,7 @@ function koniec_pytan(){
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
     ocena.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan) + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-100);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -1099,7 +1120,16 @@ function zaktualizuj_ekwipunek(){
 }
 
 function zaktualizuj_sanity(){
-    sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+    let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity
+    if(wartosc_sanity <= 0){
+        wartosc_sanity = 0;
+        alert('musisz pójść na terapię');
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
+    }
+    else if(wartosc_sanity > 200){
+        wartosc_sanity = 200;
+    }
+    sanity.value = wartosc_sanity;
 }
 
 const ekran_koncowy = document.getElementById('ekran_koncowy');
