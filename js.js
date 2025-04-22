@@ -896,20 +896,17 @@ class dialog_nielosowy{
 const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
     rok1_programista, rok2_programista, rok3_programista, rok4_programista, rok5_programista
     ), new zestaw_pytan_egzamin(
-        [new pytanie('przykładowe pytanie egzaminacyjne zprogramistakakaa rok 4', ['tak', 'nie', 'null', 'niewiem'])],
-        null
+        egzamin_programista, null
     ), [new dialog(['dialog przykładowy z Telickiego'])]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
     rok1_elektronik, rok2_elektronik, rok3_elektronik, rok4_elektronik, rok5_elektronik
     ), new zestaw_pytan_egzamin(
-        [new pytanie('przykładowe pytanie egzaminacyjne z elektronikakaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
-        null
+        egzamin_elektronik, null
     ), [new dialog(['dialog przykładowy z elele'])]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
     ), new zestaw_pytan_egzamin(
-        egzamin_automatyk,
-        null
+        egzamin_automatyk, null
     ), [new dialog(['dialog przykładowy z aut'])]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
     rok1_fotograf, rok2_fotograf, rok3_fotograf, rok4_fotograf, rok5_fotograf
@@ -929,8 +926,7 @@ const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
     rok1_robotyk, rok2_robotyk, rok3_robotyk, rok4_robotyk, rok5_robotyk
     ), new zestaw_pytan_egzamin(
-        [new pytanie('przykładowe pytanie egzaminacyjne z robotykaa rok 3', ['tak', 'nie', 'null', 'niewiem'])],
-        null
+        egzamin_robotyk, null
     ), [new dialog(['dialog przykładowy z robotów'])]);
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
