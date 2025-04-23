@@ -207,9 +207,6 @@ const menedzer_gry = {
                     if ((this.runda - 1) % 10 == 0 && this.runda != 1) {
                         this.kolejny_rok = true;
                     }
-                    else{
-                        this.kolejny_rok = false;
-                    }
                 }
             } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii)
 
@@ -232,7 +229,7 @@ const menedzer_gry = {
                 //matura
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
-                    if (this.aktywni_gracze[i].zdane_lata == 3 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3) {
+                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3) {
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
@@ -264,15 +261,15 @@ const menedzer_gry = {
                     
                     if (i.zdane_lata != 5) {
                         document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
-                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
+                        // if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
                             document.getElementsByClassName('zdal')[j].value='ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
-                        }
-                        else{
-                            document.getElementsByClassName('zdal')[j].value='OBLANE';
-                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
-                        }
+                        // }
+                        // else{
+                        //     document.getElementsByClassName('zdal')[j].value='OBLANE';
+                        //     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
+                        // }
                     }
                     i.podszedl_do_egzaminu = [];
                     j++;
