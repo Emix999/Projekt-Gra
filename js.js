@@ -176,6 +176,11 @@ const menedzer_gry = {
                 //kolejna runda
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
+                    for(let i = 0; i < gracze[this.indeks_wybranego].ekwipunek.length; i++){
+                        if(gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa){
+                            gracze[this.indeks_wybranego].sanity ++;
+                        }
+                    }
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
@@ -1134,16 +1139,17 @@ const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena'
 const sklep_kup = document.getElementsByClassName('sklep_kup')
 const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
-let losowa_liczba_losowa = 0; //losuje się w funkcji aktualizacja menu bocznego
+//let losowa_liczba_losowa = 0;
 
 const sklep = {
     arsenal: [
-        new przedmiot('obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 40 sanity', 'grafiki/przedmioty/ziemniak.png', 40, 24),
-        new przedmiot('baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskuje 5 sanity', 'grafiki/przedmioty/ziemniak.png', 5, 5),
-        new przedmiot('guma szybkościowa', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskuje ? sanity', 'grafiki/przedmioty/ziemniak.png', (Math.floor(losowa_liczba_losowa * 5)), 1),
-        new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'grafiki/przedmioty/ziemniak.png', 2000, 1000),
-        new przedmiot('bomba atomowa', 'bum bum', 'grafiki/przedmioty/ziemniak.png', 0, 10000),
-        new przedmiot('XAMPP: wersja premium', 'sql', 'grafiki/przedmioty/ziemniak.png', 0, 100000)
+        new przedmiot('Obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 35 sanity', 'grafiki/przedmioty/ziemniak.png', 35, 24),
+        new przedmiot('Baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskujesz 5 sanity oraz prawdopodobieństwo zachorowania na cukrzycę zwiększy się o 20%', 'grafiki/przedmioty/sinkers.png', 5, 5),
+        new przedmiot('Guma "Prędkość"', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskujesz ? sanity', 'grafiki/przedmioty/predkosc.png',0, 1),
+        new przedmiot('Sok "Tymbork"', 'Inflacja dość mocno wpłynęła na cenę tego produktu, jednak jego legendary smak pozostał ten sam. Popijsz go co turę odzyskując 1 sanity. Możesz też wypić całego na raz, odzyskasz wtedy 4 sanity.', 'grafiki/przedmioty/tymbork.png', 4, 10),
+        new przedmiot('Paluszki "👍🐴"', 'Lubiane nie tylko przez lajkowanych koników. Przywraca od 1 do 12 sanity, w zależności od tego, jak dużo paluszków ukradną ci koledzy.', 'grafiki/przedmioty/Likekonik.png', 0, 5),
+        new przedmiot('Chipsy "Gay’s"', 'Tak ostre, że cię z kapci wywali, niewielu radzi sobie z takim zawodnikiem. Jeżeli uda ci się przeżyć te pieczenie z kamienną twarzą, zdobędziesz respekt i odzyskasz 75 sanity, ale jeżeli ulegniesz stracisz 50 sanity.', 'grafiki/przedmioty/Chipsy_Gays.png', 0, 20),
+        //new przedmiot('XAMPP: wersja premium', 'i tak cie nie stać biedaku', 'grafiki/przedmioty/xampp_ultimate.png', 0, 100000)
     ],
     pokaz: function () {
         zmiana_ekranu(mapa, ekran_sklepu);
@@ -1153,6 +1159,7 @@ const sklep = {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
             zaktualizuj_ekwipunek();
+            aktualizacja_menu_bocznego();
             alert('pomyślnie kupiono produkt');
         }
         else {
@@ -1268,7 +1275,9 @@ function uzyj_przedmiotu() {
 //Nie dotykać bo działa i nie wiemy dlaczego działa
 //Łatwo zepsusć
 function aktualizacja_menu_bocznego() {
-    losowa_liczba_losowa = Math.random();
+    sklep.arsenal[2].sanity = Math.floor(Math.random()*11)-5;
+    sklep.arsenal[4].sanity = Math.floor(Math.random()*12);
+    sklep.arsenal[5].sanity = (Math.random() > 1/2 ? 75 : -50);
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
