@@ -220,6 +220,7 @@ const menedzer_gry = {
                     }
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
+                    alert("Nadeszła pora na wyczekiwany egzamin zawodowy!");
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
@@ -234,6 +235,7 @@ const menedzer_gry = {
                     }
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
+                    alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę!");
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
@@ -249,13 +251,7 @@ const menedzer_gry = {
                 
 
                 zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
-                for (i of gracze) {
-                    i.hajs += 30;
-                    i.zdana_matematyka = 0;
-                    i.zdane_ogolne = 0;
-                    i.zdane_zawodowe = 0;
-                    i.zdany_polski = 0;
-                }
+                
                 let j=0;
                 for (let i of this.aktywni_gracze) {
                     document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
@@ -281,6 +277,14 @@ const menedzer_gry = {
                         i.czy_na_terapii = false;
                         i.sanity = 100;
                     }
+                }
+                // to musi być po sprawdzeniu czy gracz zdaje!!!
+                for (i of gracze) {
+                    i.hajs += 30;
+                    i.zdana_matematyka = 0;
+                    i.zdane_ogolne = 0;
+                    i.zdane_zawodowe = 0;
+                    i.zdany_polski = 0;
                 }
             }
 
