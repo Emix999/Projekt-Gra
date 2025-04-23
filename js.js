@@ -155,7 +155,6 @@ const menedzer_gry = {
                 }
             }
             if (this.czy_wszyscy_na_terapii) {
-                this.runda_egzamin = false;
                 this.indeks_wybranego = -1;
                 this.runda += 10 - (this.runda % 10);
                 for (let i of this.aktywni_gracze) {
@@ -177,7 +176,7 @@ const menedzer_gry = {
                 //kolejna runda
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
-
+                    
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
@@ -235,7 +234,7 @@ const menedzer_gry = {
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
-                if (this.indeksy_aktywnych_egzamin.length > 0&&gracze[menedzer_gry.indeks_wybranego].sanity > 0) {
+                if (this.indeksy_aktywnych_egzamin.length > 0) {
                     alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę! Idź do sali od polskiego, matematyki i angielskiego.");
                     this.runda_egzamin = true;
                     this.runda--;
@@ -672,10 +671,7 @@ function koniec_pytan() {
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
     wypisywana_ocena = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
     if(menedzer_gry.runda_egzamin) {
-        if(gracze[menedzer_gry.indeks_wybranego].sanity <= 0){
-            menedzer_gry.runda_egzamin = false;
-        }
-        if(wypisywana_ocena < 50) {
+        if(wypisywana_ocena < 50){
             gracze[menedzer_gry.indeks_wybranego].czy_zdaje=false;
         }
     }
