@@ -43,9 +43,9 @@ const losowe_zdarzenia = [
     new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
 ];
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 32, false, false, () => porwanie_czosnowskiego());
+const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 22, false, false, () => porwanie_czosnowskiego());
 const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true, null);
-const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 35, false, true, () => pojdz_do_sali_017());
+const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 25, false, true, () => pojdz_do_sali_017());
 const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4];
 const nielosowe_zdarzenia_schody = [zdarzenie_testowe3];
 const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, null, null);
@@ -149,16 +149,20 @@ const menedzer_gry = {
             //czy wszyscy są na terapii
             this.czy_wszyscy_na_terapii = true
             for (let i of this.aktywni_gracze) {
-                if (i.czy_na_terapii == false) {
+                if (!i.czy_na_terapii) {
                     this.czy_wszyscy_na_terapii = false;
+                    break;
                 }
             }
             if (this.czy_wszyscy_na_terapii) {
-                this.rok_gry++;
+                this.indeks_wybranego = -1;
+                this.runda += 10 - (this.runda % 10);
                 for (let i of this.aktywni_gracze) {
                     i.czy_na_terapii = false;
+                    i.sanity = 100;
                 }
-                //dać reset zdanych przedmiotów
+                this.poczatek_tury();
+                return 2;
             }
 
             do {
@@ -173,7 +177,6 @@ const menedzer_gry = {
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
 
-                    aktualizacja_menu_bocznego();
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
@@ -208,7 +211,7 @@ const menedzer_gry = {
             } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii)
 
             //sprawdza, czy jest runda egzaminacyjna
-            if (this.indeks_wybranego == 0 && (this.runda - 1) % 10 == 0) {
+            if (this.kolejny_rok) {
                 //egzamin zawodowy
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
@@ -259,7 +262,7 @@ const menedzer_gry = {
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
                     
                     if (i.zdane_lata != 5) {
-                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2){
+                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
                             document.getElementsByClassName('zdal')[j].value='ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
@@ -274,9 +277,11 @@ const menedzer_gry = {
                 }
 
                 for (let i of this.aktywni_gracze) {
-                    i.czy_na_terapii = false;
+                    if(i.czy_na_terapii){
+                        i.czy_na_terapii = false;
+                        i.sanity = 100;
+                    }
                 }
-                //dać reset zdanych przedmiotów
             }
 
             //zdarzenia losowe
@@ -337,6 +342,8 @@ const menedzer_gry = {
             znikniecie_ekranu(i);
         }
         pojawienie_ekranu(document.getElementById('017'));
+        this.wypisz_informacje_graczy();
+        this.indeks_wybranego = -1;
     }
 };
 
@@ -672,7 +679,7 @@ function koniec_pytan() {
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-10);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-100);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -944,8 +951,8 @@ class zestaw_pytan {
 }
 
 class zestaw_pytan_egzamin {
-    constructor(rok_3 = null, rok_5 = null) {
-        this.rok_3 = rok_3;
+    constructor(rok_4, rok_5) {
+        this.rok_4 = rok_4;
         this.rok_5 = rok_5;
     }
 }
