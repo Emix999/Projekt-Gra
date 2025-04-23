@@ -182,6 +182,7 @@ const menedzer_gry = {
                         }
                     }
 
+                    
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
@@ -225,6 +226,7 @@ const menedzer_gry = {
                     }
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
+                    alert("Nadeszła pora na wyczekiwany egzamin zawodowy! Idź do swojej sali zawodowej.");
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
@@ -239,6 +241,7 @@ const menedzer_gry = {
                     }
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
+                    alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę! Idź do sali od polskiego, matematyki i angielskiego.");
                     this.runda_egzamin = true;
                     this.runda--;
                     this.poczatek_tury_egzamin();
@@ -254,20 +257,14 @@ const menedzer_gry = {
                 
 
                 zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
-                for (i of gracze) {
-                    i.hajs += 30;
-                    i.zdana_matematyka = 0;
-                    i.zdane_ogolne = 0;
-                    i.zdane_zawodowe = 0;
-                    i.zdany_polski = 0;
-                }
+                
                 let j=0;
                 for (let i of this.aktywni_gracze) {
                     document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
                     
                     if (i.zdane_lata != 5) {
-                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
+                        if(i.zdana_matematyka+i.zdany_polski>=2&& i.zdane_ogolne>=1 && i.zdane_zawodowe>=2 && !i.czy_na_terapii && i.czy_zdaje){
                             document.getElementsByClassName('zdal')[j].value='ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
@@ -286,6 +283,15 @@ const menedzer_gry = {
                         i.czy_na_terapii = false;
                         i.sanity = 100;
                     }
+                }
+                // to musi być po sprawdzeniu czy gracz zdaje!!!
+                for (i of gracze) {
+                    i.hajs += 30;
+                    i.zdana_matematyka = 0;
+                    i.zdane_ogolne = 0;
+                    i.zdane_zawodowe = 0;
+                    i.zdany_polski = 0;
+                    i.czy_zdaje = true;
                 }
             }
 
@@ -396,6 +402,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdane_ogolne = 0;
         this.zdany_polski = 0;
         this.zdana_matematyka = 0;
+        this.czy_zdaje=true;
     }
 }
 
@@ -669,6 +676,11 @@ function koniec_pytan() {
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
     wypisywana_ocena = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
+    if(menedzer_gry.runda_egzamin) {
+        if(wypisywana_ocena < 50){
+            gracze[menedzer_gry.indeks_wybranego].czy_zdaje=false;
+        }
+    }
     if (wypisywana_ocena >= 70) {
         if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
