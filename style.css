@@ -542,13 +542,14 @@ body {
     font-size: 3vh;
 }
 
-#ekran_kolejnego_roku{
+#ekran_kolejnego_roku, #ekran_koncowy{
     height: 100vh;
     width: calc(100vw - 36vh);
     display: none;  
     background-repeat: no-repeat;
     background-size:calc(100vw - 36vh) 100vh;
 }
+
 
 #ekran_zdarzenia{
     height: 100vh;

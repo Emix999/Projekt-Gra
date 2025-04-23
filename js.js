@@ -255,9 +255,10 @@ const menedzer_gry = {
                 }
                 let j=0;
                 for (let i of this.aktywni_gracze) {
+                    document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
+                    document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
                     
                     if (i.zdane_lata != 5) {
-                        document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
                         if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2){
                             document.getElementsByClassName('zdal')[j].value='ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
@@ -437,6 +438,7 @@ class menu_graczy {
         this.id_avatar_lewo = id_avatar_lewo;
         this.id_avatar = id_avatar;
         this.id_avatar_prawo = id_avatar_prawo;
+
 
         document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
         this.losowanie_nazwy();
