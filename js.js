@@ -261,15 +261,15 @@ const menedzer_gry = {
                     
                     if (i.zdane_lata != 5) {
                         document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
-                        // if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
+                        if(i.zdane_maturalne>=2&& zdane_ogolne>=1 && zdane_zawodowe>=2 && !i.czy_na_terapii){
                             document.getElementsByClassName('zdal')[j].value='ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
-                        // }
-                        // else{
-                        //     document.getElementsByClassName('zdal')[j].value='OBLANE';
-                        //     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
-                        // }
+                        }
+                        else{
+                            document.getElementsByClassName('zdal')[j].value='OBLANE';
+                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
+                        }
                     }
                     i.podszedl_do_egzaminu = [];
                     j++;
