@@ -4,6 +4,17 @@ body {
     padding: 0;
 }
 
+<<<<<<< Updated upstream
+=======
+.statystyki{
+    position: absolute;
+    border: none;
+    height: 4vh;
+    width: 10vh;
+    background-color: transparent;
+}
+
+>>>>>>> Stashed changes
 #ekran_startowy {
     height: 100vh;
     width: 100vw;
@@ -52,7 +63,7 @@ body {
 
 .ustawienia {
     width: 50vmin;
-    height: 50vmin;
+    height: 19.2vmin;
     background-image: url('grafiki/menu_grafiki/ustawienia.png');
     background-size: cover;
     position: fixed;
@@ -62,48 +73,53 @@ body {
 #muzyka_glosnosc,
 #muzyka_glosnosc2 {
     left: 34.5%;
-    top: 16.3%;
+    top: 42%;
     height: 2vmin;
     width: 3vmin;
     background-color: transparent;
     position: absolute;
     color:  white;
     border: none;
+    font-size: 1vh;
 }
 
 #muzyka_slider,
 #muzyka_slider2 {
     left: 39.5%;
-    top: 16.1%;
+    top: 42%;
     height: 2vmin;
     width: 21vmin;
     position: absolute;
+    font-size: 2vh;
 }
 
 #sfx_glosnosc,
 #sfx_glosnosc2 {
     left: 34.5%;
-    top: 24.7%;
+    top: 64.5%;
     height: 2vmin;
     width: 3vmin;
     background-color: transparent;
     position: absolute;
     color:  white;
     border: none;
+    font-size: 1vh;
 }
 
 #sfx_slider,
 #sfx_slider2 {
     left: 39.5%;
-    top: 24.5%;
+    top: 64.5%;
     height: 2vmin;
     width: 21vmin;
     position: absolute;
+    font-size: 2vh;
 }
 
 .przycisk_menu {
     height: 4vmin;
     width: 4vmin;
+    border: none;
 }
 
 .los{
@@ -111,6 +127,7 @@ body {
     background-size: cover;
     left: 5%;
     top: 5%;
+    border: none;
 }
 
 .strzalka_srodek_lewo{
@@ -146,6 +163,9 @@ body {
     width: 16.1vmin;
     background-color: transparent;
     color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.5vh;
 }
 
 .nazwa_gracza_menu{
@@ -273,11 +293,16 @@ body {
 }
 
 #ekran_statystyk{
-    width: 35vw;
-    height: 20vh;
-    background-color: azure;
+    position: absolute;
+    top: 30vh;
+    left: calc(35vw - 36vh);
+    height: 40vh;
+    width: 90vh;
+    background-image: url("grafiki/statystyki.png");
     display: flex;
     flex-direction: column;
+    background-size: cover;
+    justify-content: center;
 }
 
 #mapa{
@@ -324,6 +349,7 @@ body {
     margin: 0.5vh;
     background-color: transparent;
     position: absolute;
+    font-size: 2vh;
 }
 
 .nazwa_gracza {
@@ -332,6 +358,7 @@ body {
     margin: 0.5vh;
     background-color: transparent;
     position: absolute;
+    font-size: 2vh;
 }
 
 .klasa_gracza {
@@ -340,6 +367,7 @@ body {
     height: 3vh;
     background-color: transparent;
     position: absolute;
+    font-size: 2vh;
 }
 
 #ekwipunek {
@@ -357,7 +385,7 @@ body {
     height: 3vh;
     width: 4vh;
     position: absolute;
-    font-size: 20px;
+    font-size: 2vh;
     background-color: transparent;
 }
 
@@ -367,7 +395,7 @@ body {
     height: 3vh;
     width: 3vh;
     position: absolute;
-    font-size: 20px;
+    font-size: 2vh;
     background-color: transparent;
 }
 
@@ -463,7 +491,7 @@ body {
     margin: 2vw;
     color: white;
     position: absolute;
-    font-size: 30px;
+    font-size: 3vh;
     border: none;
 }
 
@@ -822,7 +850,7 @@ body {
     overflow: hidden;
     background-color: black;
     color: white;
-    font-size: 20px;
+    font-size: 2vh;
     height: 100vh;
     width: 100vw;
 }

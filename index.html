@@ -133,7 +133,7 @@
         </div>
         <div class="ustawienia">
             <input type="number" readonly id="muzyka_glosnosc">
-            <input type="range" min="0" max="100" value="0" id="muzyka_slider">
+            <input type="range" min="0" max="100" value="50" id="muzyka_slider">
 
             <input type="number" readonly id="sfx_glosnosc">
             <input type="range" min="0" max="100" value="50" id="sfx_slider">
@@ -309,7 +309,7 @@
                     <button class="przycisk_sala"
                         style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>-->
                     <button class="przycisk_sala" id="206"
-                        style="left: 61.125%; top: 31.833%; width: 10.1%; height: 8.333%; background-image: url('grafiki/mapy/206.png');">206</button>
+                        style="left: 61.125%; top: 31.833%; width: 10.1%; height: 8.333%; background-image: url('grafiki/mapy/206.png');"></button>
                     <!--<button class="przycisk_sala"
                         style="left: 71.5%; top: 35.667%; width: 10%; height: 8.333%;">207</button>
                     <button class="przycisk_sala"
@@ -448,14 +448,9 @@
         </div>
 
         <div id="ekran_statystyk">
-            <h1>Aby przejść do kolejnej klasy trzeba zdać:</h1>
-
-            <div class="flex_poziom">1 przedmiot zawodowy Obecnie zdane: <input class="statystyki" type="text"
-                    id="obecnie_zdane_zawodowe"><br></div>
-            <div class="flex_poziom">2 przedmioy maturalne (polski i matematykę) Obecnie zdane: <input
-                    class="statystyki" type="text" id="obecnie_zdane_maturalne"><br></div>
-            <div class="flex_poziom">2 przedmioty ogólne Obecnie zdane: <input class="statystyki" type="text"
-                    id="obecnie_zdane_ogolne"><br></div>
+            <input class="statystyki" type="text" id="obecnie_zdane_zawodowe" readonly style="top: 35%; left: 86%;">
+            <input class="statystyki" type="text" id="obecnie_zdane_maturalne" readonly style="top: 56.8%; left: 86%;">
+            <input class="statystyki" type="text" id="obecnie_zdane_ogolne" readonly style="top: 78.8%; left: 86%;">
         </div>
 
         <div id="ekran_dialogu">

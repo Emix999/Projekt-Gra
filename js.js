@@ -422,7 +422,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak, ziemniak, ziemniak, ziemniak]);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak, ziemniak, ziemniak]);
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
@@ -1134,11 +1134,13 @@ const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena'
 const sklep_kup = document.getElementsByClassName('sklep_kup')
 const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
+let losowa_liczba_losowa = 0; //losuje się w funkcji aktualizacja menu bocznego
+
 const sklep = {
     arsenal: [
-        new przedmiot('obiadek', 'test', 'grafiki/przedmioty/ziemniak.png', 20, 22),
-        new przedmiot('rozwiązany sprawdzian', 'test2', 'grafiki/przedmioty/ziemniak.png', 0, 30),
-        new przedmiot('samochód Elona Muska', 'brum brum', 'grafiki/przedmioty/ziemniak.png', 200, 200),
+        new przedmiot('obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 40 sanity', 'grafiki/przedmioty/ziemniak.png', 40, 24),
+        new przedmiot('baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskuje 5 sanity', 'grafiki/przedmioty/ziemniak.png', 5, 5),
+        new przedmiot('guma szybkościowa', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskuje ? sanity', 'grafiki/przedmioty/ziemniak.png', (Math.floor(losowa_liczba_losowa * 5)), 1),
         new przedmiot('rakieta Elona Muska', 'brum brum w kosmos', 'grafiki/przedmioty/ziemniak.png', 2000, 1000),
         new przedmiot('bomba atomowa', 'bum bum', 'grafiki/przedmioty/ziemniak.png', 0, 10000),
         new przedmiot('XAMPP: wersja premium', 'sql', 'grafiki/przedmioty/ziemniak.png', 0, 100000)
@@ -1264,8 +1266,9 @@ function uzyj_przedmiotu() {
 }
 
 //Nie dotykać bo działa i nie wiemy dlaczego działa
-//Łatwo zepsućs
+//Łatwo zepsusć
 function aktualizacja_menu_bocznego() {
+    losowa_liczba_losowa = Math.random();
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
