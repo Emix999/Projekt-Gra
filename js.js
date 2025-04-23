@@ -679,7 +679,7 @@ function koniec_pytan() {
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-100);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-10);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
