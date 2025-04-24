@@ -696,7 +696,7 @@ function koniec_pytan() {
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-10);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -735,7 +735,17 @@ const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
 
+let czy_kliknieto = false;
+
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
+    if(!czy_kliknieto){
+        czy_kliknieto = true;
+        ekran_znikajacy.style.animationPlayState = 'running';
+        setTimeout(() => pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
+    }
+}
+
+function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy){
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
@@ -1037,8 +1047,7 @@ const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
 ), new zestaw_pytan_egzamin(
-    null,
-    [new pytanie('przykładowe pytanie maturalne z polskiego', ['tak', 'nie', 'null', 'niewiem'])]
+    null, egzamin_polski
 ), [new dialog(['dialog przykładowy z piekła'])]);
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka

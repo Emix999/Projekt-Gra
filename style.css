@@ -881,3 +881,17 @@ body.no-scroll {
     height: 100vh;
     display: none;
 }
+
+@keyframes znikniecie_ekranu_logo{
+    0% {
+        background-color: transparent;
+    }
+    100%{
+        background-color: black;
+    }
+}
+
+#ekran_logo{
+    animation: znikniecie_ekranu_logo 3s linear;
+    animation-play-state: paused;
+}
