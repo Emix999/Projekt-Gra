@@ -572,33 +572,47 @@ const przycisk_start = document.getElementById('start');
 const ekran_startowy = document.getElementById('ekran_startowy');
 const gra = document.getElementById('gra');
 
+const czarniejacy_ekran1 = document.getElementById('czarniejacy_ekran1');
+
+let czy_kliknieto = false;
+
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
-    //Tworzy tabelę aktywnych graczy
-    for (let i of gracze) {
-        if (i.czy_aktywny) {
-            menedzer_gry.aktywni_gracze.push(i);
+    if(!czy_kliknieto){
+        //Tworzy tabelę aktywnych graczy
+        for (let i of gracze) {
+            if (i.czy_aktywny) {
+                menedzer_gry.aktywni_gracze.push(i);
+            }
         }
-    }
 
-    //Sprawdza czy przynajmniej jeden gracz jest aktywny
-    if (!menedzer_gry.aktywni_gracze.length) {
-        alert("Musi być przynajmniej jeden gracz");
-        return 0;
-    }
+        //Sprawdza czy przynajmniej jeden gracz jest aktywny
+        if (!menedzer_gry.aktywni_gracze.length) {
+            alert("Musi być przynajmniej jeden gracz");
+            return 0;
+        }
 
+        czy_kliknieto = true;
+
+        for (i of gracze) {
+            let avatar = "url('" + i.avatar + "')";
+            document.getElementById(i.id_html).style.backgroundImage = avatar;
+        }
+
+        slider_muzyka2.value = glosnosc_muzyki.value;
+        glosnosc_muzyki2.value = glosnosc_muzyki.value;
+        slider_sfx2.value = glosnosc_sfx.value;
+        glosnosc_sfx2.value = glosnosc_sfx.value;
+
+        czarniejacy_ekran1.style.zIndex = 1;
+        czarniejacy_ekran1.style.animationPlayState = 'running';
+        setTimeout(() => start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
+    }
+}
+
+function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy){
+    znikniecie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-
-    for (i of gracze) {
-        let avatar = "url('" + i.avatar + "')";
-        document.getElementById(i.id_html).style.backgroundImage = avatar;
-    }
-
-    slider_muzyka2.value = glosnosc_muzyki.value;
-    glosnosc_muzyki2.value = glosnosc_muzyki.value;
-    slider_sfx2.value = glosnosc_sfx.value;
-    glosnosc_sfx2.value = glosnosc_sfx.value;
-
     menedzer_gry.poczatek_tury();
 }
 
@@ -734,18 +748,20 @@ zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
 const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
+const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 
-let czy_kliknieto = false;
+let czy_kliknieto2 = false;
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
-    if(!czy_kliknieto){
-        czy_kliknieto = true;
+    if(!czy_kliknieto2){
+        czy_kliknieto2 = true;
         ekran_znikajacy.style.animationPlayState = 'running';
         setTimeout(() => pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
     }
 }
 
 function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy){
+    pojawienie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();

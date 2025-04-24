@@ -12,6 +12,15 @@ body {
     background-color: transparent;
 }
 
+@keyframes znikniecie_ekranu{
+    0% {
+        background: transparent;
+    }
+    100%{
+        background: black;
+    }
+}
+
 #ekran_startowy {
     height: 100vh;
     width: 100vw;
@@ -22,9 +31,21 @@ body {
 }
 
 #tlo_menu_glowne{
+    position: absolute;
     height: 100vh;
     width: 100vw;
     filter: blur(3px);
+    display: none;
+}
+
+#czarniejacy_ekran1{
+    z-index: -1;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    animation: znikniecie_ekranu 3s linear;
+    animation-play-state: paused;
 }
 
 .flex_pion {
@@ -882,16 +903,7 @@ body.no-scroll {
     display: none;
 }
 
-@keyframes znikniecie_ekranu_logo{
-    0% {
-        background-color: transparent;
-    }
-    100%{
-        background-color: black;
-    }
-}
-
 #ekran_logo{
-    animation: znikniecie_ekranu_logo 3s linear;
+    animation: znikniecie_ekranu 3s linear;
     animation-play-state: paused;
 }
