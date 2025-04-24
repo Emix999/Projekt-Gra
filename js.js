@@ -434,10 +434,10 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak, ziemniak, ziemniak]);
-const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
-const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak]);
-const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, ["mikrofalówka"]);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -744,7 +744,7 @@ zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
 
-
+const tlo_ekran_poczatkowy = document.getElementById('tlo_ekran_poczatkowy');
 const ekran_logo = document.getElementById('ekran_logo');
 const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
@@ -763,6 +763,7 @@ function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
 function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy){
     pojawienie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+    tlo_ekran_poczatkowy.style.display = "none";
     bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
 }
