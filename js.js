@@ -132,7 +132,7 @@ const menedzer_gry = {
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
     poczatek_tury: function () {
-        console.log("runda egazmin:" + this.runda_egzamin);
+        console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
@@ -197,7 +197,9 @@ const menedzer_gry = {
                     }
 
                     for(let i of this.aktywni_gracze) {
-                        i.ile_rund_temu_byl_na_terapii++;
+                        if(!i.czy_na_terapii&&i.ile_rund_temu_byl_na_terapii>=1) {
+                            i.ile_rund_temu_byl_na_terapii++;
+                        }
                     }
 
                     if (gracze[this.indeks_wybranego].sanity <= 0) {
@@ -396,10 +398,9 @@ const menedzer_gry = {
     },
     //funkcja do testowania
     test_matura: function () {
-        this.runda = 10;
+        this.runda = 28;
         for (let i of this.aktywni_gracze) {
             i.zdane_lata = 4;
-            i.sanity = 1;
         }
         this.poczatek_tury();
     }
