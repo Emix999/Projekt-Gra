@@ -302,7 +302,7 @@ const menedzer_gry = {
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
 
                     if (i.zdane_lata != 5) {
-                        if (i.zdana_matematyka + i.zdany_polski >= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
+                        if (i.zdana_matematyka + i.zdany_polski_i_angielski>= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
                             document.getElementsByClassName('zdal')[j].value = 'ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
@@ -328,7 +328,7 @@ const menedzer_gry = {
                     i.zdana_matematyka = 0;
                     i.zdane_ogolne = 0;
                     i.zdane_zawodowe = 0;
-                    i.zdany_polski = 0;
+                    i.zdany_polski_i_angielski = 0;
                     i.czy_zdaje = true;
                 }
             }
@@ -446,7 +446,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.czy_na_terapii = false;
         this.zdane_zawodowe = 0;
         this.zdane_ogolne = 0;
-        this.zdany_polski = 0;
+        this.zdany_polski_i_angielski = 0;
         this.zdana_matematyka = 0;
         this.czy_zdaje = true;
         this.ile_rund_temu_byl_na_terapii = 0;
@@ -743,13 +743,13 @@ function koniec_pytan() {
         }
     }
     if (wypisywana_ocena >= 70) {
-        if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa) {
-            gracze[menedzer_gry.indeks_wybranego].zdany_polski++;
+        if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa) {
+            gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski++;
         }
         if (menedzer_gry.przedmiot_szkolny.nazwa == matematyka.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdana_matematyka++;
         }
-        if (menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa) {
+        if (menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
         }
         if (menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa) {
@@ -1373,7 +1373,7 @@ function aktualizacja_menu_bocznego() {
 
     zdane_ogolne.value = gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
     zdane_zawodowe.value = gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
-    zdane_maturalne.value = gracze[menedzer_gry.indeks_wybranego].zdany_polski + i.zdana_matematyka;
+    zdane_maturalne.value = gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski + i.zdana_matematyka;
 
     for (let i = 0; i < ekwipunek.length; i++) {
         if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i) {
