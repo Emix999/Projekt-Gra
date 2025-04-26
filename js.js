@@ -190,9 +190,9 @@ const menedzer_gry = {
 
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
-                    for (let i = 0; i < gracze[this.indeks_wybranego].ekwipunek.length; i++) {
-                        if (gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa) {
-                            gracze[this.indeks_wybranego].sanity++;
+                    for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
+                        if (this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa) {
+                            this.aktywni_gracze[this.indeks_wybranego].sanity++;
                         }
                     }
 
@@ -202,11 +202,9 @@ const menedzer_gry = {
                         }
                     }
 
-                    if (gracze[this.indeks_wybranego].sanity <= 0) {
+                    if (this.aktywni_gracze[this.indeks_wybranego].sanity <= 0) {
                         this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii = true;
-                        return 0;
                     }
-
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
@@ -239,7 +237,7 @@ const menedzer_gry = {
                         this.kolejny_rok = true;
                     }
                 }
-            } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii)
+            } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii || this.aktywni_gracze[this.indeks_wybranego].sanity <= 0);
 
             //sprawdza, czy jest runda egzaminacyjna
             if (this.kolejny_rok) {
@@ -759,7 +757,7 @@ function koniec_pytan() {
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 80 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-80);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -1281,12 +1279,14 @@ function zaktualizuj_sanity() {
     let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     if (wartosc_sanity <= 0) {
         wartosc_sanity = 0;
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity = 0;
         alert('musisz pójść na terapię');
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ile_rund_temu_byl_na_terapii=1;
     }
     else if (wartosc_sanity > 200) {
         wartosc_sanity = 200;
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity = 200;
     }
     sanity.value = wartosc_sanity;
 }
