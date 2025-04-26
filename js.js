@@ -6,6 +6,9 @@ gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
 
+//debug funkcji
+let ile_wywolan = 0;
+
 //blokuje możliwość scrollowania
 document.body.classList.add('no-scroll');
 
@@ -129,7 +132,7 @@ const menedzer_gry = {
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
     poczatek_tury: function () {
-        
+        console.log("runda egazmin:" + this.runda_egzamin);
         if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
@@ -148,7 +151,7 @@ const menedzer_gry = {
             }
 
             //czy wszyscy są na terapii
-            this.czy_wszyscy_na_terapii = true
+            this.czy_wszyscy_na_terapii = true;
             for (let i of this.aktywni_gracze) {
                 if (!i.czy_na_terapii) {
                     this.czy_wszyscy_na_terapii = false;
@@ -156,11 +159,16 @@ const menedzer_gry = {
                 }
             }
             if (this.czy_wszyscy_na_terapii) {
+                ile_wywolan++;//debug
+
                 this.indeks_wybranego = -1;
-                this.runda += 10 - (this.runda % 10);
+                this.runda += (10 - (this.runda % 10));
+                this.runda_egzamin = false;
+                this.indeksy_aktywnych_egzamin = [];
                 for (let i of this.aktywni_gracze) {
                     i.czy_na_terapii = false;
                     i.sanity = 100;
+                    i.podszedl_do_egzaminu = [];
                 }
                 this.poczatek_tury();
                 return 2;
@@ -175,22 +183,26 @@ const menedzer_gry = {
                 }
 
                 //kolejna runda
-                
+
 
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
-                    for(let i = 0; i < gracze[this.indeks_wybranego].ekwipunek.length; i++){
-                        if(gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa){
-                            gracze[this.indeks_wybranego].sanity ++;
+                    for (let i = 0; i < gracze[this.indeks_wybranego].ekwipunek.length; i++) {
+                        if (gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa) {
+                            gracze[this.indeks_wybranego].sanity++;
                         }
                     }
 
-                    if(gracze[this.indeks_wybranego].sanity <= 0){
+                    for(let i of this.aktywni_gracze) {
+                        i.ile_rund_temu_byl_na_terapii++;
+                    }
+
+                    if (gracze[this.indeks_wybranego].sanity <= 0) {
                         this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii = true;
                         return 0;
                     }
 
-                    
+
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
@@ -237,23 +249,38 @@ const menedzer_gry = {
                     alert("Nadeszła pora na wyczekiwany egzamin zawodowy! Idź do swojej sali zawodowej.");
                     this.runda_egzamin = true;
                     this.runda--;
-                    this.poczatek_tury_egzamin();
+                    this.poczatek_tury();
                     return 0;
                 }
 
                 //matura
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
-                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3&& !this.aktywni_gracze[i].czy_na_terapii) {
+                    if (this.aktywni_gracze[i].czy_na_terapii) {
+
+                        continue;
+                    }
+                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3 && !this.aktywni_gracze[i].czy_na_terapii) {
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
-                    alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę! Idź do sali od polskiego, matematyki i angielskiego.");
                     this.runda_egzamin = true;
-                    this.runda--;
-                    this.poczatek_tury_egzamin();
-                    return 0;
+                    for (let i of this.aktywni_gracze) {
+                        if (i.czy_na_terapii||i.sanity <= 0||(i.ile_rund_temu_byl_na_terapii!=0&&i.ile_rund_temu_byl_na_terapii<5)) {
+                            this.runda_egzamin = false;
+                            console.log("runda egzamin: false");
+                        }
+                    }
+                    if (this.runda_egzamin) {
+                        //debug3
+                        this.runda--;
+                        alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę! Idź do sali od polskiego, matematyki i angielskiego.");
+                        console.log("matura woła poczotek tury");
+                        this.poczatek_tury();
+                        return 0;
+                    }
+
                 }
             }
 
@@ -262,23 +289,23 @@ const menedzer_gry = {
                 this.kolejny_rok = false;
                 this.rok_gry++;
 
-                
+
 
                 zmiana_ekranu(mapa, document.getElementById('ekran_kolejnego_roku'));
-                
-                let j=0;
+
+                let j = 0;
                 for (let i of this.aktywni_gracze) {
-                    document.getElementsByClassName('imie_zdanego')[j].value=gracze[j].nazwa;
+                    document.getElementsByClassName('imie_zdanego')[j].value = gracze[j].nazwa;
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
-                    
+
                     if (i.zdane_lata != 5) {
-                        if(i.zdana_matematyka+i.zdany_polski>=2&& i.zdane_ogolne>=1 && i.zdane_zawodowe>=2 && !i.czy_na_terapii && i.czy_zdaje){
-                            document.getElementsByClassName('zdal')[j].value='ZDANE';
+                        if (i.zdana_matematyka + i.zdany_polski >= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
+                            document.getElementsByClassName('zdal')[j].value = 'ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
                         }
-                        else{
-                            document.getElementsByClassName('zdal')[j].value='OBLANE';
+                        else {
+                            document.getElementsByClassName('zdal')[j].value = 'OBLANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
                         }
                     }
@@ -287,7 +314,7 @@ const menedzer_gry = {
                 }
 
                 for (let i of this.aktywni_gracze) {
-                    if(i.czy_na_terapii){
+                    if (i.czy_na_terapii) {
                         i.czy_na_terapii = false;
                         i.sanity = 100;
                     }
@@ -365,9 +392,9 @@ const menedzer_gry = {
         this.indeks_wybranego = -1;
     },
     //funkcja do testowania
-    test_matura: function(){
+    test_matura: function () {
         this.runda = 10;
-        for(let i of this.aktywni_gracze){
+        for (let i of this.aktywni_gracze) {
             i.zdane_lata = 4;
             i.sanity = 1;
         }
@@ -420,7 +447,8 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdane_ogolne = 0;
         this.zdany_polski = 0;
         this.zdana_matematyka = 0;
-        this.czy_zdaje=true;
+        this.czy_zdaje = true;
+        this.ile_rund_temu_byl_na_terapii = 0;
     }
 }
 
@@ -596,7 +624,7 @@ let czy_kliknieto = false;
 
 //Powoduje że menu znika i pojawia się ekran gry
 function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
-    if(!czy_kliknieto){
+    if (!czy_kliknieto) {
         //Tworzy tabelę aktywnych graczy
         for (let i of gracze) {
             if (i.czy_aktywny) {
@@ -628,7 +656,7 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
     }
 }
 
-function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy){
+function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     znikniecie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     menedzer_gry.poczatek_tury();
@@ -708,9 +736,9 @@ function koniec_pytan() {
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
     wypisywana_ocena = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
-    if(menedzer_gry.runda_egzamin) {
-        if(wypisywana_ocena < 50){
-            gracze[menedzer_gry.indeks_wybranego].czy_zdaje=false;
+    if (menedzer_gry.runda_egzamin) {
+        if (wypisywana_ocena < 50) {
+            gracze[menedzer_gry.indeks_wybranego].czy_zdaje = false;
         }
     }
     if (wypisywana_ocena >= 70) {
@@ -771,14 +799,14 @@ const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 let czy_kliknieto2 = false;
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
-    if(!czy_kliknieto2){
+    if (!czy_kliknieto2) {
         czy_kliknieto2 = true;
         ekran_znikajacy.style.animationPlayState = 'running';
         setTimeout(() => pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
     }
 }
 
-function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy){
+function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     pojawienie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     tlo_ekran_poczatkowy.style.display = "none";
@@ -1201,7 +1229,7 @@ const sklep = {
     arsenal: [
         new przedmiot('Obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 35 sanity', 'grafiki/przedmioty/ziemniak.png', 35, 24),
         new przedmiot('Baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskujesz 5 sanity oraz prawdopodobieństwo zachorowania na cukrzycę zwiększy się o 20%', 'grafiki/przedmioty/sinkers.png', 5, 5),
-        new przedmiot('Guma "Prędkość"', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskujesz ? sanity', 'grafiki/przedmioty/predkosc.png',0, 1),
+        new przedmiot('Guma "Prędkość"', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskujesz ? sanity', 'grafiki/przedmioty/predkosc.png', 0, 1),
         new przedmiot('Sok "Tymbork"', 'Inflacja dość mocno wpłynęła na cenę tego produktu, jednak jego legendary smak pozostał ten sam. Popijsz go co turę odzyskując 1 sanity. Możesz też wypić całego na raz, odzyskasz wtedy 4 sanity.', 'grafiki/przedmioty/tymbork.png', 4, 10),
         new przedmiot('Paluszki "👍🐴"', 'Lubiane nie tylko przez lajkowanych koników. Przywraca od 1 do 12 sanity, w zależności od tego, jak dużo paluszków ukradną ci koledzy.', 'grafiki/przedmioty/Likekonik.png', 0, 5),
         new przedmiot('Chipsy "Gay’s"', 'Tak ostre, że cię z kapci wywali, niewielu radzi sobie z takim zawodnikiem. Jeżeli uda ci się przeżyć te pieczenie z kamienną twarzą, zdobędziesz respekt i odzyskasz 75 sanity, ale jeżeli ulegniesz stracisz 50 sanity.', 'grafiki/przedmioty/Chipsy_Gays.png', 0, 20),
@@ -1252,6 +1280,7 @@ function zaktualizuj_sanity() {
         wartosc_sanity = 0;
         alert('musisz pójść na terapię');
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ile_rund_temu_byl_na_terapii=1;
     }
     else if (wartosc_sanity > 200) {
         wartosc_sanity = 200;
@@ -1331,9 +1360,9 @@ function uzyj_przedmiotu() {
 //Nie dotykać bo działa i nie wiemy dlaczego działa
 //Łatwo zepsusć
 function aktualizacja_menu_bocznego() {
-    sklep.arsenal[2].sanity = Math.floor(Math.random()*11)-5;
-    sklep.arsenal[4].sanity = Math.floor(Math.random()*12);
-    sklep.arsenal[5].sanity = (Math.random() > 1/2 ? 75 : -50);
+    sklep.arsenal[2].sanity = Math.floor(Math.random() * 11) - 5;
+    sklep.arsenal[4].sanity = Math.floor(Math.random() * 12);
+    sklep.arsenal[5].sanity = (Math.random() > 1 / 2 ? 75 : -50);
     sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
