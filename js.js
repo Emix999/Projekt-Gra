@@ -162,7 +162,9 @@ const menedzer_gry = {
                 ile_wywolan++;//debug
 
                 this.indeks_wybranego = -1;
-                this.runda += (10 - (this.runda % 10));
+                if(!(this.runda % 10 == 0)){
+                    this.runda += 10 - (this.runda % 10);
+                }
                 this.runda_egzamin = false;
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i of this.aktywni_gracze) {
@@ -170,6 +172,7 @@ const menedzer_gry = {
                     i.sanity = 100;
                     i.podszedl_do_egzaminu = [];
                 }
+
                 this.poczatek_tury();
                 return 2;
             }
@@ -257,7 +260,7 @@ const menedzer_gry = {
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
                     if (this.aktywni_gracze[i].czy_na_terapii) {
-
+                        
                         continue;
                     }
                     if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3 && !this.aktywni_gracze[i].czy_na_terapii) {
@@ -267,7 +270,7 @@ const menedzer_gry = {
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
                     this.runda_egzamin = true;
                     for (let i of this.aktywni_gracze) {
-                        if (i.czy_na_terapii||i.sanity <= 0||(i.ile_rund_temu_byl_na_terapii!=0&&i.ile_rund_temu_byl_na_terapii<5)) {
+                        if (i.czy_na_terapii || i.sanity <= 0 || (i.ile_rund_temu_byl_na_terapii != 0 && i.ile_rund_temu_byl_na_terapii < 5)) {
                             this.runda_egzamin = false;
                             console.log("runda egzamin: false");
                         }
@@ -399,7 +402,6 @@ const menedzer_gry = {
             i.sanity = 1;
         }
         this.poczatek_tury();
-        this.wypisz_informacje_graczy();
     }
 };
 

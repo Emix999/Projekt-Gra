@@ -289,7 +289,7 @@ const rok1_matematyka = [
   new pytanie("Wynik pierwiastka √100 to:", ["10", "5", "15", "20"]),
   new pytanie("Funkcja liniowa ma wzór:", ["f(x) = ax + b", "f(x) = ax² + bx + c", "f(x) = √x", "f(x) = 1/x"]),
   new pytanie("Współczynnik kierunkowy prostej równoległej do y = 3x + 5 to:", ["3", "5", "-3", "0"]),
-  new pytanie("Przeciwprostokątna to bok:", ["naprzeciw kąta prostego", "najkrótszy bok trójkąta", "równy jednej z przyprostokątnych", "naprzeciw kąta ostrego"])
+  new pytanie("Przeciwprostokątna to bok:", ["naprzeciw kąta prostego", "najkrótszy bok trójkąta", "równy jednej z przyprostokątnych", "naprzeciw kąta ostrego"]),
 ];
 
 const rok2_matematyka = [
@@ -302,20 +302,20 @@ const rok2_matematyka = [
   new pytanie("Dziedzina funkcji pierwiastkowej √(x-1):", ["x ≥ 1", "x > 1", "x < 1", "x ∈ R"]),
   new pytanie("Miejsca zerowe funkcji kwadratowej to miejsca:", ["przecięcia wykresu z osią OX", "przecięcia wykresu z osią OY", "wierzchołka paraboli", "największej wartości funkcji"]),
   new pytanie("Wzór funkcji kwadratowej w postaci kanonicznej:", ["f(x) = a(x - p)² + q", "f(x) = ax² + bx + c", "f(x) = a(x + p)(x - q)", "f(x) = ax + b"]),
-  new pytanie("Kąt między promieniami okręgu wynosi π/2. Odpowiada mu:", ["90°", "180°", "45°", "60°"])
+  new pytanie("Kąt między promieniami okręgu wynosi π/2. Odpowiada mu:", ["90°", "180°", "45°", "60°"]),
 ];
 
 const rok3_matematyka = [
   new pytanie("Liczba e to:", ["podstawa logarytmu naturalnego", "liczba zespolona", "jednostka miary kąta", "średnia arytmetyczna"]),
-  new pytanie("Wartość granicy lim(x→0) (sin x / x) to:", ["1", "0", "∞", "nie istnieje"]),
-  new pytanie("Pochodna funkcji f(x) = x² to:", ["2x", "x", "x²", "1"]),
-  new pytanie("Całka oznaczona to:", ["pole pod wykresem", "liczba przeciwna", "granica funkcji", "pochodna odwrotna"]),
-  new pytanie("Granica funkcji f(x) = 1/x dla x→∞:", ["0", "1", "∞", "nie istnieje"]),
   new pytanie("Równanie okręgu o środku w (0,0) i promieniu 3:", ["x² + y² = 9", "x² + y² = 6", "x² + y² = 3", "x² + y² = 1"]),
-  new pytanie("Macierz jednostkowa to:", ["macierz z jedynkami na przekątnej", "macierz zerowa", "macierz odwrotna", "macierz transponowana"]),
   new pytanie("Układ równań liniowych może mieć:", ["jedno, nieskończenie wiele lub zero rozwiązań", "tylko jedno rozwiązanie", "tylko dwa rozwiązania", "dokładnie trzy rozwiązania"]),
   new pytanie("Długość wektora v = (3,4):", ["5", "7", "1", "12"]),
-  new pytanie("Iloczyn skalarny wektorów prostopadłych wynosi:", ["0", "1", "-1", "2"])
+  new pytanie("Iloczyn skalarny wektorów prostopadłych wynosi:", ["0", "1", "-1", "2"]),
+  new pytanie("Dana jest funkcja f(x) = 2x² - 3x + 1. Wartość najmniejsza funkcji to:", ["-1/8", "1/2", "3/4", "-3/4"]),
+  new pytanie("Wyznacz wartość wyrażenia sin 30° + cos 60°.", ["1", "√3/2", "3/2", "1/2"]),
+  new pytanie("Kąt o mierze 5π/6 radianów jest równy:", ["150°", "120°", "135°", "180°"]),
+  new pytanie("Dane są punkty A(2,3) oraz B(6,7). Długość odcinka AB wynosi:", ["2√8", "5", "3√5", "6"]),
+  new pytanie("Rozwiąż równanie: log₂(x-1) = 3.", ["9", "7", "8", "6"]),
 ];
 
 const rok4_matematyka = [
@@ -328,20 +328,20 @@ const rok4_matematyka = [
   new pytanie("Przeciwdziedzina funkcji to:", ["zbiór wartości funkcji", "zbiór argumentów", "oś OX", "zbiór liczb naturalnych"]),
   new pytanie("Równanie prostej w postaci kierunkowej:", ["y = ax + b", "ax + by + c = 0", "x² + y² = r²", "y = a^x"]),
   new pytanie("Wartość wyrażenia tan 45°:", ["1", "0", "√2", "√3"]),
-  new pytanie("Kąt środkowy w kole o promieniu r i łuku l wynosi:", ["l / r", "l * r", "r / l", "1 / (l * r)"])
+  new pytanie("Kąt środkowy w kole o promieniu r i łuku l wynosi:", ["l / r", "l * r", "r / l", "1 / (l * r)"]),
 ];
 
 const rok5_matematyka = [
-  new pytanie("Macierz odwrotna do A istnieje, gdy:", ["det(A) ≠ 0", "det(A) = 0", "A jest macierzą kwadratową", "A ma same zera"]),
   new pytanie("Iloczyn wektorowy dwóch wektorów w 3D daje:", ["wektor prostopadły", "wartość skalarną", "liczbę zespoloną", "długość jednego z wektorów"]),
   new pytanie("Funkcja różnowartościowa to taka, która:", ["każdemu argumentowi przyporządkowuje różne wartości", "może mieć kilka wartości dla jednego argumentu", "nie ma dziedziny", "przecina oś OX"]),
   new pytanie("Dziedzina funkcji f(x) = ln(x - 2):", ["x > 2", "x ≥ 2", "x < 2", "x ∈ R"]),
-  new pytanie("Liczba zespolona ma postać:", ["a + bi", "ax + b", "a^x", "a - b"]),
-  new pytanie("Wartość wyrażenia i²:", ["-1", "1", "0", "i"]),
   new pytanie("Przekształcenie wykresu funkcji y = f(-x):", ["odbicie względem osi OY", "odbicie względem osi OX", "przesunięcie w prawo", "przesunięcie w górę"]),
-  new pytanie("Liczba zespolona z = 3 + 4i ma moduł równy:", ["5", "7", "4", "3"]),
   new pytanie("Złożenie funkcji f(g(x)) to:", ["funkcja złożona", "funkcja liniowa", "funkcja trygonometryczna", "funkcja stała"]),
-  new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązania:", ["x = kπ", "x = π/2 + kπ", "x = 2kπ", "x = π/3 + 2kπ"])
+  new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązania:", ["x = kπ", "x = π/2 + kπ", "x = 2kπ", "x = π/3 + 2kπ"]),
+  new pytanie("Wartość granicy lim(x→0) (sin x / x) to:", ["1", "0", "∞", "nie istnieje"]),
+  new pytanie("Pochodna funkcji f(x) = x² to:", ["2x", "x", "x²", "1"]),
+  new pytanie("Granica funkcji f(x) = 1/x dla x→∞:", ["0", "1", "∞", "nie istnieje"]),
+  new pytanie("Pole trójkąta o wierzchołkach A(0,0), B(4,0), C(0,3) wynosi:", ["6", "12", "9", "5"]),
 ];
 
 //pytania z niemickiego
@@ -816,7 +816,7 @@ const egzamin_programista = [
   new pytanie("Jaką wartość ma atrybut method w formularzu HTML wysyłającym dane jako parametry w URL?", ["get", "post", "send", "link"]),
   new pytanie("Które polecenie SQL tworzy bazę danych?", ["CREATE DATABASE", "NEW DATABASE", "MAKE DB", "INSERT DATABASE"]),
   new pytanie("Co robi polecenie SELECT * FROM users?", ["Pobiera wszystkie dane z tabeli users", "Usuwa dane z tabeli users", "Aktualizuje dane w users", "Tworzy nową tabelę users"]),
-  new pytanie("Gdzie umieszcza się kod CSS wewnętrzny w HTML?", ["W znaczniku <style>", "W znaczniku <link>", "W znaczniku <script>", "W znaczniku <meta>"]),
+  new pytanie("Gdzie umieszcza się kod CSS wewnętrzny w HTML?", ["W znaczniku &ltstyle&gt", "W znaczniku &ltlink&gt", "W znaczniku &ltscript&gt", "W znaczniku &ltmeta&gt"]),
   new pytanie("Co oznacza akronim CSS?", ["Cascading Style Sheets", "Computer Style Script", "Color Styling System", "Cascading Script Syntax"]),
   new pytanie("Który język jest wykorzystywany do tworzenia dynamicznych aplikacji po stronie serwera?", ["PHP", "HTML", "CSS", "JavaScript"]),
   new pytanie("Które narzędzie służy do zarządzania relacyjnymi bazami danych?", ["phpMyAdmin", "FileZilla", "Visual Studio Code", "GIMP"]),
