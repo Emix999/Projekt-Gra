@@ -247,7 +247,6 @@ const menedzer_gry = {
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
                     if (this.aktywni_gracze[i].czy_na_terapii) {
-
                         continue;
                     }
                     if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3 && !this.aktywni_gracze[i].czy_na_terapii) {
