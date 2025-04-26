@@ -765,7 +765,7 @@ function koniec_pytan() {
     zakoncz_ture.style.display = 'block';
 }
 
-function odwroc_pokaz_pytanie() {
+function odwroc_pokaz_pytanie() {//ukrywa pytanie
     zmiana_ekranu(ekran_pytania, mapa);
     ekran_nagrody.style.visibility = 'hidden';
     zakoncz_ture.style.display = 'none';
