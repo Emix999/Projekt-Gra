@@ -10,6 +10,9 @@ body {
     height: 4vh;
     width: 10vh;
     background-color: transparent;
+    color: white;
+    text-align: center;
+    font-size: 3vh;
 }
 
 @keyframes znikniecie_ekranu{
