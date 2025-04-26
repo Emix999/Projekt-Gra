@@ -129,6 +129,7 @@ const menedzer_gry = {
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
     poczatek_tury: function () {
+        
         if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
@@ -174,12 +175,19 @@ const menedzer_gry = {
                 }
 
                 //kolejna runda
+                
+
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
                     for(let i = 0; i < gracze[this.indeks_wybranego].ekwipunek.length; i++){
                         if(gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa){
                             gracze[this.indeks_wybranego].sanity ++;
                         }
+                    }
+
+                    if(gracze[this.indeks_wybranego].sanity <= 0){
+                        this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii = true;
+                        return 0;
                     }
 
                     
@@ -236,7 +244,7 @@ const menedzer_gry = {
                 //matura
                 this.indeksy_aktywnych_egzamin = [];
                 for (let i = 0; i < this.aktywni_gracze.length; i++) {
-                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3) {
+                    if (this.aktywni_gracze[i].zdane_lata == 4 && this.aktywni_gracze[i].podszedl_do_egzaminu.length < 3&& !this.aktywni_gracze[i].czy_na_terapii) {
                         this.indeksy_aktywnych_egzamin.push(i);
                     }
                 }
@@ -1229,7 +1237,7 @@ function zaktualizuj_ekwipunek() {
 }
 
 function zaktualizuj_sanity() {
-    let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity
+    let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
     if (wartosc_sanity <= 0) {
         wartosc_sanity = 0;
         alert('musisz pójść na terapię');
