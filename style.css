@@ -427,20 +427,34 @@ body {
     background-color: transparent;
 }
 
-.sklep_arsenal_nazwa, .sklep_arsenal_cena{
+.sklep_arsenal_nazwa{
     color: white;
     font-size: 3vh;
     position: absolute;
-    width: 18%;
+    width: 21.5%;
+    height: 3.5vh;
+    justify-content: center;
+    text-align: center;
+}
+
+.sklep_arsenal_cena{
+    top: 57.8%;
+    left: 8%;
+    color: white;
+    font-size: 3vh;
+    position: absolute;
+    width: 5%;
     height: 3.5vh;
     justify-content: center;
     text-align: center;
 }
 
 .sklep_arsenal_obraz{
+    top: 45%;
+    left: 91.8%;
     position: absolute;
     border-collapse: collapse;
-    width: 5.12%;
+    width: 6.3%;
     height: 10.7vh;
     background-size: cover;
     background-position: center;
@@ -456,11 +470,9 @@ body {
 }
 
 .sklep_kup{
-    top: 77.5%;
-    left: 41.1%;
     position: absolute;
     border-collapse: collapse;
-    width: 5.8%;
+    width: 7.3%;
     height: 5.8vh;
     background-size: cover;
     background-position: center;
@@ -475,9 +487,8 @@ body {
     flex-direction: column;
 }
 #przejdz_dalej_ekran_roku{
-    background-color: #5E5E5E;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-color: #000000;
+    background-size: cover;
     background-position: center;
     top: 87vh;
     left: 34.7vw;
@@ -492,9 +503,14 @@ body {
     height: 50vh;
     width: calc(100vw - 36vh);
     background-size: cover;
+    background-image: url("grafiki/sklep.jpg");
+    background-position: center;
+    filter: blur(3px);
 }
 
 #panel_sklepu{
+    position: absolute;
+    top: 50vh;
     height: 50vh;
     width: calc(100vw - 36vh);
     background-image: url("grafiki/sklep_arsenal.png");
@@ -682,10 +698,10 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    top: 85.6vh;
-    left: 28.6vw;
+    top: 85.7%; 
+    left: 28%;
     height: 10.5vh;
-    width: 24.9vw;
+    width: 26%;
     position: fixed;
     background-image: url("grafiki/wyjdz_ze_sklepu.png");
     border: none;
