@@ -137,19 +137,6 @@ const menedzer_gry = {
             this.poczatek_tury_egzamin();
         }
         else {
-            //zakończenie gry
-            this.czy_koniec_gry = true;
-            for (let i of this.aktywni_gracze) {
-                if (i.zdane_lata != 5) {
-                    this.czy_koniec_gry = false;
-                    break;
-                }
-            }
-            if (this.czy_koniec_gry) {
-                this.koniec_gry();
-                return 1;
-            }
-
             //czy wszyscy są na terapii
             this.czy_wszyscy_na_terapii = true;
             for (let i of this.aktywni_gracze) {
@@ -283,7 +270,6 @@ const menedzer_gry = {
                         this.poczatek_tury();
                         return 0;
                     }
-
                 }
             }
 
@@ -301,17 +287,17 @@ const menedzer_gry = {
                     document.getElementsByClassName('imie_zdanego')[j].value = gracze[j].nazwa;
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
 
-                    if (i.zdane_lata != 5) {
-                        if (i.zdana_matematyka + i.zdany_polski >= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
+                    //if (i.zdane_lata != 5) {
+                        //if (i.zdana_matematyka + i.zdany_polski >= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
                             document.getElementsByClassName('zdal')[j].value = 'ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
-                        }
-                        else {
-                            document.getElementsByClassName('zdal')[j].value = 'OBLANE';
-                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
-                        }
-                    }
+                    //     }
+                    //     else {
+                    //         document.getElementsByClassName('zdal')[j].value = 'OBLANE';
+                    //         document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
+                    //     }
+                    // }
                     i.podszedl_do_egzaminu = [];
                     j++;
                 }
@@ -396,11 +382,27 @@ const menedzer_gry = {
     },
     //funkcja do testowania
     test_matura: function () {
-        this.runda = 28;
+        this.indeks_wybranego = -1;
+        this.runda = 10;
         for (let i of this.aktywni_gracze) {
             i.zdane_lata = 4;
         }
         this.poczatek_tury();
+    },
+    zniknij_ekran_konca_roku: function(){
+        zmiana_ekranu(document.getElementById('ekran_kolejnego_roku'), mapa);
+        //zakończenie gry
+        this.czy_koniec_gry = true;
+        for (let i of this.aktywni_gracze) {
+            if (i.zdane_lata != 5) {
+                this.czy_koniec_gry = false;
+                break;
+            }
+        }
+        if (this.czy_koniec_gry) {
+            this.koniec_gry();
+            return 1;
+        }
     }
 };
 
@@ -757,7 +759,7 @@ function koniec_pytan() {
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 80 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-80);
+    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
     /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
@@ -1175,7 +1177,7 @@ const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi zos
 const dialogi_nielosowe = [dialog2];
 
 
-przejdz_dalej_nowy_rok.addEventListener('click', () => zmiana_ekranu(document.getElementById('ekran_kolejnego_roku'), mapa));
+przejdz_dalej_nowy_rok.addEventListener('click', () => menedzer_gry.zniknij_ekran_konca_roku());
 
 
 
