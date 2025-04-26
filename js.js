@@ -285,7 +285,7 @@ const menedzer_gry = {
                     }
                 }
                 // to musi być po sprawdzeniu czy gracz zdaje!!!
-                for (i of gracze) {
+                for (let i of gracze) {
                     i.hajs += 30;
                     i.zdana_matematyka = 0;
                     i.zdane_ogolne = 0;
@@ -355,6 +355,16 @@ const menedzer_gry = {
         pojawienie_ekranu(document.getElementById('017'));
         this.wypisz_informacje_graczy();
         this.indeks_wybranego = -1;
+    },
+    //funkcja do testowania
+    test_matura: function(){
+        this.runda = 10;
+        for(let i of this.aktywni_gracze){
+            i.zdane_lata = 4;
+            i.sanity = 1;
+        }
+        this.poczatek_tury();
+        this.wypisz_informacje_graczy();
     }
 };
 
