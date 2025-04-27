@@ -1160,8 +1160,7 @@ const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
 ), new zestaw_pytan_egzamin(
-    null,
-    [new pytanie('przykładowe pytanie maturalne z matematyki', ['tak', 'nie', 'null', 'niewiem'])]
+    null, egzamin_matematyka
 ), [new dialog(['dialog przykładowy z logarutmów'])]);
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
@@ -1183,8 +1182,7 @@ const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
 ), new zestaw_pytan_egzamin(
-    null,
-    [new pytanie('przykładowe pytanie maturalne z angielskiego', ['tak', 'nie', 'null', 'niewiem'])]
+    null, egzamin_angielski
 ), [new dialog(['dialog przykładowy z anglika'])]);
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
     rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki

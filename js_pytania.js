@@ -80,6 +80,58 @@ const rok5_angielski = [
   new pytanie("It was not until midnight ___ they stopped working.", ["that", "when", "then", "which"])
 ];
 
+const egzamin_angielski = [
+  new pytanie("Choose the correct sentence.", ["I have just eaten breakfast.", "I just eat breakfast.", "I have just eat breakfast.", "I eating breakfast now."]),
+  new pytanie("Choose the correct sentence.", ["She didn't call me yesterday.", "She not called me yesterday.", "She doesn't called me yesterday.", "She didn't called me yesterday."]),
+  new pytanie("Choose the correct sentence.", ["We will meet at 6 PM.", "We meeting at 6 PM.", "We meets at 6 PM.", "We will meeting at 6 PM."]),
+  new pytanie("Choose the correct sentence.", ["He has lived here for ten years.", "He lived here since ten years.", "He living here for ten years.", "He has live here for ten years."]),
+  new pytanie("Choose the correct sentence.", ["I was studying when he arrived.", "I studied when he arrived.", "I studies when he arrived.", "I studying when he arrived."]),
+  new pytanie("Choose the correct sentence.", ["She will be arriving soon.", "She be arriving soon.", "She arriving soon.", "She will arriving soon."]),
+  new pytanie("Choose the correct sentence.", ["Have you ever been to London?", "Did you ever be to London?", "Have you ever gone to London?", "Were you ever in London?"]),
+  new pytanie("Choose the correct sentence.", ["By the time you come, I will have finished.", "By the time you come, I will finished.", "By the time you come, I finished.", "By the time you come, I will be finish."]),
+  new pytanie("Choose the correct sentence.", ["I didn't see him last night.", "I don't saw him last night.", "I didn't saw him last night.", "I wasn't see him last night."]),
+  new pytanie("Choose the correct sentence.", ["He has been working all day.", "He been working all day.", "He has work all day.", "He working all day."]),
+  new pytanie("Choose the correct sentence.", ["They had left before we arrived.", "They have left before we arrived.", "They leaving before we arrived.", "They leave before we arrived."]),
+  new pytanie("Choose the correct sentence.", ["Is she coming to the party?", "Does she coming to the party?", "Is she come to the party?", "She coming to the party?"]),
+  new pytanie("Choose the correct sentence.", ["I will call you tomorrow.", "I am call you tomorrow.", "I call you tomorrow.", "I calling you tomorrow."]),
+  new pytanie("Choose the correct sentence.", ["I have never seen such a beautiful view.", "I never saw such a beautiful view.", "I am never seen such a beautiful view.", "I never see such a beautiful view."]),
+  new pytanie("Choose the correct sentence.", ["They were sleeping when I entered.", "They sleeped when I entered.", "They was sleeping when I entered.", "They sleeping when I entered."]),
+  new pytanie("Choose the correct sentence.", ["We are going to travel next month.", "We go to travel next month.", "We goes to travel next month.", "We travelling to travel next month."]),
+  new pytanie("Choose the correct sentence.", ["Has he finished his homework?", "Did he finishes his homework?", "He finished his homework?", "Has he finish his homework?"]),
+  new pytanie("Choose the correct sentence.", ["I will have been working here for five years by December.", "I will working here for five years by December.", "I will been working here for five years by December.", "I working here for five years by December."]),
+  new pytanie("Choose the correct sentence.", ["She didn’t arrive on time.", "She doesn’t arrive on time.", "She didn’t arrives on time.", "She wasn’t arrived on time."]),
+  new pytanie("Choose the correct sentence.", ["I have visited Paris twice.", "I visited Paris twice.", "I visiting Paris twice.", "I visit Paris twice."]),
+  new pytanie("Choose the correct sentence.", ["He had gone before I came.", "He gone before I came.", "He have gone before I came.", "He had go before I came."]),
+  new pytanie("Choose the correct sentence.", ["Will you be attending the meeting?", "Are you attend the meeting?", "Do you attending the meeting?", "Will you attending the meeting?"]),
+  new pytanie("Choose the correct sentence.", ["Have you seen my keys?", "Did you see my keys?", "Are you see my keys?", "Have you saw my keys?"]),
+  new pytanie("Choose the correct sentence.", ["She has been studying for hours.", "She studying for hours.", "She has study for hours.", "She has been study for hours."]),
+  new pytanie("Choose the correct sentence.", ["They didn't play well yesterday.", "They doesn't play well yesterday.", "They didn’t played well yesterday.", "They don’t play well yesterday."]),
+  new pytanie("Choose the correct sentence.", ["I am going to visit my grandma tomorrow.", "I going to visit my grandma tomorrow.", "I visit going to my grandma tomorrow.", "I am visit my grandma tomorrow."]),
+  new pytanie("Choose the correct sentence.", ["Had you finished before they arrived?", "Have you finished before they arrived?", "Did you finished before they arrived?", "Have you finish before they arrived?"]),
+  new pytanie("Choose the correct sentence.", ["He has bought a new car.", "He buyed a new car.", "He has buy a new car.", "He boughted a new car."]),
+  new pytanie("Choose the correct sentence.", ["By next year, she will have moved.", "By next year, she will moved.", "By next year, she move.", "By next year, she moving."]),
+  new pytanie("Choose the correct sentence.", ["Did you finish the project?", "Do you finished the project?", "Have you finish the project?", "Are you finished the project?"]),
+  new pytanie("Choose the correct sentence.", ["I was reading when you called.", "I reading when you called.", "I readed when you called.", "I was read when you called."]),
+  new pytanie("Choose the correct sentence.", ["She has written five books.", "She wrote five books.", "She writing five books.", "She has write five books."]),
+  new pytanie("Choose the correct sentence.", ["Will they be staying here?", "They staying here?", "Are they staying here?", "Will they staying here?"]),
+  new pytanie("Choose the correct sentence.", ["Have you completed the form?", "Did you completes the form?", "Are you complete the form?", "Have you complete the form?"]),
+  new pytanie("Choose the correct sentence.", ["He had been waiting for two hours.", "He has been waiting for two hours.", "He have been waiting for two hours.", "He been waiting for two hours."]),
+  new pytanie("Choose the correct sentence.", ["We went to Spain last summer.", "We goed to Spain last summer.", "We go to Spain last summer.", "We going to Spain last summer."]),
+  new pytanie("Choose the correct sentence.", ["She has gone to the store.", "She gone to the store.", "She has go to the store.", "She have gone to the store."]),
+  new pytanie("Choose the correct sentence.", ["I will have finished by Friday.", "I will finished by Friday.", "I finish by Friday.", "I will finishing by Friday."]),
+  new pytanie("Choose the correct sentence.", ["Did they see the movie?", "They did saw the movie?", "They seen the movie?", "Did they saw the movie?"]),
+  new pytanie("Choose the correct sentence.", ["He was writing a letter.", "He write a letter.", "He was wrote a letter.", "He writing a letter."]),
+  new pytanie("Choose the correct sentence.", ["She has been painting the house all day.", "She painting the house all day.", "She has paint the house all day.", "She have been painting the house all day."]),
+  new pytanie("Choose the correct sentence.", ["Will you come with us?", "You will come with us?", "You coming with us?", "Will you coming with us?"]),
+  new pytanie("Choose the correct sentence.", ["I have broken my phone.", "I breaked my phone.", "I broke my phone now.", "I have broke my phone."]),
+  new pytanie("Choose the correct sentence.", ["She was driving fast.", "She drove fast now.", "She drive fast now.", "She drives fast yesterday."]),
+  new pytanie("Choose the correct sentence.", ["Have you heard the news?", "Did you hears the news?", "Are you hear the news?", "Have you hear the news?"]),
+  new pytanie("Choose the correct sentence.", ["I will call you when I arrive.", "I call you when I will arrive.", "I am call you when I arrive.", "I will calling you when I arrive."]),
+  new pytanie("Choose the correct sentence.", ["He had finished the work before noon.", "He has finished the work before noon.", "He finished the work before noon.", "He had finish the work before noon."]),
+  new pytanie("Choose the correct sentence.", ["We have been waiting for you.", "We has been waiting for you.", "We have waiting for you.", "We waiting for you."]),
+  new pytanie("Choose the correct sentence.", ["She didn't recognize me.", "She don't recognized me.", "She didn't recognized me.", "She wasn't recognize me."]),
+  new pytanie("Choose the correct sentence.", ["He will travel to Italy next month.", "He travels to Italy next month.", "He travelling to Italy next month.", "He will traveling to Italy next month."])
+];
 
 //pytania z biologii
 
@@ -294,7 +346,7 @@ const rok1_matematyka = [
   new pytanie("Wynik pierwiastka √100 to:", ["10", "5", "15", "20"]),
   new pytanie("Funkcja liniowa ma wzór:", ["f(x) = ax + b", "f(x) = ax² + bx + c", "f(x) = √x", "f(x) = 1/x"]),
   new pytanie("Współczynnik kierunkowy prostej równoległej do y = 3x + 5 to:", ["3", "5", "-3", "0"]),
-  new pytanie("Przeciwprostokątna to bok:", ["naprzeciw kąta prostego", "najkrótszy bok trójkąta", "równy jednej z przyprostokątnych", "naprzeciw kąta ostrego"]),
+  new pytanie("Przeciwprostokątna to bok:", ["naprzeciw kąta prostego", "najkrótszy bok trójkąta", "równy jednej z przyprostokątnych", "naprzeciw kąta ostrego"])
 ];
 
 const rok2_matematyka = [
@@ -307,7 +359,7 @@ const rok2_matematyka = [
   new pytanie("Dziedzina funkcji pierwiastkowej √(x-1):", ["x ≥ 1", "x > 1", "x < 1", "x ∈ R"]),
   new pytanie("Miejsca zerowe funkcji kwadratowej to miejsca:", ["przecięcia wykresu z osią OX", "przecięcia wykresu z osią OY", "wierzchołka paraboli", "największej wartości funkcji"]),
   new pytanie("Wzór funkcji kwadratowej w postaci kanonicznej:", ["f(x) = a(x - p)² + q", "f(x) = ax² + bx + c", "f(x) = a(x + p)(x - q)", "f(x) = ax + b"]),
-  new pytanie("Kąt między promieniami okręgu wynosi π/2. Odpowiada mu:", ["90°", "180°", "45°", "60°"]),
+  new pytanie("Kąt między promieniami okręgu wynosi π/2. Odpowiada mu:", ["90°", "180°", "45°", "60°"])
 ];
 
 const rok3_matematyka = [
@@ -320,7 +372,7 @@ const rok3_matematyka = [
   new pytanie("Wyznacz wartość wyrażenia sin 30° + cos 60°.", ["1", "√3/2", "3/2", "1/2"]),
   new pytanie("Kąt o mierze 5π/6 radianów jest równy:", ["150°", "120°", "135°", "180°"]),
   new pytanie("Dane są punkty A(2,3) oraz B(6,7). Długość odcinka AB wynosi:", ["2√8", "5", "3√5", "6"]),
-  new pytanie("Rozwiąż równanie: log₂(x-1) = 3.", ["9", "7", "8", "6"]),
+  new pytanie("Rozwiąż równanie: log₂(x-1) = 3.", ["9", "7", "8", "6"])
 ];
 
 const rok4_matematyka = [
@@ -333,7 +385,7 @@ const rok4_matematyka = [
   new pytanie("Przeciwdziedzina funkcji to:", ["zbiór wartości funkcji", "zbiór argumentów", "oś OX", "zbiór liczb naturalnych"]),
   new pytanie("Równanie prostej w postaci kierunkowej:", ["y = ax + b", "ax + by + c = 0", "x² + y² = r²", "y = a^x"]),
   new pytanie("Wartość wyrażenia tan 45°:", ["1", "0", "√2", "√3"]),
-  new pytanie("Kąt środkowy w kole o promieniu r i łuku l wynosi:", ["l / r", "l * r", "r / l", "1 / (l * r)"]),
+  new pytanie("Kąt środkowy w kole o promieniu r i łuku l wynosi:", ["l / r", "l * r", "r / l", "1 / (l * r)"])
 ];
 
 const rok5_matematyka = [
@@ -346,7 +398,60 @@ const rok5_matematyka = [
   new pytanie("Wartość granicy lim(x→0) (sin x / x) to:", ["1", "0", "∞", "nie istnieje"]),
   new pytanie("Pochodna funkcji f(x) = x² to:", ["2x", "x", "x²", "1"]),
   new pytanie("Granica funkcji f(x) = 1/x dla x→∞:", ["0", "1", "∞", "nie istnieje"]),
-  new pytanie("Pole trójkąta o wierzchołkach A(0,0), B(4,0), C(0,3) wynosi:", ["6", "12", "9", "5"]),
+  new pytanie("Pole trójkąta o wierzchołkach A(0,0), B(4,0), C(0,3) wynosi:", ["6", "12", "9", "5"])
+];
+
+const egzamin_matematyka = [
+  new pytanie("Funkcja kwadratowa f(x) = x² - 4x + 5 przyjmuje wartości:", ["zawsze dodatnie", "zawsze ujemne", "dodatnie tylko dla x > 0", "ujemne tylko dla x < 0"]),
+  new pytanie("Wartość wyrażenia (3√2)² to:", ["18", "6", "9", "12"]),
+  new pytanie("Punkt (2,1) należy do wykresu funkcji f(x) = 2x - 3:", ["tak", "nie", "tylko dla x > 0", "tylko dla x < 0"]),
+  new pytanie("Wartość największa funkcji f(x) = -x² + 4x + 5 wynosi:", ["9", "5", "4", "0"]),
+  new pytanie("Rozwiązaniem nierówności 2x - 5 > 1 jest:", ["x > 3", "x < 3", "x ≥ 2", "x ≤ 2"]),
+  new pytanie("Funkcja homograficzna ma wykres:", ["hiperboli", "paraboli", "prostej", "okręgu"]),
+  new pytanie("Liczba miejsc zerowych funkcji kwadratowej o Δ = 0 wynosi:", ["1", "2", "brak", "nieskończenie wiele"]),
+  new pytanie("Wartość wyrażenia log₂(32) to:", ["5", "2", "3", "4"]),
+  new pytanie("Funkcja f(x) = 1/x jest:", ["nieparzysta", "parzysta", "stała", "ograniczona"]),
+  new pytanie("Mediana danych 2, 3, 5, 8, 12 to:", ["5", "8", "12", "3"]),
+  new pytanie("Jeżeli a > 0 i b < 0, to iloczyn ab jest:", ["ujemny", "dodatni", "równy zero", "dodatni lub ujemny"]),
+  new pytanie("Wartość granicy lim(x→∞)(3x²+2)/(x²-1) wynosi:", ["3", "2", "1", "0"]),
+  new pytanie("Funkcja f(x) = (x-2)/(x+3) ma asymptotę pionową w punkcie:", ["x = -3", "x = 2", "x = 3", "x = -2"]),
+  new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązanie:", ["x = kπ", "x = π/2 + kπ", "x = kπ/2", "x = 2kπ"]),
+  new pytanie("Prosta o równaniu y = -3x + 2 jest:", ["malejąca", "rosnąca", "stała", "pionowa"]),
+  new pytanie("Wzór ogólny funkcji wykładniczej:", ["f(x) = a^x", "f(x) = log_a x", "f(x) = ax² + bx + c", "f(x) = 1/x"]),
+  new pytanie("Równanie (x-1)(x+2)=0 ma rozwiązanie:", ["x = 1 lub x = -2", "x = -1 lub x = 2", "x = 1", "x = -2"]),
+  new pytanie("Pole trójkąta równobocznego o boku 6 wynosi:", ["9√3", "12√3", "6√3", "18√3"]),
+  new pytanie("Objętość kuli o promieniu r wynosi:", ["(4/3)πr³", "πr²", "2πr", "(1/3)πr³"]),
+  new pytanie("Liczba odwrotna do 5 to:", ["1/5", "5", "-5", "-1/5"]),
+  new pytanie("Funkcja f(x) = |x| jest:", ["parzysta", "nieparzysta", "stała", "ograniczona z dołu i góry"]),
+  new pytanie("Pochodna funkcji stałej wynosi:", ["0", "1", "stała różna od 0", "brak"]),
+  new pytanie("Jeżeli Δ<0 to funkcja kwadratowa:", ["nie ma miejsc zerowych", "ma jedno miejsce zerowe", "ma dwa miejsca zerowe", "jest liniowa"]),
+  new pytanie("Kąt 45° w radianach to:", ["π/4", "π/2", "π/3", "π/6"]),
+  new pytanie("Liczba pierwiastków równania x² - 7x + 10 = 0 to:", ["2", "1", "0", "3"]),
+  new pytanie("Wzór na pole trapezu:", ["[(a+b)h]/2", "ah", "(a²+b²)/2", "(a+b)h"]),
+  new pytanie("Rozwiązaniem nierówności |x| > 3 jest:", ["x > 3 lub x < -3", "x < 3", "x > -3", "-3 < x < 3"]),
+  new pytanie("Prawdopodobieństwo wyrzucenia liczby większej od 4 kostką sześcienną:", ["1/3", "1/2", "1/4", "2/3"]),
+  new pytanie("Funkcja f(x) = cos(x) osiąga maksimum dla x =", ["0", "π/2", "π", "3π/2"]),
+  new pytanie("Pierwszy wyraz ciągu arytmetycznego wynosi 3, różnica 2. Piąty wyraz to:", ["11", "9", "7", "5"]),
+  new pytanie("Wzór na sumę n początkowych wyrazów ciągu arytmetycznego:", ["(a₁ + aₙ)n/2", "n(a₁ + d)", "n(a₁ - d)", "(2a₁ + (n-1)d)n/2"]),
+  new pytanie("Wzór funkcji odwrotnej do f(x) = 3x - 2:", ["(x+2)/3", "(x-2)/3", "3(x-2)", "(x-3)/2"]),
+  new pytanie("Dla jakiej wartości a funkcja f(x) = ax³ jest rosnąca:", ["a > 0", "a < 0", "a = 0", "każde a"]),
+  new pytanie("Liczba rozwiązań układu równań prostych przecinających się:", ["1", "0", "nieskończenie wiele", "brak"]),
+  new pytanie("Okrąg o równaniu (x-2)² + (y+3)² = 9 ma promień:", ["3", "2", "6", "9"]),
+  new pytanie("Liczba przecięć wykresu funkcji kwadratowej z osią OX to:", ["zależy od Δ", "zawsze 2", "zawsze 0", "zawsze 1"]),
+  new pytanie("Najmniejsza liczba całkowita większa od √7 to:", ["3", "2", "4", "5"]),
+  new pytanie("Asymptota pozioma funkcji f(x) = 1/x dla x→∞ to:", ["y=0", "x=0", "y=1", "x=1"]),
+  new pytanie("Średnia arytmetyczna zbioru {2,4,6,8} to:", ["5", "4", "6", "8"]),
+  new pytanie("Miejsce zerowe funkcji f(x) = 5x + 10 to:", ["-2", "2", "5", "-5"]),
+  new pytanie("Rozwiązanie równania |x-2| = 3:", ["x = 5 lub x = -1", "x = -5 lub x = 1", "x = 1 lub x = 5", "x = -1 lub x = -5"]),
+  new pytanie("Liczba π jest:", ["niewymierna", "wymierna", "całkowita", "naturalna"]),
+  new pytanie("Liczba rozwiązań równania cos x = 0 na przedziale [0,2π):", ["2", "1", "3", "0"]),
+  new pytanie("Liczba (√3 - 1)(√3 + 1) równa się:", ["2", "3", "-2", "-3"]),
+  new pytanie("Funkcja f(x) = x³ - 3x² + 4 jest rosnąca dla:", ["x > 2", "x < 2", "x < 0", "x > 0"]),
+  new pytanie("Styczna do paraboli y=x²-4x+1 w punkcie x=2 ma równanie:", ["y = 0", "y = 4x", "y = -4x", "y = 2x"]),
+  new pytanie("Liczba miejsc zerowych funkcji f(x) = x³ wynosi:", ["1", "2", "3", "0"]),
+  new pytanie("Wzór skróconego mnożenia (a+b)³:", ["a³+3a²b+3ab²+b³", "a³+b³", "(a+b)(a²+b²)", "a²+b²"]),
+  new pytanie("Rozkład na czynniki x²-9 to:", ["(x-3)(x+3)", "(x+9)(x-9)", "(x-9)(x+9)", "(x-3)²"]),
+  new pytanie("W trójkącie prostokątnym długości przyprostokątnych wynoszą 3 i 4. Długość przeciwprostokątnej wynosi:", ["5", "6", "7", "8"])
 ];
 
 //pytania z niemickiego
