@@ -57,7 +57,7 @@ class nielosowe_zdarzenie {
 }
 const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
     'Nagle podczas lekcji słyszycie przez szkolne głośniki:',
-    '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności bufet Łącznik..."',
+    '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności już jutro bufet Łącznik..."',
     'ZAMYKA SIĘ NA ZAWSZE......   :(',
     '...'
 ], 13, false, false, null);
@@ -85,6 +85,14 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent Dudu mówi: Podziwiam waszą deteminację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
     'Pytacie: Jeśli co?',
     'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
+], 14, false, false, null);
+
+const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
+    'Gracz'
+], 14, false, false, null);
+
+const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
+    'Gracz'
 ], 14, false, false, null);
 
 function test_prezydenta() {
@@ -270,7 +278,9 @@ const menedzer_gry = {
                     }
                     this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
                     for (let i of nielosowe_zdarzenia_schody) {
-                        if (i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
+                        
+                        if (menedzer_gry.runda==i.runda) {
+                            console.log("tego napisu tu nie powinno być");
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
@@ -1244,7 +1254,7 @@ const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
 const przejdz_dalej_nowy_rok = document.getElementById('przejdz_dalej_ekran_roku');
 const zakoncz_dialog = document.getElementById('zakoncz_dialog');
 const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
-const dialogi_nielosowe = [dialog2, bufet1b];
+const dialogi_nielosowe = [dialog2];
 
 
 przejdz_dalej_nowy_rok.addEventListener('click', () => menedzer_gry.zniknij_ekran_konca_roku());
