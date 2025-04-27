@@ -1,6 +1,6 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
-let SAS = "Olek";
+
 /*
 gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
@@ -46,12 +46,11 @@ const losowe_zdarzenia = [
     new zdarzenie('5', '5', 50, null, 40, 49)
 ];
 class nielosowe_zdarzenie {
-    constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana) {
+    constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.runda = runda;
         this.czy_przy_schodach = czy_przy_schodach;
-        this.czy_czosnowski_porwany = czy_czosnowski_porwany;
         this.funkcja = funkcja_wywołana;
     }
 }
@@ -60,9 +59,9 @@ const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
     '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności już jutro bufet Łącznik..."',
     'ZAMYKA SIĘ NA ZAWSZE......   :(',
     '...'
-], 13, false, false, null);
+], 13, false, null);
 
-const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na korytarzu słyszycie plotki: <br> Słyszeliście dlaczego zamykają bufet? Podobno prezydent chce mieć jego wyśmienite jedzenie na wyłączność. <br><br> Tak nie może być!!! <br> Musimy coś z tym zrobić!', 13, true, false, null);
+const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na korytarzu słyszycie plotki: <br> Słyszeliście dlaczego zamykają bufet? Podobno prezydent chce mieć jego wyśmienite jedzenie na wyłączność. <br><br> Tak nie może być!!! <br> Musimy coś z tym zrobić!', 13, true, null);
 
 const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
@@ -107,12 +106,11 @@ function test_prezydenta() {
     pokaz_pytanie();
 }
 
-const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 22, false, false, () => porwanie_czosnowskiego());
-const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true, null);
-const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 25, false, true, () => pojdz_do_sali_017());
-const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4, bufet1, bufet2];
-const nielosowe_zdarzenia_schody = [zdarzenie_testowe3, bufet1b];
-const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, null, null);
+const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej, na wstępie mam do was pytanie"', '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"', '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"', '"Otóż widzicie...Pan Czosnowski zaginął"', '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"', '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"', '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"', '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'], 25, false, () => pojdz_do_sali_017());
+const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej to wy!"', '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"', '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 70% tej szkoły"', '"Zła wiadomość - Jestem jednym z 30%..."', '- Pan Czosnowski z tyłu: "NIECH CIĘ RĘKA BOSKA BRONI, MATKO ŚWIĘTA COŚ TY MI TU POWYPISYWAŁ..."', '"No to chyba tu nasze drogi się rozchodzą...przyszła pora bym stał się pierwszym prawdziwym członkiem drużyny sierpienia"', '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."', '"To udzielę wam potrzebnych informacji"', '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'], 26, false, null);
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2];
+const nielosowe_zdarzenia_schody = [bufet1b];
+const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, ['- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"', '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"', '"ZARAZ WSZYSTKIM SPÓŹNIENIA POWPISUJE"', '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"', '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."', '"...I TO JA JESTEM PORYWANY"', '"DO JASNEJ CHOLERY"', '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"', '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'], null, false, null);
 
 function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
@@ -148,7 +146,7 @@ function zniknij_zdarzenie_nielosowe() {
     if (menedzer_gry.zdarzenie == bufet2) {
         test_prezydenta();
     }
-    if (menedzer_gry.zdarzenie == zdarzenie_017) {
+    if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
         for (let i of sala_przyciski) {
             pojawienie_ekranu(i);
         }
@@ -157,7 +155,6 @@ function zniknij_zdarzenie_nielosowe() {
         }
         znikniecie_ekranu(document.getElementById('017'));
         menedzer_gry.czy_otwarto_017 = false;
-        menedzer_gry.czy_czosnowski_porwany = false;
         menedzer_gry.poczatek_tury();
     }
 }
@@ -191,7 +188,6 @@ const menedzer_gry = {
     czy_poprawne_odpowiedzi: null,
     przedmiot_szkolny: null,
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
-    czy_czosnowski_porwany: false,
     czy_otwarto_017: false,
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
@@ -269,7 +265,7 @@ const menedzer_gry = {
                     }
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
-                        if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
+                        if (i.runda == this.runda) {
                             this.zdarzenie = i;
                             if (i.funkcja != null) i.funkcja();
                             pokaz_zdarzenie_nielosowe();
@@ -284,15 +280,12 @@ const menedzer_gry = {
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
-                        }
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for (let i of dialogi_nielosowe) {
-                        if (i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.dialog_nielosowy = i;
                             this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
-                        }
                     }
                     if (this.czy_otwarto_017) {
                         this.runda_017();
@@ -1031,9 +1024,6 @@ slider_muzyka2.oninput = function slider_muzyka_update2() {
         i.volume = slider_muzyka2.value / 100;
     }
 }
-while (SAS != 'Olek') {
-    alert('Olek to nie SAS');
-}
 
 slider_sfx2.oninput = function slider_sfx_update2() {
     glosnosc_sfx2.value = slider_sfx2.value;
@@ -1077,10 +1067,7 @@ class sala {
 
     pokaz_sale() {
         let rok = 'rok_' + (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata + 1);
-        if (menedzer_gry.czy_czosnowski_porwany && this.nr == '201') {
-            alert('nie ma pana Czosnowskiego');
-        }
-        else if (menedzer_gry.runda_egzamin) {
+        if (menedzer_gry.runda_egzamin) {
             if (this.przedmiot.pytania_egzamin[rok] != null && (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].klasa.nazwa == this.klasa || menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) && !menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.includes(this.przedmiot.nazwa)) {
                 if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 4) {
                     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].podszedl_do_egzaminu.push(this.przedmiot.nazwa);
@@ -1138,9 +1125,8 @@ class dialog {
 }
 
 class dialog_nielosowy {
-    constructor(opis, czy_czosnowski_porwany) {
+    constructor(opis) {
         this.opis = opis;
-        this.czy_czosnowski_porwany = czy_czosnowski_porwany;
     }
 };
 
@@ -1387,16 +1373,12 @@ const ekran_koncowy = document.getElementById('ekran_koncowy');
 const napisy_koncowe = document.getElementById('napisy_koncowe');
 const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde');
 
-function porwanie_czosnowskiego() {
-    menedzer_gry.czy_czosnowski_porwany = true;
-}
-
 function pojdz_do_sali_017() {
     menedzer_gry.czy_otwarto_017 = true;
 }
 
 function wejdz_do_sali_017() {
-    menedzer_gry.zdarzenie = zdarzenie_017;
+    menedzer_gry.zdarzenie = porwanie_czosnowskiego2;
     pokaz_zdarzenie_nielosowe();
 }
 
