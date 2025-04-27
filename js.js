@@ -66,7 +66,7 @@ const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na kory
 const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
     'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudę. Eskortują go do Bufetu Łącznik.',
-    'Przez tłum ucznniów dostrzegacie, że prezydent Duda wchodzi do bufetu i zjada wyśmienity obiadek.',
+    'Przez tłum ucznniów dostrzegacie, że prezydent Dudu wchodzi do bufetu i zjada wyśmienity obiadek.',
     'Pojawia się wiele robotników.',
     'Wynoszą oni cały sprzęt bufetu, jedzenie, napoje, stoły, krzesła i pracowników.',
     'Wszystko zostaje zamknięte w kontenerach i wywiezione.',
@@ -79,17 +79,23 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Niech żyje bufet Łącznik! Odzyskamy bufet Łącznik!',
     'Prawie cała szkoła zbiera się przed prezydentem. Wasza grupa wychodzi na czoło.',
     'Mówicie: Nie pozwolimy na zabranie naszego najsmaczniejszego we wszechświecie jedzenia! Prezydencie, musi pan pozwolić nam je zachować!',
-    'Prezydent Duda odpowiada: A co mi zrobicie jak nie?',
+    'Prezydent Dudu odpowiada: A co mi zrobicie jak nie?',
     'Na co wy odpowiadacie: Nie wiemy, ale na pewno nie pozwolimy na zabranie bufetu!',
-    'Prezydent Duda mówi: Podziwiam waszą deteminację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
+    'Prezydent Dudu mówi: Podziwiam waszą deteminację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
     'Pytacie: Jeśli co?',
-    'Prezydent Duda mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
-], 14, false, () => test_prezydenta());
+    'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
+], 14, false, false, null);
 
 function test_prezydenta() {
+    menedzer_gry.czy_jest_prezydent = true;
     menedzer_gry.przedmiot_szkolny = prezydent;
-    menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania;
-    menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.length;
+    menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania.rok_1;
+    menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.rok_1.length;
+    zmiana_ekranu(ekran_zdarzenia_nielosowego, ekran_pytania);
+    znikniecie_ekranu(mapa);
+    menedzer_gry.czy_poprawne_odpowiedzi = [];
+    menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
+    pokaz_pytanie();
 }
 
 const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej, na wstępie mam do was pytanie"', '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"', '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"', '"Otóż widzicie...Pan Czosnowski zaginął"', '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"', '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"', '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"', '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'], 25, false, () => pojdz_do_sali_017());
@@ -122,13 +128,16 @@ function przewin_opis_zdarzenia_nielosowego() {
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego++;
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[menedzer_gry.indeks_opisu_zdarzenia_nielosowego];
     if (menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1) {
-        zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
+            zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
 }
 
 function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
+    if (menedzer_gry.zdarzenie == bufet2) {
+        test_prezydenta();
+    }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
         for (let i of sala_przyciski) {
             pojawienie_ekranu(i);
@@ -175,6 +184,7 @@ const menedzer_gry = {
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
     suma_szans_zdarzen: 0,
+    czy_jest_prezydent: false,
     poczatek_tury: function () {
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -739,6 +749,7 @@ function rozpocznij_pytania() {
 }
 
 function pokaz_pytanie() {
+    console.log(menedzer_gry.pytania_kandydujace);
     let indeks_pytania = Math.floor(Math.random() * menedzer_gry.pytania_kandydujace.length);
     menedzer_gry.pytanie = menedzer_gry.pytania_kandydujace[indeks_pytania];
     menedzer_gry.pytania_kandydujace.splice(indeks_pytania, 1);
@@ -824,7 +835,8 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
     for (let i of odpowiedzi_przyciski) {
         i.style.display = 'block';
     }
-    menedzer_gry.poczatek_tury();
+    if(!menedzer_gry.czy_jest_prezydent)menedzer_gry.poczatek_tury();
+    else menedzer_gry.czy_jest_prezydent = false;
 }
 
 function przemieszaj_tablice(tablica) {
