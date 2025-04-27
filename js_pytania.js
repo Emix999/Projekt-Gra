@@ -8,6 +8,11 @@ class pytanie {
   }
 }
 
+const prezydent_pytania=[
+  new pytanie("Kto jest prezydentem Polski?", ["Andrzej Duda", "Donald Tusk", "Lech Wałęsa", "Jarosław Kaczyński"]),
+  new pytanie("Kto był pierwszym prezydentem Polski?", ["Gabriel Narutowicz", "Lech Wałęsa", "Aleksander Kwaśniewski", "Bronisław Komorowski"])
+]
+
 //pytania z angielskiego
 
 const rok1_angielski = [

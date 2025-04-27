@@ -1,6 +1,6 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 console.log("Java scrpit się wczytuje");
-const SAS = "Olek";
+let SAS = "Olek";
 /*
 gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
@@ -24,6 +24,27 @@ const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nie
 
 let szansa_zdarzenia_losowego = 1;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
+
+
+class zdarzenie {
+    constructor(nazwa, opis, szansa, funkcja_zdarzenia, runda_startowa = 0, runda_koncowa = -1) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.szansa = szansa;//szansa na wystąpienie zdarzenia
+        this.funkcja_zdarzenia = funkcja_zdarzenia;//funkcja wywołana po zdarzeniu
+        //Rok 1 trwa od rundy 0 do 9, rok 2 od 10 do 19 itd.
+        this.runda_startowa = runda_startowa;//runda w której zdarzenie się zaczyna
+        this.runda_koncowa = runda_koncowa;//runda w której zdarzenie się kończy runda_koncowa == -1 oznacza że zdarzenie trwa do końca gry
+    }
+}
+
+const losowe_zdarzenia = [
+    new zdarzenie('1', '1', 50, null, 0, 9),
+    new zdarzenie('2', '2', 50, null, 10, 19),
+    new zdarzenie('3', '3', 50, null, 20, 29),
+    new zdarzenie('4', '4', 50, null, 30, 39),
+    new zdarzenie('5', '5', 50, null, 40, 49)
+];
 class nielosowe_zdarzenie {
     constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana) {
         this.nazwa = nazwa;
@@ -34,32 +55,49 @@ class nielosowe_zdarzenie {
         this.funkcja = funkcja_wywołana;
     }
 }
+const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
+    'Nagle podczas lekcji słyszycie przez szkolne głośniki:',
+    '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności bufet Łącznik..."',
+    'ZAMYKA SIĘ NA ZAWSZE......   :(',
+    '...'
+], 13, false, false, null);
 
-class zdarzenie {
-    constructor(nazwa, opis, szansa, runda_startowa = 0, runda_koncowa = -1, funkcja_zdarzenia) {
-        this.nazwa = nazwa;
-        this.opis = opis;
-        this.szansa = szansa;//szansa na wystąpienie zdarzenia
-        //Rok 1 trwa od rundy 0 do 9, rok 2 od 10 do 19 itd.
-        this.runda_startowa = runda_startowa;//runda w której zdarzenie się zaczyna
-        this.runda_koncowa = runda_koncowa;//runda w której zdarzenie się kończy runda_koncowa == -1 oznacza że zdarzenie trwa do końca gry
-        this.funkcja_zdarzenia = funkcja_zdarzenia;//funkcja wywołana po zdarzeniu
-    }
+const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na korytarzu słyszycie plotki: <br> Słyszeliście dlaczego zamykają bufet? Podobno prezydent chce mieć jego wyśmienite jedzenie na wyłączność. <br><br> Tak nie może być!!! <br> Musimy coś z tym zrobić!', 13, true, false, null);
+
+const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
+    'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
+    'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudę. Eskortują go do Bufetu Łącznik.',
+    'Przez tłum ucznniów dostrzegacie, że prezydent Duda wchodzi do bufetu i zjada wyśmienity obiadek.',
+    'Pojawia się wiele robotników.',
+    'Wynoszą oni cały sprzęt bufetu, jedzenie, napoje, stoły, krzesła i pracowników.',
+    'Wszystko zostaje zamknięte w kontenerach i wywiezione.',
+    'Drzwi do bufetu zostają zamknięte na zawsze.',
+    'Prezydent przyglądający się wcześniej całej sytuacji, zaczyna bez słowa kierować się w stronę wyjścia.',
+    'Słychać krzyk: ',
+    'To nie może się tak skończyć!',
+    'Nie możemy stracić bufetu!',
+    'Uczniowie zaczynają skandować:',
+    'Niech żyje bufet Łącznik! Odzyskamy bufet Łącznik!',
+    'Prawie cała szkoła zbiera się przed prezydentem. Wasza grupa wychodzi na czoło.',
+    'Mówicie: Nie pozwolimy na zabranie naszego najsmaczniejszego we wszechświecie jedzenia! Prezydencie, musi pan pozwolić nam je zachować!',
+    'Prezydent Duda odpowiada: A co mi zrobicie jak nie?',
+    'Na co wy odpowiadacie: Nie wiemy, ale na pewno nie pozwolimy na zabranie bufetu!',
+    'Prezydent Duda mówi: Podziwiam waszą deteminację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
+    'Pytacie: Jeśli co?',
+    'Prezydent Duda mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
+], 14, false, false, () => test_prezydenta());
+
+function test_prezydenta() {
+    menedzer_gry.przedmiot_szkolny = prezydent;
+    menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania;
+    menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.length;
 }
-
-const losowe_zdarzenia = [
-    new zdarzenie('1', '1', 50, 0, 9),
-    new zdarzenie('2', '2', 50, 10, 19),
-    new zdarzenie('3', '3', 50, 20, 29),
-    new zdarzenie('4', '4', 50, 30, 39),
-    new zdarzenie('5', '5', 50, 40, 49),
-];
 
 const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 22, false, false, () => porwanie_czosnowskiego());
 const zdarzenie_testowe3 = new nielosowe_zdarzenie('ubruh', 'he j słyszeliście że pan vzosnek został porwany', null, true, true, null);
 const zdarzenie_testowe4 = new nielosowe_zdarzenie(null, ['Jesteście zmuszeni pójść uratować pana Czosnowskiego'], 25, false, true, () => pojdz_do_sali_017());
-const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4];
-const nielosowe_zdarzenia_schody = [zdarzenie_testowe3];
+const nielosowe_zdarzenia_nie_schody = [zdarzenie_testowe2, zdarzenie_testowe4, bufet1, bufet2];
+const nielosowe_zdarzenia_schody = [zdarzenie_testowe3, bufet1b];
 const zdarzenie_017 = new nielosowe_zdarzenie(null, ['demon krzyczy do was:', 'wypierdalać mi z tej sali', 'albo dostaniecie uwagi', 'po skibidi bitwie z demon', 'udaje wam się go wypędzić z jego własnego gwiazda', 'i udaje wam się uratować pana Czosnowskiego'], null, false, null, null);
 
 function pokaz_zdarzenie() {
@@ -215,7 +253,7 @@ const menedzer_gry = {
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda && !i.czy_przy_schodach && i.czy_czosnowski_porwany == this.czy_czosnowski_porwany) {
                             this.zdarzenie = i;
-                            i.funkcja();
+                            if (i.funkcja != null) i.funkcja();
                             pokaz_zdarzenie_nielosowe();
                             break;
                         }
@@ -306,7 +344,7 @@ const menedzer_gry = {
                     document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'gray';
 
                     if (i.zdane_lata != 5) {
-                        if (i.zdana_matematyka + i.zdany_polski_i_angielski >= 2 && i.zdane_ogolne >= 1 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
+                        if (i.zdana_matematyka + i.zdany_polski_i_angielski >= 2 && i.zdane_ogolne >= 2 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
                             document.getElementsByClassName('zdal')[j].value = 'ZDANE';
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
                             i.zdane_lata++;
@@ -971,6 +1009,9 @@ slider_muzyka2.oninput = function slider_muzyka_update2() {
         i.volume = slider_muzyka2.value / 100;
     }
 }
+while (SAS != 'Olek') {
+    alert('Olek to nie SAS');
+}
 
 slider_sfx2.oninput = function slider_sfx_update2() {
     glosnosc_sfx2.value = slider_sfx2.value;
@@ -1154,6 +1195,7 @@ const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
 ), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
+const prezydent = new przedmiot_szkolny('prezydent', new zestaw_pytan(prezydent_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
 const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
@@ -1192,7 +1234,7 @@ const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
 const przejdz_dalej_nowy_rok = document.getElementById('przejdz_dalej_ekran_roku');
 const zakoncz_dialog = document.getElementById('zakoncz_dialog');
 const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
-const dialogi_nielosowe = [dialog2];
+const dialogi_nielosowe = [dialog2, bufet1b];
 
 
 przejdz_dalej_nowy_rok.addEventListener('click', () => menedzer_gry.zniknij_ekran_konca_roku());
