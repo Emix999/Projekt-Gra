@@ -22,12 +22,7 @@ const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nie
 const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
 const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
 
-class zdarzenie {
-    constructor(nazwa, opis) {
-        this.nazwa = nazwa;
-        this.opis = opis;
-    }
-}
+let szansa_zdarzenia_losowego = 1;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
 class nielosowe_zdarzenie {
     constructor(nazwa, opis, runda, czy_przy_schodach, czy_czosnowski_porwany, funkcja_wywołana) {
@@ -40,10 +35,24 @@ class nielosowe_zdarzenie {
     }
 }
 
-const zdarzenie_testowe = new zdarzenie('Rozwiązany sprawdzian', 'Znalazłeś rozwiązany sprawdzian na podłodze. Możesz go wykorzystać, aby rozwiązać kartkówkę na 100%.');
+class zdarzenie {
+    constructor(nazwa, opis, szansa, runda_startowa = 0, runda_koncowa = -1, funkcja_zdarzenia) {
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.szansa = szansa;//szansa na wystąpienie zdarzenia
+        //Rok 1 trwa od rundy 0 do 9, rok 2 od 10 do 19 itd.
+        this.runda_startowa = runda_startowa;//runda w której zdarzenie się zaczyna
+        this.runda_koncowa = runda_koncowa;//runda w której zdarzenie się kończy runda_koncowa == -1 oznacza że zdarzenie trwa do końca gry
+        this.funkcja_zdarzenia = funkcja_zdarzenia;//funkcja wywołana po zdarzeniu
+    }
+}
+
 const losowe_zdarzenia = [
-    zdarzenie_testowe,
-    new zdarzenie('Atak skibidiczny', 'Skibidi toalety atakują szkołę.')
+    new zdarzenie('1', '1', 50, 0, 9),
+    new zdarzenie('2', '2', 50, 10, 19),
+    new zdarzenie('3', '3', 50, 20, 29),
+    new zdarzenie('4', '4', 50, 30, 39),
+    new zdarzenie('5', '5', 50, 40, 49),
 ];
 
 const zdarzenie_testowe2 = new nielosowe_zdarzenie(null, ['Jakiś uczeń do was podjeżdża brum brum', 'Mówi do was szybko i wolno, głośno i cicho następującą wypowiedź:', 'Skibidi toalety porawły pana Czosnowskiego!', 'Uciekajcie dopóki jeszcze nie zostaliście porwani!'], 22, false, false, () => porwanie_czosnowskiego());
@@ -131,12 +140,22 @@ const menedzer_gry = {
     czy_otwarto_017: false,
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
+    suma_szans_zdarzen: 0,
     poczatek_tury: function () {
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
         else {
+            this.suma_szans_zdarzen = 0;
+            for (let i of losowe_zdarzenia) {
+                if (this.runda >= i.runda_startowa && (this.runda <= i.runda_koncowa || i.runda_koncowa == -1)) {
+                    this.suma_szans_zdarzen += i.szansa;
+                }
+            }
+
+
+
             //czy wszyscy są na terapii
             this.czy_wszyscy_na_terapii = true;
             for (let i of this.aktywni_gracze) {
@@ -319,7 +338,7 @@ const menedzer_gry = {
             }
 
             //zdarzenia losowe
-            if (Math.floor(Math.random() * 2 /*daj se jakąś liczbę*/) == 0) {
+            if (Math.floor(Math.random() * szansa_zdarzenia_losowego) == 0) {
                 this.ilosc_losowych_zdarzen = 1;
             }
             else {
@@ -1208,7 +1227,17 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
         menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
     }
     else if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
-        menedzer_gry.zdarzenie = zdarzenia[Math.floor(Math.random() * zdarzenia.length)];
+        let losowa_liczba_zdarzenie = Math.floor(Math.random() * menedzer_gry.suma_szans_zdarzen);
+        let suma = 0;
+        for (let i of zdarzenia) {
+            if (menedzer_gry.runda >= i.runda_startowa && (menedzer_gry.runda <= i.runda_koncowa || i.runda_koncowa == -1)) {
+                suma += i.szansa;
+                if (suma > losowa_liczba_zdarzenie) {
+                    menedzer_gry.zdarzenie = i;
+                    break;
+                }
+            }
+        }
         pokaz_zdarzenie();
     }
 }
