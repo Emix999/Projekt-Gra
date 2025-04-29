@@ -155,7 +155,6 @@ function zniknij_zdarzenie_nielosowe() {
         }
         znikniecie_ekranu(document.getElementById('017'));
         menedzer_gry.czy_otwarto_017 = false;
-        menedzer_gry.poczatek_tury();
     }
 }
 
@@ -284,9 +283,9 @@ const menedzer_gry = {
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for (let i of dialogi_nielosowe) {
-                            this.dialog_nielosowy = i;
-                            this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
-                            break;
+                        this.dialog_nielosowy = i;
+                        this.indeks_gracza_ktory_dostaje_dialog_nielosowy = Math.floor(Math.random() * this.aktywni_gracze.length);
+                        break;
                     }
                     if (this.czy_otwarto_017) {
                         this.runda_017();
@@ -437,7 +436,6 @@ const menedzer_gry = {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
     },
     runda_017: function () {
-        this.runda--;
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
         for (let i of sala_przyciski) {
@@ -847,7 +845,7 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
     for (let i of odpowiedzi_przyciski) {
         i.style.display = 'block';
     }
-    if(!menedzer_gry.czy_jest_prezydent)menedzer_gry.poczatek_tury();
+    if(!menedzer_gry.czy_jest_prezydent) menedzer_gry.poczatek_tury();
     else menedzer_gry.czy_jest_prezydent = false;
 }
 
