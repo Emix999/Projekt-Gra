@@ -1383,6 +1383,42 @@ function wejdz_do_sali_017() {
 
 document.getElementById('017').addEventListener('click', () => wejdz_do_sali_017());
 
+const jak_grac = document.getElementById('jak_grac');
+const ekran_jak_grac = document.getElementById('ekran_jak_grac');
+const opis_jak_grac = document.getElementById('opis_jak_grac');
+const przejdz_dalej_jak_grac = document.getElementById('przejdz_dalej_jak_grac')
+const wylacz_jak_grac = document.getElementById('wylacz_jak_grac');
+const tresc_jak_grac = ["url('grafiki/przedmioty/Chipsy_Gays.png')", "url('grafiki/przedmioty/Likekonik.png')", "url('grafiki/przedmioty/predkosc.png')"];
+let indeks_tresci;
+
+function otworz_jak_grac(){
+    zmiana_ekranu(ekran_startowy, ekran_jak_grac);
+    ekran_jak_grac.style.backgroundImage = tresc_jak_grac[0];
+    indeks_tresci = 0;
+}
+
+function przewin_jak_grac(){
+    indeks_tresci++;
+    ekran_jak_grac.style.backgroundImage = tresc_jak_grac[indeks_tresci];
+    if(indeks_tresci >= tresc_jak_grac.length - 1){
+        zmiana_ekranu(przejdz_dalej_jak_grac, wylacz_jak_grac);
+    }
+}
+
+function zamknij_jak_grac(){
+    zmiana_ekranu(wylacz_jak_grac, przejdz_dalej_jak_grac);
+    zmiana_ekranu(ekran_jak_grac, ekran_startowy);
+}
+
+jak_grac.addEventListener('click', () => otworz_jak_grac());
+przejdz_dalej_jak_grac.addEventListener('click', () => przewin_jak_grac());
+wylacz_jak_grac.addEventListener('click', () => zamknij_jak_grac());
+
+
+
+
+
+
 
 
 

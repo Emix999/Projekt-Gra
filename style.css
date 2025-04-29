@@ -51,6 +51,30 @@ body {
     animation-play-state: paused;
 }
 
+#ekran_jak_grac{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#przejdz_dalej_jak_grac{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+}
+
+#wylacz_jak_grac{
+    height: 10vh;
+    width: 80%;
+    background-color: greenyellow;
+    display: none;
+}
+
 .flex_pion {
     display: flex;
     flex-direction: column;
@@ -80,6 +104,16 @@ body {
     position: fixed;
     border: none;
     margin-bottom: 49vmin;
+}
+
+#jak_grac{
+    width: 30vmin;
+    height: 10vmin;
+    background-image: url('grafiki/menu_grafiki/start.png');
+    background-size: cover;
+    position: fixed;
+    border: none;
+    margin-bottom: 20vmin;
 }
 
 .ustawienia {
