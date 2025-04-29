@@ -280,6 +280,7 @@ const menedzer_gry = {
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
+                        }
                     }
                     this.indeks_gracza_ktory_dostaje_dialog_nielosowy = null;
                     for (let i of dialogi_nielosowe) {
