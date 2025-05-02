@@ -1619,10 +1619,7 @@ document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_
 
 
 function uzyj_przedmiotu() {
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
-    znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
-    aktualizacja_menu_bocznego();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].funkcja();
 }
 
 //Nie dotykać bo działa i nie wiemy dlaczego działa
