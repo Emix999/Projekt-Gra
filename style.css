@@ -788,7 +788,7 @@ body {
     border: none;
 }/* jakby ktoś się zastanawiał dlaczego przejdz dalej i przejdz dalej zdażenie nie są razem, to dlatego że jeden musi mieć display none, a drógi nie może (a w htmlu nie chciało mi się zmieniać (ale pewnie kiedyś to zrobę w ramach optymalizacji jak nie zapomnę))*/
 
-#zakoncz_ture{
+#zakoncz_ture, #przejdz_dalej_pytanie{
     background-color: #5E5E5E;
     background-size: contain;
     background-repeat: no-repeat;
