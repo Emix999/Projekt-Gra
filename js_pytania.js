@@ -9,8 +9,11 @@ class pytanie {
 }
 
 const prezydent_pytania=[
-  new pytanie("Kto jest prezydentem Polski?", ["Andrzej Duda", "Donald Tusk", "Lech Wałęsa", "Jarosław Kaczyński"]),
-  new pytanie("Kto był pierwszym prezydentem Polski?", ["Gabriel Narutowicz", "Lech Wałęsa", "Aleksander Kwaśniewski", "Bronisław Komorowski"])
+new pytanie("W którym roku Polska odzyskała niepodległość?", ["1918", "1939", "1791", "1989"]),
+new pytanie("Ile województw ma Polska?", ["16", "12", "18", "20"]),
+new pytanie("Jak nazywa się obecna konstytucja Rzeczypospolitej Polskiej?", ["Konstytucja z 1997 roku", "Kodeks Rzeczpospolitej", "Ustawa Zasadnicza", "Konstytucja Trzeciej RP"]),
+new pytanie("Jak brzmi pierwsze zdanie preambuły Konstytucji RP?", ["W trosce o byt i przyszłość naszej Ojczyzny...", "My, Naród Polski...", "Rzeczpospolita Polska jest dobrem wspólnym...", "Polska jest państwem prawa..."]),
+new pytanie("Jakie jest najwyższe odznaczenie państwowe w Polsce?", ["Order Orła Białego", "Krzyż Zasługi", "Medal Niepodległości", "Krzyż Walecznych"])
 ]
 
 //pytania z angielskiego

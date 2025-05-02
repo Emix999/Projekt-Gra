@@ -94,7 +94,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
     'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
-    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
+    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent i dodać do funkcji dodajacej go do wekwipunku w lini 215 zniknij_zdarzenie_nielosowe()
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
@@ -138,6 +138,7 @@ function koniec_sceny_prezydenta(){
     if(menedzer_gry.czy_quiz_prezydenta_zdany) menedzer_gry.zdarzenie = bufet3_zdany;
     else menedzer_gry.zdarzenie = bufet3_niezdany;
     pokaz_zdarzenie_nielosowe();
+    
 }
 
 const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
@@ -208,6 +209,11 @@ function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
     if (menedzer_gry.zdarzenie == bufet2) {
         test_prezydenta();
+    }
+    if (menedzer_gry.zdarzenie == bufet3_zdany|| menedzer_gry.zdarzenie == bufet3_niezdany) {
+        for(let i of menedzer_gry.aktywni_gracze){
+            dodawnie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak,i);
+        }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
         for (let i of sala_przyciski) {
@@ -1390,6 +1396,17 @@ const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
 //let losowa_liczba_losowa = 0;
 
+function dodawnie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+    if(gracz_obdarowany.ekwipunek.length <=8) {
+        gracz_obdarowany.ekwipunek.push(przedmiot);
+        zaktualizuj_ekwipunek();
+        aktualizacja_menu_bocznego();
+    }
+    else{
+        alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
+    }
+}
+
 const sklep = {
     arsenal: [
         new przedmiot('Obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 35 sanity', 'grafiki/przedmioty/ziemniak.png', 35, 24),
@@ -1406,10 +1423,8 @@ const sklep = {
     kup: function (id_produktu) {
         if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena) {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
-            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.push(this.arsenal[id_produktu]);
-            zaktualizuj_ekwipunek();
-            aktualizacja_menu_bocznego();
             alert('pomyślnie kupiono produkt');
+            dodawnie_przedmiotu_do_ekwipunku(this.arsenal[id_produktu]);
         }
         else {
             alert('złodzieju, nie złodziejuj');
