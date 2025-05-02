@@ -804,6 +804,7 @@ const ilosc_poprawnych_odpowiedzi = document.getElementById("ilosc_poprawnych_od
 const ocena = document.getElementById("ocena");
 const zmiana_sanity = document.getElementById("zmiana_sanity");
 const zakoncz_ture = document.getElementById('zakoncz_ture');
+const przejdz_dalej_pytanie = document.getElementById('przejdz_dalej_pytanie');
 
 function rozpocznij_pytania() {
     zmiana_ekranu(ekran_dialogu, ekran_pytania);
@@ -854,10 +855,27 @@ function kolejne_pytanie(i) {
 let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
 
 function koniec_pytan() {
-    tresc.style.display = 'none';
-    for (let i of odpowiedzi_przyciski) {
-        i.style.display = 'none';
+    if(menedzer_gry.ilosc_pytan == 1){
+        for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
+            if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+                odpowiedzi_przyciski[i].style.color = "lightGreen";
+            }
+            else {
+                odpowiedzi_przyciski[i].style.color = "red";
+            }
+        }
+        przejdz_dalej_pytanie.style.display = 'block';
     }
+    else{
+        tresc.style.display = 'none';
+        for (let i of odpowiedzi_przyciski) {
+            i.style.display = 'none';
+        }
+        wyswietl_ekran_nagrody();
+    }    
+}
+
+function wyswietl_ekran_nagrody(){
     ekran_nagrody.style.visibility = "visible";
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
@@ -892,6 +910,7 @@ function koniec_pytan() {
     zaktualizuj_sanity();
     zmiana_sanity.value = (zmiana_sanity.value >= 0 ? '+' : '') + zmiana_sanity.value;
     zakoncz_ture.style.display = 'block';
+    przejdz_dalej_pytanie.style.display = 'none';
 }
 
 function odwroc_pokaz_pytanie() {//ukrywa pytanie
@@ -901,6 +920,7 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
     tresc.style.display = 'block';
     for (let i of odpowiedzi_przyciski) {
         i.style.display = 'block';
+        i.style.color = "white";
     }
     if(!menedzer_gry.czy_jest_prezydent) menedzer_gry.poczatek_tury();
     else koniec_sceny_prezydenta();
@@ -917,6 +937,7 @@ for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
     odpowiedzi_przyciski[i].addEventListener("click", () => kolejne_pytanie(i));
 }
 zakoncz_ture.addEventListener("click", () => odwroc_pokaz_pytanie());
+przejdz_dalej_pytanie.addEventListener('click', () => wyswietl_ekran_nagrody())
 
 //setTimeout(() => pokaz_pytanie(pytanie_testowe, ekran_gry, ekran_pytania), 3000);
 
@@ -1151,7 +1172,7 @@ class sala {
 
     pokaz_sale_naprawde(pytania, rok) {
         menedzer_gry.przedmiot_szkolny = this.przedmiot;
-        menedzer_gry.pytania_kandydujace = pytania[rok];
+        menedzer_gry.pytania_kandydujace = pytania[rok].slice(0);
         menedzer_gry.ilosc_pytan = (!menedzer_gry.runda_egzamin ? 1 : (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 3 ? 5 : 7));
         pokaz_dialog();
     }
@@ -1295,8 +1316,7 @@ const tekst_dialogu = document.getElementById('tekst_dialogu');
 const przejdz_dalej_dialog = document.getElementById('przejdz_dalej_dialog');
 const przejdz_dalej_nowy_rok = document.getElementById('przejdz_dalej_ekran_roku');
 const zakoncz_dialog = document.getElementById('zakoncz_dialog');
-const dialog2 = new dialog_nielosowy('hej, słyszeliście że Pan Czosnowksi został porawany przez skibidi toalety?', true);
-const dialogi_nielosowe = [dialog2];
+const dialogi_nielosowe = [];
 
 
 przejdz_dalej_nowy_rok.addEventListener('click', () => menedzer_gry.zniknij_ekran_konca_roku());
