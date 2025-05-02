@@ -594,12 +594,13 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, sanity, cena = 0) {
+    constructor(nazwa, opis, id_obrazu, sanity, cena = 0, funkcja_wywołana = () => zmien_sanity()) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
         this.sanity = sanity;
         this.cena = cena;
+        this.funkcja = funkcja_wywołana;
     }
 }
 
@@ -610,6 +611,7 @@ class klasa {
 }
 
 const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'grafiki/przedmioty/ziemniak.png', 20);
+const rozwiazany_sprawdzian = new przedmiot('Rozwiązany sprawdzian', 'Możesz zagamblować o to, czy uda ci się ściągnać odpowiedzi, czy zostaniesz przyłapany na gorącym uczynku', 'grafiki/przedmioty/ziemniak.png', 0, 0, () => sciagaj());
 
 const klasa_a = new klasa('automatyk');
 const klasa_e = new klasa('elektronik');
@@ -621,7 +623,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [rozwiazany_sprawdzian]);
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
@@ -844,6 +846,17 @@ function pokaz_pytanie() {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
+    if(odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red'){
+        for (let i of odpowiedzi_przyciski) {
+            if (i.dataset.czy_poprawna == 'true') {
+                i.style.color = "lightgreen";
+            }
+            else {
+                i.style.color = "red";
+            }
+        }
+    }
+
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
@@ -874,7 +887,7 @@ function koniec_pytan() {
     if(menedzer_gry.ilosc_pytan == 1){
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.color = "lightGreen";
+                odpowiedzi_przyciski[i].style.color = "lightgreen";
             }
             else {
                 odpowiedzi_przyciski[i].style.color = "red";
@@ -1509,6 +1522,53 @@ function zamknij_jak_grac(){
 jak_grac.addEventListener('click', () => otworz_jak_grac());
 przejdz_dalej_jak_grac.addEventListener('click', () => przewin_jak_grac());
 wylacz_jak_grac.addEventListener('click', () => zamknij_jak_grac());
+
+function usun_przedmiot(){
+    znikniecie_szczegolow_przedmiotu();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
+    aktualizacja_menu_bocznego();
+}
+
+function zmien_sanity(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
+    usun_przedmiot();
+}
+
+function sciagaj(){
+    if(ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '')){
+        for (let i of odpowiedzi_przyciski) {
+            if(i.dataset.czy_poprawna == 'true'){
+                i.style.color = 'lightgreen';
+            }
+            else{
+                i.style.color = 'red';
+            }
+        }
+        znikniecie_szczegolow_przedmiotu();
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
+        aktualizacja_menu_bocznego();
+    }
+    else{
+        alert("nie możesz teraz użyć tego przedmiotu");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
