@@ -87,13 +87,16 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
 ], 14, false, false, null);
 
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
+    'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',
+    'W końcu po kilku wyczerpujących minutach myślenia, oddajecie test prezydentowi.',
+    'Prezdent przypatruje się waszym odpowiedziom z zdziwieniem.',
     'Prezydent Dudu mówi: Gratulacje, udało się wam zdać test!',
-    'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i instagramy, ale ma też coś w głowie.',
+    'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
-    'Prezydent Dudu mówi: Dozobaczenia w bufecie Łącznik!',
+    'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, false, null);
 
@@ -102,12 +105,19 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Jego twarz wyraża zdziwienie, zmieszanie i politowanie.',
     'Prezydent Dudu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, szczególnie po usłyszeniu tej reakcji jesteście jeszcze bardziej zestresowani.',
-    'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i instagramy, ale ma też coś w głowie.',
+    'Na wasze szczęście stojący nieopodal nerd postanawia się odezwać:',
+    'Mówi on: Actually, ja znam poprawną odpowiedź na pierwsze pytanie.',
+    'Na drugie w sumie to też...',
+    'Znam odpowiedź na wszystkie pytania! Dajcie mi to.',
+    'Nerd wyrywa wam z rąk test i zaczyna go rozwiązywać.',
+    'Po chwili oddaje go prezydentowi i mówi: w przeciwieństwie do tych nieuków ja wiem co nie co o Polsce.',
+    'Prezydent Dudu mówi: Dobrze wiedzieć że nie cała dzisiejsza młodzież jest wpatrzona w te tiktaki i instagramy, ale chociaż jej część ma też coś w głowie.',
+    'Prezydent Dudu mówi: Mimo problemów udało wam się zdać z pomocą kolegi nerda!',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
-    'Prezydent Dudu mówi: Dozobaczenia w bufecie Łącznik!',
+    'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, false, null);
 
