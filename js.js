@@ -594,12 +594,13 @@ class gracz {//gracz i wszystkie jego parametry
 }
 
 class przedmiot {
-    constructor(nazwa, opis, id_obrazu, sanity, cena = 0) {
+    constructor(nazwa, opis, id_obrazu, sanity, cena = 0, funkcja_wywołana = () => zmien_sanity()) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.id_obrazu = id_obrazu;
         this.sanity = sanity;
         this.cena = cena;
+        this.funkcja = funkcja_wywołana;
     }
 }
 
@@ -610,6 +611,7 @@ class klasa {
 }
 
 const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'grafiki/przedmioty/ziemniak.png', 20);
+const rozwiazany_sprawdzian = new przedmiot('Rozwiązany sprawdzian', 'Możesz zagamblować o to, czy uda ci się ściągnać odpowiedzi, czy zostaniesz przyłapany na gorącym uczynku', 'grafiki/przedmioty/ziemniak.png', 0, 0, () => sciagaj());
 
 const klasa_a = new klasa('automatyk');
 const klasa_e = new klasa('elektronik');
@@ -621,7 +623,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [rozwiazany_sprawdzian]);
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
@@ -844,6 +846,17 @@ function pokaz_pytanie() {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
+    if(odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red'){
+        for (let i of odpowiedzi_przyciski) {
+            if (i.dataset.czy_poprawna == 'true') {
+                i.style.color = "lightgreen";
+            }
+            else {
+                i.style.color = "red";
+            }
+        }
+    }
+
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
@@ -874,7 +887,7 @@ function koniec_pytan() {
     if(menedzer_gry.ilosc_pytan == 1){
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-                odpowiedzi_przyciski[i].style.color = "lightGreen";
+                odpowiedzi_przyciski[i].style.color = "lightgreen";
             }
             else {
                 odpowiedzi_przyciski[i].style.color = "red";
@@ -1211,12 +1224,6 @@ class zestaw_pytan_egzamin {
     }
 }
 
-class dialog {
-    constructor(opis) {
-        this.opis = opis;
-    }
-}
-
 class dialog_nielosowy {
     constructor(opis) {
         this.opis = opis;
@@ -1227,73 +1234,73 @@ const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
     rok1_programista, rok2_programista, rok3_programista, rok4_programista, rok5_programista
 ), new zestaw_pytan_egzamin(
     egzamin_programista, null
-), [new dialog(['dialog przykładowy z Telickiego'])]);
+), [new dialog('dialog przykładowy z Telickiego')]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
     rok1_elektronik, rok2_elektronik, rok3_elektronik, rok4_elektronik, rok5_elektronik
 ), new zestaw_pytan_egzamin(
     egzamin_elektronik, null
-), [new dialog(['dialog przykładowy z elele'])]);
+), [new dialog('dialog przykładowy z elele')]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
 ), new zestaw_pytan_egzamin(
     egzamin_automatyk, null
-), [new dialog(['dialog przykładowy z aut'])]);
+), [new dialog('dialog przykładowy z aut')]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
     rok1_fotograf, rok2_fotograf, rok3_fotograf, rok4_fotograf, rok5_fotograf
 ), new zestaw_pytan_egzamin(
     egzamin_fotograf, null
-), [new dialog(['dialog przykładowy z aparatu'])]);
+), [new dialog('dialog przykładowy z aparatu')]);
 const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
     rok1_teleinformatyk, rok2_teleinformatyk, rok3_teleinformatyk, rok4_teleinformatyk, rok5_teleinformatyk
 ), new zestaw_pytan_egzamin(
     egzamin_teleinformatyk, null
-), [new dialog(['dialog przykładowy z sieci'])]);
+), [new dialog('dialog przykładowy z sieci')]);
 const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
     rok1_informatyk, rok2_informatyk, rok3_informatyk, rok4_informatyk, rok5_informatyk
 ), new zestaw_pytan_egzamin(
     egzamin_informatyk, null
-), [new dialog(['dialog przykładowy z komputrów'])]);
+), [new dialog('dialog przykładowy z komputrów')]);
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
     rok1_robotyk, rok2_robotyk, rok3_robotyk, rok4_robotyk, rok5_robotyk
 ), new zestaw_pytan_egzamin(
     egzamin_robotyk, null
-), [new dialog(['dialog przykładowy z robotów'])]);
+), [new dialog('dialog przykładowy z robotów')]);
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
 ), new zestaw_pytan_egzamin(
     null, egzamin_matematyka
-), [new dialog(['dialog przykładowy z logarutmów'])]);
+), dialogi_matematyka);
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z geji'])]);
+), new zestaw_pytan_egzamin(), dialogi_geografia);
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z biologii'])]);
+), new zestaw_pytan_egzamin(), dialogi_biologia);
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
 ), new zestaw_pytan_egzamin(
     null, egzamin_polski
-), [new dialog(['dialog przykładowy z piekła'])]);
+), dialogi_polski);
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z infoinfo'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z infoinfo')]);
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     rok1_historia, rok2_historia, rok3_historia, rok4_historia, rok5_historia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z histeriri'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z histeriri')]);
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
 ), new zestaw_pytan_egzamin(
     null, egzamin_angielski
-), [new dialog(['dialog przykładowy z anglika'])]);
+), [new dialog('dialog przykładowy z anglika')]);
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
     rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z nazistów'])]);
+), new zestaw_pytan_egzamin(), dialogi_niemiecki);
 const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z bomb'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z bomb')]);
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
+), new zestaw_pytan_egzamin(), dialogi_fizyka);
 const prezydent = new przedmiot_szkolny('prezydent', new zestaw_pytan(prezydent_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
@@ -1516,6 +1523,53 @@ jak_grac.addEventListener('click', () => otworz_jak_grac());
 przejdz_dalej_jak_grac.addEventListener('click', () => przewin_jak_grac());
 wylacz_jak_grac.addEventListener('click', () => zamknij_jak_grac());
 
+function usun_przedmiot(){
+    znikniecie_szczegolow_przedmiotu();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
+    aktualizacja_menu_bocznego();
+}
+
+function zmien_sanity(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
+    usun_przedmiot();
+}
+
+function sciagaj(){
+    if(ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '')){
+        for (let i of odpowiedzi_przyciski) {
+            if(i.dataset.czy_poprawna == 'true'){
+                i.style.color = 'lightgreen';
+            }
+            else{
+                i.style.color = 'red';
+            }
+        }
+        znikniecie_szczegolow_przedmiotu();
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
+        aktualizacja_menu_bocznego();
+    }
+    else{
+        alert("nie możesz teraz użyć tego przedmiotu");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1565,10 +1619,7 @@ document.getElementById("uzyj_przedmiotu").addEventListener("click", () => uzyj_
 
 
 function uzyj_przedmiotu() {
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
-    znikniecie_szczegolow_przedmiotu();
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
-    aktualizacja_menu_bocznego();
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].funkcja();
 }
 
 //Nie dotykać bo działa i nie wiemy dlaczego działa
@@ -1582,9 +1633,9 @@ function aktualizacja_menu_bocznego() {
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
     obecny_rok.value = menedzer_gry.rok_gry;
 
-    zdane_ogolne.value = gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
-    zdane_zawodowe.value = gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
-    zdane_maturalne.value = gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski + i.zdana_matematyka;
+    zdane_ogolne.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
+    zdane_zawodowe.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
+    zdane_maturalne.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski + menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdana_matematyka;
 
     for (let i = 0; i < ekwipunek.length; i++) {
         if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i) {
