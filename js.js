@@ -106,11 +106,40 @@ function test_prezydenta() {
     pokaz_pytanie();
 }
 
-const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej, na wstępie mam do was pytanie"', '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"', '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"', '"Otóż widzicie...Pan Czosnowski zaginął"', '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"', '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"', '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"', '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'], 25, false, () => pojdz_do_sali_017());
-const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej to wy!"', '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"', '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 70% tej szkoły"', '"Zła wiadomość - Jestem jednym z 30%..."', '- Pan Czosnowski z tyłu: "NIECH CIĘ RĘKA BOSKA BRONI, MATKO ŚWIĘTA COŚ TY MI TU POWYPISYWAŁ..."', '"No to chyba tu nasze drogi się rozchodzą...przyszła pora bym stał się pierwszym prawdziwym członkiem drużyny sierpienia"', '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."', '"To udzielę wam potrzebnych informacji"', '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'], 26, false, null);
+const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
+    '- Jakiś random: "Hej, na wstępie mam do was pytanie"',
+    '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"',
+    '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"',
+    '"Otóż widzicie...Pan Czosnowski zaginął"',
+    '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"',
+    '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"',
+    '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"',
+    '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'
+], 25, false, () => pojdz_do_sali_017());
+const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
+    '- Jakiś random: "Hej to wy!"',
+    '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
+    '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 70% tej szkoły"',
+    '"Zła wiadomość - Jestem jednym z 30%..."',
+    '- Pan Czosnowski z tyłu: "NIECH CIĘ RĘKA BOSKA BRONI, MATKO ŚWIĘTA COŚ TY MI TU POWYPISYWAŁ..."',
+    '"No to chyba tu nasze drogi się rozchodzą...przyszła pora bym stał się pierwszym prawdziwym członkiem drużyny sierpienia"',
+    '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."',
+    '"To udzielę wam potrzebnych informacji"',
+    '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'
+], 26, false, null);
 const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2];
 const nielosowe_zdarzenia_schody = [bufet1b];
-const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, ['- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"', '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"', '"ZARAZ WSZYSTKIM SPÓŹNIENIA POWPISUJE"', '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"', '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."', '"...I TO JA JESTEM PORYWANY"', '"DO JASNEJ CHOLERY"', '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"', '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'], null, false, null);
+const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
+    '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
+    '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"',
+    '"ZARAZ WSZYSTKIM SPÓŹNIENIA POWPISUJE"',
+    '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"',
+    '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."',
+    '"...I TO JA JESTEM PORYWANY"',
+    '"DO JASNEJ CHOLERY"',
+    '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
+    '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
+], null, false, null);
 
 function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
