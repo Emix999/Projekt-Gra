@@ -1211,12 +1211,6 @@ class zestaw_pytan_egzamin {
     }
 }
 
-class dialog {
-    constructor(opis) {
-        this.opis = opis;
-    }
-}
-
 class dialog_nielosowy {
     constructor(opis) {
         this.opis = opis;
@@ -1227,73 +1221,73 @@ const programista = new przedmiot_szkolny('programista', new zestaw_pytan(
     rok1_programista, rok2_programista, rok3_programista, rok4_programista, rok5_programista
 ), new zestaw_pytan_egzamin(
     egzamin_programista, null
-), [new dialog(['dialog przykładowy z Telickiego'])]);
+), [new dialog('dialog przykładowy z Telickiego')]);
 const elektronik = new przedmiot_szkolny('elektronik', new zestaw_pytan(
     rok1_elektronik, rok2_elektronik, rok3_elektronik, rok4_elektronik, rok5_elektronik
 ), new zestaw_pytan_egzamin(
     egzamin_elektronik, null
-), [new dialog(['dialog przykładowy z elele'])]);
+), [new dialog('dialog przykładowy z elele')]);
 const automatyk = new przedmiot_szkolny('automatyk', new zestaw_pytan(
     rok1_automatyk, rok2_automatyk, rok3_automatyk, rok4_automatyk, rok5_automatyk
 ), new zestaw_pytan_egzamin(
     egzamin_automatyk, null
-), [new dialog(['dialog przykładowy z aut'])]);
+), [new dialog('dialog przykładowy z aut')]);
 const fotograf = new przedmiot_szkolny('fotograf', new zestaw_pytan(
     rok1_fotograf, rok2_fotograf, rok3_fotograf, rok4_fotograf, rok5_fotograf
 ), new zestaw_pytan_egzamin(
     egzamin_fotograf, null
-), [new dialog(['dialog przykładowy z aparatu'])]);
+), [new dialog('dialog przykładowy z aparatu')]);
 const teleinformatyk = new przedmiot_szkolny('teleinformatyk', new zestaw_pytan(
     rok1_teleinformatyk, rok2_teleinformatyk, rok3_teleinformatyk, rok4_teleinformatyk, rok5_teleinformatyk
 ), new zestaw_pytan_egzamin(
     egzamin_teleinformatyk, null
-), [new dialog(['dialog przykładowy z sieci'])]);
+), [new dialog('dialog przykładowy z sieci')]);
 const informatyk = new przedmiot_szkolny('informatyk', new zestaw_pytan(
     rok1_informatyk, rok2_informatyk, rok3_informatyk, rok4_informatyk, rok5_informatyk
 ), new zestaw_pytan_egzamin(
     egzamin_informatyk, null
-), [new dialog(['dialog przykładowy z komputrów'])]);
+), [new dialog('dialog przykładowy z komputrów')]);
 const robotyk = new przedmiot_szkolny('robotyk', new zestaw_pytan(
     rok1_robotyk, rok2_robotyk, rok3_robotyk, rok4_robotyk, rok5_robotyk
 ), new zestaw_pytan_egzamin(
     egzamin_robotyk, null
-), [new dialog(['dialog przykładowy z robotów'])]);
+), [new dialog('dialog przykładowy z robotów')]);
 const matematyka = new przedmiot_szkolny('matematyka', new zestaw_pytan(
     rok1_matematyka, rok2_matematyka, rok3_matematyka, rok4_matematyka, rok5_matematyka
 ), new zestaw_pytan_egzamin(
     null, egzamin_matematyka
-), [new dialog(['dialog przykładowy z logarutmów'])]);
+), dialogi_matematyka);
 const geografia = new przedmiot_szkolny('geografia', new zestaw_pytan(
     rok1_geografia, rok2_geografia, rok3_geografia, rok4_geografia, rok5_geografia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z geji'])]);
+), new zestaw_pytan_egzamin(), dialogi_geografia);
 const biologia = new przedmiot_szkolny('biologia', new zestaw_pytan(
     rok1_biologia, rok2_biologia, rok3_biologia, rok4_biologia, rok5_biologia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z biologii'])]);
+), new zestaw_pytan_egzamin(), dialogi_biologia);
 const polski = new przedmiot_szkolny('polski', new zestaw_pytan(
     rok1_polski, rok2_polski, rok3_polski, rok4_polski, rok5_polski
 ), new zestaw_pytan_egzamin(
     null, egzamin_polski
-), [new dialog(['dialog przykładowy z piekła'])]);
+), dialogi_polski);
 const informatyka = new przedmiot_szkolny('informatyka', new zestaw_pytan(
     rok1_informatyka, rok2_informatyka, rok3_informatyka, rok4_informatyka, rok5_informatyka
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z infoinfo'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z infoinfo')]);
 const historia = new przedmiot_szkolny('historia', new zestaw_pytan(
     rok1_historia, rok2_historia, rok3_historia, rok4_historia, rok5_historia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z histeriri'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z histeriri')]);
 const angielski = new przedmiot_szkolny('angielski', new zestaw_pytan(
     rok1_angielski, rok2_angielski, rok3_angielski, rok4_angielski, rok5_angielski
 ), new zestaw_pytan_egzamin(
     null, egzamin_angielski
-), [new dialog(['dialog przykładowy z anglika'])]);
+), [new dialog('dialog przykładowy z anglika')]);
 const niemiecki = new przedmiot_szkolny('niemiecki', new zestaw_pytan(
     rok1_niemiecki, rok2_niemiecki, rok3_niemiecki, rok4_niemiecki, rok5_niemiecki
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z nazistów'])]);
+), new zestaw_pytan_egzamin(), dialogi_niemiecki);
 const chemia = new przedmiot_szkolny('chemia', new zestaw_pytan(
     rok1_chemia, rok2_chemia, rok3_chemia, rok4_chemia, rok5_chemia
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z bomb'])]);
+), new zestaw_pytan_egzamin(), [new dialog('dialog przykładowy z bomb')]);
 const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
-), new zestaw_pytan_egzamin(), [new dialog(['dialog przykładowy z fizyki'])]);
+), new zestaw_pytan_egzamin(), dialogi_fizyka);
 const prezydent = new przedmiot_szkolny('prezydent', new zestaw_pytan(prezydent_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
@@ -1582,9 +1576,9 @@ function aktualizacja_menu_bocznego() {
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
     obecny_rok.value = menedzer_gry.rok_gry;
 
-    zdane_ogolne.value = gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
-    zdane_zawodowe.value = gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
-    zdane_maturalne.value = gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski + i.zdana_matematyka;
+    zdane_ogolne.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
+    zdane_zawodowe.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
+    zdane_maturalne.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski + menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdana_matematyka;
 
     for (let i = 0; i < ekwipunek.length; i++) {
         if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length > i) {

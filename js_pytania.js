@@ -345,7 +345,7 @@ const rok1_matematyka = [
   new pytanie("Wartość wyrażenia | -5 | to:", ["5", "-5", "0", "1"]),
   new pytanie("Kąt prosty ma:", ["90°", "45°", "60°", "120°"]),
   new pytanie("Liczba przeciwna do -7 to:", ["7", "-7", "0", "-1"]),
-  new pytanie("Dziedziną funkcji f(x) = 1/x jest:", ["R \ {0}", "R", "Z", "{0}"]),
+  new pytanie("Dziedziną funkcji f(x) = 1/x jest:", ["R &#92; {0}", "R", "Z", "{0}"]),
   new pytanie("Wynik pierwiastka √100 to:", ["10", "5", "15", "20"]),
   new pytanie("Funkcja liniowa ma wzór:", ["f(x) = ax + b", "f(x) = ax² + bx + c", "f(x) = √x", "f(x) = 1/x"]),
   new pytanie("Współczynnik kierunkowy prostej równoległej do y = 3x + 5 to:", ["3", "5", "-3", "0"]),
@@ -359,7 +359,7 @@ const rok2_matematyka = [
   new pytanie("cos 0° to:", ["1", "0", "1/2", "-1"]),
   new pytanie("Przekształcenie wykresu y = f(x) + 2 to:", ["przesunięcie o 2 jednostki w górę", "przesunięcie o 2 jednostki w lewo", "przesunięcie o 2 jednostki w prawo", "przesunięcie o 2 jednostki w dół"]),
   new pytanie("Rozwiązaniem równania x² = 9 jest:", ["x = ±3", "x = 3", "x = 9", "x = ±1"]),
-  new pytanie("Dziedzina funkcji pierwiastkowej √(x-1):", ["x ≥ 1", "x > 1", "x < 1", "x ∈ R"]),
+  new pytanie("Dziedzina funkcji pierwiastkowej √(x-1):", ["x ≥ 1", "x &gt; 1", "x &lt; 1", "x ∈ R"]),
   new pytanie("Miejsca zerowe funkcji kwadratowej to miejsca:", ["przecięcia wykresu z osią OX", "przecięcia wykresu z osią OY", "wierzchołka paraboli", "największej wartości funkcji"]),
   new pytanie("Wzór funkcji kwadratowej w postaci kanonicznej:", ["f(x) = a(x - p)² + q", "f(x) = ax² + bx + c", "f(x) = a(x + p)(x - q)", "f(x) = ax + b"]),
   new pytanie("Kąt między promieniami okręgu wynosi π/2. Odpowiada mu:", ["90°", "180°", "45°", "60°"])
@@ -394,7 +394,7 @@ const rok4_matematyka = [
 const rok5_matematyka = [
   new pytanie("Iloczyn wektorowy dwóch wektorów w 3D daje:", ["wektor prostopadły", "wartość skalarną", "liczbę zespoloną", "długość jednego z wektorów"]),
   new pytanie("Funkcja różnowartościowa to taka, która:", ["każdemu argumentowi przyporządkowuje różne wartości", "może mieć kilka wartości dla jednego argumentu", "nie ma dziedziny", "przecina oś OX"]),
-  new pytanie("Dziedzina funkcji f(x) = ln(x - 2):", ["x > 2", "x ≥ 2", "x < 2", "x ∈ R"]),
+  new pytanie("Dziedzina funkcji f(x) = ln(x - 2):", ["x &gt; 2", "x ≥ 2", "x &lt; 2", "x ∈ R"]),
   new pytanie("Przekształcenie wykresu funkcji y = f(-x):", ["odbicie względem osi OY", "odbicie względem osi OX", "przesunięcie w prawo", "przesunięcie w górę"]),
   new pytanie("Złożenie funkcji f(g(x)) to:", ["funkcja złożona", "funkcja liniowa", "funkcja trygonometryczna", "funkcja stała"]),
   new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązania:", ["x = kπ", "x = π/2 + kπ", "x = 2kπ", "x = π/3 + 2kπ"]),
@@ -405,17 +405,17 @@ const rok5_matematyka = [
 ];
 
 const egzamin_matematyka = [
-  new pytanie("Funkcja kwadratowa f(x) = x² - 4x + 5 przyjmuje wartości:", ["zawsze dodatnie", "zawsze ujemne", "dodatnie tylko dla x > 0", "ujemne tylko dla x < 0"]),
+  new pytanie("Funkcja kwadratowa f(x) = x² - 4x + 5 przyjmuje wartości:", ["zawsze dodatnie", "zawsze ujemne", "dodatnie tylko dla x &gt; 0", "ujemne tylko dla x &lt; 0"]),
   new pytanie("Wartość wyrażenia (3√2)² to:", ["18", "6", "9", "12"]),
-  new pytanie("Punkt (2,1) należy do wykresu funkcji f(x) = 2x - 3:", ["tak", "nie", "tylko dla x > 0", "tylko dla x < 0"]),
+  new pytanie("Punkt (2,1) należy do wykresu funkcji f(x) = 2x - 3:", ["tak", "nie", "tylko dla x &gt; 0", "tylko dla x &lt; 0"]),
   new pytanie("Wartość największa funkcji f(x) = -x² + 4x + 5 wynosi:", ["9", "5", "4", "0"]),
-  new pytanie("Rozwiązaniem nierówności 2x - 5 > 1 jest:", ["x > 3", "x < 3", "x ≥ 2", "x ≤ 2"]),
+  new pytanie("Rozwiązaniem nierówności 2x - 5 &gt; 1 jest:", ["x &gt; 3", "x &lt; 3", "x ≥ 2", "x ≤ 2"]),
   new pytanie("Funkcja homograficzna ma wykres:", ["hiperboli", "paraboli", "prostej", "okręgu"]),
   new pytanie("Liczba miejsc zerowych funkcji kwadratowej o Δ = 0 wynosi:", ["1", "2", "brak", "nieskończenie wiele"]),
   new pytanie("Wartość wyrażenia log₂(32) to:", ["5", "2", "3", "4"]),
   new pytanie("Funkcja f(x) = 1/x jest:", ["nieparzysta", "parzysta", "stała", "ograniczona"]),
   new pytanie("Mediana danych 2, 3, 5, 8, 12 to:", ["5", "8", "12", "3"]),
-  new pytanie("Jeżeli a > 0 i b < 0, to iloczyn ab jest:", ["ujemny", "dodatni", "równy zero", "dodatni lub ujemny"]),
+  new pytanie("Jeżeli a &gt; 0 i b &lt; 0, to iloczyn ab jest:", ["ujemny", "dodatni", "równy zero", "dodatni lub ujemny"]),
   new pytanie("Wartość granicy lim(x→∞)(3x²+2)/(x²-1) wynosi:", ["3", "2", "1", "0"]),
   new pytanie("Funkcja f(x) = (x-2)/(x+3) ma asymptotę pionową w punkcie:", ["x = -3", "x = 2", "x = 3", "x = -2"]),
   new pytanie("Równanie trygonometryczne sin x = 0 ma rozwiązanie:", ["x = kπ", "x = π/2 + kπ", "x = kπ/2", "x = 2kπ"]),
@@ -427,17 +427,17 @@ const egzamin_matematyka = [
   new pytanie("Liczba odwrotna do 5 to:", ["1/5", "5", "-5", "-1/5"]),
   new pytanie("Funkcja f(x) = |x| jest:", ["parzysta", "nieparzysta", "stała", "ograniczona z dołu i góry"]),
   new pytanie("Pochodna funkcji stałej wynosi:", ["0", "1", "stała różna od 0", "brak"]),
-  new pytanie("Jeżeli Δ<0 to funkcja kwadratowa:", ["nie ma miejsc zerowych", "ma jedno miejsce zerowe", "ma dwa miejsca zerowe", "jest liniowa"]),
+  new pytanie("Jeżeli Δ&lt;0 to funkcja kwadratowa:", ["nie ma miejsc zerowych", "ma jedno miejsce zerowe", "ma dwa miejsca zerowe", "jest liniowa"]),
   new pytanie("Kąt 45° w radianach to:", ["π/4", "π/2", "π/3", "π/6"]),
   new pytanie("Liczba pierwiastków równania x² - 7x + 10 = 0 to:", ["2", "1", "0", "3"]),
   new pytanie("Wzór na pole trapezu:", ["[(a+b)h]/2", "ah", "(a²+b²)/2", "(a+b)h"]),
-  new pytanie("Rozwiązaniem nierówności |x| > 3 jest:", ["x > 3 lub x < -3", "x < 3", "x > -3", "-3 < x < 3"]),
+  new pytanie("Rozwiązaniem nierówności |x| &gt; 3 jest:", ["x &gt; 3 lub x &lt; -3", "x &lt; 3", "x &gt; -3", "-3 &lt; x &lt; 3"]),
   new pytanie("Prawdopodobieństwo wyrzucenia liczby większej od 4 kostką sześcienną:", ["1/3", "1/2", "1/4", "2/3"]),
   new pytanie("Funkcja f(x) = cos(x) osiąga maksimum dla x =", ["0", "π/2", "π", "3π/2"]),
   new pytanie("Pierwszy wyraz ciągu arytmetycznego wynosi 3, różnica 2. Piąty wyraz to:", ["11", "9", "7", "5"]),
   new pytanie("Wzór na sumę n początkowych wyrazów ciągu arytmetycznego:", ["(a₁ + aₙ)n/2", "n(a₁ + d)", "n(a₁ - d)", "(2a₁ + (n-1)d)n/2"]),
   new pytanie("Wzór funkcji odwrotnej do f(x) = 3x - 2:", ["(x+2)/3", "(x-2)/3", "3(x-2)", "(x-3)/2"]),
-  new pytanie("Dla jakiej wartości a funkcja f(x) = ax³ jest rosnąca:", ["a > 0", "a < 0", "a = 0", "każde a"]),
+  new pytanie("Dla jakiej wartości a funkcja f(x) = ax³ jest rosnąca:", ["a &gt; 0", "a &lt; 0", "a = 0", "każde a"]),
   new pytanie("Liczba rozwiązań układu równań prostych przecinających się:", ["1", "0", "nieskończenie wiele", "brak"]),
   new pytanie("Okrąg o równaniu (x-2)² + (y+3)² = 9 ma promień:", ["3", "2", "6", "9"]),
   new pytanie("Liczba przecięć wykresu funkcji kwadratowej z osią OX to:", ["zależy od Δ", "zawsze 2", "zawsze 0", "zawsze 1"]),
@@ -449,7 +449,7 @@ const egzamin_matematyka = [
   new pytanie("Liczba π jest:", ["niewymierna", "wymierna", "całkowita", "naturalna"]),
   new pytanie("Liczba rozwiązań równania cos x = 0 na przedziale [0,2π):", ["2", "1", "3", "0"]),
   new pytanie("Liczba (√3 - 1)(√3 + 1) równa się:", ["2", "3", "-2", "-3"]),
-  new pytanie("Funkcja f(x) = x³ - 3x² + 4 jest rosnąca dla:", ["x > 2", "x < 2", "x < 0", "x > 0"]),
+  new pytanie("Funkcja f(x) = x³ - 3x² + 4 jest rosnąca dla:", ["x &gt; 2", "x &lt; 2", "x &lt; 0", "x &gt; 0"]),
   new pytanie("Styczna do paraboli y=x²-4x+1 w punkcie x=2 ma równanie:", ["y = 0", "y = 4x", "y = -4x", "y = 2x"]),
   new pytanie("Liczba miejsc zerowych funkcji f(x) = x³ wynosi:", ["1", "2", "3", "0"]),
   new pytanie("Wzór skróconego mnożenia (a+b)³:", ["a³+3a²b+3ab²+b³", "a³+b³", "(a+b)(a²+b²)", "a²+b²"]),
@@ -861,8 +861,8 @@ const rok1_programista = [
 ];
 
 const rok2_programista = [
-  new pytanie("Jakim znacznikiem w HTML tworzy się nagłówek pierwszego poziomu?", ["<h1>", "<head>", "<title>", "<header>"]),
-  new pytanie("Który znacznik HTML służy do osadzania obrazu?", ["<img>", "<picture>", "<src>", "<media>"]),
+  new pytanie("Jakim znacznikiem w HTML tworzy się nagłówek pierwszego poziomu?", ["&lt;h1&gt;", "&lt;head&gt;", "&lt;title&gt;", "&lt;header&gt;"]),
+  new pytanie("Który znacznik HTML służy do osadzania obrazu?", ["&lt;img&gt;", "&lt;picture&gt;", "&lt;src&gt;", "&lt;media&gt;"]),
   new pytanie("Które rozszerzenie dotyczy arkusza stylów CSS?", [".css", ".html", ".xml", ".php"]),
   new pytanie("Które polecenie w systemie Linux służy do wyświetlenia listy plików?", ["ls", "cp", "rm", "mv"]),
   new pytanie("Jakiego typu jest właściwość `background-color` w CSS?", ["Styl tła", "Styl tekstu", "Rozmiar czcionki", "Typ obramowania"]),
@@ -883,7 +883,7 @@ const rok3_programista = [
   new pytanie("Jakim językiem opisujemy strukturę dokumentu HTML?", ["HTML", "CSS", "SQL", "PHP"]),
   new pytanie("Do czego służy `$_POST` w PHP?", ["Do odczytu danych z formularza", "Do zapisu plików", "Do wysyłki e-mail", "Do wczytywania arkuszy stylów"]),
   new pytanie("Które polecenie SQL wprowadza dane do tabeli?", ["INSERT", "SELECT", "DROP", "ALTER"]),
-  new pytanie("Jaki znacznik zamyka paragraf w HTML?", ["</p>", "</para>", "</pt>", "</txt>"])
+  new pytanie("Jaki znacznik zamyka paragraf w HTML?", ["&lt;/p&gt;", "&lt;/para&gt;", "&lt;/pt&gt;", "&lt;/txt&gt;"])
 ];
 
 const rok4_programista = [
@@ -893,7 +893,7 @@ const rok4_programista = [
   new pytanie("Jakie zdarzenie JavaScript reaguje na kliknięcie?", ["onclick", "onhover", "onload", "onsubmit"]),
   new pytanie("Co robi `try...catch` w JavaScript?", ["Obsługuje błędy", "Tworzy funkcję", "Zmienia klasę", "Ładuje obraz"]),
   new pytanie("Jakiej metody używa się do zamiany JSON na obiekt w JavaScript?", ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.encode()"]),
-  new pytanie("Jak zapisuje się komentarz jednoliniowy w JavaScript?", ["// komentarz", "* komentarz", "<!-- komentarz", "## komentarz"]),
+  new pytanie("Jak zapisuje się komentarz jednoliniowy w JavaScript?", ["// komentarz", "* komentarz", "&lt;!-- komentarz", "## komentarz"]),
   new pytanie("Co oznacza `NULL` w bazie danych?", ["Brak wartości", "Zero", "Fałsz", "Typ tekstowy"]),
   new pytanie("Co robi `ALTER TABLE` w SQL?", ["Modyfikuje strukturę tabeli", "Usuwa dane", "Kopiuje dane", "Nadaje uprawnienia"]),
   new pytanie("Który język służy do tworzenia backendu w Node.js?", ["JavaScript", "PHP", "SQL", "Python"])
@@ -914,7 +914,7 @@ const rok5_programista = [
 
 const egzamin_programista = [
   new pytanie("Który z języków jest używany do tworzenia struktury strony internetowej?", ["HTML", "CSS", "PHP", "SQL"]),
-  new pytanie("Który znacznik HTML służy do tworzenia listy nieuporządkowanej?", ["<ul>", "<ol>", "<li>", "<dl>"]),
+  new pytanie("Który znacznik HTML służy do tworzenia listy nieuporządkowanej?", ["&lt;ul&gt;", "&lt;ol&gt;", "&lt;li&gt;", "&lt;dl&gt;"]),
   new pytanie("Jakim atrybutem oznaczamy alternatywny tekst dla obrazka w HTML?", ["alt", "title", "src", "href"]),
   new pytanie("Który styl CSS ustawia kolor tła elementu?", ["background-color", "color", "border-color", "text-color"]),
   new pytanie("Jaki port domyślnie wykorzystuje serwer HTTP?", ["80", "21", "443", "3306"]),
@@ -982,15 +982,15 @@ const rok2_informatyk = [
 ];
 
 const rok3_informatyk = [
-  new pytanie("Jakim znacznikiem otwieramy dokument HTML?", ["<html>", "<head>", "<title>", "<body>"]),
+  new pytanie("Jakim znacznikiem otwieramy dokument HTML?", ["&lt;html&gt;", "&lt;head&gt;", "&lt;title&gt;", "&lt;body&gt;"]),
   new pytanie("Co oznacza skrót CSS?", ["Cascading Style Sheets", "Computer Style Script", "Custom Style Source", "Creative Sheet System"]),
-  new pytanie("Który znacznik służy do tworzenia hiperłącza?", ["<a>", "<p>", "<link>", "<href>"]),
+  new pytanie("Który znacznik służy do tworzenia hiperłącza?", ["&lt;a&gt;", "&lt;p&gt;", "&lt;link&gt;", "&lt;href&gt;"]),
   new pytanie("Jakiego atrybutu użyjemy, aby ustawić kolor tła w CSS?", ["background-color", "color", "font-color", "bg"]),
-  new pytanie("Co oznacza znacznik <h1> w HTML?", ["Nagłówek pierwszego poziomu", "Obrazek", "Akapit", "Link"]),
-  new pytanie("Jak zapiszemy komentarz w HTML?", ["<!-- komentarz -->", "// komentarz", "/* komentarz */", "# komentarz"]),
+  new pytanie("Co oznacza znacznik &lt;h1&gt; w HTML?", ["Nagłówek pierwszego poziomu", "Obrazek", "Akapit", "Link"]),
+  new pytanie("Jak zapiszemy komentarz w HTML?", ["&lt;!-- komentarz --&gt;", "// komentarz", "/* komentarz */", "# komentarz"]),
   new pytanie("Jak zapisać klasę w CSS?", [".nazwaKlasy", "#nazwaKlasy", "@nazwaKlasy", "$nazwaKlasy"]),
   new pytanie("Co wykonuje język JavaScript w przeglądarce?", ["Skrypty po stronie klienta", "Skrypty po stronie serwera", "Stylizację strony", "Kompilację kodu"]),
-  new pytanie("Jak rozpocząć blok skryptu w HTML?", ["<script>", "<js>", "<style>", "<code>"]),
+  new pytanie("Jak rozpocząć blok skryptu w HTML?", ["&lt;script&gt;", "&lt;js&gt;", "&lt;style&gt;", "&lt;code&gt;"]),
   new pytanie("Co robi funkcja alert() w JavaScript?", ["Wyświetla okno dialogowe", "Ukrywa element", "Przekierowuje stronę", "Ładuje obraz"])
 ];
 
@@ -1024,37 +1024,37 @@ const egzamin_informatyk = [
   new pytanie("Który z poniższych protokołów jest używany do bezpiecznego przesyłania stron internetowych?", ["HTTPS", "FTP", "HTTP", "SMTP"]),
   new pytanie("Jakie urządzenie pełni funkcję centralnego punktu w topologii gwiazdy?", ["Przełącznik (switch)", "Most (bridge)", "Repeater", "Router"]),
   new pytanie("Który z poniższych systemów plików jest używany przez systemy Windows?", ["NTFS", "FAT32", "ext4", "HFS+"]),
-  new pytanie("Co oznacza skrót \"IP\" w kontekście sieci komputerowych?", ["Internet Protocol", "Internal Process", "Interface Program", "Interconnect Packet"]),
+  new pytanie("Co oznacza skrót IP w kontekście sieci komputerowych?", ["Internet Protocol", "Internal Process", "Interface Program", "Interconnect Packet"]),
   new pytanie("Które z poniższych poleceń w systemie Linux służy do zmiany katalogu?", ["cd", "ls", "mv", "rm"]),
   new pytanie("Jak nazywa się podstawowa jednostka informacji w komputerze?", ["Bit", "Byte", "Pixel", "Node"]),
   new pytanie("Który z poniższych adresów IP jest adresem klasy C?", ["192.168.1.1", "10.0.0.1", "172.16.0.1", "224.0.0.1"]),
-  new pytanie("Co oznacza skrót \"CPU\"?", ["Central Processing Unit", "Computer Personal Unit", "Central Peripheral Unit", "Computer Processing Unit"]),
+  new pytanie("Co oznacza skrót CPU?", ["Central Processing Unit", "Computer Personal Unit", "Central Peripheral Unit", "Computer Processing Unit"]),
   new pytanie("Który z poniższych protokołów jest używany do przesyłania poczty elektronicznej?", ["SMTP", "FTP", "HTTP", "SNMP"]),
   new pytanie("Jakie narzędzie w systemie Windows służy do zarządzania partycjami dyskowymi?", ["Zarządzanie dyskami", "Menedżer zadań", "Menedżer urządzeń", "Monitor zasobów"]),
   new pytanie("Który z poniższych języków programowania jest językiem niskiego poziomu?", ["Assembler", "Java", "Python", "C++"]),
-  new pytanie("Co oznacza skrót \"RAM\"?", ["Random Access Memory", "Read Access Memory", "Rapid Access Memory", "Run Access Memory"]),
+  new pytanie("Co oznacza skrót RAM?", ["Random Access Memory", "Read Access Memory", "Rapid Access Memory", "Run Access Memory"]),
   new pytanie("Które z poniższych urządzeń służy do konwersji sygnału cyfrowego na analogowy i odwrotnie?", ["Modem", "Router", "Switch", "Access Point"]),
   new pytanie("Jakie rozszerzenie ma plik wykonywalny w systemie Windows?", [".exe", ".bat", ".com", "Wszystkie powyższe"]),
   new pytanie("Który z poniższych protokołów jest używany do zdalnego logowania się na inny komputer?", ["Telnet", "FTP", "SMTP", "SNMP"]),
-  new pytanie("Co oznacza skrót \"DNS\"?", ["Domain Name System", "Dynamic Name System", "Digital Network Service", "Data Number Sequence"]),
+  new pytanie("Co oznacza skrót DNS?", ["Domain Name System", "Dynamic Name System", "Digital Network Service", "Data Number Sequence"]),
   new pytanie("Który z poniższych systemów operacyjnych jest oparty na jądrze Linux?", ["Ubuntu", "macOS", "DOS", "Windows 10"]),
   new pytanie("Jakie narzędzie w systemie Windows służy do monitorowania wydajności systemu?", ["Monitor zasobów", "Menedżer urządzeń", "Harmonogram zadań", "Edytor rejestru"]),
   new pytanie("Który z poniższych protokołów jest używany do bezpiecznego przesyłania plików?", ["SFTP", "HTTP", "Telnet", "FTP"]),
-  new pytanie("Co oznacza skrót \"SSD\"?", ["Solid State Drive", "Super Speed Disk", "Serial Storage Device", "System Storage Drive"]),
+  new pytanie("Co oznacza skrót SSD?", ["Solid State Drive", "Super Speed Disk", "Serial Storage Device", "System Storage Drive"]),
   new pytanie("Który system operacyjny jest systemem czasu rzeczywistego?", ["FreeRTOS", "Linux", "Windows", "macOS"]),
   new pytanie("Który kabel jest używany do połączenia komputera z routerem?", ["RJ-45", "HDMI", "USB", "RJ-11"]),
   new pytanie("Który z poniższych programów służy do tworzenia maszyny wirtualnej?", ["VirtualBox", "Notepad++", "WinRAR", "Microsoft Edge"]),
-  new pytanie("Co oznacza skrót \"BIOS\"?", ["Basic Input Output System", "Binary Input Output System", "Basic Internal Operating System", "Binary Internal Operating System"]),
+  new pytanie("Co oznacza skrót BIOS?", ["Basic Input Output System", "Binary Input Output System", "Basic Internal Operating System", "Binary Internal Operating System"]),
   new pytanie("Jaki typ pamięci jest stosowany do długoterminowego przechowywania danych?", ["SSD", "ROM", "Cache", "RAM"]),
-  new pytanie("Co oznacza skrót \"VPN\"?", ["Virtual Private Network", "Virtual Processing Node", "Video Processing Network", "Virtual Public Network"]),
+  new pytanie("Co oznacza skrót VPN?", ["Virtual Private Network", "Virtual Processing Node", "Video Processing Network", "Virtual Public Network"]),
   new pytanie("Który z poniższych elementów odpowiada za chłodzenie procesora?", ["Wentylator CPU", "Zasilacz", "Modem", "Chipset"]),
   new pytanie("Który z poniższych portów służy do podłączenia monitora?", ["HDMI", "RJ-45", "USB-C", "PS/2"]),
   new pytanie("Jaki jest domyślny port HTTP?", ["80", "443", "8080", "22"]),
-  new pytanie("Co oznacza skrót \"DHCP\"?", ["Dynamic Host Configuration Protocol", "Domain Host Configuration Protocol", "Data Host Connection Protocol", "Dynamic Host Control Protocol"]),
+  new pytanie("Co oznacza skrót DHCP?", ["Dynamic Host Configuration Protocol", "Domain Host Configuration Protocol", "Data Host Connection Protocol", "Dynamic Host Control Protocol"]),
   new pytanie("Jaki system operacyjny jest używany głównie w serwerach?", ["Ubuntu Server", "macOS", "Windows 10", "Windows XP"]),
   new pytanie("Który z poniższych protokołów używa szyfrowania?", ["SSH", "FTP", "Telnet", "HTTP"]),
   new pytanie("Jaki format pliku jest używany do obrazów dysków w VirtualBox?", [".vdi", ".iso", ".exe", ".tar"]),
-  new pytanie("Co oznacza skrót \"MAC\" w odniesieniu do adresów sieciowych?", ["Media Access Control", "Main Address Configuration", "Machine Access Control", "Master Access Control"]),
+  new pytanie("Co oznacza skrót MAC w odniesieniu do adresów sieciowych?", ["Media Access Control", "Main Address Configuration", "Machine Access Control", "Master Access Control"]),
   new pytanie("Który protokół umożliwia automatyczne przypisanie adresu IP?", ["DHCP", "FTP", "DNS", "ICMP"]),
   new pytanie("Który system operacyjny jest darmowy i open-source?", ["Linux", "Windows 11", "macOS", "iOS"]),
   new pytanie("Który format pliku służy do przechowywania stron internetowych?", [".html", ".mp3", ".zip", ".exe"]),
@@ -1289,7 +1289,7 @@ const egzamin_robotyk = [
   new pytanie("Która zmienna w programie PLC może zmieniać wartość?", ["Zmienna lokalna", "Stała", "Adres wejścia", "Nazwa bloku"]),
   new pytanie("Jak określa się zestaw instrukcji sterownika PLC?", ["Program", "Zasilanie", "Komunikacja", "Tryb pracy"]),
   new pytanie("Który komponent przechowuje dane po wyłączeniu zasilania?", ["EEPROM", "RAM", "CPU", "HMI"]),
-  new pytanie("Co oznacza funkcja \"IF\" w programowaniu?", ["Warunek logiczny", "Przerwanie", "Początek programu", "Adres wejścia"]),
+  new pytanie("Co oznacza funkcja IF w programowaniu?", ["Warunek logiczny", "Przerwanie", "Początek programu", "Adres wejścia"]),
   new pytanie("Który element jest niezbędny do podłączenia robota do sieci przemysłowej?", ["Interfejs komunikacyjny", "Czujnik zbliżeniowy", "Przycisk bezpieczeństwa", "Moduł wejść"])
 ];
 
