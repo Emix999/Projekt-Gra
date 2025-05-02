@@ -65,7 +65,7 @@ const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na kory
 
 const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
-    'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudę. Eskortują go do Bufetu Łącznik.',
+    'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudu. Eskortują go do Bufetu Łącznik.',
     'Przez tłum ucznniów dostrzegacie, że prezydent Dudu wchodzi do bufetu i zjada wyśmienity obiadek.',
     'Pojawia się wiele robotników.',
     'Wynoszą oni cały sprzęt bufetu, jedzenie, napoje, stoły, krzesła i pracowników.',
@@ -87,11 +87,28 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
 ], 14, false, false, null);
 
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
-    'Gracz'
+    'Prezydent Dudu mówi: Gratulacje, udało się wam zdać test!',
+    'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i instagramy, ale ma też coś w głowie.',
+    'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
+    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
+    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
+    'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
+    'Prezydent Dudu mówi: Dozobaczenia w bufecie Łącznik!',
+    'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, false, null);
 
 const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
-    'Gracz'
+    'Prezydent patrzy na was podczas rozwiązywania testu.',
+    'Jego twarz wyraża zdziwienie, zmieszanie i politowanie.',
+    'Prezydent Dudu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',
+    'Rozwiązując test, czujecie jakbyście byli na egzaminie, szczególnie po usłyszeniu tej reakcji jesteście jeszcze bardziej zestresowani.',
+    'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i instagramy, ale ma też coś w głowie.',
+    'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
+    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
+    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
+    'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
+    'Prezydent Dudu mówi: Dozobaczenia w bufecie Łącznik!',
+    'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, false, null);
 
 function test_prezydenta() {
@@ -104,6 +121,13 @@ function test_prezydenta() {
     menedzer_gry.czy_poprawne_odpowiedzi = [];
     menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
     pokaz_pytanie();
+}
+
+function koniec_sceny_prezydenta(){
+    menedzer_gry.czy_jest_prezydent = false;
+    if(menedzer_gry.czy_quiz_prezydenta_zdany) menedzer_gry.zdarzenie = bufet3_zdany;
+    else menedzer_gry.zdarzenie = bufet3_niezdany;
+    pokaz_zdarzenie_nielosowe();
 }
 
 const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, ['- Jakiś random: "Hej, na wstępie mam do was pytanie"', '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"', '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"', '"Otóż widzicie...Pan Czosnowski zaginął"', '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"', '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"', '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"', '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'], 25, false, () => pojdz_do_sali_017());
@@ -192,6 +216,7 @@ const menedzer_gry = {
     czy_wszyscy_na_terapii: true,
     suma_szans_zdarzen: 0,
     czy_jest_prezydent: false,
+    czy_quiz_prezydenta_zdany: false,
     poczatek_tury: function () {
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -266,7 +291,7 @@ const menedzer_gry = {
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda) {
                             this.zdarzenie = i;
-                            if (i.funkcja != null) i.funkcja();
+                            if (i.funkcja_wywołana != null) i.funkcja_wywołana();
                             pokaz_zdarzenie_nielosowe();
                             break;
                         }
@@ -826,6 +851,9 @@ function koniec_pytan() {
         if (menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
         }
+        if(menedzer_gry.czy_jest_prezydent&&wypisywana_ocena >= 60) {
+            menedzer_gry.czy_quiz_prezydenta_zdany = true;
+        }
     }
     ocena.value = wypisywana_ocena + '%';
     zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
@@ -846,7 +874,7 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
         i.style.display = 'block';
     }
     if(!menedzer_gry.czy_jest_prezydent) menedzer_gry.poczatek_tury();
-    else menedzer_gry.czy_jest_prezydent = false;
+    else koniec_sceny_prezydenta();
 }
 
 function przemieszaj_tablice(tablica) {
