@@ -164,10 +164,10 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null);
 
-const rywalizacja_ZSK_2_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
     'Po chwili prowadzący ogłasza wyniki:',
-    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
     'Gratulacje!',
@@ -176,7 +176,7 @@ const rywalizacja_ZSK_2_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu o
     'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
 ], 33, false, null);
 
-const rywalizacja_ZSK_2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
+const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu', [
     'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
     'Po chwili prowadzący ogłasza wyniki:',
     'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
@@ -187,6 +187,31 @@ const rywalizacja_ZSK_2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
     'Mamy dla was nagrrodę pocieszenia, którą jest ',//nagroda za przegranie konkursu
     'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
 ], 33, false, null);
+
+const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+    'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
+    'Po chwili prowadzący ogłasza wyniki:',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
+    'jest drużyna...',
+    'Zespołu Szkół Łączności!',
+    'Gratulacje!',
+    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
+    'Oferujemy wam również nagrodę rzeczową, którą jest ',//nagroda za wygranie konkursu
+    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+], 33, false, null);
+
+const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu', [
+    'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
+    'Po chwili prowadzący ogłasza wyniki:',
+    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+    'jest drużyna...',
+    'Zespołu Szkół Komunikacji!',
+    'Gratulacje!',
+    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
+    'Mamy dla was nagrrodę pocieszenia, którą jest ',//nagroda za przegranie konkursu
+    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+], 33, false, null);
+
 
 function konkurs_ZSK() {
     menedzer_gry.czy_jest_konkurs = true;
@@ -206,6 +231,8 @@ function koniec_konkursu(){
     else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
     pokaz_zdarzenie_nielosowe();
 }
+
+
 
 
 const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
