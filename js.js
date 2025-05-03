@@ -253,6 +253,7 @@ const menedzer_gry = {
     pytanie: null,
     ilosc_pytan: 0,
     ile_jeszcze_pytan: 0,
+    czy_odpowiedziano: false,
     czy_poprawne_odpowiedzi: null,
     przedmiot_szkolny: null,
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
@@ -833,6 +834,7 @@ function rozpocznij_pytania() {
 
 function pokaz_pytanie() {
     console.log(menedzer_gry.pytania_kandydujace);
+    menedzer_gry.czy_odpowiedziano = false;
     let indeks_pytania = Math.floor(Math.random() * menedzer_gry.pytania_kandydujace.length);
     menedzer_gry.pytanie = menedzer_gry.pytania_kandydujace[indeks_pytania];
     menedzer_gry.pytania_kandydujace.splice(indeks_pytania, 1);
@@ -867,17 +869,19 @@ function pokaz_pytanie() {
 }
 
 function kolejne_pytanie(i) {
-    if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
-        menedzer_gry.czy_poprawne_odpowiedzi.push(true);
-    }
-    else {
-        menedzer_gry.czy_poprawne_odpowiedzi.push(false);
-    }
-    if (menedzer_gry.ile_jeszcze_pytan == 0) {
-        koniec_pytan();
-    }
-    else {
-        pokaz_pytanie();
+    if(!menedzer_gry.czy_odpowiedziano){
+        if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
+            menedzer_gry.czy_poprawne_odpowiedzi.push(true);
+        }
+        else {
+            menedzer_gry.czy_poprawne_odpowiedzi.push(false);
+        }
+        if (menedzer_gry.ile_jeszcze_pytan == 0) {
+            koniec_pytan();
+        }
+        else {
+            pokaz_pytanie();
+        }
     }
 }
 
@@ -885,6 +889,7 @@ let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_po
 
 function koniec_pytan() {
     if(menedzer_gry.ilosc_pytan == 1){
+        menedzer_gry.czy_odpowiedziano = true;
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
                 odpowiedzi_przyciski[i].style.color = "lightgreen";
