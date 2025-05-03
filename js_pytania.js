@@ -2,18 +2,28 @@
 
 class pytanie {
   constructor(tresc, odpowiedzi) {
-      this.tresc = tresc;
-      this.odpowiedzi = odpowiedzi;
-      //odpowiedź na indeksie zerowym jest poprawna
+    this.tresc = tresc;
+    this.odpowiedzi = odpowiedzi;
+    //odpowiedź na indeksie zerowym jest poprawna
   }
 }
 
-const prezydent_pytania=[
-new pytanie("W którym roku Polska odzyskała niepodległość?", ["1918", "1939", "1791", "1989"]),
-new pytanie("Ile województw ma Polska?", ["16", "12", "18", "20"]),
-new pytanie("Jak nazywa się obecna konstytucja Rzeczypospolitej Polskiej?", ["Konstytucja z 1997 roku", "Kodeks Rzeczpospolitej", "Ustawa Zasadnicza", "Konstytucja Trzeciej RP"]),
-new pytanie("Jak brzmi pierwsze zdanie preambuły Konstytucji RP?", ["W trosce o byt i przyszłość naszej Ojczyzny...", "My, Naród Polski...", "Rzeczpospolita Polska jest dobrem wspólnym...", "Polska jest państwem prawa..."]),
-new pytanie("Jakie jest najwyższe odznaczenie państwowe w Polsce?", ["Order Orła Białego", "Krzyż Zasługi", "Medal Niepodległości", "Krzyż Walecznych"])
+const prezydent_pytania = [
+  new pytanie("W którym roku Polska odzyskała niepodległość?", ["1918", "1939", "1791", "1989"]),
+  new pytanie("Ile województw ma Polska?", ["16", "12", "18", "20"]),
+  new pytanie("Jak nazywa się obecna konstytucja Rzeczypospolitej Polskiej?", ["Konstytucja z 1997 roku", "Kodeks Rzeczpospolitej", "Ustawa Zasadnicza", "Konstytucja Trzeciej RP"]),
+  new pytanie("Jak brzmi pierwsze zdanie preambuły Konstytucji RP?", ["W trosce o byt i przyszłość naszej Ojczyzny...", "My, Naród Polski...", "Rzeczpospolita Polska jest dobrem wspólnym...", "Polska jest państwem prawa..."]),
+  new pytanie("Jakie jest najwyższe odznaczenie państwowe w Polsce?", ["Order Orła Białego", "Krzyż Zasługi", "Medal Niepodległości", "Krzyż Walecznych"])
+]
+
+const konkurs_ZSK_1_pytania = [
+  new pytanie("Gdzie Polak najczęściej chodzi „na szybkie zakupy”?", ["Do Żabki o 23:59 po hot-doga", "Do Biedronki", "Do galerii handlowej", "Na targ po pietruszkę"]),
+  new pytanie("Według jakiej zasady student kupuje pożywienie?", ["Kalorie do ceny", "Kolor opakowania", "Co wygląda na zjadliwe", "Czy można to zjeść na surowo, bo nie ma garnków"]),
+  new pytanie("Co Polak najczęściej odpowiada na pytanie 'jak leci'?", ["A ki*jowo, jak zwykle", "A jakoś się żyje", "Nie narzekam… jeszcze", "Leci jak krew z nosa"]),
+  new pytanie("Co Polak robi na wakacjach za granicą?", ["Wszystko naraz", "Szuka polskiego sklepu z kabanosami", "Rozkłada parawan już o 6:00", "Narzeka, że za gorąco"]),
+  new pytanie("Kiedy Polak zaczyna sezon grillowy?", ["Gdy tylko temperatura przekroczy 10°C, niezależnie od deszczu", "Kiedy słoneczko zacznie grzać i będzie przyjemna pogoda", "W Wielkanoc, jak pogoda dopisze", "Latem na urlopie kiedy jest dobra pogoda"]),
+  new pytanie("Co robi przeciętny Polak, gdy widzi znajomego w sklepie?", ["Udaje, że go nie widzi", "Wita się i odchodzi w swoją stronę", "Macha z drugiego końca sklepu", "Podchodzi i gada przez 30 minut"]),
+  new pytanie("Co robią wszechobecne starsze panie na osiedlach i w autobusach?", ["Blokują miejsca w autobusach i zatrzymują samochody na pasach", "Rozmawiają na tematy polityczne", "Spokojnie spędzają wspólnie czas", "Nikt tak naprawdę nie wie"])
 ]
 
 //pytania z angielskiego

@@ -54,6 +54,74 @@ class nielosowe_zdarzenie {
         this.funkcja = funkcja_wywołana;
     }
 }
+const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
+    'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
+    'Drodzy uczniowie, już w kwietniu odbędzie się drużynowy konkurs wiedzy między naszą szkołą a ZSK.',
+    'Będzie on dotyczył wiedzy na temat Polski i zwyczajów jej obywateli.',
+    'Poszukujemy drużyn 1-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
+    'Niech zgłaszają się tylko osoby z najlepszą wiedzą na ten temat.',
+    'Musimy pokazać tym nieukom z ZSK, że jesteśmy lepsi.',
+    'Wygrany może być tylko jeden...',
+    '...i będzie nim nasza złota szkoła!',
+    'Wymieniacie między sobą porozumiewawcze spojrzenia.',
+    'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
+    'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba że dokonali złego wyboru przy rekrutacji.',
+    'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
+], 4, false, null);
+
+
+
+const rywalizacja_ZSK_2 = new nielosowe_zdarzenie('Konkurs wiedzy o Polsce', [
+    'Idziecie na konkurs, ubrani w strój galowy i piękne krawaty ZSŁ.',
+    'Jesteście oczywiście przygotowani, przeciez pamiętaliście o konkursie i nikt musiał wam o nim przypominać w przeddzień.',
+    'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą groźne spojrzenia pełne woli walki.',
+    'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
+], 8, false, null);
+
+const rywalizacja_ZSK_2_wygrana = new nielosowe_zdarzenie('Koniec konkursu', [
+    'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
+    'Po chwili prowadzący ogłasza wyniki:',
+    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+    'jest drużyna...',
+    'Zespołu Szkół Łączności!',
+    'Gratulacje!',
+    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
+    'Oferujemy wam również nagrodę rzeczową, którą jest ',//nagroda za wygranie konkursu
+    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+], 8, false, null);
+const rywalizacja_ZSK_2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
+    'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
+    'Po chwili prowadzący ogłasza wyniki:',
+    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+    'jest drużyna...',
+    'Zespołu Szkół Komunikacji!',
+    'Gratulacje!',
+    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
+    'Mamy dla was nagrrodę pocieszenia, którą jest ',//nagroda za przegranie konkursu
+    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+], 8, false, null);
+
+function konkurs_ZSK() {
+    menedzer_gry.czy_jest_konkurs = true;
+    menedzer_gry.przedmiot_szkolny = konkurs_ZSK_1;
+    menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania.rok_1;
+    menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.rok_1.length;
+    zmiana_ekranu(ekran_zdarzenia_nielosowego, ekran_pytania);
+    znikniecie_ekranu(mapa);
+    menedzer_gry.czy_poprawne_odpowiedzi = [];
+    menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
+    pokaz_pytanie();
+}
+
+function koniec_konkursu(){
+    menedzer_gry.czy_jest_konkurs = false;
+    if(menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_wygrana;
+    else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_przegrana;
+    pokaz_zdarzenie_nielosowe();
+    menedzer_gry.czy_konkurs_wygrany = false;
+}
+
+
 const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
     'Nagle podczas lekcji słyszycie przez szkolne głośniki:',
     '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności już jutro bufet Łącznik..."',
@@ -66,7 +134,7 @@ const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na kory
 const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
     'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudu. Eskortują go do Bufetu Łącznik.',
-    'Przez tłum ucznniów dostrzegacie, że prezydent Dudu wchodzi do bufetu i zjada wyśmienity obiadek.',
+    'Przez tłum uczniów dostrzegacie, że prezydent Dudu wchodzi do bufetu i zjada wyśmienity obiadek.',
     'Pojawia się wiele robotników.',
     'Wynoszą oni cały sprzęt bufetu, jedzenie, napoje, stoły, krzesła i pracowników.',
     'Wszystko zostaje zamknięte w kontenerach i wywiezione.',
@@ -81,7 +149,7 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Mówicie: Nie pozwolimy na zabranie naszego najsmaczniejszego we wszechświecie jedzenia! Prezydencie, musi pan pozwolić nam je zachować!',
     'Prezydent Dudu odpowiada: A co mi zrobicie jak nie?',
     'Na co wy odpowiadacie: Nie wiemy, ale na pewno nie pozwolimy na zabranie bufetu!',
-    'Prezydent Dudu mówi: Podziwiam waszą deteminację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
+    'Prezydent Dudu mówi: Podziwiam waszą determinację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
     'Pytacie: Jeśli co?',
     'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
 ], 14, false, false, null);
@@ -89,11 +157,11 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',
     'W końcu po kilku wyczerpujących minutach myślenia, oddajecie test prezydentowi.',
-    'Prezdent przypatruje się waszym odpowiedziom z zdziwieniem.',
+    'Prezydent przypatruje się waszym odpowiedziom z zdziwieniem.',
     'Prezydent Dudu mówi: Gratulacje, udało się wam zdać test!',
     'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
-    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
+    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent i dodać do funkcji dodajacej go do wekwipunku w lini 215 zniknij_zdarzenie_nielosowe()
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
@@ -106,7 +174,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Prezydent Dudu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, szczególnie po usłyszeniu tej reakcji jesteście jeszcze bardziej zestresowani.',
     'Na wasze szczęście stojący nieopodal nerd postanawia się odezwać:',
-    'Mówi on: Actually, ja znam poprawną odpowiedź na pierwsze pytanie.',
+    'Mówi on: Umm actually, ja znam poprawną odpowiedź na pierwsze pytanie.',
     'Na drugie w sumie to też...',
     'Znam odpowiedź na wszystkie pytania! Dajcie mi to.',
     'Nerd wyrywa wam z rąk test i zaczyna go rozwiązywać.',
@@ -114,7 +182,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Prezydent Dudu mówi: Dobrze wiedzieć że nie cała dzisiejsza młodzież jest wpatrzona w te tiktaki i instagramy, ale chociaż jej część ma też coś w głowie.',
     'Prezydent Dudu mówi: Mimo problemów udało wam się zdać z pomocą kolegi nerda!',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
-    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokzaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
+    'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
@@ -162,7 +230,7 @@ const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '"To udzielę wam potrzebnych informacji"',
     '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'
 ], 26, false, null);
-const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2];
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_2];
 const nielosowe_zdarzenia_schody = [bufet1b];
 const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
@@ -209,6 +277,9 @@ function zniknij_zdarzenie_nielosowe() {
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
     if (menedzer_gry.zdarzenie == bufet2) {
         test_prezydenta();
+    }
+    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2) {
+        konkurs_ZSK();
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany|| menedzer_gry.zdarzenie == bufet3_niezdany) {
         for(let i of menedzer_gry.aktywni_gracze){
@@ -263,6 +334,8 @@ const menedzer_gry = {
     suma_szans_zdarzen: 0,
     czy_jest_prezydent: false,
     czy_quiz_prezydenta_zdany: false,
+    czy_jest_konkurs: false,
+    czy_konkurs_wygrany: false,
     poczatek_tury: function () {
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -935,10 +1008,14 @@ function wyswietl_ekran_nagrody(){
         if(menedzer_gry.czy_jest_prezydent&&wypisywana_ocena >= 60) {
             menedzer_gry.czy_quiz_prezydenta_zdany = true;
         }
+        if(menedzer_gry.czy_jest_konkurs&&wypisywana_ocena >= 80) {
+            menedzer_gry.czy_konkurs_wygrany = true;
+        }
     }
     ocena.value = wypisywana_ocena + '%';
-    zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
-    /*
+    if(!menedzer_gry.czy_jest_prezydent&&!menedzer_gry.czy_jest_konkurs)zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    else zmiana_sanity.value=0;
+        /*
     ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
     zaktualizuj_sanity();
@@ -956,8 +1033,11 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
         i.style.display = 'block';
         i.style.color = "white";
     }
-    if(!menedzer_gry.czy_jest_prezydent) menedzer_gry.poczatek_tury();
-    else koniec_sceny_prezydenta();
+    if(menedzer_gry.czy_jest_prezydent)koniec_sceny_prezydenta();
+    else if(menedzer_gry.czy_jest_konkurs) koniec_konkursu();
+    else menedzer_gry.poczatek_tury();
+    
+    
 }
 
 function przemieszaj_tablice(tablica) {
@@ -1307,6 +1387,7 @@ const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
     rok1_fizyka, rok2_fizyka, rok3_fizyka, rok4_fizyka, rok5_fizyka
 ), new zestaw_pytan_egzamin(), dialogi_fizyka);
 const prezydent = new przedmiot_szkolny('prezydent', new zestaw_pytan(prezydent_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
+const konkurs_ZSK_1 = new przedmiot_szkolny('prezydent', new zestaw_pytan(konkurs_ZSK_1_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
 const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
