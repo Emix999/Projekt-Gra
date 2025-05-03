@@ -747,14 +747,15 @@ body {
 #tekst_dialogu{
     position: absolute;
     top: 17.4vh;
-    left: 11.1vw;
-    height: 26.65vh;
-    width: 61.5vw;
+    left: 12.1%;
+    height: 24.65vh;
+    width: 60.5%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 4vh;
     color: white;
+
 }
 
 #przejdz_dalej_dialog{
