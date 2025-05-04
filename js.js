@@ -750,7 +750,7 @@ const nazwy = [
     "Wiesław", "Wiktor", "Władysław", "Włodzimierz", "Zbigniew", "Zenon", "Zygmunt", "Mździungwa",
     "Ziemniak", "Sans", "Barnaba", "Nie wiem", "Brum brum"
 ];
-const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "grafiki/avatary/pala.png", "grafiki/avatary/gigachad.png", "grafiki/avatary/spóźniony.png"];
+const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "grafiki/avatary/pala.png", "grafiki/avatary/spóźniony.png"];
 // const klasy = ["klasa0", "klasa1", "klasa2", "klasa3"];
 
 
