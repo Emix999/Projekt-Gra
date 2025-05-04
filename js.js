@@ -698,8 +698,11 @@ const menedzer_gry = {
         let i = 0;
         while (i < this.aktywni_gracze.length) {
             nr_graczy[i].value = ((i + this.indeks_wybranego) % this.aktywni_gracze.length) + 1;
+            nr_graczy[i].style.color = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].kolor_gracza;
             nazwy_gracza[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].nazwa;
+            nazwy_gracza[i].style.color = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].kolor_gracza;
             klasy_graczy[i].value = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].klasa.nazwa;
+            klasy_graczy[i].style.color = this.aktywni_gracze[(i + this.indeks_wybranego) % this.aktywni_gracze.length].kolor_gracza;
             i++;
         }
     },
@@ -774,7 +777,7 @@ const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "g
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(kolor_gracza,id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+    constructor(id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek,kolor_gracza) {
         this.id_html = id_html;
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
@@ -796,7 +799,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdana_matematyka = 0;
         this.czy_zdaje = true;
         this.ile_rund_temu_byl_na_terapii = 0;
-        this.kolor_gracza=null;
+        this.kolor_gracza=kolor_gracza;
     }
 }
 
@@ -816,10 +819,10 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz('red',"gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
-const gracz2 = new gracz('blue',"gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
-const gracz3 = new gracz('green',"gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
-const gracz4 = new gracz('yellow',"gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],"red");
+const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'blue');
+const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'green');
+const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'yellow');
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -1674,6 +1677,8 @@ function zaktualizuj_ekwipunek() {
 
 function zaktualizuj_sanity() {
     let wartosc_sanity = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+    sanity.style.color=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].kolor_gracza;
+
     if (wartosc_sanity <= 0) {
         wartosc_sanity = 0;
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity = 0;
