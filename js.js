@@ -396,7 +396,7 @@ function zniknij_zdarzenie_nielosowe() {
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
         for (let i of menedzer_gry.aktywni_gracze) {
-            dodawnie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, i);
+            dodawanie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, i);
         }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
@@ -1602,7 +1602,7 @@ const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
 //let losowa_liczba_losowa = 0;
 
-function dodawnie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+function dodawanie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
     if (gracz_obdarowany.ekwipunek.length <= 8) {
         gracz_obdarowany.ekwipunek.push(przedmiot);
     }
@@ -1630,7 +1630,7 @@ const sklep = {
         if (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs >= this.arsenal[id_produktu].cena) {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
             alert('pomyślnie kupiono produkt');
-            dodawnie_przedmiotu_do_ekwipunku(this.arsenal[id_produktu]);
+            dodawanie_przedmiotu_do_ekwipunku(this.arsenal[id_produktu]);
         }
         else {
             alert('złodzieju, nie złodziejuj');
