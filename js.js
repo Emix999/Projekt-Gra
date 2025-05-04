@@ -1647,7 +1647,7 @@ for (let i = 0; i < sklep.arsenal.length; i++) {
 
 wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
 
-function dodawnie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+function dodawanie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
     if(gracz_obdarowany.ekwipunek.length <=8) {
         gracz_obdarowany.ekwipunek.push(przedmiot);
         zaktualizuj_ekwipunek();
