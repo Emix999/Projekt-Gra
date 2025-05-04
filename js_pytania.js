@@ -26,6 +26,16 @@ const konkurs_ZSK_1_pytania = [
   new pytanie("Co robią wszechobecne starsze panie na osiedlach i w autobusach?", ["Blokują miejsca w autobusach i zatrzymują samochody na pasach", "Rozmawiają na tematy polityczne", "Spokojnie spędzają wspólnie czas", "Pewnie wszystkiego po trochu, ale nikt tak naprawdę nie wie"])
 ]
 
+const konkurs_ZSK_2_pytania = [
+  new pytanie("111111Gdzie Polak najczęściej chodzi „na szybkie zakupy”?", ["Do Żabki o 23:59 po hot-doga", "Do Biedronki", "Do galerii handlowej", "Na targ po pietruszkę"]),
+  new pytanie("1111111111Według jakiej zasady student kupuje pożywienie?", ["Kalorie do ceny", "Kolor opakowania", "Co wygląda na zjadliwe", "Czy można to zjeść na surowo, bo nie ma garnków"]),
+  new pytanie("11111111111Co Polak najczęściej odpowiada na pytanie 'jak leci'?", ["A ki*jowo, jak zwykle", "Świetnie", "Nie narzekam… jeszcze", "Leci jak krew z nosa"]),
+  new pytanie("11111111111Co Polak robi na wakacjach za granicą?", ["Wszystko naraz", "Szuka polskiego sklepu z kabanosami", "Rozkłada parawan już o 6:00", "Narzeka, że za gorąco"]),
+  new pytanie("11111111111Kiedy Polak zaczyna sezon grillowy?", ["Gdy tylko temperatura przekroczy 10°C, niezależnie od deszczu", "Kiedy słoneczko zacznie grzać i będzie przyjemna pogoda", "W Wielkanoc, jak pogoda dopisze", "Latem na urlopie kiedy jest dobra pogoda"]),
+  new pytanie("1111111111Co robi przeciętny Polak, gdy widzi znajomego w sklepie?", ["Udaje, że go nie widzi", "Wita się i odchodzi w swoją stronę", "Macha z drugiego końca sklepu", "Podchodzi i gada przez 30 minut"]),
+  new pytanie("11111111111Co robią wszechobecne starsze panie na osiedlach i w autobusach?", ["Blokują miejsca w autobusach i zatrzymują samochody na pasach", "Rozmawiają na tematy polityczne", "Spokojnie spędzają wspólnie czas", "Pewnie wszystkiego po trochu, ale nikt tak naprawdę nie wie"])
+]
+
 //pytania z angielskiego
 
 const rok1_angielski = [

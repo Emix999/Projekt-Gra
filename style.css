@@ -1,5 +1,5 @@
 body {
-    background-color: grey;
+    background-color: #5E5E5E;
     margin: 0;
     padding: 0;
 }
@@ -52,8 +52,8 @@ body {
 }
 
 #ekran_jak_grac{
-    height: 100vh;
-    width: 100vw;
+    height: 80vh;
+    width: 140vh;
     position: fixed;
     display: none;
     justify-content: center;
@@ -62,17 +62,13 @@ body {
     background-repeat: no-repeat;
 }
 
-#przejdz_dalej_jak_grac{
+#przejdz_dalej_jak_grac, #wylacz_jak_grac{
+    top: 85vh;
+    position: fixed;
     height: 10vh;
-    width: 80%;
-    background-color: greenyellow;
-}
-
-#wylacz_jak_grac{
-    height: 10vh;
-    width: 80%;
-    background-color: greenyellow;
-    display: none;
+    width: 40vh;
+    background-image: url("grafiki/Przejdz_dalej.png");
+    background-size: cover;
 }
 
 .flex_pion {
@@ -108,8 +104,8 @@ body {
 
 #jak_grac{
     width: 30vmin;
-    height: 10vmin;
-    background-image: url('grafiki/menu_grafiki/start.png');
+    height: 7.5vmin;
+    background-image: url('grafiki/jak_grac/jakGracPrzycisk.png');
     background-size: cover;
     position: fixed;
     border: none;
