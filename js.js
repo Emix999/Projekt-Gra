@@ -26,7 +26,27 @@ const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nie
 let szansa_zdarzenia_losowego = 1;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
 const losowe_zdarzenia = [
-    darmowe_pieniadze, zapomniana_pozyczka, dobry_biznes, dziwne_urzadzenie, kosztowna_nieuwaga, zmiana_w_planie_lekcji, zmiana_w_planie_lekcji2
+    darmowe_pieniadze,
+    zapomniana_pozyczka,
+    dobry_biznes,
+    dziwne_urzadzenie,
+    kosztowna_nieuwaga,
+    zmiana_w_planie_lekcji,
+    zmiana_w_planie_lekcji2,
+    wycieczka,
+    dokonales_niemozliwego,
+    to_bolalo,
+    chmura_dymu,
+    uwaga,
+    smierc,
+    rozluznienie,
+    zmiana_nauczyciela,
+    taktyczne_odmozdzanie,
+    posmiewisko,
+    dziwny_widok,
+    skarb_zycia,
+    rozwiazana_kartkowka_zdarzenie,
+    darmowe_zarcie
 ];
 
 class nielosowe_zdarzenie {
@@ -260,7 +280,7 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent Dudu mówi: Podziwiam waszą determinację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
     'Pytacie: Jeśli co?',
     'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
-], 14, false, false, null);
+], 14, false, null);
 
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',
@@ -274,7 +294,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
-], 14, false, false, null);
+], 14, false, null);
 
 const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent patrzy na was podczas rozwiązywania testu.',
@@ -295,7 +315,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
-], 14, false, false, null);
+], 14, false, null);
 
 function test_prezydenta() {
     menedzer_gry.czy_jest_prezydent = true;
@@ -451,10 +471,11 @@ const menedzer_gry = {
     czy_konkurs1_wygrany: false,
     czy_konkurs2_wygrany: false,
     poczatek_tury: function () {
-
+        SAS = 'Olek';
         while (SAS != 'Olek') {
             alert('Olek to nie SAS');//OLEK MUSI BYĆ SASEM!!!!!!!
         }
+        SAS = 'Protest';
 
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -540,7 +561,7 @@ const menedzer_gry = {
                             }
                             else {
                                 this.zdarzenie = i;
-                                if (i.funkcja_wywołana != null) i.funkcja_wywołana();
+                                if (i.funkcja != null) i.funkcja();
                                 
                             }
                             pokaz_zdarzenie_nielosowe();
@@ -724,8 +745,7 @@ const menedzer_gry = {
             znikniecie_ekranu(i);
         }
         pojawienie_ekranu(document.getElementById('017'));
-        this.wypisz_informacje_graczy();
-        this.indeks_wybranego = -1;
+        this.indeks_wybranego = 0;
     },
     //funkcja do testowania
     test_matura: function () {
