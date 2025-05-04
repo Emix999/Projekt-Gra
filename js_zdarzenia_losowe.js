@@ -51,5 +51,8 @@ const taktyczne_odmozdzanie = new zdarzenie('Taktyczne odmóżdżanie', 'Na prze
 const posmiewisko = new zdarzenie('Pośmiewisko', 'Na grupie klasowej obrażacie ZSK. Grupowa beka z konkurencyjnej szkoły. Sypią się żarty, komentarze, a śmiech unosi się nad Messengerem. Moralność? Czym jest moralność? Odzyskujesz 20 sanity.', 15, () => zmiana_sanity2(20));
 const dziwny_widok = new zdarzenie('Dziwny widok', 'Na korytarzu widzisz członków DnD (Drużyny Najgorszych Deweloperów). Spoglądasz, co robią, i widzisz, że piszą najbardziej heretyczny kod jaki kiedykolwiek widziałeś. Na ekranie: kod powtarza się 20 razy, zmienne długie na 50 znaków, a funkcje krzyczą o litość. To nie jest kod — to cyfrowe bluźnierstwo. Tracisz 50 sanity i zyskujesz ból oczu.', 1, () => zmiana_sanity2(-50));
 const skarb_zycia = new zdarzenie('Skarb życia', 'Na środku korytarza dostrzegasz niesamowitą bulwę ziemniaka. Twoje wielkopolskie serce przepełnia się radością. To nie jest zwykły ziemniak. To symbol tradycji, siły i obiadu. Czujesz, jak energia ziemniaka wypełnia cię DETERMINACJĄ.', 1, () => dodawanie_przedmiotu_do_ekwipunku(ziemniak));
+const rozwiazana_kartkowka_zdarzenie = new zdarzenie('Rozwiązana kartkówka', 'Na grupie klasowej pojawiły się zdjęcia jakieś kartkówki. Nie pytaj, skąd to przyszło. Liczy się tylko to, że teraz wiesz wszystko... przynajmniej do końca tej lekcji.', 30, () => dodawanie_przedmiotu_do_ekwipunku(rozwiazana_kartkowka));
+const darmowe_zarcie = new zdarzenie('Darmowe żarcie', 'Znajdujesz gumę turbo. Leżała samotnie pod ławką - prawie zapomniana. Ale ty wiesz, że to legenda. Jeden kęs i... poczujesz się jak w 2005 roku.', 50, () => dodawanie_przedmiotu_do_ekwipunku(guma_predkosc));
 
-//18 i daj od wycieczka do losowych zdarzeń
+
+//21 i daj do losowych zdarzeń
