@@ -25,27 +25,10 @@ const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nie
 //trzeba to zmienić na 3 żeby było 33%
 let szansa_zdarzenia_losowego = 1;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
-
-
-class zdarzenie {
-    constructor(nazwa, opis, szansa, funkcja_zdarzenia, runda_startowa = 0, runda_koncowa = -1) {
-        this.nazwa = nazwa;
-        this.opis = opis;
-        this.szansa = szansa;//szansa na wystąpienie zdarzenia
-        this.funkcja_zdarzenia = funkcja_zdarzenia;//funkcja wywołana po zdarzeniu
-        //Rok 1 trwa od rundy 0 do 9, rok 2 od 10 do 19 itd.
-        this.runda_startowa = runda_startowa;//runda w której zdarzenie się zaczyna
-        this.runda_koncowa = runda_koncowa;//runda w której zdarzenie się kończy runda_koncowa == -1 oznacza że zdarzenie trwa do końca gry
-    }
-}
-
 const losowe_zdarzenia = [
-    new zdarzenie('1', '1', 50, null, 0, 9),
-    new zdarzenie('2', '2', 50, null, 10, 19),
-    new zdarzenie('3', '3', 50, null, 20, 29),
-    new zdarzenie('4', '4', 50, null, 30, 39),
-    new zdarzenie('5', '5', 50, null, 40, 49)
+    darmowe_pieniadze, zapomniana_pozyczka, dobry_biznes, dziwne_urzadzenie, kosztowna_nieuwaga, zmiana_w_planie_lekcji, zmiana_w_planie_lekcji2
 ];
+
 class nielosowe_zdarzenie {
     constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana) {
         this.nazwa = nazwa;
@@ -378,6 +361,7 @@ function pokaz_zdarzenie() {
 function zniknij_zdarzenie() {
     zmiana_ekranu(ekran_zdarzenia, mapa);
     menedzer_gry.ilosc_losowych_zdarzen--;
+    menedzer_gry.zdarzenie.funkcja_zdarzenia();
 }
 
 function pokaz_zdarzenie_nielosowe() {
@@ -790,7 +774,7 @@ const avatary = ["grafiki/avatary/gigachad.png", "grafiki/avatary/kujon.png", "g
 
 
 class gracz {//gracz i wszystkie jego parametry
-    constructor(id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
+    constructor(kolor_gracza,id_html, nazwa, id_nazwy, klasa, id_klasy, avatar, id_avatara, sanity, iq, zdane_lata, czy_aktywny, ekwipunek) {
         this.id_html = id_html;
         this.nazwa = nazwa;
         this.id_nazwy = id_nazwy;
@@ -812,17 +796,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.zdana_matematyka = 0;
         this.czy_zdaje = true;
         this.ile_rund_temu_byl_na_terapii = 0;
-    }
-}
-
-class przedmiot {
-    constructor(nazwa, opis, id_obrazu, sanity, cena = 0, funkcja_wywołana = () => zmien_sanity()) {
-        this.nazwa = nazwa;
-        this.opis = opis;
-        this.id_obrazu = id_obrazu;
-        this.sanity = sanity;
-        this.cena = cena;
-        this.funkcja = funkcja_wywołana;
+        this.kolor_gracza=null;
     }
 }
 
@@ -831,9 +805,6 @@ class klasa {
         this.nazwa = nazwa;
     }
 }
-
-const ziemniak = new przedmiot("Ziemniak", "Legendarna bulwa o niesamowitych właściwościach i wysmienitym smaku, którego nie da się zapomnieć. Powoduje pasywne +2 sanity na turę. Po zjedzeniu na surowo gracz traci 20 sanity.", 'grafiki/przedmioty/ziemniak.png', 20);
-const rozwiazany_sprawdzian = new przedmiot('Rozwiązany sprawdzian', 'Możesz zagamblować o to, czy uda ci się ściągnać odpowiedzi, czy zostaniesz przyłapany na gorącym uczynku', 'grafiki/przedmioty/ziemniak.png', 0, 0, () => sciagaj());
 
 const klasa_a = new klasa('automatyk');
 const klasa_e = new klasa('elektronik');
@@ -845,10 +816,10 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [rozwiazany_sprawdzian]);
-const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
-const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
-const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz1 = new gracz('red',"gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [rozwiazany_sprawdzian]);
+const gracz2 = new gracz('blue',"gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz3 = new gracz('green',"gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
+const gracz4 = new gracz('yellow',"gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -1071,12 +1042,7 @@ function pokaz_pytanie() {
 
     if (odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red') {
         for (let i of odpowiedzi_przyciski) {
-            if (i.dataset.czy_poprawna == 'true') {
-                i.style.color = "lightgreen";
-            }
-            else {
-                i.style.color = "red";
-            }
+            i.style.color = 'white';
         }
     }
 
@@ -1441,7 +1407,13 @@ class sala {
         menedzer_gry.przedmiot_szkolny = this.przedmiot;
         menedzer_gry.pytania_kandydujace = pytania[rok].slice(0);
         menedzer_gry.ilosc_pytan = (!menedzer_gry.runda_egzamin ? 1 : (menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata == 3 ? 5 : 7));
-        pokaz_dialog();
+        if(menedzer_gry.runda_egzamin){
+            znikniecie_ekranu(mapa);
+            rozpocznij_pytania();
+        }
+        else{
+            pokaz_dialog();
+        }
     }
 }
 
@@ -1633,6 +1605,8 @@ for (let przycisk of mapa_przyciski) {
     przycisk.addEventListener('click', () => zmien_pietro(przycisk.parentElement.parentElement, document.getElementById(przycisk.dataset.mapa), losowe_zdarzenia));
 }
 
+//let losowa_liczba_losowa = 0;
+
 const sklep_przycisk = document.getElementById('przycisk_sklep');
 const ekran_sklepu = document.getElementById('ekran_sklepu');
 const sklep_obrazy_arsenalu = document.getElementsByClassName('sklep_arsenal_obraz');
@@ -1641,28 +1615,14 @@ const sklep_ceny_arsenalu = document.getElementsByClassName('sklep_arsenal_cena'
 const sklep_kup = document.getElementsByClassName('sklep_kup')
 const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 
-//let losowa_liczba_losowa = 0;
-
-function dodawanie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
-    if (gracz_obdarowany.ekwipunek.length <= 8) {
-        gracz_obdarowany.ekwipunek.push(przedmiot);
-    }
-    else {
-        alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
-    }
-    zaktualizuj_ekwipunek();
-    aktualizacja_menu_bocznego();
-}
-
 const sklep = {
     arsenal: [
-        new przedmiot('Obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 35 sanity', 'grafiki/przedmioty/ziemniak.png', 35, 24),
-        new przedmiot('Baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskujesz 5 sanity oraz prawdopodobieństwo zachorowania na cukrzycę zwiększy się o 20%', 'grafiki/przedmioty/sinkers.png', 5, 5),
-        new przedmiot('Guma "Prędkość"', 'Nie jesteś pewien co do jakości tego produktu. Nigdy nie wiesz, czy ta guma jest stara i skostniała, czy smaczna i zdatna do spożytku. Po zjedzeniu odzyskujesz ? sanity', 'grafiki/przedmioty/predkosc.png', 0, 1),
-        new przedmiot('Sok "Tymbork"', 'Inflacja dość mocno wpłynęła na cenę tego produktu, jednak jego legendary smak pozostał ten sam. Popijsz go co turę odzyskując 1 sanity. Możesz też wypić całego na raz, odzyskasz wtedy 4 sanity.', 'grafiki/przedmioty/tymbork.png', 4, 10),
-        new przedmiot('Paluszki "👍🐴"', 'Lubiane nie tylko przez lajkowanych koników. Przywraca od 1 do 12 sanity, w zależności od tego, jak dużo paluszków ukradną ci koledzy.', 'grafiki/przedmioty/Likekonik.png', 0, 5),
-        new przedmiot('Chipsy "Gay’s"', 'Tak ostre, że cię z kapci wywali, niewielu radzi sobie z takim zawodnikiem. Jeżeli uda ci się przeżyć te pieczenie z kamienną twarzą, zdobędziesz respekt i odzyskasz 75 sanity, ale jeżeli ulegniesz stracisz 50 sanity.', 'grafiki/przedmioty/Chipsy_Gays.png', 0, 20),
-        //new przedmiot('XAMPP: wersja premium', 'i tak cie nie stać biedaku', 'grafiki/przedmioty/xampp_ultimate.png', 0, 100000)
+        obiadek,
+        baton_sinkers,
+        guma_predkosc,
+        sok_tymbork,
+        paluszki,
+        chipsy_gays
     ],
     pokaz: function () {
         zmiana_ekranu(mapa, ekran_sklepu);
@@ -1693,6 +1653,17 @@ for (let i = 0; i < sklep.arsenal.length; i++) {
 }
 
 wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
+
+function dodawanie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+    if(gracz_obdarowany.ekwipunek.length <=8) {
+        gracz_obdarowany.ekwipunek.push(przedmiot);
+        zaktualizuj_ekwipunek();
+        aktualizacja_menu_bocznego();
+    }
+    else{
+        alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
+    }
+}
 
 function zaktualizuj_ekwipunek() {
     for (let i = 0; i < menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.length; i++) {
@@ -1770,30 +1741,6 @@ function usun_przedmiot() {
     aktualizacja_menu_bocznego();
 }
 
-function zmien_sanity() {
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
-    usun_przedmiot();
-}
-
-function sciagaj() {
-    if (ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '')) {
-        for (let i of odpowiedzi_przyciski) {
-            if (i.dataset.czy_poprawna == 'true') {
-                i.style.color = 'lightgreen';
-            }
-            else {
-                i.style.color = 'red';
-            }
-        }
-        znikniecie_szczegolow_przedmiotu();
-        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
-        aktualizacja_menu_bocznego();
-    }
-    else {
-        alert("nie możesz teraz użyć tego przedmiotu");
-    }
-}
-
 
 
 
@@ -1869,7 +1816,7 @@ function aktualizacja_menu_bocznego() {
     sklep.arsenal[2].sanity = Math.floor(Math.random() * 11) - 5;
     sklep.arsenal[4].sanity = Math.floor(Math.random() * 12);
     sklep.arsenal[5].sanity = (Math.random() > 1 / 2 ? 75 : -50);
-    sanity.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity;
+    zaktualizuj_sanity();
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
     obecny_rok.value = menedzer_gry.rok_gry;
