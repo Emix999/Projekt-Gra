@@ -810,7 +810,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz('red',"gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [rozwiazany_sprawdzian]);
+const gracz1 = new gracz('red',"gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz2 = new gracz('blue',"gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz3 = new gracz('green',"gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
 const gracz4 = new gracz('yellow',"gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, []);
@@ -1810,8 +1810,12 @@ function aktualizacja_menu_bocznego() {
     sklep.arsenal[5].sanity = (Math.random() > 1 / 2 ? 75 : -50);
     zaktualizuj_sanity();
     zdane_lata.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_lata;
+    zdane_lata.style.color=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].kolor_gracza;
     pieniadze.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs;
+    pieniadze.style.color=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].kolor_gracza;
     obecny_rok.value = menedzer_gry.rok_gry;
+    obecny_rok.style.color=menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].kolor_gracza;
+
 
     zdane_ogolne.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
     zdane_zawodowe.value = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe;
