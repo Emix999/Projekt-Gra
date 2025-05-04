@@ -55,7 +55,6 @@ body {
     height: 80vh;
     width: 140vh;
     position: fixed;
-    display: none;
     justify-content: center;
     align-items: center;
     background-size: cover;
