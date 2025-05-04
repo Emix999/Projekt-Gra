@@ -101,9 +101,14 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
 ], 8, false, null);
 
-function konkurs_ZSK() {
-    menedzer_gry.czy_jest_konkurs = true;
-    menedzer_gry.przedmiot_szkolny = konkurs_ZSK_1;
+function konkurs(konkurs) {
+    if(konkurs==konkurs_ZSK_1){
+        menedzer_gry.czy_jest_konkurs1 = true;
+    }
+    if(konkurs==konkurs_ZSK_2){
+        menedzer_gry.czy_jest_konkurs2 = true;
+    }
+    menedzer_gry.przedmiot_szkolny = konkurs;
     menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania.rok_1;
     menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.rok_1.length;
     zmiana_ekranu(ekran_zdarzenia_nielosowego, ekran_pytania);
@@ -114,8 +119,8 @@ function konkurs_ZSK() {
 }
 
 function koniec_konkursu() {
-    menedzer_gry.czy_jest_konkurs = false;
-    if (menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
+    menedzer_gry.czy_jest_konkurs1 = false;
+    if (menedzer_gry.czy_konkurs1_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
     else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
     pokaz_zdarzenie_nielosowe();
 }
@@ -166,69 +171,75 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
-    'Po chwili prowadzący ogłasza wyniki:',
+    'Czujecie nostaligię ogarniającą was, pamiętacię tą smutną chwilę z przed 3 lat jakby to było wczoraj.',
+    'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
-    'Gratulacje!',
-    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
-    'Oferujemy wam również nagrodę rzeczową, którą jest ',//nagroda za wygranie konkursu
-    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+    'Waszą nagrodą jest status złotej szkoły dla ZSŁ i chwała dla was.',
+    'Gratulacje! Udało wam się oczyścić hańbę otaczającą wasze imiona w związku z poprzednim konkursem wiedzy o Polsce.',
+    'Tym razem zobaczycie jak wygląda nagroda główna, którą jest ',//nagroda za wygranie konkursu
+    'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością',
+    'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
 ], 33, false, null);
 
-const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu', [
-    'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
-    'Po chwili prowadzący ogłasza wyniki:',
-    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Czujecie nostaligię ogarniającą was, pamiętacię tą ekscytację, którą czuliście 3 lata temu, jakby to było wczoraj.',
+    'W końcu prowadzący odchrząkuje i mówi:',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
-    'Zespołu Szkół Komunikacji!',
-    'Gratulacje!',
-    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
-    'Mamy dla was nagrrodę pocieszenia, którą jest ',//nagroda za przegranie konkursu
-    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+    'Zespołu Szkół Łączności!',
+    'Waszą nagrodą jest status złotej szkoły dla ZSŁ i chwała dla was.',
+    'Gratulacje! Udało wam się przedłużyć chwałę ogarniającą wasze imiona, jeszcze przez kolejne dziesiątki lat krążyć będą legendy na temat bohaterów, którzy ocalili status złotej szkoły dla ZSŁ.',
+    'Tym razem nagrodą główną dla zwycięzców jest ',//nagroda za wygranie konkursu
+    'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
+    'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
 ], 33, false, null);
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
-    'Po chwili prowadzący ogłasza wyniki:',
+    'Czujecie nostaligię ogarniającą was, pamiętacię tą smutną chwilę z przed 3 lat jakby to było wczoraj.',
+    'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
-    'Zespołu Szkół Łączności!',
-    'Gratulacje!',
-    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
-    'Oferujemy wam również nagrodę rzeczową, którą jest ',//nagroda za wygranie konkursu
-    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+    'Zespołu Szkół Komunikacji!',
+    'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci .',//nagroda za wygranie konkursu
+    'Natomiast dla drużyny przegranej: ',
+    'Po raz kolejny schańbiliście waszą szkołę i swoje dobre imie, już nigdy nie zostanie wam to zapomniane.',
+    'Tym razem nie ma dla was nawet nagrody pocieszenia. Może w kolejnych latach ZSŁ wystawi jakichś lepszych ucziów...',
+    'Wychodząc z sali konkursowej czujecie to samo okropne uczucie wstydu co kilka lat temu. Przegraliście i była to wasza wina.',
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, a wy zostaliście sami z pogardliwymi spojrzeniami waszych rówieśników.'
 ], 33, false, null);
 
-const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu', [
-    'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
-    'Po chwili prowadzący ogłasza wyniki:',
-    'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
+const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Czujecie nostaligię ogarniającą was, pamiętacię tą ekscytację, którą czuliście 3 lata temu, jakby to było wczoraj.',
+    'W końcu prowadzący odchrząkuje i mówi:',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
     'Zespołu Szkół Komunikacji!',
-    'Gratulacje!',
-    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
-    'Mamy dla was nagrrodę pocieszenia, którą jest ',//nagroda za przegranie konkursu
-    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+    'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci .',//nagroda za wygranie konkursu
+    'Natomiast dla drużyny przegranej: ',
+    'Schańbiliście waszą szkołę i swoje dobre imie, przegrana jest równa hańbie.',
+    'Mamy dla was nagrodę pocieszenia , może ona ukoi choć trochę waszą rozpacz',//nagroda pocieszenia
+    'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
 ], 33, false, null);
 
 
-function konkurs_ZSK() {
-    menedzer_gry.czy_jest_konkurs = true;
-    menedzer_gry.przedmiot_szkolny = konkurs_ZSK_1;
-    menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania.rok_1;
-    menedzer_gry.ilosc_pytan = menedzer_gry.przedmiot_szkolny.pytania.rok_1.length;
-    zmiana_ekranu(ekran_zdarzenia_nielosowego, ekran_pytania);
-    znikniecie_ekranu(mapa);
-    menedzer_gry.czy_poprawne_odpowiedzi = [];
-    menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
-    pokaz_pytanie();
-}
 
-function koniec_konkursu() {
-    menedzer_gry.czy_jest_konkurs = false;
-    if (menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
-    else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
+
+function koniec_konkursu_gwary_poznanskiej() {
+    menedzer_gry.czy_jest_konkurs1 = false;
+    if (menedzer_gry.czy_konkurs1_wygrany) {
+        if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej;
+        else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej;
+    }
+    else {
+        if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej
+        else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej;
+    }
     pokaz_zdarzenie_nielosowe();
 }
 
@@ -343,7 +354,7 @@ const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '"To udzielę wam potrzebnych informacji"',
     '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'
 ], 26, false, null);
-const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2];
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2,rywalizacja_ZSK_2_cz2_jesli_przegrali,rywalizacja_ZSK_2_cz2_jesli_wygrali];
 const nielosowe_zdarzenia_schody = [bufet1b];
 const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
@@ -392,7 +403,10 @@ function zniknij_zdarzenie_nielosowe() {
         test_prezydenta();
     }
     if (menedzer_gry.zdarzenie == rywalizacja_ZSK_1_cz2) {
-        konkurs_ZSK();
+        konkurs(konkurs_ZSK_1);
+    }
+    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_przegrali||menedzer_gry.zdarzenie==rywalizacja_ZSK_2_cz2_jesli_wygrali) {
+        konkurs(konkurs_ZSK_2);
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
         for (let i of menedzer_gry.aktywni_gracze) {
@@ -447,8 +461,10 @@ const menedzer_gry = {
     suma_szans_zdarzen: 0,
     czy_jest_prezydent: false,
     czy_quiz_prezydenta_zdany: false,
-    czy_jest_konkurs: false,
-    czy_konkurs_wygrany: false,
+    czy_jest_konkurs1: false,
+    czy_jest_konkurs2: false,
+    czy_konkurs1_wygrany: false,
+    czy_konkurs2_wygrany: false,
     poczatek_tury: function () {
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -522,8 +538,21 @@ const menedzer_gry = {
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda) {
-                            this.zdarzenie = i;
-                            if (i.funkcja_wywołana != null) i.funkcja_wywołana();
+                            console.log("536");
+                            if (i == rywalizacja_ZSK_2_cz2_jesli_przegrali || i == rywalizacja_ZSK_2_cz2_jesli_wygrali) {
+                                console.log("538");
+                                if (this.czy_konkurs1_wygrany) {this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_wygrali;
+                                    console.log("540");
+                                }
+                                else {this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_przegrali;
+                                    console.log("543");
+                                }
+                            }
+                            else {
+                                this.zdarzenie = i;
+                                if (i.funkcja_wywołana != null) i.funkcja_wywołana();
+                                
+                            }
                             pokaz_zdarzenie_nielosowe();
                             break;
                         }
@@ -1121,12 +1150,15 @@ function wyswietl_ekran_nagrody() {
         if (menedzer_gry.czy_jest_prezydent && wypisywana_ocena >= 60) {
             menedzer_gry.czy_quiz_prezydenta_zdany = true;
         }
-        if (menedzer_gry.czy_jest_konkurs && wypisywana_ocena >= 80) {
-            menedzer_gry.czy_konkurs_wygrany = true;
+        if (menedzer_gry.czy_jest_konkurs1 && wypisywana_ocena >= 80) {
+            menedzer_gry.czy_konkurs1_wygrany = true;
+        }
+        if (menedzer_gry.czy_jest_konkurs2 && wypisywana_ocena >= 80) {
+            menedzer_gry.czy_konkurs2_wygrany = true;
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    if (!menedzer_gry.czy_jest_prezydent && !menedzer_gry.czy_jest_konkurs) zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    if (!menedzer_gry.czy_jest_prezydent && !menedzer_gry.czy_jest_konkurs1&&!menedzer_gry.czy_jest_konkurs2) zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
     else zmiana_sanity.value = 0;
     /*
 ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
@@ -1147,7 +1179,8 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
         i.style.color = "white";
     }
     if (menedzer_gry.czy_jest_prezydent) koniec_sceny_prezydenta();
-    else if (menedzer_gry.czy_jest_konkurs) koniec_konkursu();
+    else if (menedzer_gry.czy_jest_konkurs1) koniec_konkursu();
+    else if (menedzer_gry.czy_jest_konkurs2) koniec_konkursu_gwary_poznanskiej();
     else menedzer_gry.poczatek_tury();
 
 
@@ -1501,6 +1534,7 @@ const fizyka = new przedmiot_szkolny('fizyka', new zestaw_pytan(
 ), new zestaw_pytan_egzamin(), dialogi_fizyka);
 const prezydent = new przedmiot_szkolny('prezydent', new zestaw_pytan(prezydent_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 const konkurs_ZSK_1 = new przedmiot_szkolny('prezydent', new zestaw_pytan(konkurs_ZSK_1_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
+const konkurs_ZSK_2 = new przedmiot_szkolny('prezydent', new zestaw_pytan(konkurs_ZSK_2_pytania), new zestaw_pytan_egzamin(), [new dialog(['Dialog prezydent który nie powinien się wyświetlać'])]);
 
 const s_018 = new sala('018', 'programista', programista, 'zawodowa');
 const s_030 = new sala('030', 'elektronik', elektronik, 'zawodowa');
@@ -1913,27 +1947,3 @@ function jaki_gracz() {
 }
 
 sas.addEventListener('click', () => jaki_gracz());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//ekwipunek 
