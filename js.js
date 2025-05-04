@@ -1696,7 +1696,7 @@ const ekran_jak_grac = document.getElementById('ekran_jak_grac');
 const opis_jak_grac = document.getElementById('opis_jak_grac');
 const przejdz_dalej_jak_grac = document.getElementById('przejdz_dalej_jak_grac')
 const wylacz_jak_grac = document.getElementById('wylacz_jak_grac');
-const tresc_jak_grac = ["url('grafiki/przedmioty/Chipsy_Gays.png')", "url('grafiki/przedmioty/Likekonik.png')", "url('grafiki/przedmioty/predkosc.png')"];
+const tresc_jak_grac = ["url('grafiki/jak_grac/jak_grac1.png')","url('grafiki/jak_grac/jak_grac2.png')","url('grafiki/jak_grac/jak_grac3.png')","url('grafiki/jak_grac/jak_grac4.png')","url('grafiki/jak_grac/jak_grac5.png')","url('grafiki/jak_grac/jak_grac6.png')","url('grafiki/jak_grac/jak_grac7.png')"];
 let indeks_tresci;
 
 function otworz_jak_grac(){
