@@ -113,9 +113,9 @@ function konkurs_ZSK() {
     pokaz_pytanie();
 }
 
-function koniec_konkursu(){
+function koniec_konkursu() {
     menedzer_gry.czy_jest_konkurs = false;
-    if(menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
+    if (menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
     else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
     pokaz_zdarzenie_nielosowe();
 }
@@ -225,9 +225,9 @@ function konkurs_ZSK() {
     pokaz_pytanie();
 }
 
-function koniec_konkursu(){
+function koniec_konkursu() {
     menedzer_gry.czy_jest_konkurs = false;
-    if(menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
+    if (menedzer_gry.czy_konkurs_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_wygrana;
     else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
     pokaz_zdarzenie_nielosowe();
 }
@@ -314,12 +314,12 @@ function test_prezydenta() {
     pokaz_pytanie();
 }
 
-function koniec_sceny_prezydenta(){
+function koniec_sceny_prezydenta() {
     menedzer_gry.czy_jest_prezydent = false;
-    if(menedzer_gry.czy_quiz_prezydenta_zdany) menedzer_gry.zdarzenie = bufet3_zdany;
+    if (menedzer_gry.czy_quiz_prezydenta_zdany) menedzer_gry.zdarzenie = bufet3_zdany;
     else menedzer_gry.zdarzenie = bufet3_niezdany;
     pokaz_zdarzenie_nielosowe();
-    
+
 }
 
 const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
@@ -381,7 +381,7 @@ function przewin_opis_zdarzenia_nielosowego() {
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego++;
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[menedzer_gry.indeks_opisu_zdarzenia_nielosowego];
     if (menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1) {
-            zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
+        zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
 }
 
@@ -394,9 +394,9 @@ function zniknij_zdarzenie_nielosowe() {
     if (menedzer_gry.zdarzenie == rywalizacja_ZSK_1_cz2) {
         konkurs_ZSK();
     }
-    if (menedzer_gry.zdarzenie == bufet3_zdany|| menedzer_gry.zdarzenie == bufet3_niezdany) {
-        for(let i of menedzer_gry.aktywni_gracze){
-            dodawnie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak,i);
+    if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
+        for (let i of menedzer_gry.aktywni_gracze) {
+            dodawnie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, i);
         }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
@@ -530,8 +530,8 @@ const menedzer_gry = {
                     }
                     this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
                     for (let i of nielosowe_zdarzenia_schody) {
-                        
-                        if (menedzer_gry.runda==i.runda) {
+
+                        if (menedzer_gry.runda == i.runda) {
                             console.log("tego napisu tu nie powinno być");
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
@@ -1034,7 +1034,7 @@ function pokaz_pytanie() {
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
 
-    if(odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red'){
+    if (odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red') {
         for (let i of odpowiedzi_przyciski) {
             if (i.dataset.czy_poprawna == 'true') {
                 i.style.color = "lightgreen";
@@ -1055,7 +1055,7 @@ function pokaz_pytanie() {
 }
 
 function kolejne_pytanie(i) {
-    if(!menedzer_gry.czy_odpowiedziano){
+    if (!menedzer_gry.czy_odpowiedziano) {
         if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
             menedzer_gry.czy_poprawne_odpowiedzi.push(true);
         }
@@ -1074,7 +1074,7 @@ function kolejne_pytanie(i) {
 let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
 
 function koniec_pytan() {
-    if(menedzer_gry.ilosc_pytan == 1){
+    if (menedzer_gry.ilosc_pytan == 1) {
         menedzer_gry.czy_odpowiedziano = true;
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
@@ -1086,16 +1086,16 @@ function koniec_pytan() {
         }
         przejdz_dalej_pytanie.style.display = 'block';
     }
-    else{
+    else {
         tresc.style.display = 'none';
         for (let i of odpowiedzi_przyciski) {
             i.style.display = 'none';
         }
         wyswietl_ekran_nagrody();
-    }    
+    }
 }
 
-function wyswietl_ekran_nagrody(){
+function wyswietl_ekran_nagrody() {
     ekran_nagrody.style.visibility = "visible";
     ilosc_pytan.value = menedzer_gry.ilosc_pytan;
     ilosc_poprawnych_odpowiedzi.value = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length;
@@ -1118,18 +1118,18 @@ function wyswietl_ekran_nagrody(){
         if (menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa) {
             gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
         }
-        if(menedzer_gry.czy_jest_prezydent&&wypisywana_ocena >= 60) {
+        if (menedzer_gry.czy_jest_prezydent && wypisywana_ocena >= 60) {
             menedzer_gry.czy_quiz_prezydenta_zdany = true;
         }
-        if(menedzer_gry.czy_jest_konkurs&&wypisywana_ocena >= 80) {
+        if (menedzer_gry.czy_jest_konkurs && wypisywana_ocena >= 80) {
             menedzer_gry.czy_konkurs_wygrany = true;
         }
     }
     ocena.value = wypisywana_ocena + '%';
-    if(!menedzer_gry.czy_jest_prezydent&&!menedzer_gry.czy_jest_konkurs)zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
-    else zmiana_sanity.value=0;
-        /*
-    ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
+    if (!menedzer_gry.czy_jest_prezydent && !menedzer_gry.czy_jest_konkurs) zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    else zmiana_sanity.value = 0;
+    /*
+ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += Number(zmiana_sanity.value);
     zaktualizuj_sanity();
     zmiana_sanity.value = (zmiana_sanity.value >= 0 ? '+' : '') + zmiana_sanity.value;
@@ -1146,11 +1146,11 @@ function odwroc_pokaz_pytanie() {//ukrywa pytanie
         i.style.display = 'block';
         i.style.color = "white";
     }
-    if(menedzer_gry.czy_jest_prezydent)koniec_sceny_prezydenta();
-    else if(menedzer_gry.czy_jest_konkurs) koniec_konkursu();
+    if (menedzer_gry.czy_jest_prezydent) koniec_sceny_prezydenta();
+    else if (menedzer_gry.czy_jest_konkurs) koniec_konkursu();
     else menedzer_gry.poczatek_tury();
-    
-    
+
+
 }
 
 function przemieszaj_tablice(tablica) {
@@ -1603,14 +1603,14 @@ const wyjdz_ze_sklepu = document.getElementById('wyjdz_ze_sklepu');
 //let losowa_liczba_losowa = 0;
 
 function dodawnie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
-    if(gracz_obdarowany.ekwipunek.length <=8) {
+    if (gracz_obdarowany.ekwipunek.length <= 8) {
         gracz_obdarowany.ekwipunek.push(przedmiot);
-        zaktualizuj_ekwipunek();
-        aktualizacja_menu_bocznego();
     }
-    else{
+    else {
         alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
     }
+    zaktualizuj_ekwipunek();
+    aktualizacja_menu_bocznego();
 }
 
 const sklep = {
@@ -1699,21 +1699,21 @@ const wylacz_jak_grac = document.getElementById('wylacz_jak_grac');
 const tresc_jak_grac = ["url('grafiki/przedmioty/Chipsy_Gays.png')", "url('grafiki/przedmioty/Likekonik.png')", "url('grafiki/przedmioty/predkosc.png')"];
 let indeks_tresci;
 
-function otworz_jak_grac(){
+function otworz_jak_grac() {
     zmiana_ekranu(ekran_startowy, ekran_jak_grac);
     ekran_jak_grac.style.backgroundImage = tresc_jak_grac[0];
     indeks_tresci = 0;
 }
 
-function przewin_jak_grac(){
+function przewin_jak_grac() {
     indeks_tresci++;
     ekran_jak_grac.style.backgroundImage = tresc_jak_grac[indeks_tresci];
-    if(indeks_tresci >= tresc_jak_grac.length - 1){
+    if (indeks_tresci >= tresc_jak_grac.length - 1) {
         zmiana_ekranu(przejdz_dalej_jak_grac, wylacz_jak_grac);
     }
 }
 
-function zamknij_jak_grac(){
+function zamknij_jak_grac() {
     zmiana_ekranu(wylacz_jak_grac, przejdz_dalej_jak_grac);
     zmiana_ekranu(ekran_jak_grac, ekran_startowy);
 }
@@ -1722,24 +1722,24 @@ jak_grac.addEventListener('click', () => otworz_jak_grac());
 przejdz_dalej_jak_grac.addEventListener('click', () => przewin_jak_grac());
 wylacz_jak_grac.addEventListener('click', () => zamknij_jak_grac());
 
-function usun_przedmiot(){
+function usun_przedmiot() {
     znikniecie_szczegolow_przedmiotu();
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
     aktualizacja_menu_bocznego();
 }
 
-function zmien_sanity(){
+function zmien_sanity() {
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
     usun_przedmiot();
 }
 
-function sciagaj(){
-    if(ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '')){
+function sciagaj() {
+    if (ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '')) {
         for (let i of odpowiedzi_przyciski) {
-            if(i.dataset.czy_poprawna == 'true'){
+            if (i.dataset.czy_poprawna == 'true') {
                 i.style.color = 'lightgreen';
             }
-            else{
+            else {
                 i.style.color = 'red';
             }
         }
@@ -1747,7 +1747,7 @@ function sciagaj(){
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
         aktualizacja_menu_bocznego();
     }
-    else{
+    else {
         alert("nie możesz teraz użyć tego przedmiotu");
     }
 }
