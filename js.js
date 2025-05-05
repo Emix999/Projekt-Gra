@@ -656,12 +656,12 @@ const menedzer_gry = {
                     if (i.zdane_lata != 5) {
                         if (i.zdana_matematyka + i.zdany_polski_i_angielski >= 2 && i.zdane_ogolne >= 2 && i.zdane_zawodowe >= 2 && !i.czy_na_terapii && i.czy_zdaje) {
                             document.getElementsByClassName('zdal')[j].value = 'ZDANE';
-                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'green';
+                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = '#22B14C';
                             i.zdane_lata++;
                         }
                         else {
                             document.getElementsByClassName('zdal')[j].value = 'OBLANE';
-                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = 'red';
+                            document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = '#FA1E27';
                         }
                     }
                     i.podszedl_do_egzaminu = [];

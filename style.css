@@ -625,15 +625,20 @@ body {
     height: 5vh;
     font-size: 4vh;
     width: 23vh;
+    color: white;
+    border: 0.5vh solid black;
+    margin-top: 1vh;
+    background-color: #1F1F1F;
 }
 .gracz_zdal{
     height: 25vh;
     width: 25vh;
-    background-color: transparent;
-    background-color: aquamarine;
+    background-color: #3B3B3B;
     margin: 2vh;
     text-align: center;
     font-size: 3vh;
+    color: white;
+    border: 0.5vh solid black; 
 }
 
 #ekran_kolejnego_roku, #ekran_koncowy{
