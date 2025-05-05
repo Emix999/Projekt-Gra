@@ -31,7 +31,7 @@ const losowe_zdarzenia = [
     dobry_biznes,
     dziwne_urzadzenie,
     kosztowna_nieuwaga,
-    zmiana_w_planie_lekcji,
+    zmiana_w_planie_lekcji1,
     zmiana_w_planie_lekcji2,
     wycieczka,
     dokonales_niemozliwego,
@@ -46,7 +46,17 @@ const losowe_zdarzenia = [
     dziwny_widok,
     skarb_zycia,
     rozwiazana_kartkowka_zdarzenie,
-    darmowe_zarcie
+    darmowe_zarcie,
+    mala_pomylka1,
+    mala_pomylka2,
+    mala_pomylka3,
+    znalezisko,
+    ciekawe_znalezisko,
+    kawusia,
+    klatwa_tiktokowa,
+    typowa_usterka,
+    pechowa_sytuacja,
+    dziwne_znalezisko
 ];
 
 class nielosowe_zdarzenie {
@@ -415,7 +425,7 @@ function zniknij_zdarzenie_nielosowe() {
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
         for (let i of menedzer_gry.aktywni_gracze) {
-            dodawanie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, i);
+            dodawanie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, 1, i);
         }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
@@ -526,14 +536,20 @@ const menedzer_gry = {
                     this.indeks_wybranego++;
                 }
 
-                //kolejna runda
+                if(this.aktywni_gracze[this.indeks_wybranego].ilosc_rund_blokady_mobidziennika > 0){
+                    this.aktywni_gracze[this.indeks_wybranego].ilosc_rund_blokady_mobidziennika--;
+                }
 
+                //kolejna runda
 
                 if (this.indeks_wybranego == 0) {
                     this.runda++;
                     for (let i = 0; i < this.aktywni_gracze[this.indeks_wybranego].ekwipunek.length; i++) {
                         if (this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].nazwa == sklep.arsenal[3].nazwa) {
                             this.aktywni_gracze[this.indeks_wybranego].sanity++;
+                        }
+                        if (this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].nazwa == uzaleznienie.nazwa) {
+                            losowa_zmiana_sanity(-5, 3);
                         }
                     }
 
@@ -820,6 +836,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.czy_zdaje = true;
         this.ile_rund_temu_byl_na_terapii = 0;
         this.kolor_gracza=kolor_gracza;
+        this.ilosc_rund_blokady_mobidziennika = 0;
     }
 }
 
@@ -839,7 +856,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],"#FA1E27");
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],"#FFADB0");
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#00A2E8');
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#22B14C');
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#FFF200');
@@ -1025,7 +1042,7 @@ function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
 
 const tresc = document.getElementById('tresc');
-const odpowiedzi_przyciski = document.getElementsByClassName('odpowiedz');
+const odpowiedzi_przyciski = Array.prototype.slice.call(document.getElementsByClassName('odpowiedz'));
 
 
 
@@ -1062,11 +1079,9 @@ function pokaz_pytanie() {
         odpowiedzi_przyciski[i].innerHTML = menedzer_gry.pytanie.odpowiedzi[mozliwe_indeksy[i]];
         odpowiedzi_przyciski[i].dataset.czy_poprawna = (mozliwe_indeksy[i] == 0);
     }
-
-    if (odpowiedzi_przyciski[0].style.color == 'lightgreen' || odpowiedzi_przyciski[0].style.color == 'red') {
-        for (let i of odpowiedzi_przyciski) {
-            i.style.color = 'white';
-        }
+        
+    for (let i of odpowiedzi_przyciski) {
+        i.style.color = '';
     }
 
     // do debugowania
@@ -1288,10 +1303,16 @@ const ustawienia = document.getElementById("ustawienia_menu_boczne");
 ustawienia.addEventListener('click', () => obsluga_ustawien(statystyki, ustawienia2));
 
 function obsluga_statystyk(ustawienia, statystyki) {
-    if (!otwarte_menu.statystyki) {
-        zmiana_ekranu(ustawienia, statystyki);
-        otwarte_menu.statystyki = true;
-        otwarte_menu.ustawienia = false;
+    if (!otwarte_menu.statystyki){
+        if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ilosc_rund_blokady_mobidziennika <= 0){
+            zmiana_ekranu(ustawienia, statystyki);
+            otwarte_menu.statystyki = true;
+            otwarte_menu.ustawienia = false;
+        }
+        else{
+            alert('mobidziennik jest zablokowany');
+        }
+        
     }
     else {
         znikniecie_ekranu(statystyki);
@@ -1677,14 +1698,64 @@ for (let i = 0; i < sklep.arsenal.length; i++) {
 
 wyjdz_ze_sklepu.addEventListener('click', () => sklep.znikniecie());
 
-function dodawanie_przedmiotu_do_ekwipunku(przedmiot, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
-    if(gracz_obdarowany.ekwipunek.length <=8) {
-        gracz_obdarowany.ekwipunek.push(przedmiot);
-        zaktualizuj_ekwipunek();
-        aktualizacja_menu_bocznego();
+function zmien_sanity(){
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity += menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek[menedzer_gry.ostatni_pokazany_przedmiot].sanity;
+    usun_przedmiot();
+}
+
+function sciagaj(){
+    if(ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || odpowiedzi_przyciski[0].style.color == 'white' || odpowiedzi_przyciski[0].style.color == '' || odpowiedzi_przyciski[1].style.color == '' || odpowiedzi_przyciski[2].style.color == '' || odpowiedzi_przyciski[3].style.color == '')){
+        for (let i of odpowiedzi_przyciski) {
+            if(i.dataset.czy_poprawna == 'true'){
+                i.style.color = 'lightgreen';
+            }
+            else{
+                i.style.color = 'red';
+            }
+        }
+        usun_przedmiot();
     }
     else{
-        alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
+        alert("nie możesz teraz użyć tego przedmiotu");
+    }
+}
+
+function usun_odpowiedzi(ilosc_odpowiedzi){
+    if(ekran_pytania.style.display == 'flex' && (ekran_nagrody.style.display == 'none' || (odpowiedzi_przyciski[0].style.color == '' && odpowiedzi_przyciski[1].style.color == '' && odpowiedzi_przyciski[2].style.color == '' && odpowiedzi_przyciski[3].style.color == ''))){
+        const odpowiedzi_kandydujace = odpowiedzi_przyciski.slice(0).filter(x => x.dataset.czy_poprawna == 'false');
+        przemieszaj_tablice(odpowiedzi_kandydujace);
+        for(let i = 0; i < ilosc_odpowiedzi; i++){
+            odpowiedzi_kandydujace[i].style.color = 'red';
+        }
+        usun_przedmiot();
+    }
+    else{
+        alert("nie możesz teraz użyć tego przedmiotu");
+    }
+}
+
+function losowe_usun_odpowiedzi(min_ilosc_odpowiedzi, max_ilosc_odpowedzi){
+    usun_odpowiedzi(Math.floor(Math.random() * (max_ilosc_odpowedzi - min_ilosc_odpowiedzi + 1) + min_ilosc_odpowiedzi))
+}
+
+function zablokuj_mobidziennik(ilosc_rund){
+    if(menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ilosc_rund_blokady_mobidziennika < ilosc_rund){
+        menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ilosc_rund_blokady_mobidziennika = ilosc_rund;
+        aktualizacja_menu_bocznego();
+    }
+}
+
+function dodawanie_przedmiotu_do_ekwipunku(przedmiot, ilosc = 1, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+    for(let i = 0; i < ilosc; i++){
+        if(gracz_obdarowany.ekwipunek.length <=8) {
+            gracz_obdarowany.ekwipunek.push(przedmiot);
+            zaktualizuj_ekwipunek();
+            aktualizacja_menu_bocznego();
+        }
+        else{
+            alert('Nie możesz mieć więcej niż 9 przedmiotów w ekwipunku, było ci za ciężko, więc wyrzyciłeś przedmiot do śmietnika');
+            break;
+        }
     }
 }
 
