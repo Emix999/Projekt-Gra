@@ -883,6 +883,7 @@ class menu_graczy {
 
         document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
         this.losowanie_nazwy();
+        this.avatar_lewo();
     }
     //Strzałka w prawo zmienia klasę na następną w tablicy
     klasa_prawo() {

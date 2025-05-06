@@ -33,14 +33,17 @@ function losowa_zmiana_sanity(min_zmiana_sanity, max_zmiana_sanity){
 
 function zdajesz_maturalne(){
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski++;
+    aktualizacja_menu_bocznego();
 }
 
 function zdajesz_ogólne(){
-    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne;
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
+    aktualizacja_menu_bocznego();
 }
 
 function zdajesz_zawodowe(){
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
+    aktualizacja_menu_bocznego();
 }
 
 const darmowe_pieniadze = new zdarzenie('Darmowe pieniądze', 'Spacerując po korytarzu podczas przerwy, zauważasz coś błyszczącego pod ławką. To moneta — najwyraźniej nikt się po nią nie schyla. Chowasz ją szybko do kieszeni, zanim ktokolwiek inny zauważy. Zyskujesz 2 zł.', 100, () => zarabiasz(2));
