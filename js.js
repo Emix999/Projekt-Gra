@@ -856,10 +856,10 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],"#FFADB0");
-const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#00A2E8');
-const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#22B14C');
-const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#FFF200');
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 1, 100, 100, 0, false, [],"#FFADB0");
+const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 1, 100, 100, 0, false, [],'#00A2E8');
+const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 1, 100, 100, 0, false, [],'#22B14C');
+const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 1, 100, 100, 0, false, [],'#FFF200');
 
 const gracze = [gracz1, gracz2, gracz3, gracz4];
 
@@ -883,6 +883,7 @@ class menu_graczy {
 
         document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
         this.losowanie_nazwy();
+        this.avatar_lewo();
     }
     //Strzałka w prawo zmienia klasę na następną w tablicy
     klasa_prawo() {
