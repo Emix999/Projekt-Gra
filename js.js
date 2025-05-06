@@ -1142,21 +1142,21 @@ function wyswietl_ekran_nagrody() {
     wypisywana_ocena = menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length * 100 / menedzer_gry.ilosc_pytan;
     if (menedzer_gry.runda_egzamin) {
         if (wypisywana_ocena < 50) {
-            gracze[menedzer_gry.indeks_wybranego].czy_zdaje = false;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_zdaje = false;
         }
     }
     if (wypisywana_ocena >= 70) {
         if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa) {
-            gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski++;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski++;
         }
         if (menedzer_gry.przedmiot_szkolny.nazwa == matematyka.nazwa) {
-            gracze[menedzer_gry.indeks_wybranego].zdana_matematyka++;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdana_matematyka++;
         }
         if (menedzer_gry.przedmiot_szkolny.nazwa == geografia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == biologia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fizyka.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == chemia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == historia.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == niemiecki.nazwa) {
-            gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_ogolne++;
         }
         if (menedzer_gry.przedmiot_szkolny.nazwa == programista.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == elektronik.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == automatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == teleinformatyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == robotyk.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == fotograf.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == informatyk.nazwa) {
-            gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
+            menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdane_zawodowe++;
         }
         if (menedzer_gry.czy_jest_prezydent && wypisywana_ocena >= 60) {
             menedzer_gry.czy_quiz_prezydenta_zdany = true;
@@ -1746,7 +1746,7 @@ function zablokuj_mobidziennik(ilosc_rund){
     }
 }
 
-function dodawanie_przedmiotu_do_ekwipunku(przedmiot, ilosc = 1, gracz_obdarowany = gracze[menedzer_gry.indeks_wybranego]) {
+function dodawanie_przedmiotu_do_ekwipunku(przedmiot, ilosc = 1, gracz_obdarowany = menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego]) {
     for(let i = 0; i < ilosc; i++){
         if(gracz_obdarowany.ekwipunek.length <=8) {
             gracz_obdarowany.ekwipunek.push(przedmiot);
