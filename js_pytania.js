@@ -27,13 +27,15 @@ const konkurs_ZSK_1_pytania = [
 ]
 
 const konkurs_ZSK_2_pytania = [
-  new pytanie("111111Gdzie Polak najczęściej chodzi „na szybkie zakupy”?", ["Do Żabki o 23:59 po hot-doga", "Do Biedronki", "Do galerii handlowej", "Na targ po pietruszkę"]),
-  new pytanie("1111111111Według jakiej zasady student kupuje pożywienie?", ["Kalorie do ceny", "Kolor opakowania", "Co wygląda na zjadliwe", "Czy można to zjeść na surowo, bo nie ma garnków"]),
-  new pytanie("11111111111Co Polak najczęściej odpowiada na pytanie 'jak leci'?", ["A ki*jowo, jak zwykle", "Świetnie", "Nie narzekam… jeszcze", "Leci jak krew z nosa"]),
-  new pytanie("11111111111Co Polak robi na wakacjach za granicą?", ["Wszystko naraz", "Szuka polskiego sklepu z kabanosami", "Rozkłada parawan już o 6:00", "Narzeka, że za gorąco"]),
-  new pytanie("11111111111Kiedy Polak zaczyna sezon grillowy?", ["Gdy tylko temperatura przekroczy 10°C, niezależnie od deszczu", "Kiedy słoneczko zacznie grzać i będzie przyjemna pogoda", "W Wielkanoc, jak pogoda dopisze", "Latem na urlopie kiedy jest dobra pogoda"]),
-  new pytanie("1111111111Co robi przeciętny Polak, gdy widzi znajomego w sklepie?", ["Udaje, że go nie widzi", "Wita się i odchodzi w swoją stronę", "Macha z drugiego końca sklepu", "Podchodzi i gada przez 30 minut"]),
-  new pytanie("11111111111Co robią wszechobecne starsze panie na osiedlach i w autobusach?", ["Blokują miejsca w autobusach i zatrzymują samochody na pasach", "Rozmawiają na tematy polityczne", "Spokojnie spędzają wspólnie czas", "Pewnie wszystkiego po trochu, ale nikt tak naprawdę nie wie"])
+  new pytanie("Co oznacza słowo 'bimba' w gwarze wielkopolskiej?", ["Tramwaj", "Pociąg", "Rower", "Samochód"]),
+  new pytanie("Co w Wielkopolsce nazywa się 'sznytka'?", ["Kromka chleba", "Nożyczki", "Chusteczka", "Mała torba"]),
+  new pytanie("Czym jest 'wiara' w poznańskiej gwarze?", ["Grupa ludzi, znajomi", "Religia", "Zaufanie", "Rodzina"]),
+  new pytanie("Co oznacza słowo 'tej' w gwarze wielkopolskiej?", ["Forma zaczepienia rozmówcy", "Wykrzyknik zdziwienia", "Skrót od 'tej pory'", "Rodzaj herbaty"]),
+  new pytanie("Co to jest 'szneka z glancem'?", ["Drożdżówka z lukrem", "Zupa mleczna", "Placek ziemniaczany", "Słodki napój"]),
+  new pytanie("Jak w gwarze poznańskiej mówi się na ziemniaki?", ["Pyry", "Grule", "Kartofle", "Bulwy"]),
+  new pytanie("Co oznacza słowo 'gleja' w gwarze wielkopolskiej?", ["Dokument, zaświadczenie", "Ziemia", "Plama", "Torba"]),
+  new pytanie("Kto to 'bździągwa' w gwarze poznańskiej?", ["Upierdliwa osoba", "Dziecko", "Sąsiadka", "Pies"]),
+  new pytanie("Co to znaczy 'skibnąć' coś?", ["Ukraść", "Przerzucić", "Podrzucić", "Zamienić"])
 ]
 
 //pytania z angielskiego
