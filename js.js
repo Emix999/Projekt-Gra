@@ -485,7 +485,7 @@ const menedzer_gry = {
         while (SAS != 'Olek') {
             alert('Olek to nie SAS');//OLEK MUSI BYĆ SASEM!!!!!!!
         }
-        SAS = 'Protest';
+        SAS = 'Skibidi';
 
         console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
@@ -676,7 +676,12 @@ const menedzer_gry = {
                             i.zdane_lata++;
                         }
                         else {
-                            document.getElementsByClassName('zdal')[j].value = 'OBLANE';
+                            if(Math.floor(Math.random() * 20) == 0){
+                                document.getElementsByClassName('zdal')[j].value = 'SKILL ISSUE';
+                            }
+                            else{
+                                document.getElementsByClassName('zdal')[j].value = 'OBLANE';
+                            }
                             document.getElementsByClassName('gracz_zdal')[j].style.backgroundColor = '#FA1E27';
                         }
                     }
@@ -1026,6 +1031,11 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
         glosnosc_muzyki2.value = glosnosc_muzyki.value;
         slider_sfx2.value = glosnosc_sfx.value;
         glosnosc_sfx2.value = glosnosc_sfx.value;
+
+        document.getElementById('avatar1_koniec_roku').src = document.getElementById('avatar1_menu').src;
+        document.getElementById('avatar2_koniec_roku').src = document.getElementById('avatar2_menu').src;
+        document.getElementById('avatar3_koniec_roku').src = document.getElementById('avatar3_menu').src;
+        document.getElementById('avatar4_koniec_roku').src = document.getElementById('avatar4_menu').src;
 
         czarniejacy_ekran1.style.zIndex = 1;
         czarniejacy_ekran1.style.animationPlayState = 'running';

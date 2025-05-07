@@ -91,6 +91,12 @@ body {
     position: absolute;
 }
 
+.avatar_koniec_roku{
+    height: 14vmin;
+    width: 14vmin;
+    margin-top: 0.5vmin;
+}
+
 #start {
     width: 30vmin;
     height: 10vmin;
@@ -629,10 +635,11 @@ body {
     border: 0.5vh solid black;
     margin-top: 1vh;
     background-color: #1F1F1F;
+    text-align: center;
 }
 .gracz_zdal{
-    height: 25vh;
-    width: 25vh;
+    height: 30vmin;
+    width: 30vmin;
     background-color: #3B3B3B;
     margin: 2vh;
     text-align: center;
