@@ -357,6 +357,17 @@ const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
     '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"',
     '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'
 ], 25, false, () => pojdz_do_sali_017());
+const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
+    '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
+    '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"',
+    '"ZARAZ WSZYSTKIM SPÓŹNIENIA POWPISUJE"',
+    '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"',
+    '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."',
+    '"...I TO JA JESTEM PORYWANY"',
+    '"DO JASNEJ CHOLERY"',
+    '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
+    '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
+], 25, false, null);
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
@@ -368,19 +379,96 @@ const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '"To udzielę wam potrzebnych informacji"',
     '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'
 ], 26, false, null);
-const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2,rywalizacja_ZSK_2_cz2_jesli_przegrali,rywalizacja_ZSK_2_cz2_jesli_wygrali];
+
+const zly_dyrektor1 = new nielosowe_zdarzenie(null, [
+    '- Jakiś random: "Hej, udało mi się Was w końcu znaleźć"',
+    '- "Skoro znowu się widzimy pewnie już wiecie, że coś znowu się odwaliło"',
+    '- "Mam dla Was sprawdzone informacje z pierwszej półki"',
+    '- "Otóż...nasz dyrektor się zwolnił..."',
+    '- "Uznał, że przejdzie sobie na emeryturę, bo nie ma już zbytnio siły"',
+    '- "I nie byłoby w tym nic złego gdyby nie fakt, że praktycznie chwilę po tym przyszedł ON"',
+    '- "Białogór Zetska"',
+    '- "Kuzyn demona...zmora wszechświatów..."',
+    '- "Jeżeli pobędzie dyrektorem dłużej niż tydzień to ta szkoła zniknie z powierzchni ziemii, gwarantuję"',
+    '- "Musimy temu zapobiec!"',
+    '- "Czas stać się Specjalną Agencją Szkolną i razem uratować tą szkołę razem...znowu"',
+    '- "Idźcie i spróbujcie odnaleźć naszego dyrektora, ja zajmę się znalezieniem brudów na tego łajdaka"',
+    '- "Aż czuje jak SAS się we mnie budzi"',
+    '- "Do zobaczenia"'
+], 43, false, null);
+const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
+    '- Zły dyrektor: "HAHAHAHAHAHAHA"',
+    '- "Ah kretyńscy uczniowie, i pyk koleini skreśleni z listy uczniów, i myk uwaga za bycie uczniem"',
+    '- Zauważa Was "O czyżbyście przyśli mnie błagać o litość?"',
+    '- "Ach nie przecież wy to ta słynna "Drużyna Sierpienia", która uratowała Pana Czosnowskiego...jakże wspaniale"',
+    '- "Lepiej już idźcie bo zaraz skończycie tak jak o-"',
+    '- "Miałem na myśli jak Ci źli uczniowie!"',
+    '- "Dobrzy zresztą też..."',
+    '- "No a teraz, idę powstawiać uwagi"',
+    '- "Nigdzie się przede mną nie ukryjecie"',
+    '- "..."',
+    '- "No chyba, że w bibliotece"'
+], 44, false, () => pojdz_do_biblioteki());
+const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
+    '- Nasz dyrektor: "Yym, jakaż fascynująca lektura"',
+    '- "Witajcie drodzy poszukiwacze wiedzy w tym spokojnym miejscu czy jest coś szczególnego co Was sprowadza"',
+    '- "Oj...rozumiem"',
+    '- "Niestety nie mogę Wam w tym pomóc"',
+    '- "Widzicie, przeszedłem na emeryturę dyrektorską, uznałem że nadszedł czas na czytanie w zaciszu biblioteki"',
+    '- "Poza tym nowego dyrektora jeszcze nie ma więc jeśl-"',
+    '- "..."',
+    '- "Jak to już jest nowy dyrektor?"',
+    '- "A gdzie głosowanie demokratyczne? Gdzie jakieś wybory?"',
+    '- "Czy naprawdę każdy biernie patrzał jak roznosi się u nas totalitaryzm?"',
+    '- "Eh, skoro sprawy tak się mają, myślę więc, że to idealna pora na powrót do mojego urzędu"',
+    '- "I tak chciałem sobie tylko odpocząć"',
+    '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie udana nam się obalić tego dyktatora"'
+], 44, false, null);
+const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
+    '- Zły dyrektor: "O widzę, że wszyscy się zebraliście...idealnie"',
+    '- "Idealna okazja by ogłosić wam nowy statut szkoły"',
+    '- "Po pierwsze: Mam władzę absolutną"',
+    '- "Po drugie: Za nieposłuszeństwo grozi skreślenie z listy uczniów"',
+    '- "Po trzeci-"',
+    '- Nasz dyrektor: "Nie tak prędko"',
+    '- "Myśli Pan, że za taką samowolkę nikt Panu nie zwróci uwagi?"',
+    '- Zły dyrektor: "HA, a co? Były dyrektor mi przeszkodzi?"',
+    '- Nasz dyrektor: "Po pierwsze: to byłem tylko na przerwie"',
+    '- "Po drugie: proszę pokazać dokumenty świadczące o pełnieniu stanowiska dyrektora',
+    '- Zły dyrektor: "Eee ż-że co mam pokazać?"',
+    '- Nasz dyrektor: "Dokumentację"',
+    '- Zły dyrektor: Wyciąga kartkę i piszę dYrEkT0r ZsK---tO zNacy L',
+    '- Nasz dyrektor: "No przecież prawo jazdy w chipsach ma większą autentyczność niż to"',
+    '- Zły dyrektor: "NIEWAŻNE, I TAK NIC NA MNIE NIE MACIE"',
+    '- "DOPROWADZE TĄ SZKOŁĘ DO RUINY I NIKT MNIE NI-"',
+    '*Wchodzi jakiś random, a za nim Pan Czosnowski"',
+    '- Jakiś random: "A właśnie, że mamy!"',
+    '- "Tak się składa, że Pan jesteś nie tylko zbrodniarz z imienia i reputacji..."',
+    '- "Ale też z prawa!"',
+    '- Pan Czosnowski: "MYŚLAŁEŚ, ŻE JAK MNIE PORWIESZ TO ODPUSZCZĘ CI NIEZDANĄ KARTKÓWKĘ Z BIOLOGI!?"',
+    '- "Oj kochany...PRZY TOBIE TO NAWET ADAM DOMINCZYK I GAROSZ JABIEL WYPADAJĄ OBŁĘDNIE!"',
+    '- Zły dyrektor: "C-chwila p-p-przecież n-nikt mnie t-t-tu nie uczy"',
+    '- Pan Czosnowski: "Ależ ja wiem mój drogi...WYSTARCZY MI TYLKO SPOJRZENIE BY OKREŚLIĆ CZY ZDAJESZ, ZDAŁEŚ ALBO CZY BĘDZIESZ ZDAWAŁ Z BIOLOGI"',
+    '- "MATKO ŚWIĘTA! CZY TY W OGÓLE WIESZ ILE MASZ CHROMOSOMÓW"',
+    '- Zły dyrektor: "yyy aa yyyy aaa yyy aa yyy aa yyyy aaa yy aa"',
+    '- "W ZSK tego nie uczyli"',
+    'W tej chwili Pan Czosnowski przeszywa go wzrokiem i już przygotowuje swój atak',
+    'Zły dyrektor ucieka',
+    '- "Wszystko by mi się udało gdyby nie przeklęta "Drużyna Sierpienia" i ten cholerny SAS!"',
+    '- Nasz dyrektor: "Dziękuje Wam drodzy uczniowie, dzięki Wam reszta uczniów z tej szkoły nie została skreślona z listy uczniów"',
+    '- "To wielkie osiągniecie uratować całą szkołę. Gratuluje z całego serca"',
+    '- Jakiś random: "Też Wam dziękuje, pomogliście nie tylko mi, ale także niejednemu uczniowi"',
+    '- "Dobrze się z Wami współpracowało partnerzy. Abyśmy byli kwita, proszę weźcie ten [Hyperlink blocked]"', //jakaś nagroda
+    '- "Wierzę, że Wam się przyda"',
+    '- "A teraz idę przedyskutować kwestie 5 niezdanych lat z biologii"',
+    '- Pan Czosnowski: "Eh, skoro okazało się, że NIE jesteś najgorszym uczniem biologii jakiego widziałem, myślę że możesz zdać"',
+    '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze."'
+], 45, false, null);
+//jakaś nagroda jest potrzebna
+
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2,rywalizacja_ZSK_2_cz2_jesli_przegrali,rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4];
 const nielosowe_zdarzenia_schody = [bufet1b];
-const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
-    '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
-    '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"',
-    '"ZARAZ WSZYSTKIM SPÓŹNIENIA POWPISUJE"',
-    '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"',
-    '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."',
-    '"...I TO JA JESTEM PORYWANY"',
-    '"DO JASNEJ CHOLERY"',
-    '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
-    '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
-], null, false, null);
+
 
 function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
@@ -430,13 +518,27 @@ function zniknij_zdarzenie_nielosowe() {
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
         for (let i of sala_przyciski) {
-            pojawienie_ekranu(i);
+            if(i.id != 'SCEM'){
+                pojawienie_ekranu(i);
+            }
         }
         for (let i of mapa_przyciski) {
             pojawienie_ekranu(i);
         }
         znikniecie_ekranu(document.getElementById('017'));
         menedzer_gry.czy_otwarto_017 = false;
+    }
+    if (menedzer_gry.zdarzenie == zly_dyrektor3) {
+        for (let i of sala_przyciski) {
+            if(i.id != '017'){
+                pojawienie_ekranu(i);
+            }
+        }
+        for (let i of mapa_przyciski) {
+            pojawienie_ekranu(i);
+        }
+        znikniecie_ekranu(document.getElementById('SCEM'));
+        menedzer_gry.czy_otwarto_biblioteke = false;
     }
 }
 
@@ -480,6 +582,7 @@ const menedzer_gry = {
     czy_jest_konkurs2: false,
     czy_konkurs1_wygrany: false,
     czy_konkurs2_wygrany: false,
+    czy_otwarto_biblioteke: false,
     poczatek_tury: function () {
         SAS = 'Olek';
         while (SAS != 'Olek') {
@@ -602,6 +705,9 @@ const menedzer_gry = {
                     }
                     if (this.czy_otwarto_017) {
                         this.runda_017();
+                    }
+                    if (this.czy_otwarto_biblioteke) {
+                        this.runda_biblioteka();
                     }
                     if ((this.runda - 1) % 10 == 0 && this.runda != 1) {
                         this.kolejny_rok = true;
@@ -766,6 +872,18 @@ const menedzer_gry = {
             znikniecie_ekranu(i);
         }
         pojawienie_ekranu(document.getElementById('017'));
+        this.indeks_wybranego = 0;
+    },
+    runda_biblioteka: function(){
+        zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
+        this.pietro = document.getElementById('schemat_drugi_budynek');
+        for (let i of sala_przyciski) {
+            znikniecie_ekranu(i);
+        }
+        for (let i of mapa_przyciski) {
+            znikniecie_ekranu(i);
+        }
+        pojawienie_ekranu(document.getElementById('SCEM'));
         this.indeks_wybranego = 0;
     },
     //funkcja do testowania
@@ -1808,7 +1926,17 @@ function wejdz_do_sali_017() {
     pokaz_zdarzenie_nielosowe();
 }
 
+function pojdz_do_biblioteki(){
+    menedzer_gry.czy_otwarto_biblioteke = true;
+}
+
+function wejdz_do_biblioteki() {
+    menedzer_gry.zdarzenie = zly_dyrektor3;
+    pokaz_zdarzenie_nielosowe();
+}
+
 document.getElementById('017').addEventListener('click', () => wejdz_do_sali_017());
+document.getElementById('SCEM').addEventListener('click', () => wejdz_do_biblioteki());
 
 const jak_grac = document.getElementById('jak_grac');
 const ekran_jak_grac = document.getElementById('ekran_jak_grac');
