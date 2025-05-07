@@ -403,7 +403,7 @@ const rok3_matematyka = [
 const rok4_matematyka = [
   new pytanie("Szereg geometryczny z ilorazem q = 1 jest:", ["zbieżny tylko gdy wyrazy są stałe", "zawsze rozbieżny", "naprzemienny", "rosnący wykładniczo"]),
   new pytanie("Wzór ogólny ciągu arytmetycznego:", ["aₙ = a₁ + (n - 1)r", "aₙ = a₁ * qⁿ⁻¹", "aₙ = (a₁ + aₙ)/2", "aₙ = n(n-1)/2"]),
-  new pytanie("Wzór dwumianowy Newtona używa symbolu:", ["(n nad k)", "logₙ k", "n^k", "√[n]{k}"]),
+  new pytanie("Wzór dwumianowy Newtona używa symbolu:", ["n nad k", "logₙ k", "n^k", "√[n]{k}"]),
   new pytanie("Prawdopodobieństwo zdarzenia pewnego wynosi:", ["1", "0", "0.5", "nieskończoność"]),
   new pytanie("Liczba permutacji n-elementowego zbioru:", ["n!", "n", "2ⁿ", "n²"]),
   new pytanie("Mediana to:", ["wartość środkowa uporządkowanego zbioru", "największa wartość", "najczęściej występująca wartość", "najmniejsza wartość"]),
@@ -575,10 +575,10 @@ const rok2_chemia = [
 ];
 
 const rok3_chemia = [
-  new pytanie("Jakie jest pH kwasu siarkowego (H₂SO₄)?", ["poniżej 7", "7", "powyżej 7", "14"]),
-  new pytanie("Rozpuszczalność substancji w wodzie zależy głównie od:", ["polarności cząsteczek", "masy cząsteczkowej", "temperatury", "koloru substancji"]),
-  new pytanie("Reakcja utleniania polega na:", ["oddaniu elektronów", "przyjęciu elektronów", "oddaniu protonów", "przyjęciu protonów"]),
-  new pytanie("Główna różnica między kwasem a zasadą to:", ["kwas oddaje protony, zasada je przyjmuje", "kwas przyjmuje protony, zasada je oddaje", "kwas ma pH 7, zasada poniżej 7", "kwas jest substancją organiczną, zasada nie"]),
+  new pytanie("Który z poniższych związków jest węglowodanem?", ["Glukoza", "Alanina", "Gliceryna", "Kwas octowy"]),
+  new pytanie("Jaki typ wiązania dominuje w cząsteczce chlorku sodu (NaCl)?", ["Jonowe", "Kowalencyjne spolaryzowane", "Metaliczne", "Kowalencyjne niespolaryzowane"]),
+  new pytanie("Który z poniższych pierwiastków jest metalem alkalicznym?", ["Potas", "Magnez", "Wapń", "Cynk"]),
+  new pytanie("Który odczynnik służy do wykrywania skrobi?", ["Roztwór jodu w jodku potasu", "Roztwór siarczanu(VI) miedzi(II)", "Fenoloftaleina", "Oranż metylowy"]),
   new pytanie("Otrzymywanie gazu wodorowego (H₂) w reakcji metalu z kwasem to reakcja:", ["redoks", "hydrolizy", "estryfikacji", "substytucji"]),
   new pytanie("Który z poniższych gazów jest cięższy od powietrza?", ["Dwutlenek węgla (CO₂)", "Azot (N₂)", "Tlen (O₂)", "Wodór (H₂)"]),
   new pytanie("Jaka jest liczba moli w 32 gramach tlenu (O₂)? (Masa molowa O₂ = 32 g/mol)", ["1 mol", "2 mole", "0,5 mola", "32 mole"]),
