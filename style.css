@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 
-.statystyki{
+.statystyki {
     position: absolute;
     border: none;
     height: 4vh;
@@ -15,11 +15,12 @@ body {
     font-size: 3vh;
 }
 
-@keyframes znikniecie_ekranu{
+@keyframes znikniecie_ekranu {
     0% {
         background: transparent;
     }
-    100%{
+
+    100% {
         background: black;
     }
 }
@@ -33,7 +34,7 @@ body {
     align-items: center;
 }
 
-#tlo_menu_glowne{
+#tlo_menu_glowne {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -41,7 +42,7 @@ body {
     display: none;
 }
 
-#czarniejacy_ekran1{
+#czarniejacy_ekran1 {
     z-index: -1;
     position: absolute;
     height: 100vh;
@@ -51,7 +52,7 @@ body {
     animation-play-state: paused;
 }
 
-#ekran_jak_grac{
+#ekran_jak_grac {
     height: 80vh;
     width: 140vh;
     position: fixed;
@@ -61,7 +62,8 @@ body {
     background-repeat: no-repeat;
 }
 
-#przejdz_dalej_jak_grac, #wylacz_jak_grac{
+#przejdz_dalej_jak_grac,
+#wylacz_jak_grac {
     top: 85vh;
     position: fixed;
     height: 10vh;
@@ -101,7 +103,7 @@ body {
     margin-bottom: 49vmin;
 }
 
-#jak_grac{
+#jak_grac {
     width: 30vmin;
     height: 7.5vmin;
     background-image: url('grafiki/jak_grac/jakGracPrzycisk.png');
@@ -128,7 +130,7 @@ body {
     width: 3vmin;
     background-color: transparent;
     position: absolute;
-    color:  white;
+    color: white;
     border: none;
     font-size: 1vh;
 }
@@ -151,7 +153,7 @@ body {
     width: 3vmin;
     background-color: transparent;
     position: absolute;
-    color:  white;
+    color: white;
     border: none;
     font-size: 1vh;
 }
@@ -172,7 +174,7 @@ body {
     border: none;
 }
 
-.los{
+.los {
     position: absolute;
     background-size: cover;
     left: 5%;
@@ -180,32 +182,32 @@ body {
     border: none;
 }
 
-.strzalka_srodek_lewo{
+.strzalka_srodek_lewo {
     background-size: cover;
     position: absolute;
     left: 5%;
-    top: 43%; 
+    top: 43%;
 }
 
-.strzalka_srodek_prawo{
+.strzalka_srodek_prawo {
     position: absolute;
     background-size: cover;
     right: 5%;
-    top: 43%; 
+    top: 43%;
 }
 
-.strzalka_dol_lewo{
+.strzalka_dol_lewo {
     position: absolute;
     background-size: cover;
     left: 5%;
-    bottom: 5%; 
+    bottom: 5%;
 }
 
-.strzalka_dol_prawo{
+.strzalka_dol_prawo {
     position: absolute;
     background-size: cover;
     right: 5%;
-    bottom: 5%; 
+    bottom: 5%;
 }
 
 .input_menu {
@@ -218,16 +220,18 @@ body {
     font-size: 1.5vh;
 }
 
-.nazwa_gracza_menu{
+.nazwa_gracza_menu {
     position: absolute;
     top: 7.5%;
     left: 22%;
 }
-.profil_gracza_menu{
+
+.profil_gracza_menu {
     position: absolute;
     bottom: 7.5%;
     left: 22%;
 }
+
 .zwijanie {
     position: absolute;
     top: 1px;
@@ -318,6 +322,26 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    filter: none;
+}
+
+#wszyscy_gracze {
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: 4vh;
+    display: flex;
+    height: 100vh;
+    width: 36vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    position: absolute;
+    display: none;
+    position: absolute;
+    right: 0;
 }
 
 
@@ -328,6 +352,7 @@ body {
     border: none;
     font-family: Segoe UI;
 }
+
 .ekran_gry {
     height: 100vh;
     width: calc(100vw - 36vh);
@@ -335,14 +360,15 @@ body {
     display: none;
 }
 
-#mapa,#ustawienia2{
+#mapa,
+#ustawienia2 {
     width: calc(100vw - 36vh);
     height: 100vh;
     background-color: white;
     justify-content: center;
 }
 
-#ekran_statystyk{
+#ekran_statystyk {
     position: absolute;
     top: 30vh;
     left: calc(35vw - 36vh);
@@ -355,17 +381,18 @@ body {
     justify-content: center;
 }
 
-#mapa{
+#mapa {
     display: flex;
-    background-color:#1F1F1F;
+    background-color: #1F1F1F;
 }
 
-#ustawienia2, #ekran_statystyk{
+#ustawienia2,
+#ekran_statystyk {
     display: none;
     position: absolute;
 }
 
-#ustawienia2{
+#ustawienia2 {
     background-color: transparent;
 }
 
@@ -377,7 +404,7 @@ body {
     margin: 0.5vh;
     margin-bottom: 5vh;
     position: absolute;
-    top: 0.9vh; 
+    top: 0.9vh;
     left: 5.5%;
 }
 
@@ -389,11 +416,11 @@ body {
     margin: 0.5vh;
     margin-bottom: 5vh;
     position: absolute;
-    top: 0.9vh; 
+    top: 0.9vh;
     right: 5.5%;
 }
 
-.nr_gracza {    
+.nr_gracza {
     width: 3vh;
     height: 3vh;
     margin: 0.5vh;
@@ -430,7 +457,7 @@ body {
 }
 
 #sanity,
-#pieniadze{
+#pieniadze {
     margin: 0.5vh;
     height: 3vh;
     width: 4vh;
@@ -459,7 +486,7 @@ body {
     background-color: transparent;
 }
 
-.sklep_arsenal_nazwa{
+.sklep_arsenal_nazwa {
     color: white;
     font-size: 3vh;
     position: absolute;
@@ -469,7 +496,7 @@ body {
     text-align: center;
 }
 
-.sklep_arsenal_cena{
+.sklep_arsenal_cena {
     top: 57.8%;
     left: 8%;
     color: white;
@@ -481,7 +508,7 @@ body {
     text-align: center;
 }
 
-.sklep_arsenal_obraz{
+.sklep_arsenal_obraz {
     top: 45%;
     left: 91.8%;
     position: absolute;
@@ -493,32 +520,35 @@ body {
     background-color: transparent;
 }
 
-.ekwipunek, .sklep_arsenal{
+.ekwipunek,
+.sklep_arsenal {
     position: absolute;
 }
 
-.sklep_arsenal{
+.sklep_arsenal {
     color: white;
 }
 
-.sklep_kup{
+.sklep_kup {
     position: absolute;
     border-collapse: collapse;
     width: 7.3%;
     height: 5.8vh;
     background-size: cover;
     background-position: center;
-    background-image: url("grafiki/kup.png");  
+    background-image: url("grafiki/kup.png");
     border: none;
 }
 
-#ekran_sklepu, #ekran_zdarzenia_nielosowego{
+#ekran_sklepu,
+#ekran_zdarzenia_nielosowego {
     display: none;
     height: 100vh;
     width: calc(100vw - 36vh);
     flex-direction: column;
 }
-#przejdz_dalej_ekran_roku{
+
+#przejdz_dalej_ekran_roku {
     background-color: #000000;
     background-size: cover;
     background-position: center;
@@ -531,7 +561,7 @@ body {
     border: none;
 }
 
-#wnetrze_sklepu{
+#wnetrze_sklepu {
     height: 50vh;
     width: calc(100vw - 36vh);
     background-size: cover;
@@ -540,14 +570,14 @@ body {
     filter: blur(3px);
 }
 
-#panel_sklepu{
+#panel_sklepu {
     position: absolute;
     top: 50vh;
     height: 50vh;
     width: calc(100vw - 36vh);
     background-image: url("grafiki/sklep_arsenal.png");
     background-repeat: no-repeat;
-    background-size:calc(100vw - 36vh) 50vh;
+    background-size: calc(100vw - 36vh) 50vh;
 }
 
 .odpowiedz {
@@ -561,27 +591,28 @@ body {
     border: none;
 }
 
-#odpowiedz_a{
+#odpowiedz_a {
     top: 44.1vh;
     left: 11.4%;
 }
 
-#odpowiedz_b{
+#odpowiedz_b {
     top: 44.1vh;
-    left: 47%; 
+    left: 47%;
 }
 
-#odpowiedz_c{
+#odpowiedz_c {
     top: 67.4vh;
     left: 11.4%;
 }
 
-#odpowiedz_d{
+#odpowiedz_d {
     top: 67.4vh;
     left: 47%;
 }
 
-#tresc, #nazwa_zdarzenia{
+#tresc,
+#nazwa_zdarzenia {
     display: flex;
     position: absolute;
     top: 9.3vh;
@@ -602,16 +633,16 @@ body {
     margin-top: 3vh;
 }
 
-#ekran_pytania{
+#ekran_pytania {
     height: 100vh;
     width: calc(100vw - 36vh);
     background-image: url('grafiki/pytanie.png');
-    display: none;  
+    display: none;
     background-repeat: no-repeat;
-    background-size:calc(100vw - 36vh) 100vh;
+    background-size: calc(100vw - 36vh) 100vh;
 }
 
-#ekran_dialogu{
+#ekran_dialogu {
     height: 100vh;
     width: calc(100vw - 36vh);
     display: none;
@@ -620,7 +651,9 @@ body {
     background-size: cover;
     background-position: center;
 }
-.imie_zdanego, .zdal{
+
+.imie_zdanego,
+.zdal {
     background-color: transparent;
     height: 5vh;
     font-size: 4vh;
@@ -630,7 +663,8 @@ body {
     margin-top: 1vh;
     background-color: #1F1F1F;
 }
-.gracz_zdal{
+
+.gracz_zdal {
     height: 25vh;
     width: 25vh;
     background-color: #3B3B3B;
@@ -638,28 +672,29 @@ body {
     text-align: center;
     font-size: 3vh;
     color: white;
-    border: 0.5vh solid black; 
+    border: 0.5vh solid black;
 }
 
-#ekran_kolejnego_roku, #ekran_koncowy{
+#ekran_kolejnego_roku,
+#ekran_koncowy {
     height: 100vh;
     width: calc(100vw - 36vh);
-    display: none;  
+    display: none;
     background-repeat: no-repeat;
-    background-size:calc(100vw - 36vh) 100vh;
+    background-size: calc(100vw - 36vh) 100vh;
 }
 
 
-#ekran_zdarzenia{
+#ekran_zdarzenia {
     height: 100vh;
     width: calc(100vw - 36vh);
     background-image: url('grafiki/zdażenie.png');
-    display: none;  
+    display: none;
     background-repeat: no-repeat;
-    background-size:calc(100vw - 36vh) 100vh;
+    background-size: calc(100vw - 36vh) 100vh;
 }
 
-#opis{
+#opis {
     display: flex;
     position: absolute;
     top: 38.2vh;
@@ -673,7 +708,7 @@ body {
     color: white;
 }
 
-#ekran_nagrody{
+#ekran_nagrody {
     position: absolute;
     height: 29vh;
     width: 40vh;
@@ -682,7 +717,7 @@ body {
     background-size: cover;
 }
 
-#ilosc_pytan{
+#ilosc_pytan {
     background-color: transparent;
     position: absolute;
     height: 3vh;
@@ -694,7 +729,7 @@ body {
     border: none;
 }
 
-#ilosc_poprawnych_odpowiedzi{
+#ilosc_poprawnych_odpowiedzi {
     background-color: transparent;
     position: absolute;
     height: 3vh;
@@ -706,7 +741,7 @@ body {
     border: none;
 }
 
-#ocena{
+#ocena {
     background-color: transparent;
     position: absolute;
     height: 3vh;
@@ -718,7 +753,7 @@ body {
     border: none;
 }
 
-#zmiana_sanity{
+#zmiana_sanity {
     background-color: transparent;
     position: absolute;
     height: 3vh;
@@ -730,12 +765,12 @@ body {
     border: none;
 }
 
-#wyjdz_ze_sklepu{
+#wyjdz_ze_sklepu {
     background-color: #5E5E5E;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    top: 85.7%; 
+    top: 85.7%;
     left: 28%;
     height: 10.5vh;
     width: 26%;
@@ -744,7 +779,7 @@ body {
     border: none;
 }
 
-#tekst_dialogu{
+#tekst_dialogu {
     position: absolute;
     top: 17.4vh;
     left: 12.1%;
@@ -758,13 +793,13 @@ body {
 
 }
 
-#przejdz_dalej_dialog{
+#przejdz_dalej_dialog {
     height: 10vh;
     width: 80%;
     background-color: greenyellow;
 }
 
-#zakoncz_dialog{
+#zakoncz_dialog {
     position: absolute;
     top: 55.9vh;
     left: 29.6vw;
@@ -775,7 +810,7 @@ body {
     background-size: cover;
 }
 
-#przejdz_dalej_zdarzenie{
+#przejdz_dalej_zdarzenie {
     background-color: #5E5E5E;
     background-size: contain;
     background-repeat: no-repeat;
@@ -787,9 +822,12 @@ body {
     position: fixed;
     background-image: url("grafiki/Przejdz_dalej.png");
     border: none;
-}/* jakby ktoś się zastanawiał dlaczego przejdz dalej i przejdz dalej zdażenie nie są razem, to dlatego że jeden musi mieć display none, a drógi nie może (a w htmlu nie chciało mi się zmieniać (ale pewnie kiedyś to zrobę w ramach optymalizacji jak nie zapomnę))*/
+}
 
-#zakoncz_ture, #przejdz_dalej_pytanie{
+/* jakby ktoś się zastanawiał dlaczego przejdz dalej i przejdz dalej zdażenie nie są razem, to dlatego że jeden musi mieć display none, a drógi nie może (a w htmlu nie chciało mi się zmieniać (ale pewnie kiedyś to zrobę w ramach optymalizacji jak nie zapomnę))*/
+
+#zakoncz_ture,
+#przejdz_dalej_pytanie {
     background-color: #5E5E5E;
     background-size: contain;
     background-repeat: no-repeat;
@@ -804,7 +842,7 @@ body {
     display: none;
 }
 
-.gracz{
+.gracz {
     height: 10vh;
     width: 10vh;
     background-color: transparent;
@@ -812,7 +850,7 @@ body {
     display: none;
 }
 
-.mapowanie_mapy *{
+.mapowanie_mapy * {
     position: absolute;
 }
 
@@ -829,7 +867,7 @@ body {
     height: 100%;
 } */
 
-#uzyj_przedmiotu{
+#uzyj_przedmiotu {
     position: absolute;
     top: 84.5%;
     left: 31%;
@@ -838,7 +876,7 @@ body {
     background-size: cover;
 }
 
-#statystyki_przedmiotu{
+#statystyki_przedmiotu {
     height: 35vh;
     width: 35vh;
     margin: 0.5vh;
@@ -852,7 +890,8 @@ body {
     margin-top: 3vh;
     position: absolute;
 }
-#nazwa_przedmiotu{
+
+#nazwa_przedmiotu {
     position: absolute;
     top: 4.3%;
     left: 5%;
@@ -861,7 +900,8 @@ body {
     margin: 0.5vh;
     font-size: 3vh;
 }
-#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu{
+
+#zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu {
     height: 4.3vh;
     width: 4.3vh;
     top: 5.1%;
@@ -870,7 +910,7 @@ body {
     position: absolute;
 }
 
-#opis_przedmiotu{
+#opis_przedmiotu {
     position: absolute;
     top: 21%;
     left: 6.9%;
@@ -879,7 +919,7 @@ body {
     font-size: 1.5vh;
 }
 
-#caly_ekwipunek{
+#caly_ekwipunek {
     flex-direction: column;
 }
 
@@ -890,12 +930,12 @@ body {
     background-size: cover;
 }
 
-#obraz_zdarzenia_nielosowego{
+#obraz_zdarzenia_nielosowego {
     height: 80vh;
     width: calc(100vw - 36vh);
 }
 
-#opis_zdarzenia_nielosowego{
+#opis_zdarzenia_nielosowego {
     color: white;
     position: absolute;
     text-wrap: wrap;
@@ -906,7 +946,8 @@ body {
     width: 53.6%;
 }
 
-#przejdz_dalej_zdarzenie_nielosowe, #wylacz_zdarzenie_nielosowe{
+#przejdz_dalej_zdarzenie_nielosowe,
+#wylacz_zdarzenie_nielosowe {
     background-color: #5E5E5E;
     background-size: contain;
     background-repeat: no-repeat;
@@ -919,13 +960,13 @@ body {
     float: right;
 }
 
-#wylacz_zdarzenie_nielosowe{
+#wylacz_zdarzenie_nielosowe {
     display: none;
 }
 
-.przycisk_sala, 
+.przycisk_sala,
 #przycisk_sklep,
-.przycisk_mapa{
+.przycisk_mapa {
     background-size: cover;
     border: none;
 }
@@ -940,7 +981,7 @@ body {
     height: 100vh;
     width: 100vw;
 }
-  
+
 #napisy_koncowe {
     text-align: center;
     position: absolute;
@@ -948,11 +989,12 @@ body {
     animation: scrollowanie_napisow_koncowych 15s linear forwards;
     animation-play-state: paused;
 }
-  
+
 @keyframes scrollowanie_napisow_koncowych {
     0% {
         top: 100%;
     }
+
     100% {
         top: -100%;
     }
@@ -962,7 +1004,7 @@ body.no-scroll {
     overflow: hidden;
 }
 
-#ekran_koncowy_naprawde{
+#ekran_koncowy_naprawde {
     background-image: url('grafiki/menu_grafiki/CO\ ROBIMY\ 22.02.2025.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -971,7 +1013,7 @@ body.no-scroll {
     display: none;
 }
 
-#ekran_logo{
+#ekran_logo {
     animation: znikniecie_ekranu 3s linear;
     animation-play-state: paused;
 }
