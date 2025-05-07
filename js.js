@@ -116,6 +116,7 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
 ], 8, false, null);
 
 function konkurs(konkurs) {
+    tura_wszystkich_pokaz();
     if(konkurs==konkurs_ZSK_1){
         menedzer_gry.czy_jest_konkurs1 = true;
     }
@@ -328,6 +329,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
 ], 14, false, null);
 
 function test_prezydenta() {
+    tura_wszystkich_pokaz();
     menedzer_gry.czy_jest_prezydent = true;
     menedzer_gry.przedmiot_szkolny = prezydent;
     menedzer_gry.pytania_kandydujace = menedzer_gry.przedmiot_szkolny.pytania.rok_1;
@@ -483,6 +485,7 @@ function zniknij_zdarzenie() {
 }
 
 function pokaz_zdarzenie_nielosowe() {
+    tura_wszystkich_pokaz();
     zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
@@ -500,6 +503,7 @@ function przewin_opis_zdarzenia_nielosowego() {
 }
 
 function zniknij_zdarzenie_nielosowe() {
+    tura_wszystkich_schowaj();
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
     if (menedzer_gry.zdarzenie == bufet2) {
@@ -684,7 +688,6 @@ const menedzer_gry = {
                             else {
                                 this.zdarzenie = i;
                                 if (i.funkcja != null) i.funkcja();
-                                
                             }
                             pokaz_zdarzenie_nielosowe();
                             break;
@@ -1169,12 +1172,25 @@ function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     menedzer_gry.poczatek_tury();
 }
+const menu_statystyk=document.getElementById('menu_statystyk');
+const tura_wszystkich_ekran=document.getElementById('wszyscy_gracze');
+
+function tura_wszystkich_pokaz(){
+    tura_wszystkich_ekran.style.display='flex';
+    menu_statystyk.style.filter='blur(3px)';
+}
+
+function tura_wszystkich_schowaj(){
+    tura_wszystkich_ekran.style.display='none';
+    menu_statystyk.style.filter='none';
+}
 
 //Event listner przycisku Start
 przycisk_start.addEventListener('click', () => start_gry(ekran_startowy, gra));
 
 const tresc = document.getElementById('tresc');
 const odpowiedzi_przyciski = Array.prototype.slice.call(document.getElementsByClassName('odpowiedz'));
+
 
 
 
