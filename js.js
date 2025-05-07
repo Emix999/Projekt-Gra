@@ -393,7 +393,7 @@ const zly_dyrektor1 = new nielosowe_zdarzenie(null, [
     '- "Musimy temu zapobiec!"',
     '- "Czas stać się Specjalną Agencją Szkolną i razem uratować tą szkołę razem...znowu"',
     '- "Idźcie i spróbujcie odnaleźć naszego dyrektora, ja zajmę się znalezieniem brudów na tego łajdaka"',
-    '- "Aż czuje jak SAS się we mnie budzi"',
+    '- "Aż czuję, jak SAS się we mnie budzi"',
     '- "Do zobaczenia"'
 ], 43, false, null);
 const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
@@ -653,6 +653,9 @@ const menedzer_gry = {
                         }
                         if (this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].nazwa == uzaleznienie.nazwa) {
                             losowa_zmiana_sanity(-5, 3);
+                        }
+                        if (this.aktywni_gracze[this.indeks_wybranego].ekwipunek[i].nazwa == ziemniak.nazwa) {
+                            zmiana_sanity2(3);
                         }
                     }
 

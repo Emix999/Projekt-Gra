@@ -9,7 +9,7 @@ class przedmiot {
     }
 }
 
-const ziemniak = new przedmiot("Ziemniak", "Ulubione warzywo każdego wielkopolanina. Co turę odzyskujesz 3 sanity z samego faktu, że go posiadasz, a po zjedzeniu odzyskujesz 50 sanity.", 'grafiki/przedmioty/ziemniak.png', 20);
+const ziemniak = new przedmiot("Ziemniak", "Ulubione warzywo każdego wielkopolanina. Co turę odzyskujesz 3 sanity z samego faktu, że go posiadasz, a po zjedzeniu odzyskujesz 50 sanity.", 'grafiki/przedmioty/ziemniak.png', 50);
 const rozwiazana_kartkowka = new przedmiot('Rozwiązana kartkówka', 'Pokazuje ci, która odpowiedź jest poprawna na kartkówce.', 'grafiki/przedmioty/ziemniak.png', 0, 0, () => sciagaj());
 const obiadek = new przedmiot('Obiadek', 'Najwyższej jakości posiłek, którym sam prezydent by nie pogardził. Po zjedzeniu odzyskuje 35 sanity', 'grafiki/przedmioty/ziemniak.png', 35, 24);
 const baton_sinkers = new przedmiot('Baton "Sinkers"', 'Gryząc tego batona zatapiasz swoje zęby w 50 gramach cukru. Po zjedzeniu odzyskujesz 5 sanity oraz prawdopodobieństwo zachorowania na cukrzycę zwiększy się o 20%', 'grafiki/przedmioty/sinkers.png', 5, 5);
