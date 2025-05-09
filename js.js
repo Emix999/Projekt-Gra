@@ -1,5 +1,5 @@
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
-console.log("Java scrpit się wczytuje");
+//console.log("Java scrpit się wczytuje");
 let SAS = "Olek";
 
 /*
@@ -619,7 +619,7 @@ const menedzer_gry = {
         }
         SAS = 'Skibidi';
 
-        console.log("runda egazmin:" + this.runda_egzamin);//debug
+        //console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
             this.poczatek_tury_egzamin();
         }
@@ -700,14 +700,14 @@ const menedzer_gry = {
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda) {
-                            console.log("536");
+                            //console.log("536");
                             if (i == rywalizacja_ZSK_2_cz2_jesli_przegrali || i == rywalizacja_ZSK_2_cz2_jesli_wygrali) {
-                                console.log("538");
+                                //console.log("538");
                                 if (this.czy_konkurs1_wygrany) {this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_wygrali;
-                                    console.log("540");
+                                    //console.log("540");
                                 }
                                 else {this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_przegrali;
-                                    console.log("543");
+                                    //console.log("543");
                                 }
                             }
                             else {
@@ -722,7 +722,7 @@ const menedzer_gry = {
                     for (let i of nielosowe_zdarzenia_schody) {
 
                         if (menedzer_gry.runda == i.runda) {
-                            console.log("tego napisu tu nie powinno być");
+                            //console.log("tego napisu tu nie powinno być");
                             this.zdarzenie_nielosowe = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
                             break;
@@ -778,14 +778,14 @@ const menedzer_gry = {
                     for (let i of this.aktywni_gracze) {
                         if (i.czy_na_terapii || i.sanity <= 0 || (i.ile_rund_temu_byl_na_terapii != 0 && i.ile_rund_temu_byl_na_terapii < 5)) {
                             this.runda_egzamin = false;
-                            console.log("runda egzamin: false");
+                            //console.log("runda egzamin: false");
                         }
                     }
                     if (this.runda_egzamin) {
                         //debug3
                         this.runda--;
                         alert("Nadeszła pora na wyczekiwaną przez wszystkich maturę! Idź do sali od polskiego, matematyki i angielskiego.");
-                        console.log("matura woła poczotek tury");
+                        //console.log("matura woła poczotek tury");
                         this.poczatek_tury();
                         return 0;
                     }
@@ -1238,7 +1238,7 @@ function rozpocznij_pytania() {
 }
 
 function pokaz_pytanie() {
-    console.log(menedzer_gry.pytania_kandydujace);
+    //console.log(menedzer_gry.pytania_kandydujace);
     menedzer_gry.czy_odpowiedziano = false;
     let indeks_pytania = Math.floor(Math.random() * menedzer_gry.pytania_kandydujace.length);
     menedzer_gry.pytanie = menedzer_gry.pytania_kandydujace[indeks_pytania];
@@ -1260,7 +1260,7 @@ function pokaz_pytanie() {
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
-            console.log(przycisk.dataset.etykieta);
+            //console.log(przycisk.dataset.etykieta);
             break;
         }
     }
@@ -1386,7 +1386,6 @@ przejdz_dalej_pytanie.addEventListener('click', () => wyswietl_ekran_nagrody())
 
 const tlo_ekran_poczatkowy = document.getElementById('tlo_ekran_poczatkowy');
 const ekran_logo = document.getElementById('ekran_logo');
-const bruh = document.getElementById('audio_bruh');
 const muzyka_menu = document.getElementById('muzyka_menu');
 const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 
@@ -1404,7 +1403,6 @@ function pokaz_menu_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     pojawienie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     tlo_ekran_poczatkowy.style.display = "none";
-    bruh.play(); //o tak sobie, później raczej usunąć
     muzyka_menu.play();
 }
 
@@ -1499,7 +1497,7 @@ const statystyki_przycisk = document.getElementById("przycisk_statystyki");
 statystyki_przycisk.addEventListener('click', () => obsluga_statystyk(ustawienia2, statystyki));
 
 function debug() {
-    console.log("Debug się ładuje");
+    //console.log("Debug się ładuje");
 }
 
 
