@@ -4,17 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ZSŁtale</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-    <div id="ekran_logo" style="display: flex; height: 100vh; width: 100vw;">
-        Kliknij gdziekolwiek, aby przejść dalej
-    </div>
+    <div id="tlo_ekran_poczatkowy" style="
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('grafiki/ekran_poczatkowy.png');
+    background-size: cover;
+    background-position: center;
+    ">
+</div>
+
+<div id="ekran_logo" style="
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+">
+    
+</div>
 
     <div id="ekran_startowy" style="display: none;">
+        <img src="grafiki/zsł.jpg" id="tlo_menu_glowne">
         <div id="przyciski_rozwijania">
             <button id="rozwin1">
 
@@ -130,14 +145,27 @@
                 </div>
             </div>
         </div>
+
+        <div id="czarniejacy_ekran1"></div>
+
         <div class="ustawienia">
             <input type="number" readonly id="muzyka_glosnosc">
-            <input type="range" min="0" max="100" value="0" id="muzyka_slider">
+            <input type="range" min="0" max="100" value="50" id="muzyka_slider">
 
             <input type="number" readonly id="sfx_glosnosc">
             <input type="range" min="0" max="100" value="50" id="sfx_slider">
         </div>
         <button id="start"></button>
+        <button id="jak_grac"></button>
+    </div>
+
+    <div id="tak" style="height: 100vh; width: 100vw; display: flex; justify-content: center; display: none;">
+        <div id="ekran_jak_grac">
+            <div class="flex_pion">
+                <div id="przejdz_dalej_jak_grac"></div>
+                <div id="wylacz_jak_grac" style="display: none;"></div>
+            </div>
+        </div>
     </div>
 
     <div class="gra" id="gra">
@@ -151,29 +179,67 @@
         <div id="ekran_pytania" class="flex_pion">
             <div id="tresc"></div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_a" data-etykieta=""></button>
-                <button class="odpowiedz" id="odpowiedz_b" data-etykieta=""></button>
+                <button class="odpowiedz" id="odpowiedz_a" data-etykieta="A"></button>
+                <button class="odpowiedz" id="odpowiedz_b" data-etykieta="C"></button>
             </div>
             <div class="flex_poziom">
-                <button class="odpowiedz" id="odpowiedz_c" data-etykieta=""></button>
-                <button class="odpowiedz" id="odpowiedz_d" data-etykieta=""></button>
+                <button class="odpowiedz" id="odpowiedz_c" data-etykieta="B"></button>
+                <button class="odpowiedz" id="odpowiedz_d" data-etykieta="D"></button>
             </div>
-            <button id="przejdz_dalej"></button>
             <button id="zakoncz_ture"></button>
-            <div id="ekran_nagrody"></div>
+            <button id="przejdz_dalej_pytanie" style="background-image: url('grafiki/Przejdz_dalej.png');"></button>
+            <div id="ekran_nagrody">
+                <input type="text" id="ilosc_pytan" readonly>
+                <input type="text" id="ilosc_poprawnych_odpowiedzi" readonly>
+                <input type="text" id="ocena" readonly>
+                <input type="text" id="zmiana_sanity" readonly>
+            </div>
         </div>
+
+        <div class="flex_pion" id="ekran_kolejnego_roku" style="display: none;">
+            <div style="height: 6vh; width: 40vh; font-size: 5vh; background-color: #3B3B3B; border: 0.5vh solid black; color: white; text-align: center;">Nastał kolejny rok</div>
+            <div class="flex_poziom">
+                <div class="flex_pion">
+                    <div class="gracz_zdal">
+                        <input type="text" class="imie_zdanego" readonly>
+                        <img id="avatar1_koniec_roku" class="avatar_koniec_roku">
+                        <input type="text" class="zdal" readonly>
+                    </div>
+                    <div class="gracz_zdal">
+                        <input type="text" class="imie_zdanego" readonly>
+                        <img id="avatar2_koniec_roku" class="avatar_koniec_roku">
+                        <input type="text" class="zdal" readonly>
+                    </div>
+                </div>
+                <div class="flex_pion">
+                    <div class="gracz_zdal">
+                        <input type="text" class="imie_zdanego" readonly>
+                        <img id="avatar3_koniec_roku" class="avatar_koniec_roku">
+                        <input type="text" class="zdal" readonly>
+                    </div>
+                    <div class="gracz_zdal">
+                        <input type="text" class="imie_zdanego" readonly>
+                        <img id="avatar4_koniec_roku" class="avatar_koniec_roku">
+                        <input type="text" class="zdal" readonly>
+                    </div>
+                </div>
+            </div>
+            <button id="przejdz_dalej_ekran_roku"></button>
+        </div>
+
+        
 
         <div id="ekran_zdarzenia" class="flex_pion">
             <div id="nazwa_zdarzenia"></div>
             <div id="opis"></div>
-            <button id="przejdz_dalej_zdarzenie">Przejdź dalej</button>
+            <button id="przejdz_dalej_zdarzenie"></button>
         </div>
 
         <div id="ekran_zdarzenia_nielosowego" class="flex_pion">
             <div id="panel_zdarzenia_nielosowego">
                 <div id="opis_zdarzenia_nielosowego"></div>
-                <button id="przejdz_dalej_zdarzenie_nielosowe">Dalej</button>
-                <button id="wylacz_zdarzenie_nielosowe">Sigma</button>
+                <button id="przejdz_dalej_zdarzenie_nielosowe" style="background-image: url(grafiki/Przejdz_dalej.png);"></button>
+                <button id="wylacz_zdarzenie_nielosowe" style="background-image: url(grafiki/zakoncz_dialog.png);"></button>
             </div>
             <div id="obraz_zdarzenia_nielosowego">
                 <img style="width: 100%; height: 100%;" src="grafiki/logo.png">
@@ -185,45 +251,40 @@
         </div>-->
 
         <div id="ekran_sklepu">
-            <div id="wnetrze_sklepu">jakiś skibidi obrazek chciałeś to masz</div>
+            <div id="wnetrze_sklepu"></div>
             <div id="panel_sklepu" class="flex_pion">
-                <div class="sklep_arsenal" style="top: 52vh; right: 95%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 52vh; right: 65%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 52vh; right: 35%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 95%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 65%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <div class="sklep_arsenal" style="top: 70vh; right: 35%;">
-                    <div class="sklep_arsenal_obraz"></div>
-                    <div class="sklep_arsenal_nazwa"></div>
-                    <div class="sklep_arsenal_cena"></div>
-                    <button class="sklep_kup">KUP</button>
-                </div>
-                <button id="wyjdz_ze_sklepu">Wyjdź ze sklepu</button>
+
+                <div class="sklep_arsenal_nazwa" style="top: 11.5%; left: 2%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 24.3%; left: 8%;"></div>
+                <button class="sklep_kup" style="top: 21.5%; left: 16.65%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 11%; left: 25.4%;"></div>
+
+                <div class="sklep_arsenal_nazwa" style="top: 11.5%; left: 35.6%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 24.3%; left: 41.5%;"></div>
+                <button class="sklep_kup" style="top: 21.5%; left: 50.25%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 11%; left: 58.85%;"></div>
+
+                <div class="sklep_arsenal_nazwa" style="top: 11.9%; left: 68.4%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 24.7%; left: 74.5%;"></div>
+                <button class="sklep_kup" style="top: 21.9%; left: 83.05%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 11.4%; left: 91.8%;"></div>
+
+                <div class="sklep_arsenal_nazwa" style="top: 45%; left: 2%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 57.8%; left: 8%;"></div>
+                <button class="sklep_kup" style="top: 55%; left: 16.65%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 44.6%; left: 25.4%;"></div>
+
+                <div class="sklep_arsenal_nazwa" style="top: 45%; left: 35.6%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 57.8%; left: 41.5%;"></div>
+                <button class="sklep_kup" style="top: 55%; left: 50.25%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 44.6%; left: 58.85%;"></div>
+
+                <div class="sklep_arsenal_nazwa" style="top: 45.4%; left: 68.4%;"></div>
+                <div class="sklep_arsenal_cena" style="top: 58.2%; left: 74.5%;"></div>
+                <button class="sklep_kup" style="top: 55.4%; left: 83.05%;"></button>
+                <div class="sklep_arsenal_obraz" style="top: 45%; left: 91.8%;"></div>
+
+                <button id="wyjdz_ze_sklepu"></button>
             </div>
         </div>
 
@@ -232,15 +293,15 @@
             <div id="schemat_pierwsze_pietro" style="position: relative; display: flex;">
                 <img src="grafiki/mapy/schemat_pierwsze_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy"
-                    style="display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    style="display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"><!--
                     <button class="przycisk_sala"
-                        style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;">101</button>
+                        style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;">101</button>-->
+                    <button class="przycisk_sala" id="102a"
+                        style="left: 11.3%; top: 31.833%; width: 8.2%; height: 8.333%; background-image: url(grafiki/mapy/102a.png);"></button><!--
                     <button class="przycisk_sala"
-                        style="left: 12%; top: 31.833%; width: 7.5%; height: 8.333%;">102a</button>
-                    <button class="przycisk_sala"
-                        style="left: 19.875%; top: 31.833%; width: 7.5%; height: 8.333%;">102b</button>
-                    <button class="przycisk_sala"
-                        style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%;">103</button>
+                        style="left: 19.875%; top: 31.833%; width: 7.5%; height: 8.333%;">102b</button>-->
+                    <button class="przycisk_sala" id="103"
+                        style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url(grafiki/mapy/103.png);"></button><!-- 
                     <button class="przycisk_sala"
                         style="left: 40.625%; top: 31.833%; width: 10%; height: 8.333%;">104</button>
                     <button class="przycisk_sala"
@@ -254,7 +315,7 @@
                     <button class="przycisk_sala"
                         style="left: 92.125%; top: 35.667%; width: 6.25%; height: 12%;">109</button>
                     <button class="przycisk_sala"
-                        style="left: 71.5%; top: 48.167%; width: 7.25%; height: 8.333%;">111</button>
+                        style="left: 71.5%; top: 48.167%; width: 7.25%; height: 8.333%;">111</button>-->
                     <button class="przycisk_mapa"
                         style="background-image: url('grafiki/mapy/strzalka_dol1.png'); left: 8.5%; top: 45%; width: 3.125%; height: 6.167%;"
                         data-mapa="schemat_parter"></button>
@@ -268,29 +329,29 @@
             <div id="schemat_drugie_pietro" style="position: relative; display: none;">
                 <img src="grafiki/mapy/schemat_drogie_pietro.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <button class="przycisk_sala"
-                        style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%;">201</button>
-                    <button class="przycisk_sala"
-                        style="left: 14.625%; top: 31.833%; width: 10%; height: 8.333%;">202</button>
-                    <button class="przycisk_sala"
+                    <button class="przycisk_sala" id="201"
+                        style="left: 1.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url('grafiki/mapy/201.png');"></button>
+                    <button class="przycisk_sala" id="202"
+                        style="left: 14.625%; top: 31.833%; width: 10%; height: 8.333%; background-image: url('grafiki/mapy/202.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 27.625%; top: 31.833%; width: 10%; height: 8.333%;">203</button>
                     <button class="przycisk_sala"
                         style="left: 40.625%; top: 31.833%; width: 10%; height: 8.333%;">204</button>
                     <button class="przycisk_sala"
-                        style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>
-                    <button class="przycisk_sala"
-                        style="left: 61.125%; top: 31.833%; width: 10.1%; height: 8.333%;">206</button>
-                    <button class="przycisk_sala"
+                        style="left: 50.875%; top: 31.833%; width: 10%; height: 8.333%;">205</button>-->
+                    <button class="przycisk_sala" id="206"
+                        style="left: 61.125%; top: 31.833%; width: 10.1%; height: 8.333%; background-image: url('grafiki/mapy/206.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 71.5%; top: 35.667%; width: 10%; height: 8.333%;">207</button>
                     <button class="przycisk_sala"
                         style="left: 81.75%; top: 35.667%; width: 10%; height: 8.333%;">208</button>
                     <button class="przycisk_sala"
-                        style="left: 92.125%; top: 35.667%; width: 6.25%; height: 12%;">209</button>
-                    <button class="przycisk_sala"
-                        style="left: 87.375%; top: 48.167%; width: 9.25%; height: 8.333%;">210</button>
-                    <button class="przycisk_sala"
-                        style="left: 74.625%; top: 48.167%; width: 9.25%; height: 8.333%;">211</button>
-                        <button class="przycisk_mapa"
+                        style="left: 92.125%; top: 35.667%; width: 6.25%; height: 12%;">209</button>-->
+                    <button class="przycisk_sala" id="210"
+                        style="left: 87.375%; top: 48.167%; width: 9.25%; height: 8.333%; background-image: url('grafiki/mapy/210.png');"></button>
+                    <button class="przycisk_sala" id="211"
+                        style="left: 74.625%; top: 48.167%; width: 9.25%; height: 8.333%; background-image: url('grafiki/mapy/211.png');"></button>
+                    <button class="przycisk_mapa"
                         style="background-image: url('grafiki/mapy/strzalka_dol1.png'); left: 8.5%; top: 45%; width: 3.125%; height: 6.167%;"
                         data-mapa="schemat_pierwsze_pietro"></button>
                     <button class="przycisk_mapa"
@@ -302,23 +363,23 @@
             <!-- Parter -->
             <div id="schemat_parter" style="position: relative; display: none;">
                 <img src="grafiki/mapy/schemat_parter.png" style="width: 100%; height: auto;">
-                <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"><!--
                     <button class="przycisk_sala"
-                        style="left: 1.875%; top: 57%; width: 10%; height: 8.333%;">24</button>
-                    <button class="przycisk_sala"
-                        style="left: 18.125%; top: 57%; width: 9.5%; height: 8.333%;">22</button>
-                    <button class="przycisk_sala"
+                        style="left: 1.875%; top: 57%; width: 10%; height: 8.333%;">24</button>-->
+                    <button class="przycisk_sala" id="22"
+                        style="left: 18.125%; top: 57%; width: 9.5%; height: 8.333%; background-image: url('grafiki/mapy/22.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 28%; top: 57%; width: 17%; height: 8.333%;">studio RTV</button>
                     <button class="przycisk_sala"
-                        style="left: 45.25%; top: 57%; width: 9.625%; height: 8.333%;">20</button>
-                    <button class="przycisk_sala"
-                        style="left: 55.25%; top: 57%; width: 11.5%; height: 8.333%;">19</button>
-                    <button class="przycisk_sala"
+                        style="left: 45.25%; top: 57%; width: 9.625%; height: 8.333%;">20</button>-->
+                    <button class="przycisk_sala" id="19"
+                        style="left: 55.25%; top: 57%; width: 11.5%; height: 8.333%; background-image: url('grafiki/mapy/19.png');"></button>
+                    <!--<button class="przycisk_sala"
                     style="left: 69%; top: 14.833%; width: 10.875%; height: 28.667%;">sala gimnastyczna</button>
                     <button class="przycisk_sala"
                         style="left: 74.625%; top: 44%; width: 5.25%; height: 4.5%;">15</button>
                     <button class="przycisk_sala"
-                        style="left: 75.25%; top: 60.833%; width: 16.875%; height: 9.167%;">sala samokształceniowa</button>
+                        style="left: 75.25%; top: 60.833%; width: 16.875%; height: 9.167%;">sala samokształceniowa</button>-->
                     <button class="przycisk_mapa"
                         style="background-image: url('grafiki/mapy/strzalka_dol1.png'); left: 8.75%; top: 70.5%; width: 3.1%; height: 6.167%;"
                         data-mapa="schemat_piwnica"></button>
@@ -333,13 +394,13 @@
                 <img src="grafiki/mapy/schemat_piwnica.png" style="width: 100%; height: auto;">
                 <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <button id="przycisk_sklep"
-                        style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%;">jadalnia</button>
-                    <button class="przycisk_sala"
-                        style="left: 50%; top: 31.833%; width: 5%; height: 8.333%;">036</button>
-                    <button class="przycisk_sala"
+                        style="left: 27.5%; top: 31.833%; width: 13%; height: 8.333%; background-image: url('grafiki/mapy/Bufet.png');"></button>
+                    <button class="przycisk_sala" id="036"
+                        style="left: 50%; top: 31.833%; width: 5%; height: 8.333%; background-image: url('grafiki/mapy/036.png');"></button>
+                    <!--<button class="przycisk_sala"
                         style="left: 92.125%; top: 48.167%; width: 4.625%; height: 8.333%;">25</button>
                     <button class="przycisk_sala"
-                        style="left: 1.75%; top: 31.833%; width: 6.375%; height: 8.333%;">01</button>
+                        style="left: 1.75%; top: 31.833%; width: 6.375%; height: 8.333%;">01</button>-->
                     <button class="przycisk_mapa"
                         style="background-image: url('grafiki/mapy/strzalka_gora2.png'); left: 8.5%; top: 45.333%; width: 3.125%; height: 6.167%;"
                         data-mapa="schemat_parter"></button>
@@ -355,7 +416,7 @@
             <!-- Drugi Budynek -->
             <div id="schemat_drugi_budynek" style="position: relative; display: none;">
                 <img src="grafiki/mapy/schemat_2_budynek.png" style="width: 100%; height: auto;">
-                <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <div class="mapowanie_mapy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"><!--
                     <button class="przycisk_sala"
                         style="left: 92.5%; top: 52.333%; width: 6.375%; height: 8.5%;">01</button>
                     <button class="przycisk_sala"
@@ -373,31 +434,33 @@
                     <button class="przycisk_sala"
                         style="left: 4.25%; top: 32.167%; width: 5.625%; height: 8.667%;">012</button>
                     <button class="przycisk_sala"
-                        style="left: 13.375%; top: 26.333%; width: 6.125%; height: 19.333%;">014</button>
-                    <button class="przycisk_sala"
-                        style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%;">013</button>
-                    <button class="przycisk_sala"
-                        style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%;">015</button>
-                    <button class="przycisk_sala"
-                        style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>
-                    <button class="przycisk_sala"
-                        style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%;">018</button>
-                    <button class="przycisk_sala"
-                        style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%;">021</button>
-                    <button class="przycisk_sala"
-                        style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>
-                    <button class="przycisk_sala"
+                        style="left: 13.375%; top: 26.333%; width: 6.125%; height: 19.333%;">014</button>-->
+                    <button class="przycisk_sala" id="013"
+                        style="left: 13.375%; top: 46.25%; width: 12.5%; height: 14.167%; background-image: url('grafiki/mapy/013.png');"></button>
+                    <button class="przycisk_sala" id="015"
+                        style="left: 19.875%; top: 26.333%; width: 6.125%; height: 19.333%; background-image: url('grafiki/mapy/015.png');"></button>
+                    <!--<button class="przycisk_sala"
+                        style="left: 26.25%; top: 26.333%; width: 6.375%; height: 16.167%;">016</button>-->
+                    <button class="przycisk_sala" id="017"
+                        style="left: 25%; top: 26.333%; width: 6.25%; height: 19.333%; display: none;">017</button>
+                    <button class="przycisk_sala" id="018"
+                        style="left: 33%; top: 26.333%; width: 6.25%; height: 19.333%; background-image: url('grafiki/mapy/018.png');"></button>
+                    <button class="przycisk_sala" id="021"
+                        style="left: 33%; top: 46.167%; width: 9.125%; height: 19.333%; background-image: url('grafiki/mapy/021.png');"></button>
+                    <!--<button class="przycisk_sala"
+                        style="left: 39.5%; top: 26.333%; width: 6%; height: 19.333%;">022</button>-->
+                    <button class="przycisk_sala" id="SCEM"
                         style="left: 45.875%; top: 26.333%; width: 12.5%; height: 19.333%;">SCEM</button>
-                    <button class="przycisk_sala"
-                        style="left: 48.125%; top: 46.167%; width: 10.25%; height: 4.167%;">025</button>
-                    <button class="przycisk_sala"
-                        style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%;">026</button>
-                    <button class="przycisk_sala"
-                        style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%;">030</button>
-                    <button class="przycisk_sala"
-                        style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>
-                    <button class="przycisk_sala"
-                        style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%;">029</button>
+                    <!--<button class="przycisk_sala"
+                        style="left: 48.125%; top: 46.167%; width: 10.25%; height: 4.167%;">025</button>-->
+                    <button class="przycisk_sala" id="026"
+                        style="left: 45.875%; top: 50.833%; width: 12.5%; height: 14.667%; background-image: url('grafiki/mapy/026.png');"></button>
+                    <button class="przycisk_sala" id="030"
+                        style="left: 58.625%; top: 26.333%; width: 12.5%; height: 19.333%; background-image: url('grafiki/mapy/030.png');"></button>
+                    <!--<button class="przycisk_sala"
+                        style="left: 58.625%; top: 46.167%; width: 6.125%; height: 19.333%;">028</button>-->
+                    <button class="przycisk_sala" id="029"
+                        style="left: 65.125%; top: 46.167%; width: 6.125%; height: 19.333%; background-image: url('grafiki/mapy/029.png');"></button>
                     <button class="przycisk_mapa"
                         style="background-image: url('grafiki/mapy/strzalka_2budynek2.png'); left: 92.25%; top: 47.333%; width: 4.625%; height: 4.5%;"
                         data-mapa="schemat_piwnica"></button>
@@ -416,10 +479,20 @@
         </div>
 
         <div id="ekran_statystyk">
-            brum brum
+            <input class="statystyki" type="text" id="obecnie_zdane_zawodowe" readonly style="top: 35%; left: 86%;">
+            <input class="statystyki" type="text" id="obecnie_zdane_maturalne" readonly style="top: 56.8%; left: 86%;">
+            <input class="statystyki" type="text" id="obecnie_zdane_ogolne" readonly style="top: 78.8%; left: 86%;">
         </div>
 
-        <div class="menu_statystyk start">
+        <div id="ekran_dialogu">
+            <div id="tekst_dialogu">
+
+            </div>
+            <button id="zakoncz_dialog">
+
+            </button>
+        </div>
+        <div class="menu_statystyk start" id="menu_statystyk">
             <div class="flex_poziom">
                 <button id="przycisk_statystyki"></button>
                 <button id="ustawienia_menu_boczne"></button>
@@ -440,16 +513,18 @@
                 <input readonly id="obecny_rok" style="top: 25.5vh; left: 80%;"></input>
             </div>
 
-            <div id="statystyki_przedmiotu" style="background-image: url('grafiki/menu_boczne_grafiki/opis_przedmiotu.png');">
+            <div id="statystyki_przedmiotu"
+                style="background-image: url('grafiki/menu_boczne_grafiki/opis_przedmiotu.png');">
                 <button
                     id="zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu"
                     style="background-image: url(grafiki/menu_boczne_grafiki/Bialy_x.png)"></button>
                 <p type="text" id="nazwa_przedmiotu"></p>
                 <p id="opis_przedmiotu"></p>
-                <button id="uzyj_przedmiotu" style="background-image: url('grafiki/menu_boczne_grafiki/Przycisk_użyj.png')"></button>
+                <button id="uzyj_przedmiotu"
+                    style="background-image: url('grafiki/menu_boczne_grafiki/Przycisk_użyj.png')"></button>
             </div>
             <div id="caly_ekwipunek">
-                
+
                 <div class="flex_poziom">
                     <button class="ekwipunek" style="top: 36.15vh; left: 10.4%;"></button>
                     <button class="ekwipunek" style="top: 36.15vh; left: 37.8%;"></button>
@@ -485,12 +560,22 @@
             <input readonly id="klasa_gracza3" class="klasa_gracza" style="top: 94.1vh; right: 1.19%;"></input>
 
         </div>
+        <div id="wszyscy_gracze">Tura wszystkich</div>
+
     </div>
 
-    <audio id="audio_bruh" class="sfx"><!-- <audio id="audio_bruh" loop> -->
-        <source src="dźwięki/sfx/Bruh sound effect.mp3" type="audio/mpeg">
-        <source src="dźwięki/sfx/Bruh sound effect.ogg" type="audio/ogg">
-    </audio>
+    <div id="ekran_koncowy">
+        <div id="napisy_koncowe">
+            Główni twórcy
+Emilian Hernes – kierownik, programista, 
+Jan Huderek – główny programista
+Olek Didyk -
+Wiesław Buchholz - 
+<!-- naprawie to później-->
+        </div>
+    </div>
+
+    <div id="ekran_koncowy_naprawde"></div>
 
     <audio id="audio_gratulacje" class="sfx"><!-- <audio id="audio_bruh" loop> -->
         <source src="dźwięki/sfx/Granulacje.mp3" type="audio/mpeg">
@@ -502,16 +587,15 @@
         <source src="dźwięki/sfx/Ty idioto.ogg" type="audio/ogg">
     </audio>
 
-    <audio id="muzyka_menu" class="muzyka" loop><!-- <audio id="audio_bruh" loop> -->
-<!--    <source src="dźwięki/grafiki/muzyka/muzyka_menu.mp3" type="audio/mpeg">
-        <source src="dźwięki/grafiki/muzyka/muzyka_menu.ogg" type="audio/ogg">-->
+    <audio id="muzyka_menu" class="muzyka" loop>
+        <source src="dźwięki/muzyka/muzyka_menu.mp3" type="audio/mpeg">
     </audio>
 
+    <script src="js_dialogi.js"></script>
     <script src="js_pytania.js"></script>
-    <script src="js.js">
-
-    </script>
-
+    <script src="js_przedmioty.js"></script>
+    <script src="js_zdarzenia_losowe.js"></script>
+    <script src="js.js"></script>
 </body>
 
 </html>
