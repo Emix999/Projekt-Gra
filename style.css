@@ -904,7 +904,8 @@ body {
     width: 24.3vh;
     height: 3.7vh;
     margin: 0.5vh;
-    font-size: 3vh;
+    font-size: 2.5vh;
+    text-wrap: nowrap;
 }
 
 #zamknij_dokladny_opis_przedmiotu_w_ekwipunku_wybranego_gracza_majacego_teraz_ture_i_majacego_otwarte_menu_szegolow_przedmiotu {
