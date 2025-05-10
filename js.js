@@ -1283,7 +1283,8 @@ function kolejne_pytanie(i) {
     }
 }
 
-let efekt_dzwiekowy_ktory_powinien_grac_w_zaleznosci_od_tego_czy_gracz_opowie_poprawnie_czy_tez_okaze_sie_byc_idiota;
+const sfx_poprawnie = document.getElementById("audio_gratulacje");
+const sfx_zle = document.getElementById("audio_debil");
 
 function koniec_pytan() {
     if (menedzer_gry.ilosc_pytan == 1) {
@@ -1291,9 +1292,11 @@ function koniec_pytan() {
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
                 odpowiedzi_przyciski[i].style.color = "lightgreen";
+                sfx_poprawnie.play();
             }
             else {
                 odpowiedzi_przyciski[i].style.color = "red";
+                sfx_zle.play();
             }
         }
         przejdz_dalej_pytanie.style.display = 'block';
