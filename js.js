@@ -893,7 +893,7 @@ const menedzer_gry = {
     koniec_gry: function () {
         zmiana_ekranu(gra, ekran_koncowy);
         napisy_koncowe.style.animationPlayState = 'running';
-        setTimeout(() => this.koniec_gry_naprawde(), 200000);
+        setTimeout(() => this.koniec_gry_naprawde(), 40000);
     },
     koniec_gry_naprawde: function () {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
@@ -1400,6 +1400,7 @@ const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 let czy_kliknieto2 = false;
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
+    for(let i of muzyka)i.volume=0.1;
     if (!czy_kliknieto2) {
         czy_kliknieto2 = true;
         ekran_znikajacy.style.animationPlayState = 'running';
