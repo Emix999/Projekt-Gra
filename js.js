@@ -28,7 +28,7 @@ const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nie
 const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
 const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
 //trzeba to zmienić na 3 żeby było 33%
-let szansa_zdarzenia_losowego = 1;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
+let szansa_zdarzenia_losowego = 3;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
 const losowe_zdarzenia = [
     darmowe_pieniadze,
@@ -1186,10 +1186,6 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
         slider_sfx2.value = glosnosc_sfx.value;
         glosnosc_sfx2.value = glosnosc_sfx.value;
 
-        document.getElementById('avatar1_koniec_roku').src = document.getElementById('avatar1_menu').src;
-        document.getElementById('avatar2_koniec_roku').src = document.getElementById('avatar2_menu').src;
-        document.getElementById('avatar3_koniec_roku').src = document.getElementById('avatar3_menu').src;
-        document.getElementById('avatar4_koniec_roku').src = document.getElementById('avatar4_menu').src;
 
         czarniejacy_ekran1.style.zIndex = 1;
         czarniejacy_ekran1.style.animationPlayState = 'running';
@@ -1198,6 +1194,20 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 }
 
 function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
+    let g1=false;
+    let g2=false;
+    let g3=false;
+    let g4=false;
+    for(let i of menedzer_gry.aktywni_gracze){
+        if(gracz1==i)g1=true;
+        if(gracz2==i)g2=true;
+        if(gracz3==i)g3=true;
+        if(gracz4==i)g4=true;
+    }
+    if(g1)document.getElementById('avatar1_koniec_roku').src = document.getElementById('avatar1_menu').src;
+    if(g2)document.getElementById('avatar2_koniec_roku').src = document.getElementById('avatar2_menu').src;
+    if(g3)document.getElementById('avatar3_koniec_roku').src = document.getElementById('avatar3_menu').src;
+    if(g4)document.getElementById('avatar4_koniec_roku').src = document.getElementById('avatar4_menu').src;
     znikniecie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
     menedzer_gry.poczatek_tury();
