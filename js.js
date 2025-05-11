@@ -486,7 +486,7 @@ function zniknij_zdarzenie() {
 
 function pokaz_zdarzenie_nielosowe() {
     tura_wszystkich_pokaz();
-    zmiana_ekranu(mapa, ekran_zdarzenia_nielosowego);
+    pojawienie_ekranu(ekran_zdarzenia_nielosowego);
     opis_zdarzenia_nielosowego.innerHTML = menedzer_gry.zdarzenie.opis[0];
     menedzer_gry.indeks_opisu_zdarzenia_nielosowego = 0;
     if (menedzer_gry.zdarzenie.opis.length == 1) {
@@ -505,7 +505,7 @@ function przewin_opis_zdarzenia_nielosowego() {
 function zniknij_zdarzenie_nielosowe() {
     tura_wszystkich_schowaj();
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
-    zmiana_ekranu(ekran_zdarzenia_nielosowego, mapa);
+    znikniecie_ekranu(ekran_zdarzenia_nielosowego);
     if(menedzer_gry.zdarzenie==rywalizacja_ZSK_1_cz2_wygrana){
         for(let i of menedzer_gry.aktywni_gracze){
             dodawanie_przedmiotu_do_ekwipunku(pierog, 1, i);

@@ -554,6 +554,11 @@ body {
     flex-direction: column;
 }
 
+#ekran_zdarzenia_nielosowego{
+    position: absolute;
+    z-index: 10;
+}
+
 #przejdz_dalej_ekran_roku {
     background-color: #000000;
     background-size: cover;
@@ -937,9 +942,10 @@ body {
     background-size: cover;
 }
 
-#obraz_zdarzenia_nielosowego {
+#bardzo_potrzebny_div{
     height: 80vh;
     width: calc(100vw - 36vh);
+    background-color: transparent;
 }
 
 #opis_zdarzenia_nielosowego {
