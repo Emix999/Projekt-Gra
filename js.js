@@ -210,7 +210,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zd
     'Tym razem zobaczycie jak wygląda nagroda główna, którą są pierogi.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
-], 33, false, null);
+], 35, false, null);
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -224,7 +224,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdar
     'Tym razem nagrodą główną dla zwycięzców są ziemniaki.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
-], 33, false, null);
+], 35, false, null);
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
@@ -239,7 +239,7 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_
     'Tym razem nie ma dla was nawet nagrody pocieszenia. Może w kolejnych latach ZSŁ wystawi jakichś lepszych ucziów...',
     'Wychodząc z sali konkursowej czujecie to samo okropne uczucie wstydu co kilka lat temu. Przegraliście i była to wasza wina.',
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, a wy zostaliście sami z pogardliwymi spojrzeniami waszych rówieśników.'
-], 33, false, null);
+], 35, false, null);
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -254,19 +254,20 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zd
     'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
     'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
-], 33, false, null);
+], 35, false, null);
 
 
 
 
 function koniec_konkursu_gwary_poznanskiej() {
     menedzer_gry.czy_jest_konkurs1 = false;
+    menedzer_gry.czy_jest_konkurs2 = false;
     if (menedzer_gry.czy_konkurs1_wygrany) {
         if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej;
         else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej;
     }
     else {
-        if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej
+        if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej;
         else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej;
     }
     pokaz_zdarzenie_nielosowe();
@@ -315,7 +316,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
     'Prezydent Dudu mówi: Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
-    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent i dodać do funkcji dodajacej go do wekwipunku w lini 215 zniknij_zdarzenie_nielosowe()
+    'Prezydent Dudu mówi: Każdy z was dostanie po trzy obiadki ze stołówki.',
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
@@ -336,7 +337,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Prezydent Dudu mówi: Mimo problemów udało wam się zdać z pomocą kolegi nerda!',
     'Prezydent Dudu mówi: Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Prezydent Dudu mówi: Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
-    'Prezydent Dudu mówi: Każdy z was dostanie ',//podać przedmiot który daje prezydent
+    'Prezydent Dudu mówi: Każdy z was dostanie po trzy obiadki ze stołówki.',
     'Prezydent Dudu mówi: A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z prezesem PKP.',
     'Prezydent Dudu mówi: Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
@@ -482,7 +483,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
 ], 45, false, null);
 //jakaś nagroda jest potrzebna
 
-const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2, rywalizacja_ZSK_2_cz2_jesli_przegrali, rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4];
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2, rywalizacja_ZSK_2_cz2_jesli_przegrali, rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4,rywalizacja_ZSK_2_jesli_przegrali];
 const nielosowe_zdarzenia_schody = [bufet1b];
 
 
@@ -495,7 +496,7 @@ function pokaz_zdarzenie() {
 function zniknij_zdarzenie() {
     zmiana_ekranu(ekran_zdarzenia, mapa);
     menedzer_gry.ilosc_losowych_zdarzen--;
-    menedzer_gry.zdarzenie.funkcja_zdarzenia();
+    if(menedzer_gry.zdarzenie.funkcja_zdarzenia!=null)menedzer_gry.zdarzenie.funkcja_zdarzenia();
 }
 
 function pokaz_zdarzenie_nielosowe() {
@@ -556,7 +557,7 @@ function zniknij_zdarzenie_nielosowe() {
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
         for (let i of menedzer_gry.aktywni_gracze) {
-            dodawanie_przedmiotu_do_ekwipunku(/*przedmiot od prezydenta ziemniak tylko do testów*/ ziemniak, 1, i);
+            dodawanie_przedmiotu_do_ekwipunku(obiadek, 3, i);
         }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
@@ -583,6 +584,7 @@ function zniknij_zdarzenie_nielosowe() {
         znikniecie_ekranu(document.getElementById('SCEM'));
         menedzer_gry.czy_otwarto_biblioteke = false;
     }
+    menedzer_gry.zdarzenie_nielosowe=null;
 }
 
 przejdz_dalej_zdarzenie.addEventListener('click', () => zniknij_zdarzenie());
@@ -615,6 +617,7 @@ const menedzer_gry = {
     czy_poprawne_odpowiedzi: null,
     przedmiot_szkolny: null,
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
+    zdarzenie_nielosowe_schody: null,
     czy_otwarto_017: false,
     pietro: document.getElementById('schemat_pierwsze_pietro'),
     czy_wszyscy_na_terapii: true,
@@ -743,9 +746,10 @@ const menedzer_gry = {
                     for (let i of nielosowe_zdarzenia_schody) {
 
                         if (menedzer_gry.runda == i.runda) {
-                            //console.log("tego napisu tu nie powinno być");
-                            this.zdarzenie_nielosowe = i;
+                            //console.log("tego napisu tu nie powinno być zdarzenie:"+i.nazwa);
+                            this.zdarzenie_nielosowe_schody = i;
                             this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = Math.floor(Math.random() * this.aktywni_gracze.length);
+                            //console.log("Indeks tego gracza: "+this.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe);
                             break;
                         }
                     }
@@ -1818,7 +1822,8 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
 
     //sprawdza, czy zdarzenie ma wystąpić i jakie
     if (menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe) {
-        menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe;
+        //console.log(menedzer_gry.zdarzenie_nielosowe_schody);
+        menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe_schody;
         pokaz_zdarzenie();
         menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
     }
