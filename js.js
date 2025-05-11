@@ -1,3 +1,8 @@
+//Cały ten kod jest herezją, potężną herezją. Zdajemy sobie z tego sprawę. Z góry przeprawszamy każdego kto będzie musiał na niego patrzeć. :(
+
+
+
+
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 //console.log("Java scrpit się wczytuje");
 let SAS = "Olek";
@@ -888,7 +893,7 @@ const menedzer_gry = {
     koniec_gry: function () {
         zmiana_ekranu(gra, ekran_koncowy);
         napisy_koncowe.style.animationPlayState = 'running';
-        setTimeout(() => this.koniec_gry_naprawde(), 20000);
+        setTimeout(() => this.koniec_gry_naprawde(), 200000);
     },
     koniec_gry_naprawde: function () {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
@@ -1010,7 +1015,7 @@ const klasa_t = new klasa('teleinformatyk');
 const klasy = [klasa_a, klasa_e, klasa_f, klasa_i, klasa_p, klasa_r, klasa_t];
 
 //Obiekty 4 graczy i ich domyślne warotści
-const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [ziemniak, woda, kawa, uzaleznienie, rozwiazana_kartkowka, obiadek, herbata, pierog],"#FA1E27");
+const gracz1 = new gracz("gracz1", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],"#FA1E27");
 const gracz2 = new gracz("gracz2", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#00A2E8');
 const gracz3 = new gracz("gracz3", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#22B14C');
 const gracz4 = new gracz("gracz4", null, 0, klasa_a, 0, null, 0, 100, 100, 0, false, [],'#FFF200');

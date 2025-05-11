@@ -1,3 +1,4 @@
+/* Cały ten kod jest herezją, potężną herezją. Zdajemy sobie z tego sprawę. Z góry przeprawszamy każdego kto będzie musiał na niego patrzeć. :( */
 body {
     background-color: #5E5E5E;
     margin: 0;
@@ -999,17 +1000,16 @@ body {
     text-align: center;
     position: absolute;
     width: 100%;
-    animation: scrollowanie_napisow_koncowych 15s linear forwards;
+    animation: scrollowanie_napisow_koncowych 40s linear forwards;
     animation-play-state: paused;
 }
 
 @keyframes scrollowanie_napisow_koncowych {
     0% {
-        top: 100%;
+        transform: translateY(100vh);
     }
-
     100% {
-        top: -100%;
+        transform: translateY(-140%);
     }
 }
 
@@ -1029,4 +1029,8 @@ body.no-scroll {
 #ekran_logo {
     animation: znikniecie_ekranu 3s linear;
     animation-play-state: paused;
+}
+
+.profilowe_napisy_koncowe{
+    height: 40vh;
 }
