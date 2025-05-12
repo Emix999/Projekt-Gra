@@ -28,7 +28,7 @@ const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nie
 const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
 const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
 //trzeba to zmienić na 3 żeby było 33%
-let szansa_zdarzenia_losowego = 3;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
+let szansa_zdarzenia_losowego = 2;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
 const losowe_zdarzenia = [
     darmowe_pieniadze,
@@ -75,7 +75,7 @@ class nielosowe_zdarzenie {
 }
 
 const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjaciela', [
-    'Rozpoczą się pierwszy rok.',
+    'Rozpoczął się pierwszy rok.',
     'Spotykasz tyle nowych twarzy, ludzi których nie znasz.',
     'Naszczęście nie wszyscy są ci obcy.',
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
@@ -153,7 +153,16 @@ function koniec_konkursu() {
     else menedzer_gry.zdarzenie = rywalizacja_ZSK_1_cz2_przegrana;
     pokaz_zdarzenie_nielosowe();
 }
-
+const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrektora', [
+    'Na początku lekcji WF-u prowadzonej przez dyrektora zaczyna on mówić na inny niż zwykle temat.',
+    'Dyrektor mówi: Jak wiecie, w tym roku organizowany jest wielki konkurs z ZSK.',
+    'Dyrektor mówi: Stawką jest chwała dla Zespołu Szkół Łączności, nasz status złotej szkoły od tego zależy.',
+    'Dyrektor mówi: Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
+    'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
+    'Dyrektor mówi: Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
+    'Dyrektor mówi: Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
+], 32, false, null);
 
 const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrektora', [
     'Na korytarzu podczas przerwy zostajecie zaczepieni przez dyrektora.',
@@ -195,6 +204,15 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
     'Patrzycie z uniżeniem na uczniów ZSK, w końcu ostanio was pokonali.',
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
     'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
+    'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
+], 33, false, null);
+
+const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
+    'Wchodzicie do sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
+    'Sala jest ogromna, szczególnie, że w konkursie bierze udział tylko kilka osób.',
+    'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
+    'Patrzycie z ciekawością na miejsce i waszych przeciwników.',
+    'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null);
 
@@ -256,6 +274,33 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zd
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
 ], 35, false, null);
 
+const rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'W końcu prowadzący odchrząkuje i mówi:',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
+    'jest drużyna...',
+    'Zespołu Szkół Łączności!',
+    'Waszą nagrodą jest status złotej szkoły dla ZSŁ i chwała dla was.',
+    'Gratulacje! Udało wam się ocalić status złotej szkoły.',
+    'Nagordą główną dla zwycięzców są ziemniaki.',
+    'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
+    'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
+], 35, false, null);
+
+const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'W końcu prowadzący odchrząkuje i mówi:',
+    'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
+    'jest drużyna...',
+    'Zespołu Szkół Komunikacji!',
+    'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci pierogów.',
+    'Natomiast dla drużyny przegranej: ',
+    'Schańbiliście waszą szkołę i swoje dobre imie, przegrana jest równa hańbie.',
+    'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
+    'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
+], 35, false, null);
+
 
 
 
@@ -266,9 +311,13 @@ function koniec_konkursu_gwary_poznanskiej() {
         if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej;
         else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej;
     }
-    else {
+    else if(!menedzer_gry.czy_rok1_byla_terapia){
         if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej;
         else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej;
+    }
+    else{
+        if (menedzer_gry.czy_konkurs2_wygrany) menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej;
+        else menedzer_gry.zdarzenie = rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej;
     }
     pokaz_zdarzenie_nielosowe();
 }
@@ -483,7 +532,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
 ], 45, false, null);
 //jakaś nagroda jest potrzebna
 
-const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2, rywalizacja_ZSK_2_cz2_jesli_przegrali, rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4,rywalizacja_ZSK_2_jesli_przegrali];
+const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2, rywalizacja_ZSK_2_cz2_jesli_przegrali, rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4,rywalizacja_ZSK_2_jesli_terapia,rywalizacja_ZSK_2_jesli_wygrali, rywalizacja_ZSK_2_jesli_przegrali];
 const nielosowe_zdarzenia_schody = [bufet1b];
 
 
@@ -536,12 +585,12 @@ function zniknij_zdarzenie_nielosowe() {
             dodawanie_przedmiotu_do_ekwipunku(pierog, 1, i);
         }
     }
-    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej) {
+    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej||menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej) {
         for (let i of menedzer_gry.aktywni_gracze) {
             dodawanie_przedmiotu_do_ekwipunku(ziemniak, 1, i);
         }
     }
-    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej) {
+    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej||menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej) {
         for (let i of menedzer_gry.aktywni_gracze) {
             dodawanie_przedmiotu_do_ekwipunku(herbata, 1, i);
         }
@@ -552,7 +601,7 @@ function zniknij_zdarzenie_nielosowe() {
     if (menedzer_gry.zdarzenie == rywalizacja_ZSK_1_cz2) {
         konkurs(konkurs_ZSK_1);
     }
-    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_przegrali || menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_wygrali) {
+    if (menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_przegrali || menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_wygrali || menedzer_gry.zdarzenie == rywalizacja_ZSK_2_cz2_jesli_terapia) {
         konkurs(konkurs_ZSK_2);
     }
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
@@ -629,6 +678,7 @@ const menedzer_gry = {
     czy_konkurs1_wygrany: false,
     czy_konkurs2_wygrany: false,
     czy_otwarto_biblioteke: false,
+    czy_rok1_byla_terapia:false,
     poczatek_tury: function () {
         SAS = 'Olek';
         while (SAS != 'Olek') {
@@ -659,6 +709,7 @@ const menedzer_gry = {
                 }
             }
             if (this.czy_wszyscy_na_terapii) {
+                if(this.runda<10)this.czy_rok1_byla_terapia=true;
                 //ile_wywolan++;//debug
 
                 this.indeks_wybranego = -1;
@@ -722,16 +773,33 @@ const menedzer_gry = {
 
                     for (let i of nielosowe_zdarzenia_nie_schody) {
                         if (i.runda == this.runda) {
+                            if(i==rywalizacja_ZSK_2_jesli_przegrali||i==rywalizacja_ZSK_2_jesli_terapia||i==rywalizacja_ZSK_2_jesli_wygrali){
+                                if (this.czy_konkurs1_wygrany) {
+                                    this.zdarzenie = rywalizacja_ZSK_2_jesli_wygrali;
+                                    //console.log("540");
+                                }
+                                else if(this.czy_rok1_byla_terapia){
+                                    this.zdarzenie = rywalizacja_ZSK_2_jesli_terapia;
+                                    //console.log("543");
+                                }
+                                else{
+                                    this.zdarzenie = rywalizacja_ZSK_2_jesli_przegrali;
+                                }
+                            }
+
                             //console.log("536");
-                            if (i == rywalizacja_ZSK_2_cz2_jesli_przegrali || i == rywalizacja_ZSK_2_cz2_jesli_wygrali) {
+                            else if (i == rywalizacja_ZSK_2_cz2_jesli_przegrali || i == rywalizacja_ZSK_2_cz2_jesli_wygrali||i == rywalizacja_ZSK_2_cz2_jesli_terapia) {
                                 //console.log("538");
                                 if (this.czy_konkurs1_wygrany) {
                                     this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_wygrali;
                                     //console.log("540");
                                 }
-                                else {
+                                else if(!this.czy_rok1_byla_terapia){
                                     this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_przegrali;
                                     //console.log("543");
+                                }
+                                else{
+                                    this.zdarzenie = rywalizacja_ZSK_2_cz2_jesli_terapia;
                                 }
                             }
                             else {
