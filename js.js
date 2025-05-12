@@ -975,7 +975,7 @@ const menedzer_gry = {
     koniec_gry: function () {
         zmiana_ekranu(gra, ekran_koncowy);
         napisy_koncowe.style.animationPlayState = 'running';
-        setTimeout(() => this.koniec_gry_naprawde(), 40000);
+        setTimeout(() => this.koniec_gry_naprawde(), 80000);
     },
     koniec_gry_naprawde: function () {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);

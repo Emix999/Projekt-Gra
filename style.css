@@ -1000,7 +1000,7 @@ body {
     text-align: center;
     position: absolute;
     width: 100%;
-    animation: scrollowanie_napisow_koncowych 40s linear forwards;
+    animation: scrollowanie_napisow_koncowych 80s linear forwards;
     animation-play-state: paused;
 }
 
