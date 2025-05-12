@@ -659,7 +659,7 @@ const menedzer_gry = {
                 }
             }
             if (this.czy_wszyscy_na_terapii) {
-                ile_wywolan++;//debug
+                //ile_wywolan++;//debug
 
                 this.indeks_wybranego = -1;
                 if (!(this.runda % 10 == 0)) {
@@ -800,12 +800,6 @@ const menedzer_gry = {
                 }
                 if (this.indeksy_aktywnych_egzamin.length > 0) {
                     this.runda_egzamin = true;
-                    for (let i of this.aktywni_gracze) {
-                        if (i.czy_na_terapii || i.sanity <= 0 || (i.ile_rund_temu_byl_na_terapii != 0 && i.ile_rund_temu_byl_na_terapii < 5)) {
-                            this.runda_egzamin = false;
-                            //console.log("runda egzamin: false");
-                        }
-                    }
                     if (this.runda_egzamin) {
                         //debug3
                         this.runda--;
@@ -1282,7 +1276,7 @@ function pokaz_pytanie() {
     // do debugowania
     for (let przycisk of odpowiedzi_przyciski) {
         if (przycisk.dataset.czy_poprawna == 'true') {
-            //console.log(przycisk.dataset.etykieta);
+            console.log(przycisk.dataset.etykieta);
             break;
         }
     }
