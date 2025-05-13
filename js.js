@@ -78,7 +78,7 @@ const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjac
     'Spotykasz tyle nowych twarzy, ludzi których nie znasz.',
     'Naszczęście nie wszyscy są ci obcy.',
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
-    'Znacie się od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
+    'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
 ], 1, false, null);
 
@@ -86,14 +86,14 @@ const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
     'Drodzy uczniowie, już w kwietniu odbędzie się drużynowy konkurs wiedzy między naszą szkołą a ZSK.',
     'Będzie on dotyczył wiedzy na temat Polski i zwyczajów jej obywateli.',
-    'Poszukujemy drużyn 1-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
+    'Poszukujemy drużyn 2-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
     'Niech zgłaszają się tylko osoby z najlepszą wiedzą na ten temat.',
     'Musimy pokazać tym nieukom z ZSK, że jesteśmy lepsi.',
     'Wygrany może być tylko jeden...',
     '...i będzie nim nasza złota szkoła!',
     'Wymieniacie między sobą porozumiewawcze spojrzenia.',
     'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
-    'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba że dokonali złego wyboru przy rekrutacji.',
+    'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że dokonali złego wyboru przy rekrutacji.',
     'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
 ], 4, false, null);
 
@@ -110,7 +110,7 @@ const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu',
     'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
-    'Gratulacje!',
+    'Serdeczne Granulacje!',
     'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
     'Oferujemy wam również nagrodę rzeczową, którą są pierogi',
     'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
@@ -122,9 +122,9 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'Wygranym wielkiego konkursu wiedzy o Polsce i jej obywatelach',
     'jest drużyna...',
     'Zespołu Szkół Komunikacji!',
-    'Gratulacje!',
+    'Serdeczne Granulacje!',
     'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
-    'Mamy dla was nagrrodę pocieszenia, którą są sinkersy',
+    'Mamy dla was nagrodę pocieszenia, którą są sinkersy',
     'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
 ], 8, false, null);
 
@@ -155,6 +155,7 @@ function koniec_konkursu() {
 const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrektora', [
     'Na początku lekcji WF-u prowadzonej przez dyrektora zaczyna on mówić na inny niż zwykle temat.',
     'Dyrektor mówi: Jak wiecie, w tym roku organizowany jest wielki konkurs z ZSK.',
+    'Dyrektor mówi: Jego tematem jest gwara poznańska.',
     'Dyrektor mówi: Stawką jest chwała dla Zespołu Szkół Łączności, nasz status złotej szkoły od tego zależy.',
     'Dyrektor mówi: Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
     'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
@@ -168,6 +169,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Dyrektor mówi: Jak dobrze was widzieć, potrzebuję waszej pomocy.',
     'Dyrektor mówi: Jak wiecie, w tym roku po raz kolejny organizowany jest wielki konkurs z ZSK.',
     'Dyrektor mówi: Stawką jest chwała dla Zespołu Szkół Łączności, nasz status złotej szkoły od tego zależy.',
+    'Dyrektor mówi: W tym roku tematem przewodnim jest gwara poznańska.',
     'Dyrektor mówi: Poprzednim razem wykazaliście się ogromną wiedzą i umiejętnościami, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dyrektor mówi: Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Dyrektor mówi: Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
@@ -192,7 +194,7 @@ const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wie
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
     'Patrzycie worgo i z wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',
-    'Poznajecie, że są to te same osoby, które widzieliście tutaj ostatnio',
+    'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
     'Są oni gotowi poświęcić wszystko aby, zemścić się za ostatni raz',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null);
@@ -237,7 +239,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdar
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
     'Waszą nagrodą jest status złotej szkoły dla ZSŁ i chwała dla was.',
-    'Gratulacje! Udało wam się przedłużyć chwałę ogarniającą wasze imiona, jeszcze przez kolejne dziesiątki lat krążyć będą legendy na temat bohaterów, którzy ocalili status złotej szkoły dla ZSŁ.',
+    'Granulacje! Udało wam się przedłużyć chwałę ogarniającą wasze imiona, jeszcze przez kolejne dziesiątki lat krążyć będą legendy na temat bohaterów, którzy ocalili status złotej szkoły dla ZSŁ.',
     'Tym razem nagrodą główną dla zwycięzców są ziemniaki.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
@@ -456,7 +458,7 @@ const zly_dyrektor1 = new nielosowe_zdarzenie(null, [
     '- "Kuzyn demona...zmora wszechświatów..."',
     '- "Jeżeli pobędzie dyrektorem dłużej niż tydzień to ta szkoła zniknie z powierzchni ziemii, gwarantuję"',
     '- "Musimy temu zapobiec!"',
-    '- "Czas stać się Specjalną Agencją Szkolną i razem uratować tą szkołę razem...znowu"',
+    '- "Czas stać się Specjalną Agencją Szkolną i razem uratować tą szkołę...znowu"',
     '- "Idźcie i spróbujcie odnaleźć naszego dyrektora, ja zajmę się znalezieniem brudów na tego łajdaka"',
     '- "Aż czuję, jak SAS się we mnie budzi"',
     '- "Do zobaczenia"'
@@ -465,8 +467,8 @@ const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
     '- Zły dyrektor: "HAHAHAHAHAHAHA"',
     '- "Ah kretyńscy uczniowie, i pyk koleini skreśleni z listy uczniów, i myk uwaga za bycie uczniem"',
     '- Zauważa Was "O czyżbyście przyśli mnie błagać o litość?"',
-    '- "Ach nie przecież wy to ta słynna "Drużyna Sierpienia", która uratowała Pana Czosnowskiego...jakże wspaniale"',
-    '- "Lepiej już idźcie bo zaraz skończycie tak jak o-"',
+    '- "Ach nie przecież to wy, ta słynna "Drużyna Sierpienia", która uratowała Pana Czosnowskiego...jakże wspaniale"',
+    '- "Lepiej już idźcie bo zaraz skończycie tak jak ten tutaj"',
     '- "Miałem na myśli jak Ci źli uczniowie!"',
     '- "Dobrzy zresztą też..."',
     '- "No a teraz, idę powstawiać uwagi"',
@@ -476,7 +478,7 @@ const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
 ], 44, false, () => pojdz_do_biblioteki());
 const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- Nasz dyrektor: "Yym, jakaż fascynująca lektura"',
-    '- "Witajcie drodzy poszukiwacze wiedzy w tym spokojnym miejscu czy jest coś szczególnego co Was sprowadza"',
+    '- "Witajcie drodzy poszukiwacze wiedzy w tym spokojnym miejscu, czy jest coś szczególnego co Was sprowadza"',
     '- "Oj...rozumiem"',
     '- "Niestety nie mogę Wam w tym pomóc"',
     '- "Widzicie, przeszedłem na emeryturę dyrektorską, uznałem że nadszedł czas na czytanie w zaciszu biblioteki"',
@@ -484,9 +486,9 @@ const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- "..."',
     '- "Jak to już jest nowy dyrektor?"',
     '- "A gdzie głosowanie demokratyczne? Gdzie jakieś wybory?"',
-    '- "Czy naprawdę każdy biernie patrzał jak roznosi się u nas totalitaryzm?"',
-    '- "Eh, skoro sprawy tak się mają, myślę więc, że to idealna pora na powrót do mojego urzędu"',
-    '- "I tak chciałem sobie tylko odpocząć"',
+    '- "Czy naprawdę każdy biernie patrzył jak roznosi się u nas totalitaryzm?"',
+    '- "Eh, skoro sprawy tak się mają, myślę że to idealna pora na powrót do mojego urzędu"',
+    '- "I tak miał być to tylko odpoczynek"',
     '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie udana nam się obalić tego dyktatora"'
 ], 44, false, null);
 const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
@@ -494,37 +496,37 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- "Idealna okazja by ogłosić wam nowy statut szkoły"',
     '- "Po pierwsze: Mam władzę absolutną"',
     '- "Po drugie: Za nieposłuszeństwo grozi skreślenie z listy uczniów"',
-    '- "Po trzeci-"',
+    '- "Po trzeci-"',//5
     '- Nasz dyrektor: "Nie tak prędko"',
     '- "Myśli Pan, że za taką samowolkę nikt Panu nie zwróci uwagi?"',
     '- Zły dyrektor: "HA, a co? Były dyrektor mi przeszkodzi?"',
-    '- Nasz dyrektor: "Po pierwsze: to byłem tylko na przerwie"',
-    '- "Po drugie: proszę pokazać dokumenty świadczące o pełnieniu stanowiska dyrektora',
+    '- Nasz dyrektor: "Po pierwsze: byłem tylko na przerwie"',
+    '- "Po drugie: proszę pokazać dokumenty świadczące o pełnieniu stanowiska dyrektora',//10
     '- Zły dyrektor: "Eee ż-że co mam pokazać?"',
     '- Nasz dyrektor: "Dokumentację"',
-    '- Zły dyrektor: Wyciąga kartkę i piszę dYrEkT0r ZsK---tO zNacy L',
+    '- Zły dyrektor wyciąga kartkę i pisze na niej: dYrEkT0r ZsK---tO zNacy Ł',
     '- Nasz dyrektor: "No przecież prawo jazdy w chipsach ma większą autentyczność niż to"',
-    '- Zły dyrektor: "NIEWAŻNE, I TAK NIC NA MNIE NIE MACIE"',
-    '- "DOPROWADZE TĄ SZKOŁĘ DO RUINY I NIKT MNIE NI-"',
+    '- Zły dyrektor: "NIEWAŻNE, I TAK NIC NA MNIE NIE MACIE"',//15
+    '- "DOPROWADZE TĄ SZKOŁĘ DO RUINY I NIKT MNIE NIE ZATRZY-"',
     '*Wchodzi jakiś random, a za nim Pan Czosnowski"',
     '- Jakiś random: "A właśnie, że mamy!"',
-    '- "Tak się składa, że Pan jesteś nie tylko zbrodniarz z imienia i reputacji..."',
-    '- "Ale też z prawa!"',
+    '- "Tak się składa, że Pan jesteś zbrodniarz nie tylko z imienia i reputacji..."',
+    '- "Ale też z prawa!"',//20
     '- Pan Czosnowski: "MYŚLAŁEŚ, ŻE JAK MNIE PORWIESZ TO ODPUSZCZĘ CI NIEZDANĄ KARTKÓWKĘ Z BIOLOGI!?"',
-    '- "Oj kochany...PRZY TOBIE TO NAWET ADAM DOMINCZYK I GAROSZ JABIEL WYPADAJĄ OBŁĘDNIE!"',
+    '- "Oj kochany...PRZY TOBIE TO NAWET DADAM I GAROSZ WYPADAJĄ OBŁĘDNIE!"',
     '- Zły dyrektor: "C-chwila p-p-przecież n-nikt mnie t-t-tu nie uczy"',
     '- Pan Czosnowski: "Ależ ja wiem mój drogi...WYSTARCZY MI TYLKO SPOJRZENIE BY OKREŚLIĆ CZY ZDAJESZ, ZDAŁEŚ ALBO CZY BĘDZIESZ ZDAWAŁ Z BIOLOGI"',
-    '- "MATKO ŚWIĘTA! CZY TY W OGÓLE WIESZ ILE MASZ CHROMOSOMÓW"',
+    '- "MATKO ŚWIĘTA! CZY TY W OGÓLE WIESZ ILE MASZ CHROMOSOMÓW"',//25
     '- Zły dyrektor: "yyy aa yyyy aaa yyy aa yyy aa yyyy aaa yy aa"',
     '- "W ZSK tego nie uczyli"',
     'W tej chwili Pan Czosnowski przeszywa go wzrokiem i już przygotowuje swój atak',
     'Zły dyrektor ucieka',
-    '- "Wszystko by mi się udało gdyby nie przeklęta "Drużyna Sierpienia" i ten cholerny SAS!"',
+    '- "Wszystko by mi się udało gdyby nie przeklęta "Drużyna Sierpienia" i ten cholerny SAS!"',//30
     '- Nasz dyrektor: "Dziękuje Wam drodzy uczniowie, dzięki Wam reszta uczniów z tej szkoły nie została skreślona z listy uczniów"',
     '- "To wielkie osiągniecie uratować całą szkołę. Gratuluje z całego serca"',
     '- Jakiś random: "Też Wam dziękuje, pomogliście nie tylko mi, ale także niejednemu uczniowi"',
-    '- "Dobrze się z Wami współpracowało partnerzy. Abyśmy byli kwita, proszę weźcie ten [Hyperlink blocked]"', //jakaś nagroda
-    '- "Wierzę, że Wam się przyda"',
+    '- "Dobrze się z Wami współpracowało partnerzy. Abyśmy byli kwita, weźcie proszę tą roziązaną kartkówkę"', //jakaś nagroda
+    '- "Wierzę, że Wam się przyda"',//35
     '- "A teraz idę przedyskutować kwestie 5 niezdanych lat z biologii"',
     '- Pan Czosnowski: "Eh, skoro okazało się, że NIE jesteś najgorszym uczniem biologii jakiego widziałem, myślę że możesz zdać"',
     '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze."'

@@ -99,7 +99,7 @@ const rok5_angielski = [
   new pytanie("Scarcely had he entered ___ it started to rain.", ["when", "then", "than", "and"]),
   new pytanie("Only after he apologized ___ to forgive him.", ["did she agree", "she agreed", "has she agreed", "was she agreeing"]),
   new pytanie("Little ___ that she was being watched.", ["did she know", "she knew", "was she know", "she did know"]),
-  new pytanie("___ it been warmer, we would have gone swimming.", ["Had", "Was", "If", "Were"]),
+  new pytanie("___ it been warmer, we would have gone swimming.", ["If", "Was", "Had", "Were"]),
   new pytanie("He’s not only rich ___ also very generous.", ["but", "and", "as", "or"]),
   new pytanie("___ of the two sisters is older?", ["Which", "Who", "Whose", "Whom"]),
   new pytanie("It was not until midnight ___ they stopped working.", ["that", "when", "then", "which"])
