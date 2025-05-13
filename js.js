@@ -18,6 +18,18 @@ let ile_wywolan = 0;
 //blokuje możliwość scrollowania
 document.body.classList.add('no-scroll');
 
+//definiuje efekty dźwiękowe i muzykę
+const sfx_poprawnie = document.getElementById("audio_gratulacje");
+const sfx_zle = document.getElementById("audio_debil");
+const sfx_schody = document.getElementById('audio_schody');
+const sfx_sklep = document.getElementById('audio_sklep');
+const sfx_przedmiot = document.getElementById('audio_przedmiot');
+const sfx_poczatek = document.getElementById('audio_poczatek');
+const sfx_menu = document.getElementById('audio_menu');
+const sfx_zdarzenie = document.getElementById('audio_zdarzenie');
+
+const muzyka_menu = document.getElementById('muzyka_menu');
+
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
 const opis = document.getElementById('opis');
@@ -539,6 +551,7 @@ function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
     nazwa_zdarzenia.innerHTML = menedzer_gry.zdarzenie.nazwa;
     opis.innerHTML = menedzer_gry.zdarzenie.opis;
+    sfx_zdarzenie.play();
 }
 
 function zniknij_zdarzenie() {
@@ -1133,6 +1146,7 @@ class menu_graczy {
         let rezultat = klasy[gracze[this.id_gracza].id_klasy];
         document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[this.id_gracza].klasa = rezultat;
+        sfx_menu.play();
     }
     //Strzałka w lewo zmienia klasę na poprzednią w tablicy
     klasa_lewo() {
@@ -1141,6 +1155,7 @@ class menu_graczy {
         let rezultat = klasy[gracze[this.id_gracza].id_klasy];
         document.getElementById(this.id_klasa).value = rezultat.nazwa;
         gracze[this.id_gracza].klasa = rezultat;
+        sfx_menu.play();
     }
     //Strzałka w lewo zmienia avatar na poprzedni w tablicy
     avatar_lewo() {
@@ -1149,6 +1164,7 @@ class menu_graczy {
         let rezultat = avatary[gracze[this.id_gracza].id_avatara];
         document.getElementById(this.id_avatar).src = rezultat;
         gracze[this.id_gracza].avatar = rezultat;
+        sfx_menu.play();
     }
     //Strzałka w prawo zmienia avatar na następny w tablicy
     avatar_prawo() {
@@ -1157,6 +1173,7 @@ class menu_graczy {
         let rezultat = avatary[gracze[this.id_gracza].id_avatara];
         document.getElementById(this.id_avatar).src = rezultat;
         gracze[this.id_gracza].avatar = rezultat;
+        sfx_menu.play();
     }
     //losowanie nazwy dla gracza z tablicy nazw
     losowanie_nazwy() {
@@ -1165,18 +1182,21 @@ class menu_graczy {
         document.getElementById(this.id_nazwa).value = wylosowane_imie;
         gracze[this.id_gracza].nazwa = wylosowane_imie;
         gracze[this.id_gracza].id_nazwy = losowa_liczba;
+        sfx_menu.play();
     }
     //Rozwijanie menu gracza po kliknięciu przycisku plus
     rozwin_menu() {
         document.getElementById(this.id_menu).style.display = 'block';
         document.getElementById(this.id_rozwin).style.display = 'none';
         gracze[this.id_gracza].czy_aktywny = true;
+        sfx_menu.play();
     }
     //Zwijanie menu gracza po kliknięciu przycisku X
     zwin_menu() {
         document.getElementById(this.id_menu).style.display = 'none';
         document.getElementById(this.id_rozwin).style.display = 'block';
         gracze[this.id_gracza].czy_aktywny = false;
+        sfx_menu.play();
     }
 }
 
@@ -1366,20 +1386,15 @@ function kolejne_pytanie(i) {
     }
 }
 
-const sfx_poprawnie = document.getElementById("audio_gratulacje");
-const sfx_zle = document.getElementById("audio_debil");
-
 function koniec_pytan() {
     if (menedzer_gry.ilosc_pytan == 1) {
         menedzer_gry.czy_odpowiedziano = true;
         for (let i = 0; i < odpowiedzi_przyciski.length; i++) {
             if (odpowiedzi_przyciski[i].dataset.czy_poprawna == 'true') {
                 odpowiedzi_przyciski[i].style.color = "lightgreen";
-                sfx_poprawnie.play();
             }
             else {
                 odpowiedzi_przyciski[i].style.color = "red";
-                sfx_zle.play();
             }
         }
         przejdz_dalej_pytanie.style.display = 'block';
@@ -1403,7 +1418,7 @@ function wyswietl_ekran_nagrody() {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_zdaje = false;
         }
     }
-    if (wypisywana_ocena >= 70) {
+    if (wypisywana_ocena >= 50) {
         if (menedzer_gry.przedmiot_szkolny.nazwa == polski.nazwa || menedzer_gry.przedmiot_szkolny.nazwa == angielski.nazwa) {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].zdany_polski_i_angielski++;
         }
@@ -1425,9 +1440,13 @@ function wyswietl_ekran_nagrody() {
         if (menedzer_gry.czy_jest_konkurs2 && wypisywana_ocena >= 60) {
             menedzer_gry.czy_konkurs2_wygrany = true;
         }
+        sfx_poprawnie.play();
+    }
+    else{
+        sfx_zle.play();
     }
     ocena.value = wypisywana_ocena + '%';
-    if (!menedzer_gry.czy_jest_prezydent && !menedzer_gry.czy_jest_konkurs1 && !menedzer_gry.czy_jest_konkurs2) zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 10 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-20);
+    if (!menedzer_gry.czy_jest_prezydent && !menedzer_gry.czy_jest_konkurs1 && !menedzer_gry.czy_jest_konkurs2) zmiana_sanity.value = (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == true).length) * 5 + (menedzer_gry.czy_poprawne_odpowiedzi.filter(x => x == false).length) * (-30);
     else zmiana_sanity.value = 0;
     /*
 ekran_nagrody.innerHTML = "Ilość pytań: 1 <br> Ilość poprawnych odpowiedzi: " + (czy_poprawna_odpowiedz ? '1' : '0') + "<br> Procenty: " + (czy_poprawna_odpowiedz ? '100%' : '0%') + "<br>Twoje sanity zmieniło się o " + (czy_poprawna_odpowiedz ? '+10' : '-20');*/
@@ -1472,13 +1491,13 @@ przejdz_dalej_pytanie.addEventListener('click', () => wyswietl_ekran_nagrody())
 
 const tlo_ekran_poczatkowy = document.getElementById('tlo_ekran_poczatkowy');
 const ekran_logo = document.getElementById('ekran_logo');
-const muzyka_menu = document.getElementById('muzyka_menu');
 const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 
 let czy_kliknieto2 = false;
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
     for (let i of muzyka) i.volume = 0.1;
+    sfx_poczatek.play();
     if (!czy_kliknieto2) {
         czy_kliknieto2 = true;
         ekran_znikajacy.style.animationPlayState = 'running';
@@ -1902,6 +1921,8 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
         }
         pokaz_zdarzenie();
     }
+
+    sfx_schody.play();
 }
 
 for (let przycisk of mapa_przyciski) {
@@ -1935,6 +1956,7 @@ const sklep = {
             menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].hajs -= this.arsenal[id_produktu].cena;
             alert('pomyślnie kupiono produkt');
             dodawanie_przedmiotu_do_ekwipunku(this.arsenal[id_produktu]);
+            sfx_sklep.play();
         }
         else {
             alert('złodzieju, nie złodziejuj');
@@ -2035,12 +2057,17 @@ function zaktualizuj_sanity() {
         alert('musisz pójść na terapię');
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ile_rund_temu_byl_na_terapii = 1;
+        sanity.value = wartosc_sanity;
+        menedzer_gry.poczatek_tury();
     }
     else if (wartosc_sanity > 200) {
         wartosc_sanity = 200;
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].sanity = 200;
+        sanity.value = wartosc_sanity;
     }
-    sanity.value = wartosc_sanity;
+    else{
+        sanity.value = wartosc_sanity;
+    }
 }
 
 const ekran_koncowy = document.getElementById('ekran_koncowy');
@@ -2049,15 +2076,18 @@ const ekran_koncowy_naprawde = document.getElementById('ekran_koncowy_naprawde')
 
 function pojdz_do_sali_017() {
     menedzer_gry.czy_otwarto_017 = true;
+    sfx_schody.play();
 }
 
 function wejdz_do_sali_017() {
     menedzer_gry.zdarzenie = porwanie_czosnowskiego2;
     pokaz_zdarzenie_nielosowe();
+    sfx_schody.play();
 }
 
 function pojdz_do_biblioteki() {
     menedzer_gry.czy_otwarto_biblioteke = true;
+    sfx_schody.play();
 }
 
 function wejdz_do_biblioteki() {
@@ -2103,6 +2133,7 @@ wylacz_jak_grac.addEventListener('click', () => zamknij_jak_grac());
 function usun_przedmiot() {
     znikniecie_szczegolow_przedmiotu();
     menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ekwipunek.splice(menedzer_gry.ostatni_pokazany_przedmiot, 1);
+    sfx_przedmiot.play();
     aktualizacja_menu_bocznego();
 }
 
