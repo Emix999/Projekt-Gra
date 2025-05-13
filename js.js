@@ -76,12 +76,13 @@ const losowe_zdarzenia = [
 ];
 
 class nielosowe_zdarzenie {
-    constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana) {
+    constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana, obraz = null) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.runda = runda;
         this.czy_przy_schodach = czy_przy_schodach;
         this.funkcja = funkcja_wywołana;
+        this.obraz = obraz;
     }
 }
 
@@ -568,6 +569,14 @@ function pokaz_zdarzenie_nielosowe() {
     if (menedzer_gry.zdarzenie.opis.length == 1) {
         zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
+    if(menedzer_gry.zdarzenie.obraz != null){
+        obraz_zdarzenia_nielosowego.style.backgroundImage = menedzer_gry.zdarzenie.obraz;
+        obraz_zdarzenia_nielosowego.style.backgroundColor = '';
+    }
+    else{
+        obraz_zdarzenia_nielosowego.style.backgroundImage = '';
+        obraz_zdarzenia_nielosowego.style.backgroundColor = 'transparent';
+    }
 }
 
 function przewin_opis_zdarzenia_nielosowego() {
@@ -680,7 +689,7 @@ const menedzer_gry = {
     indeks_gracza_ktory_dostaje_zdarzenie_nielosowe: null,
     zdarzenie_nielosowe_schody: null,
     czy_otwarto_017: false,
-    pietro: document.getElementById('schemat_pierwsze_pietro'),
+    pietro: document.getElementById('schemat_parter'),
     czy_wszyscy_na_terapii: true,
     suma_szans_zdarzen: 0,
     czy_jest_prezydent: false,
@@ -851,6 +860,10 @@ const menedzer_gry = {
                 }
             } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii || this.aktywni_gracze[this.indeks_wybranego].sanity <= 0);
 
+            //ustala, które piętro pokazać
+            zmiana_ekranu(this.pietro, this.aktywni_gracze[this.indeks_wybranego].pietro)
+            this.pietro = this.aktywni_gracze[this.indeks_wybranego].pietro;
+
             //sprawdza, czy jest runda egzaminacyjna
             if (this.kolejny_rok) {
                 //egzamin zawodowy
@@ -995,6 +1008,9 @@ const menedzer_gry = {
     runda_017: function () {
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
+        for(let i of this.aktywni_gracze[this.indeks_wybranego]){
+            i.pietro = document.getElementById('schemat_drugi_budynek');
+        }
         for (let i of sala_przyciski) {
             znikniecie_ekranu(i);
         }
@@ -1007,6 +1023,9 @@ const menedzer_gry = {
     runda_biblioteka: function () {
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
+        for(let i of this.aktywni_gracze[this.indeks_wybranego]){
+            i.pietro = document.getElementById('schemat_drugi_budynek');
+        }
         for (let i of sala_przyciski) {
             znikniecie_ekranu(i);
         }
@@ -1091,6 +1110,7 @@ class gracz {//gracz i wszystkie jego parametry
         this.ile_rund_temu_byl_na_terapii = 0;
         this.kolor_gracza = kolor_gracza;
         this.ilosc_rund_blokady_mobidziennika = 0;
+        this.pietro = document.getElementById('schemat_parter');
     }
 }
 
@@ -1491,7 +1511,6 @@ przejdz_dalej_pytanie.addEventListener('click', () => wyswietl_ekran_nagrody())
 
 const tlo_ekran_poczatkowy = document.getElementById('tlo_ekran_poczatkowy');
 const ekran_logo = document.getElementById('ekran_logo');
-const tlo_menu_glowne = document.getElementById('tlo_menu_glowne');
 
 let czy_kliknieto2 = false;
 
@@ -1899,6 +1918,7 @@ zakoncz_dialog.addEventListener('click', () => zniknij_dialog());
 function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
     zmiana_ekranu(mapa_znikajaca, mapa_pojawiajaca);
     menedzer_gry.pietro = mapa_pojawiajaca;
+    menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].pietro = mapa_pojawiajaca;
 
     //sprawdza, czy zdarzenie ma wystąpić i jakie
     if (menedzer_gry.indeks_wybranego == menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe) {
