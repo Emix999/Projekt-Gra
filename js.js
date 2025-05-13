@@ -1,4 +1,4 @@
-//Cały ten kod jest herezją, potężną herezją. Zdajemy sobie z tego sprawę. Z góry przeprawszamy każdego kto będzie musiał na niego patrzeć. :(
+//Cały ten kod jest herezją, potężną herezją. Zdajemy sobie z tego sprawę. Z góry przepraszamy każdego kto będzie musiał na niego patrzeć. :(
 
 
 
@@ -27,7 +27,6 @@ const opis_zdarzenia_nielosowego = document.getElementById('opis_zdarzenia_nielo
 const obraz_zdarzenia_nielosowego = document.getElementById('obraz_zdarzenia_nielosowego');
 const przejdz_dalej_zdarzenie_nielosowe = document.getElementById('przejdz_dalej_zdarzenie_nielosowe');
 const wylacz_zdarzenie_nielosowe = document.getElementById('wylacz_zdarzenie_nielosowe');
-//trzeba to zmienić na 3 żeby było 33%
 let szansa_zdarzenia_losowego = 2;// 1/szansa_zdarzenia_losowego to szansa na zdarzenie losowe
 
 const losowe_zdarzenia = [

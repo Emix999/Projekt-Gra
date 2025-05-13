@@ -660,7 +660,7 @@ const rok4_polski = [
   new pytanie("Kto wprowadził do języka polskiego zasady ortografii i interpunkcji w XVI wieku?", ["Jan Kochanowski", "Mikołaj Rej", "Andrzej Frycz Modrzewski", "Piotr Skarga"]),
   new pytanie("Który z autorów reprezentuje klasycyzm?", ["Ignacy Krasicki", "Juliusz Słowacki", "Stanisław Wyspiański", "Cyprian Kamil Norwid"]),
   new pytanie("Czym jest anafora?", ["Powtórzeniem tego samego wyrazu na początku kolejnych wersów", "Przeciwstawieniem", "Zestawieniem wyrazów", "Wtrąceniem komentarza"]),
-  new pytanie("Który z bohaterów literackich jest przykładem tragizmu romantycznego?", ["Konrad z „Dziadów cz. III”", "Wokulski z „Lalki”", "Rejent z „Zemsty”", "Zenon z „Granicy”"]),
+  new pytanie("Który z bohaterów literackich jest przykładem tragizmu romantycznego?", ["Werter z „Cierpień młodego wertera”", "Wokulski z „Lalki”", "Rejent z „Zemsty”", "Zenon z „Granicy”"]),
   new pytanie("Który autor pisał fraszki i treny?", ["Jan Kochanowski", "Mikołaj Rej", "Ignacy Krasicki", "Adam Mickiewicz"]),
   new pytanie("Co oznacza termin „stylizacja językowa”?", ["Celowe naśladowanie cech językowych danej epoki, środowiska lub grupy społecznej", "Tworzenie języka technicznego", "Mieszanie języków", "Unikanie archaizmów"]),
   new pytanie("Który dramat ma budowę klasyczną (jedność czasu, miejsca, akcji)?", ["„Odprawa posłów greckich”", "„Dziady cz. III”", "„Wesele”", "„Nie-Boska komedia”"]),
