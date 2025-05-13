@@ -943,10 +943,12 @@ body {
     background-size: cover;
 }
 
-#bardzo_potrzebny_div{
+#obraz_zdarzenia_nielosowego{
     height: 80vh;
     width: calc(100vw - 36vh);
     background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #opis_zdarzenia_nielosowego {
