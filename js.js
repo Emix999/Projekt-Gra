@@ -76,13 +76,14 @@ const losowe_zdarzenia = [
 ];
 
 class nielosowe_zdarzenie {
-    constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana, obraz = null) {
+    constructor(nazwa, opis, runda, czy_przy_schodach, funkcja_wywołana, sciezka_dzwiekowa = null, obraz = null) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.runda = runda;
         this.czy_przy_schodach = czy_przy_schodach;
         this.funkcja = funkcja_wywołana;
         this.obraz = obraz;
+        this.dzwiek = sciezka_dzwiekowa;
     }
 }
 
@@ -93,7 +94,7 @@ const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjac
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
     'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
-], 1, false, null);
+], 1, false, null, 'przyjaciel');
 
 const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
@@ -108,14 +109,14 @@ const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
     'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że dokonali złego wyboru przy rekrutacji.',
     'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
-], 4, false, null);
+], 4, false, null, 'ZSK 1');
 
 const rywalizacja_ZSK_1_cz2 = new nielosowe_zdarzenie('Konkurs wiedzy o Polsce', [
     'Idziecie na konkurs, ubrani w strój galowy i piękne krawaty ZSŁ.',
     'Jesteście oczywiście przygotowani, przeciez pamiętaliście o konkursie i nikt musiał wam o nim przypominać w przeddzień.',
     'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą groźne spojrzenia pełne woli walki.',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
-], 8, false, null);
+], 8, false, null, 'ZSKK 1 cz2');
 
 const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu', [
     'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
@@ -127,7 +128,7 @@ const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu',
     'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
     'Oferujemy wam również nagrodę rzeczową, którą są pierogi',
     'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
-], 8, false, null);
+], 8, false, null, 'ZSK 1 cz2 wygrana');
 
 const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
     'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
@@ -139,7 +140,7 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
     'Mamy dla was nagrodę pocieszenia, którą są sinkersy',
     'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
-], 8, false, null);
+], 8, false, null, 'ZSK 1 cz2 przegrana');
 
 function konkurs(konkurs) {
     tura_wszystkich_pokaz();
@@ -175,7 +176,7 @@ const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrekto
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
     'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
-], 32, false, null);
+], 32, false, null, 'rywalizacja_ZSK_2_jesli_terapia');
 
 const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrektora', [
     'Na korytarzu podczas przerwy zostajecie zaczepieni przez dyrektora.',
@@ -188,7 +189,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
     'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, żaden temat nie jest dla was zbyt trudny.'
-], 32, false, null);
+], 32, false, null, 'rywalizacja_ZSK_2_jesli_wygrali');
 
 const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrektora', [
     'Na korytarzu podczas przerwy zostajecie zaczepieni przez dyrektora.',
@@ -201,7 +202,7 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
     'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie trochę niepewności, ale wierzycie, że może wam się udać.'
-], 32, false, null);
+], 32, false, null, 'rywalizacja_ZSK_2_jesli_przegrali');
 
 const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
@@ -210,7 +211,7 @@ const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wie
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
     'Są oni gotowi poświęcić wszystko aby, zemścić się za ostatni raz',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
-], 33, false, null);
+], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_wygrali');
 
 const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
@@ -219,7 +220,7 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
     'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
-], 33, false, null);
+], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_przegrali');
 
 const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
@@ -228,7 +229,7 @@ const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wie
     'Patrzycie z ciekawością na miejsce i waszych przeciwników.',
     'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
-], 33, false, null);
+], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_terapia');
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
@@ -242,7 +243,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zd
     'Tym razem zobaczycie jak wygląda nagroda główna, którą są pierogi.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -256,7 +257,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdar
     'Tym razem nagrodą główną dla zwycięzców są ziemniaki.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
@@ -271,7 +272,7 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_
     'Tym razem nie ma dla was nawet nagrody pocieszenia. Może w kolejnych latach ZSŁ wystawi jakichś lepszych ucziów...',
     'Wychodząc z sali konkursowej czujecie to samo okropne uczucie wstydu co kilka lat temu. Przegraliście i była to wasza wina.',
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, a wy zostaliście sami z pogardliwymi spojrzeniami waszych rówieśników.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -286,7 +287,7 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zd
     'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
     'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -299,7 +300,7 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej = new nielosowe_zdar
     'Nagordą główną dla zwycięzców są ziemniaki.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością, i wy i oni wiecie że zwycięzca był znany od samego początku.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
@@ -313,7 +314,7 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zd
     'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
     'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
     'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
-], 35, false, null);
+], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej');
 
 
 
@@ -344,7 +345,7 @@ const bufet1 = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', [
     '"Uwaga uwaga. Drodzy uczniowie z przykrością informuję, że ze względu na wyjątkowe okoliczności już jutro bufet Łącznik..."',
     'ZAMYKA SIĘ NA ZAWSZE......   :(',
     '...'
-], 13, false, null);
+], 13, false, null, 'bufet1');
 
 const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na korytarzu słyszycie plotki: <br> Słyszeliście dlaczego zamykają bufet? Podobno prezydent chce mieć jego wyśmienite jedzenie na wyłączność. <br><br> Tak nie może być!!! <br> Musimy coś z tym zrobić!', 13, true, null);
 
@@ -369,7 +370,7 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent Dudu mówi: Podziwiam waszą determinację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
     'Pytacie: Jeśli co?',
     'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
-], 14, false, null);
+], 14, false, null, 'bufet2');
 
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',
@@ -383,7 +384,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
     'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Karosławem Jaczyńskim.',
     'Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
-], 14, false, null);
+], 14, false, null, 'bufet3 zdany');
 
 const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent patrzy na was podczas rozwiązywania testu.',
@@ -404,7 +405,7 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Karosławem Jaczyńskim.',
     'Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
-], 14, false, null);
+], 14, false, null, 'bufet3 niezdany');
 
 function test_prezydenta() {
     tura_wszystkich_pokaz();
@@ -436,7 +437,7 @@ const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
     '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"',
     '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"',
     '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'
-], 25, false, () => pojdz_do_sali_017());
+], 25, false, () => pojdz_do_sali_017(), 'porwanie czosnowskiego1');
 const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
     '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"',
@@ -447,7 +448,7 @@ const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '"DO JASNEJ CHOLERY"',
     '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
     '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
-], 25, false, null);
+], 25, false, null, 'porwanie czosnowskiego2');
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
@@ -458,7 +459,7 @@ const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."',
     '"To udzielę wam potrzebnych informacji"',
     '"Przynajmniej tyle mogę zrobić w podzience za szansę pomocy"'
-], 26, false, null);
+], 26, false, null, 'porwanie czosnowskiego3');
 
 const zly_dyrektor1 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej, udało mi się Was w końcu znaleźć"',
@@ -475,7 +476,7 @@ const zly_dyrektor1 = new nielosowe_zdarzenie(null, [
     '- "Idźcie i spróbujcie odnaleźć naszego dyrektora, ja zajmę się znalezieniem brudów na tego łajdaka"',
     '- "Aż czuję, jak SAS się we mnie budzi"',
     '- "Do zobaczenia"'
-], 43, false, null);
+], 43, false, null, 'zły dyrektor1');
 const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
     '- Zły dyrektor: "HAHAHAHAHAHAHA"',
     '- "Ah kretyńscy uczniowie, i pyk koleini skreśleni z listy uczniów, i myk uwaga za bycie uczniem"',
@@ -488,7 +489,7 @@ const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
     '- "Nigdzie się przede mną nie ukryjecie"',
     '- "..."',
     '- "No chyba, że w bibliotece"'
-], 44, false, () => pojdz_do_biblioteki());
+], 44, false, () => pojdz_do_biblioteki(), 'zły dyrektor2');
 const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- Nasz dyrektor: "Yym, jakaż fascynująca lektura"',
     '- "Witajcie drodzy poszukiwacze wiedzy w tym spokojnym miejscu, czy jest coś szczególnego co Was sprowadza"',
@@ -503,7 +504,7 @@ const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- "Eh, skoro sprawy tak się mają, myślę że to idealna pora na powrót do mojego urzędu"',
     '- "I tak miał być to tylko odpoczynek"',
     '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie udana nam się obalić tego dyktatora"'
-], 44, false, null);
+], 44, false, null, 'zły dyrektor3');
 const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- Zły dyrektor: "O widzę, że wszyscy się zebraliście...idealnie"',
     '- "Idealna okazja by ogłosić wam nowy statut szkoły"',
@@ -543,8 +544,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- "A teraz idę przedyskutować kwestie 5 niezdanych lat z biologii"',
     '- Pan Czosnowski: "Eh, skoro okazało się, że NIE jesteś najgorszym uczniem biologii jakiego widziałem, myślę że możesz zdać"',
     '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze!"'
-], 45, false, null);
-//jakaś nagroda jest potrzebna
+], 45, false, null, 'zły dyrektor4');
 
 const nielosowe_zdarzenia_nie_schody = [porwanie_czosnowskiego1, porwanie_czosnowskiego3, bufet1, bufet2, rywalizacja_ZSK_1, rywalizacja_ZSK_1_cz2, rywalizacja_ZSK_2_cz2_jesli_przegrali, rywalizacja_ZSK_2_cz2_jesli_wygrali, zly_dyrektor1, zly_dyrektor2, zly_dyrektor4,rywalizacja_ZSK_2_jesli_terapia,rywalizacja_ZSK_2_jesli_wygrali, rywalizacja_ZSK_2_jesli_przegrali];
 const nielosowe_zdarzenia_schody = [bufet1b];
@@ -579,6 +579,8 @@ function pokaz_zdarzenie_nielosowe() {
         obraz_zdarzenia_nielosowego.style.backgroundImage = '';
         obraz_zdarzenia_nielosowego.style.backgroundColor = 'transparent';
     }
+    menedzer_gry.glosowka = new Audio('dźwięki/sfx/Fabuła ZSŁTale/' + menedzer_gry.zdarzenie.dzwiek + '/1.mp3');
+    menedzer_gry.glosowka.play()
 }
 
 function przewin_opis_zdarzenia_nielosowego() {
@@ -587,12 +589,18 @@ function przewin_opis_zdarzenia_nielosowego() {
     if (menedzer_gry.indeks_opisu_zdarzenia_nielosowego == menedzer_gry.zdarzenie.opis.length - 1) {
         zmiana_ekranu(przejdz_dalej_zdarzenie_nielosowe, wylacz_zdarzenie_nielosowe);
     }
+    menedzer_gry.glosowka.pause();
+    menedzer_gry.glosowka.currentTime = 0;
+    menedzer_gry.glosowka = new Audio('dźwięki/sfx/Fabuła ZSŁTale/' + menedzer_gry.zdarzenie.dzwiek + '/' + (menedzer_gry.indeks_opisu_zdarzenia_nielosowego + 1) + '.mp3');
+    menedzer_gry.glosowka.play();
 }
 
 function zniknij_zdarzenie_nielosowe() {
     tura_wszystkich_schowaj();
     zmiana_ekranu(wylacz_zdarzenie_nielosowe, przejdz_dalej_zdarzenie_nielosowe);
     znikniecie_ekranu(ekran_zdarzenia_nielosowego);
+    menedzer_gry.glosowka.pause();
+    menedzer_gry.glosowka.currentTime = 0;
     if (menedzer_gry.zdarzenie == rywalizacja_ZSK_1_cz2_wygrana) {
         for (let i of menedzer_gry.aktywni_gracze) {
             dodawanie_przedmiotu_do_ekwipunku(pierog, 1, i);
@@ -707,6 +715,7 @@ const menedzer_gry = {
     czy_konkurs2_wygrany: false,
     czy_otwarto_biblioteke: false,
     czy_rok1_byla_terapia:false,
+    glosowka: null,
     poczatek_tury: function () {
         SAS = 'Olek';
         while (SAS != 'Olek') {
