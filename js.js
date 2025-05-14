@@ -29,6 +29,7 @@ const sfx_menu = document.getElementById('audio_menu');
 const sfx_zdarzenie = document.getElementById('audio_zdarzenie');
 
 const muzyka_menu = document.getElementById('muzyka_menu');
+const muzyka_gra = document.getElementById('muzyka_gra');
 
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
@@ -554,7 +555,6 @@ function pokaz_zdarzenie() {
     zmiana_ekranu(mapa, ekran_zdarzenia);
     nazwa_zdarzenia.innerHTML = menedzer_gry.zdarzenie.nazwa;
     opis.innerHTML = menedzer_gry.zdarzenie.opis;
-    sfx_zdarzenie.play();
 }
 
 function zniknij_zdarzenie() {
@@ -1170,10 +1170,17 @@ class menu_graczy {
         this.id_avatar = id_avatar;
         this.id_avatar_prawo = id_avatar_prawo;
 
+        let losowa_liczba = Math.floor(Math.random() * nazwy.length);
+        let wylosowane_imie = nazwy[losowa_liczba];
+        document.getElementById(this.id_nazwa).value = wylosowane_imie;
+        gracze[this.id_gracza].nazwa = wylosowane_imie;
+        gracze[this.id_gracza].id_nazwy = losowa_liczba;
+
+        let rezultat = avatary[gracze[this.id_gracza].id_avatara];
+        document.getElementById(this.id_avatar).src = rezultat;
+        gracze[this.id_gracza].avatar = rezultat;
 
         document.getElementById(this.id_klasa).value = gracze[this.id_gracza].klasa.nazwa;
-        this.losowanie_nazwy();
-        this.avatar_lewo();
     }
     //Strzałka w prawo zmienia klasę na następną w tablicy
     klasa_prawo() {
@@ -1324,7 +1331,6 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
         slider_sfx2.value = glosnosc_sfx.value;
         glosnosc_sfx2.value = glosnosc_sfx.value;
 
-
         czarniejacy_ekran1.style.zIndex = 1;
         czarniejacy_ekran1.style.animationPlayState = 'running';
         setTimeout(() => start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
@@ -1334,6 +1340,9 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     znikniecie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
+    muzyka_menu.pause();
+    muzyka_menu.currentTime = 0;
+    muzyka_gra.play()
     menedzer_gry.poczatek_tury();
 }
 const menu_statystyk = document.getElementById('menu_statystyk');
@@ -1942,6 +1951,7 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
         menedzer_gry.zdarzenie = menedzer_gry.zdarzenie_nielosowe_schody;
         pokaz_zdarzenie();
         menedzer_gry.indeks_gracza_ktory_dostaje_zdarzenie_nielosowe = null;
+        sfx_zdarzenie.play();
     }
     else if (menedzer_gry.ilosc_losowych_zdarzen > 0) {
         let losowa_liczba_zdarzenie = Math.floor(Math.random() * menedzer_gry.suma_szans_zdarzen);
@@ -1956,9 +1966,11 @@ function zmien_pietro(mapa_znikajaca, mapa_pojawiajaca, zdarzenia) {
             }
         }
         pokaz_zdarzenie();
+        sfx_zdarzenie.play();
     }
-
-    sfx_schody.play();
+    else{
+        sfx_schody.play();
+    }
 }
 
 for (let przycisk of mapa_przyciski) {
