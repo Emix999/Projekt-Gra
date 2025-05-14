@@ -538,8 +538,8 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- Nasz dyrektor: "Dziękuje Wam drodzy uczniowie, dzięki Wam reszta uczniów z tej szkoły nie została skreślona z listy uczniów"',
     '- "To wielkie osiągniecie uratować całą szkołę. Gratuluje z całego serca"',
     '- Jakiś random: "Też Wam dziękuje, pomogliście nie tylko mi, ale także niejednemu uczniowi"',
-    '- "Dobrze się z Wami współpracowało partnerzy. Abyśmy byli kwita, weźcie proszę tą roziązaną kartkówkę"', //jakaś nagroda
-    '- "Wierzę, że Wam się przyda"',//35
+    '- "Dobrze się z Wami współpracowało partnerzy. Abyśmy byli kwita, proszę weźcie tę rozwiązaną kartkówkę"',
+    '- "Wierzę, że Wam się przyda"',
     '- "A teraz idę przedyskutować kwestie 5 niezdanych lat z biologii"',
     '- Pan Czosnowski: "Eh, skoro okazało się, że NIE jesteś najgorszym uczniem biologii jakiego widziałem, myślę że możesz zdać"',
     '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze!"'
@@ -630,6 +630,11 @@ function zniknij_zdarzenie_nielosowe() {
     if (menedzer_gry.zdarzenie == bufet3_zdany || menedzer_gry.zdarzenie == bufet3_niezdany) {
         for (let i of menedzer_gry.aktywni_gracze) {
             dodawanie_przedmiotu_do_ekwipunku(obiadek, 3, i);
+        }
+    }
+    if(menedzer_gry.zdarzenie == zly_dyrektor4){
+        for (let i of menedzer_gry.aktywni_gracze) {
+            dodawanie_przedmiotu_do_ekwipunku(rozwiazana_kartkowka, 1, i);
         }
     }
     if (menedzer_gry.zdarzenie == porwanie_czosnowskiego2) {
@@ -1010,7 +1015,7 @@ const menedzer_gry = {
     runda_017: function () {
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
-        for(let i of this.aktywni_gracze[this.indeks_wybranego]){
+        for(let i of this.aktywni_gracze){
             i.pietro = document.getElementById('schemat_drugi_budynek');
         }
         for (let i of sala_przyciski) {
@@ -1025,7 +1030,7 @@ const menedzer_gry = {
     runda_biblioteka: function () {
         zmiana_ekranu(this.pietro, document.getElementById('schemat_drugi_budynek'));
         this.pietro = document.getElementById('schemat_drugi_budynek');
-        for(let i of this.aktywni_gracze[this.indeks_wybranego]){
+        for(let i of this.aktywni_gracze){
             i.pietro = document.getElementById('schemat_drugi_budynek');
         }
         for (let i of sala_przyciski) {

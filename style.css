@@ -375,7 +375,7 @@ body {
     justify-content: center;
 }
 
-#ekran_statystyk {
+#statystyki {
     position: absolute;
     top: 30vh;
     left: calc(35vw - 36vh);
@@ -386,6 +386,14 @@ body {
     flex-direction: column;
     background-size: cover;
     justify-content: center;
+}
+
+#ekran_statystyk{
+    width: calc(100vw - 36vh);
+    height: 100vh;
+    background-color: transparent;
+    position: absolute;
+    display: none;
 }
 
 #mapa {
