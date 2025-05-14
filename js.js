@@ -542,7 +542,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- "Wierzę, że Wam się przyda"',//35
     '- "A teraz idę przedyskutować kwestie 5 niezdanych lat z biologii"',
     '- Pan Czosnowski: "Eh, skoro okazało się, że NIE jesteś najgorszym uczniem biologii jakiego widziałem, myślę że możesz zdać"',
-    '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze."'
+    '- Jakiś random: "JEEEST! No to w takim razie do zobaczenia koledzy. Niech wiatr Wam sprzyja i powodzenia na maturze!"'
 ], 45, false, null);
 //jakaś nagroda jest potrzebna
 
