@@ -99,7 +99,7 @@ const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjac
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
     'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
-], 1, false, url("grafiki/panel_zdarzenia_nielosowego.png"), 'przyjaciel');
+], 1, false,null, 'przyjaciel');
 
 const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
@@ -453,7 +453,7 @@ const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '"DO JASNEJ CHOLERY"',
     '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
     '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
-], 25, false, null, 'porwanie czosnowskiego2');
+], 25, false, null, 'porwanie czosnowskiego2', 'url("grafiki/sale/017.png")');
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',

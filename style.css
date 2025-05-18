@@ -955,7 +955,7 @@ body {
     height: 80vh;
     width: calc(100vw - 36vh);
     background-color: transparent;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
 }
 
