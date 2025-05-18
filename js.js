@@ -5,7 +5,7 @@
 
 //Debug czy na pewno js się wczytał niech tutaj zostanie, bo 2 razy poświęcenone 30 min na dowiedzenie się że tak naprawdę js się nie wczytał to dosyć
 //console.log("Java scrpit się wczytuje");
-let SAS = "Olek";
+let SAS = "Olek"; //OLEK MUSI BYĆ SASEM
 
 /*
 gracz aktywny to taki który bierze udział w rozgrywce
@@ -30,6 +30,10 @@ const sfx_zdarzenie = document.getElementById('audio_zdarzenie');
 
 const muzyka_menu = document.getElementById('muzyka_menu');
 const muzyka_gra = document.getElementById('muzyka_gra');
+const muzyka_pytanie = document.getElementById('muzyka_pytanie');
+const muzyka_zdarzenie = document.getElementById('muzyka_zdarzenie');
+const muzyka_matury = document.getElementById('muzyka_matury');
+const muzyka_napisy_koncowe = document.getElementById('muzyka_napisy_koncowe');
 
 const ekran_zdarzenia = document.getElementById('ekran_zdarzenia');
 const nazwa_zdarzenia = document.getElementById('nazwa_zdarzenia');
@@ -91,7 +95,7 @@ class nielosowe_zdarzenie {
 const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjaciela', [
     'Rozpoczął się pierwszy rok.',
     'Spotykasz tyle nowych twarzy, ludzi których nie znasz.',
-    'Naszczęście nie wszyscy są ci obcy.',
+    'Na szczęście nie wszyscy są ci obcy.',
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
     'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
@@ -580,7 +584,10 @@ function pokaz_zdarzenie_nielosowe() {
         obraz_zdarzenia_nielosowego.style.backgroundColor = 'transparent';
     }
     menedzer_gry.glosowka = new Audio('dźwięki/sfx/Fabuła ZSŁTale/' + menedzer_gry.zdarzenie.dzwiek + '/1.mp3');
+    menedzer_gry.glosowka.volume = slider_sfx.value / 100;
     menedzer_gry.glosowka.play()
+    muzyka_gra.pause();
+    muzyka_zdarzenie.play()
 }
 
 function przewin_opis_zdarzenia_nielosowego() {
@@ -592,6 +599,7 @@ function przewin_opis_zdarzenia_nielosowego() {
     menedzer_gry.glosowka.pause();
     menedzer_gry.glosowka.currentTime = 0;
     menedzer_gry.glosowka = new Audio('dźwięki/sfx/Fabuła ZSŁTale/' + menedzer_gry.zdarzenie.dzwiek + '/' + (menedzer_gry.indeks_opisu_zdarzenia_nielosowego + 1) + '.mp3');
+    menedzer_gry.glosowka.volume = slider_sfx.value / 100;
     menedzer_gry.glosowka.play();
 }
 
@@ -670,6 +678,9 @@ function zniknij_zdarzenie_nielosowe() {
         menedzer_gry.czy_otwarto_biblioteke = false;
     }
     menedzer_gry.zdarzenie_nielosowe=null;
+    muzyka_zdarzenie.pause();
+    muzyka_zdarzenie.currentTime = 0;
+    muzyka_gra.play();
 }
 
 przejdz_dalej_zdarzenie.addEventListener('click', () => zniknij_zdarzenie());
@@ -1014,9 +1025,11 @@ const menedzer_gry = {
         }
     },
     koniec_gry: function () {
+        muzyka_gra.pause();
+        muzyka_napisy_koncowe.play();
         zmiana_ekranu(gra, ekran_koncowy);
         napisy_koncowe.style.animationPlayState = 'running';
-        setTimeout(() => this.koniec_gry_naprawde(), 80000);
+        setTimeout(() => this.koniec_gry_naprawde(), 82000);
     },
     koniec_gry_naprawde: function () {
         zmiana_ekranu(ekran_koncowy, ekran_koncowy_naprawde);
@@ -1379,6 +1392,15 @@ const zakoncz_ture = document.getElementById('zakoncz_ture');
 const przejdz_dalej_pytanie = document.getElementById('przejdz_dalej_pytanie');
 
 function rozpocznij_pytania() {
+    if(!menedzer_gry.czy_jest_konkurs1 && !menedzer_gry.czy_jest_konkurs2 && !menedzer_gry.czy_jest_prezydent){
+        muzyka_gra.pause();
+        if(menedzer_gry.runda_egzamin){
+            muzyka_matury.play();
+        }
+        else{
+            muzyka_pytanie.play();
+        }
+    }
     zmiana_ekranu(ekran_dialogu, ekran_pytania);
     menedzer_gry.czy_poprawne_odpowiedzi = [];
     menedzer_gry.ile_jeszcze_pytan = menedzer_gry.ilosc_pytan;
@@ -1450,6 +1472,18 @@ function koniec_pytan() {
             i.style.display = 'none';
         }
         wyswietl_ekran_nagrody();
+    }
+
+    if(!menedzer_gry.czy_jest_konkurs1 && !menedzer_gry.czy_jest_konkurs2 && !menedzer_gry.czy_jest_prezydent){
+        muzyka_gra.play();
+        if(menedzer_gry.runda_egzamin){
+            muzyka_matury.pause();
+            muzyka_matury.currentTime = 0;
+        }
+        else{
+            muzyka_pytanie.pause();
+            muzyka_pytanie.currentTime = 0;
+        }
     }
 }
 

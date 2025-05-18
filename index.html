@@ -150,10 +150,10 @@
 
         <div class="ustawienia">
             <input type="number" readonly id="muzyka_glosnosc">
-            <input type="range" min="0" max="100" value="50" id="muzyka_slider">
+            <input type="range" min="0" max="100" value="10" id="muzyka_slider">
 
             <input type="number" readonly id="sfx_glosnosc">
-            <input type="range" min="0" max="100" value="50" id="sfx_slider">
+            <input type="range" min="0" max="100" value="10" id="sfx_slider">
         </div>
         <button id="start"></button>
         <button id="jak_grac"></button>
@@ -598,7 +598,7 @@
 
     <div id="ekran_koncowy_naprawde"></div>
 
-    <audio id="audio_gratulacje" class="sfx"><
+    <audio id="audio_gratulacje" class="sfx">
         <!-- <source src="dźwięki/sfx/Granulacje.mp3" type="audio/mpeg"> -->
     </audio>
     <audio id="audio_debil" class="sfx">
@@ -628,6 +628,18 @@
     </audio>
     <audio id="muzyka_gra" class="muzyka" loop>
         <source src="dźwięki/muzyka/muzyka_gra.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="muzyka_pytanie" class="muzyka" loop>
+        <source src="dźwięki/muzyka/Pytanie.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="muzyka_zdarzenie" class="muzyka" loop>
+        <source src="dźwięki/muzyka/zdarzenie.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="muzyka_matury" class="muzyka" loop>
+        <source src="dźwięki/muzyka/MEGALOVANIA.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="muzyka_napisy_koncowe" class="muzyka">
+        <source src="dźwięki/muzyka/napisy_koncowe.mp3" type="audio/mpeg">
     </audio>
 
     <script src="js_dialogi.js"></script>
