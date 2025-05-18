@@ -99,7 +99,7 @@ const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjac
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
     'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
-], 1, false, null, 'przyjaciel');
+], 1, false, url("grafiki/panel_zdarzenia_nielosowego.png"), 'przyjaciel');
 
 const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
@@ -121,7 +121,7 @@ const rywalizacja_ZSK_1_cz2 = new nielosowe_zdarzenie('Konkurs wiedzy o Polsce',
     'Jesteście oczywiście przygotowani, przeciez pamiętaliście o konkursie i nikt musiał wam o nim przypominać w przeddzień.',
     'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą groźne spojrzenia pełne woli walki.',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
-], 8, false, null, 'ZSKK 1 cz2');
+], 8, false, null, 'ZSK 1 cz2');
 
 const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu', [
     'Po napisaniu testu, czujecie się pewni siebie. Już za kilka minut dowiecie się, czy wygraliście.',
@@ -1346,6 +1346,8 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 
         czarniejacy_ekran1.style.zIndex = 1;
         czarniejacy_ekran1.style.animationPlayState = 'running';
+        muzyka_menu.pause();
+        muzyka_menu.currentTime = 0;
         setTimeout(() => start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy), 3000);
     }
 }
@@ -1353,8 +1355,6 @@ function start_gry(ekran_znikajacy, ekran_pojawiajacy) {
 function start_gry_naprawde(ekran_znikajacy, ekran_pojawiajacy) {
     znikniecie_ekranu(tlo_menu_glowne);
     zmiana_ekranu(ekran_znikajacy, ekran_pojawiajacy);
-    muzyka_menu.pause();
-    muzyka_menu.currentTime = 0;
     muzyka_gra.play()
     menedzer_gry.poczatek_tury();
 }
