@@ -99,7 +99,7 @@ const przyjaciel_dla_jednego_gracza = new nielosowe_zdarzenie('Spotkanie przyjac
     'Twój przyjaciel z podstawówki Mikołaj jest z tobą w klasie.',
     'Znacie się już od wielu lat, wiesz że będzie z tobą na dobre i na złe.',
     'Będzie on towarzyszył ci we wszystkich przygodach jakie przeżyjesz w tym nowym niesamowitym miejscu.'
-], 1, false, url("grafiki/panel_zdarzenia_nielosowego.png"), 'przyjaciel');
+], 1, false, null, 'przyjaciel');
 
 const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'W aplikacji mobidzennika czytacie wiadomość od dyrektora:',
