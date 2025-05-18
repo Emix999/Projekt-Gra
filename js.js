@@ -323,7 +323,6 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zd
 
 
 
-
 function koniec_konkursu_gwary_poznanskiej() {
     menedzer_gry.czy_jest_konkurs1 = false;
     menedzer_gry.czy_jest_konkurs2 = false;
@@ -508,7 +507,7 @@ const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- "Czy naprawdę każdy biernie patrzył jak roznosi się u nas totalitaryzm?"',
     '- "Eh, skoro sprawy tak się mają, myślę że to idealna pora na powrót do mojego urzędu"',
     '- "I tak miał być to tylko odpoczynek"',
-    '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie udana nam się obalić tego dyktatora"'
+    '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie uda nam się obalić tego dyktatora"'
 ], 44, false, null, 'zły dyrektor3');
 const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- Zły dyrektor: "O widzę, że wszyscy się zebraliście...idealnie"',
