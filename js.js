@@ -453,7 +453,7 @@ const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '"DO JASNEJ CHOLERY"',
     '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
     '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
-], 25, false, null, 'porwanie czosnowskiego2');
+], 25, false, null, 'porwanie czosnowskiego2', 'url("grafiki/sale/017.png")');
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
