@@ -87,8 +87,8 @@ class nielosowe_zdarzenie {
         this.runda = runda;
         this.czy_przy_schodach = czy_przy_schodach;
         this.funkcja = funkcja_wywołana;
-        this.obraz = obraz;
         this.dzwiek = sciezka_dzwiekowa;
+        this.obraz = obraz;
     }
 }
 
@@ -212,7 +212,7 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
 const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
-    'Patrzycie worgo i z wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',
+    'Patrzycie wrogo i z wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
     'Są oni gotowi poświęcić wszystko aby, zemścić się za ostatni raz',
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
@@ -1008,6 +1008,10 @@ const menedzer_gry = {
         }
         this.indeksy_aktywnych_egzamin.shift();
 
+        //ustala, które piętro pokazać
+        zmiana_ekranu(this.pietro, this.aktywni_gracze[this.indeks_wybranego].pietro)
+        this.pietro = this.aktywni_gracze[this.indeks_wybranego].pietro;
+
         this.wypisz_informacje_graczy();
     },
     wypisz_informacje_graczy: function () {
@@ -1575,6 +1579,7 @@ let czy_kliknieto2 = false;
 
 function pokaz_menu_startowe(ekran_znikajacy, ekran_pojawiajacy) {
     for (let i of muzyka) i.volume = 0.1;
+    for (let i of sfx) i.volume = 0.1;
     sfx_poczatek.play();
     if (!czy_kliknieto2) {
         czy_kliknieto2 = true;
@@ -2140,7 +2145,9 @@ function zaktualizuj_sanity() {
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].czy_na_terapii = true;
         menedzer_gry.aktywni_gracze[menedzer_gry.indeks_wybranego].ile_rund_temu_byl_na_terapii = 1;
         sanity.value = wartosc_sanity;
-        menedzer_gry.poczatek_tury();
+        if(ekran_pytania.style.display != 'flex'){ //naprawia jeden błąd
+            menedzer_gry.poczatek_tury();
+        }
     }
     else if (wartosc_sanity > 200) {
         wartosc_sanity = 200;

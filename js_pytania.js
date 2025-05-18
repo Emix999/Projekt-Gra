@@ -76,7 +76,7 @@ const rok3_angielski = [
   new pytanie("I’m used to ___ early.", ["getting up", "get up", "got up", "to get up"]),
   new pytanie("She prefers tea ___ coffee.", ["to", "than", "over", "more"]),
   new pytanie("This phone is too expensive, and ___, it’s out of stock.", ["moreover", "although", "however", "because"]),
-  new pytanie("They ___ the car repaired yesterday.", ["had", "have", "did", "got"])
+  new pytanie("They ___ repaired the car yesterday.", ["had", "have", "did", "got"])
 ];
 
 const rok4_angielski = [
@@ -137,7 +137,7 @@ const egzamin_angielski = [
   new pytanie("Choose the correct sentence.", ["By next year, she will have moved.", "By next year, she will moved.", "By next year, she move.", "By next year, she moving."]),
   new pytanie("Choose the correct sentence.", ["Did you finish the project?", "Do you finished the project?", "Have you finish the project?", "Are you finished the project?"]),
   new pytanie("Choose the correct sentence.", ["I was reading when you called.", "I reading when you called.", "I readed when you called.", "I was read when you called."]),
-  new pytanie("Choose the correct sentence.", ["She has written five books.", "She wrote five books.", "She writing five books.", "She has write five books."]),
+  new pytanie("Choose the correct sentence.", ["She has written five books.", "She written five books.", "She writing five books.", "She has write five books."]),
   new pytanie("Choose the correct sentence.", ["Will they be staying here?", "They staying here?", "Are they staying here?", "Will they staying here?"]),
   new pytanie("Choose the correct sentence.", ["Have you completed the form?", "Did you completes the form?", "Are you complete the form?", "Have you complete the form?"]),
   new pytanie("Choose the correct sentence.", ["He had been waiting for two hours.", "He has been waiting for two hours.", "He have been waiting for two hours.", "He been waiting for two hours."]),
@@ -423,7 +423,7 @@ const rok5_matematyka = [
   new pytanie("Wartość granicy lim(x→0) (sin x / x) to:", ["1", "0", "∞", "nie istnieje"]),
   new pytanie("Pochodna funkcji f(x) = x² to:", ["2x", "x", "x²", "1"]),
   new pytanie("Granica funkcji f(x) = 1/x dla x→∞:", ["0", "1", "∞", "nie istnieje"]),
-  new pytanie("Pole trójkąta o wierzchołkach A(0,0), B(4,0), C(0,3) wynosi:", ["6", "12", "9", "5"])
+  new pytanie("Pole trójkąta o wierzchołkach A(1,3), B(4,4), C(-1,7) wynosi:", ["7", "14", "10", "20"])
 ];
 
 const egzamin_matematyka = [
@@ -474,7 +474,7 @@ const egzamin_matematyka = [
   new pytanie("Funkcja f(x) = x³ - 3x² + 4 jest rosnąca dla:", ["x &gt; 2", "x &lt; 2", "x &lt; 0", "x &gt; 0"]),
   new pytanie("Styczna do paraboli y=x²-4x+1 w punkcie x=2 ma równanie:", ["y = 0", "y = 4x", "y = -4x", "y = 2x"]),
   new pytanie("Liczba miejsc zerowych funkcji f(x) = x³ wynosi:", ["1", "2", "3", "0"]),
-  new pytanie("Wzór skróconego mnożenia (a+b)³:", ["a³+3a²b+3ab²+b³", "a³+b³", "(a+b)(a²+b²)", "a²+b²"]),
+  new pytanie("Wzór skróconego mnożenia (a+b)³ to:", ["a³+3a²b+3ab²+b³", "a³+b³", "a³+3a²b+3ab²-b³", "a³-3a²b+3ab²+b³"]),
   new pytanie("Rozkład na czynniki x²-9 to:", ["(x-3)(x+3)", "(x+9)(x-9)", "(x-9)(x+9)", "(x-3)²"]),
   new pytanie("W trójkącie prostokątnym długości przyprostokątnych wynoszą 3 i 4. Długość przeciwprostokątnej wynosi:", ["5", "6", "7", "8"])
 ];
@@ -705,7 +705,7 @@ const egzamin_polski = [
   new pytanie("Co oznacza „analiza literacka”?", ["Badanie i interpretacja tekstów literackich.", "Opis i streszczenie książki.", "Porównanie książek.", "Podsumowanie bohaterów."]),
   new pytanie("Jaki rodzaj literacki reprezentuje „Lalka” Bolesława Prusa?", ["Powieść.", "Poemat.", "Dramat.", "Opowiadanie."]),
   new pytanie("Jakie środki stylistyczne występują w wierszu: „Miłość to woda, która płynie”?", ["Porównanie i metafora.", "Przenośnia i alegoria.", "Epitet i oksymoron.", "Metafora i hiperbola."]),
-  new pytanie("W jakiej formie gramatycznej występuje „rozmawiam”?", ["Pierwsza osoba, liczba pojedyncza, czas teraźniejszy.", "Pierwsza osoba, liczba mnoga, czas przeszły.", "Trzecia osoba, liczba mnoga, czas teraźniejszy.", "Druga osoba, liczba pojedyncza, czas przyszły."]),
+  //new pytanie("W jakiej formie gramatycznej występuje „rozmawiam”?", ["Pierwsza osoba, liczba pojedyncza, czas teraźniejszy.", "Pierwsza osoba, liczba mnoga, czas przeszły.", "Trzecia osoba, liczba mnoga, czas teraźniejszy.", "Druga osoba, liczba pojedyncza, czas przyszły."]),
   new pytanie("Jakie znaczenie ma wyraz „odwaga” w kontekście literackim?", ["Siła do stawienia czoła trudnościom.", "Brak lęku przed porażką.", "Gotowość do ryzyka.", "Utrata poczucia zagrożenia."]),
   new pytanie("Kto jest autorem „Pana Tadeusza”?", ["Adam Mickiewicz.", "Juliusz Słowacki.", "Bolesław Prus.", "Stefan Żeromski."]),
   new pytanie("Jakie cechy charakterystyczne ma gatunek literacki „epos”?", ["Długie, rozbudowane narracje o bohaterach.", "Krótkie formy, często wierszowane.", "Utwory dialogowe, bez narratora.", "Prace oparte na faktach."]),
@@ -791,7 +791,7 @@ const rok5_fizyka = [
   new pytanie("Światło jest falą:", ["elektromagnetyczną", "mechaniczną", "dźwiękową", "sprężystą"]),
   new pytanie("Zwierciadło wypukłe powoduje:", ["powstanie obrazu pozornego, pomniejszonego", "powstanie obrazu rzeczywistego", "powstanie obrazu odwróconego", "powstanie cienia"]),
   new pytanie("Soczewka skupiająca to taka, która:", ["skupia promienie światła w jednym punkcie", "rozprasza światło", "odbija światło", "tworzy cień"]),
-  new pytanie("Załamanie światła zachodzi na granicy:", ["dwóch ośrodków optycznych", "w próżni", "tylko w lustrze", "tylko w soczewkach"]),
+  new pytanie("Załamanie światła zachodzi:", ["na granicy dwóch ośrodków optycznych", "w próżni", "tylko w lustrze", "tylko w soczewkach"]),
   new pytanie("Dyfrakcja to:", ["ugięcie fali na przeszkodzie", "odbicie światła", "absorpcja światła", "wzmocnienie prądu"]),
   new pytanie("Interferencja to:", ["nakładanie się fal", "rozpraszanie dźwięku", "odbijanie światła", "załamanie dźwięku"]),
   new pytanie("Foton to:", ["kwant światła", "cząstka materii", "elektron", "neutron"]),
