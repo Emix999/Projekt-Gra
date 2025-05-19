@@ -9,7 +9,7 @@ class dialog {
 const dialogi_polski = [
     new dialog("Dobrze robaczki, zobaczymy czy wiecie kim jest bohater romantyczny"),
     new dialog("Klaso przypominam by nie oddawać mi pogryzmolonej kartki"),
-    new dialog("Wyciągamy karteczki – czas sprawdzić, kto zna 'Pana Tadeusza', a kto myśli, że to marka wódki."),
+    new dialog("Wyciągamy karteczki – czas sprawdzić, kto zna 'Pana Tadeusza', a kto myśli, że to marka alkoholu."),
     new dialog("Dziś kartkówka – bo ortografia nie wybacza, a ja też nie."),
     new dialog("Nie oczekuję arcydzieła – oczekuję, że nie obrazicie języka ojczystego."),
     new dialog("To kartkówka z wiedzy, nie z umiejętności ściągania."),
@@ -72,7 +72,6 @@ const dialogi_fizyka = [
 
 const dialogi_geografia = [
     new dialog("Wyciągamy karteczki – zobaczymy, kto umie znaleźć Polskę bez GPS-a."),
-    new dialog("Jak pomylisz kontynenty, to cię wyślę na Syberię – pieszo!"),
     new dialog("Dzisiaj kartkówka z mapy – jak nie znajdziesz Amazonki, to zostajesz w kałuży."),
     new dialog("Jeśli twoim zdaniem Afryka leży w Azji, to twoja głowa leży w błędzie."),
     new dialog("Nie pytaj o długość geograficzną, jak nie wiesz, gdzie masz wschód!"),
@@ -83,7 +82,7 @@ const dialogi_geografia = [
     new dialog("Nie, Wrocław nie leży nad morzem, choć twoja wiedza leży i kwiczy."),
     new dialog("Zamknij zeszyt, otwórz mózg – czas na kartkówkę!"),
     new dialog("Kto dziś nie zna stolic, ten nie zna siebie i swojego miejsca na świecie."),
-    new dialog("Jak napiszesz, że Mount Everest jest w Polsce, to zrobisz sobie zdjęcie z pałą w tle."),
+    new dialog("Jak napiszesz, że Mount Everest jest w Polsce, to zrobisz sobie zdjęcie z jedynką w tle."),
     new dialog("Północ, południe, wschód, zachód – a ty i tak jesteś zagubiony jak satelita w trybie offline."),
     new dialog("Kartkówka sprawdzi, kto zna kontynenty, a kto myśli, że to nowe modele telefonów.")
 ];
@@ -92,7 +91,7 @@ const dialogi_geografia = [
 
 const dialogi_angielski = [
     new dialog("Jak pomylisz ‘he’ z ‘she’, to cię wyślę na kurs podstawowy do przedszkola."),
-    new dialog("Dziś kartkówka z czasów – i nie, nie historycznych, tylko gramatycznych, ty tleniona duszo z błędem językowym!"),
+    new dialog("Dziś kartkówka z czasów – i nie, nie historycznych, tylko gramatycznych."),
     new dialog("Jeśli napiszesz ‘goed’ zamiast ‘went’, to get out, bo you are a mistake."),
     new dialog("Nie będzie pytań o słówka, tylko o twoją godność – która i tak leży między ‘bad’ a ‘terrible’."),
     new dialog("Zobaczymy, kto zna słownictwo, a kto tylko ‘yes’ i ‘no’ mówi z nadzieją, że wystarczy."),
@@ -111,17 +110,15 @@ const dialogi_angielski = [
 const dialogi_chemia = [
     new dialog("Wyciągamy karteczki – zobaczymy, kto tu ma mózg z węgla aktywnego, a kto z teflonu."),
     new dialog("Jeśli pomylisz kwas siarkowy z wodą utlenioną, to idziesz na lekcję przyrody do podstawówki."),
-    new dialog("Dziś kartkówka – i nie, nie z tablicy Mendelejewa, tylko z waszej głowy, choć pusta."),
+    new dialog("Dziś kartkówka – i nie, nie z tablicy Mendelejewa, tylko z waszej głowy."),
     new dialog("Kto powie, że H₂O to wzór na tlen, ten dostaje pałę w stanie skupienia stałym."),
     new dialog("Nie wiesz, czym jest związek jonowy? To jesteś związany tylko z porażką."),
     new dialog("Dziś sprawdzamy, kto rozumie wiązania, a kto tylko emocjonalne do telefonu."),
-    new dialog("Jeśli napiszesz, że woda to pierwiastek, to ci się wrzątek należy na głowę."),
     new dialog("Wyłącz kalkulator, włącz myślenie, bo to nie fizyka, tylko chemia – tu się myśli molekularnie."),
     new dialog("Zamknij zeszyt – czas pokazać, ile się naprawdę nie nauczyłeś."),
     new dialog("Każdy, kto zapomni jednostki, pisze równanie reakcji z dyrektorem."),
     new dialog("Jeśli myślisz, że stężenie to twoje skupienie, to jesteś w stanie rozcieńczenia umysłowego."),
-    new dialog("Nie, nie będzie kolorowania układu okresowego – dzisiaj wy kolorujecie swoje oceny."),
-    new dialog("Kto nie wie, co to reakcja zobojętniania, niech się sam zobojętni i zniknie.")
+    new dialog("Nie, nie będzie kolorowania układu okresowego – dzisiaj wy kolorujecie swoje oceny.")
 ];
 
 //dialogi z programisty
@@ -129,6 +126,8 @@ const dialogi_chemia = [
 const dialogi_programista = [
     new dialog("Proszę o tu fajny program, a nie jakaś wiocha"),
     new dialog("Dobrze, włączamy komputery, włączamy mobidziennik i XAMPP'A"),
+    new dialog("Dobrze, dzisiaj wy zrobicie strone internetową, a ja opowiem wam pewną historię o kebabie."),
+    new dialog("Siadamy i włączamy komputery. Proszę serdecznie się rozgościć."),
     new dialog("Robicie o takie coś i macie szybką 5"),
     new dialog("Nie tłumacz mi, że to działa u ciebie. Bo u mnie nie działa, a ja daję ocenę"),
     new dialog("Zadanie z bazy danych. Tak, znowu. Bo to potraficie najlepiej... nie robić"),
@@ -142,7 +141,6 @@ const dialogi_programista = [
 
 const dialogi_informatyk = [
     new dialog("Dobrze, dzisiaj kartkówka. Proszę mi nie mylić folderu z plikiem, bo osiwieję."),
-    new dialog("Pamiętajcie, że jak się nie zapisze pracy, to się nie liczy. Tak samo jak w życiu."),
     new dialog("Kto dziś nie wie co to skrót .docx, ten dostaje .txt z uwagą."),
     new dialog("Na pytanie ‘ile bajtów ma kilobajt’, proszę nie odpowiadać 'zależy'."),
     new dialog("Dzisiaj sprawdzian. Proszę nie odpalać przeglądarki – i tak nie pomoże."),
@@ -178,7 +176,6 @@ const dialogi_robotyk = [
     new dialog("Dziś przekonamy się, kto potrafi używać Arduino, a kto tylko wie, że świeci diodą."),
     new dialog("Jeśli ktoś nadal myśli, że PWM to zespół muzyczny, to... współczuję."),
     new dialog("Proszę pamiętać – robot to nie magia. Ale wasza niewiedza już trochę tak wygląda."),
-    new dialog("To nie jest trudne. Roboty rozumieją logikę… szkoda, że wy nie."),
     new dialog("Pytanie o czujniki – ciekawe, czy ktoś z was wie coś więcej niż ‘to to coś z przodu’."),
     new dialog("Tak, będą pytania o schemat połączeń. Tak, będzie śmiesznie – szczególnie jak zobaczę wasze odpowiedzi.")
 ];
@@ -193,7 +190,6 @@ const dialogi_elektronik = [
     new dialog("Będzie pytanie o diody. I nie, nie wystarczy napisać ‘świeci albo nie’."),
     new dialog("Układ szeregowy i równoległy. Ciekawe, czy ktoś rozróżni, czy znowu wszyscy podłączą wszystko do wszystkiego i nazwą to ‘innowacją’."),
     new dialog("Proszę się nie martwić – pytania są proste. Tak proste, że nawet multimetr by się za was zawstydził."),
-    new dialog("Nie pytam o wzory – pytam o zrozumienie. Ale wiem, że to i tak dla wielu zbyt abstrakcyjne."),
     new dialog("Jeśli ktoś wpisze, że amper to marka samochodu, to przysięgam, zamykam pracownię na klucz."),
     new dialog("Nie stresujcie się – nawet jak nie rozumiecie elektroniki, to zawsze możecie być testerami baterii.")
 ];
@@ -223,7 +219,6 @@ const dialogi_fotograf = [
     new dialog("Dziś sprawdzimy, kto rozumie różnicę między CMYK a RGB, a kto używa losowego profilu kolorów jak przypraw do zupy."),
     new dialog("Będzie pytanie o głębię ostrości. Mam nadzieję, że przynajmniej wasze myśli będą miały jakąkolwiek głębię."),
     new dialog("Tak, będzie coś z grafiki rastrowej i wektorowej."),
-    new dialog("Nie pytam, czym jest kompozycja – pytam, czy w ogóle próbujecie ją stosować, czy nadal centralnie twarz + 10 km pustej przestrzeni."),
     new dialog("Jeśli ktoś odpowie, że HDR to ‘coś co robi telefon jak się trzęsie ręka’, to niech już zostawi pustą kartkę."),
     new dialog("Pamiętajcie – kartkówka nie będzie miała filtra. W przeciwieństwie do waszych prac.")
 ];
@@ -236,7 +231,9 @@ const dialogi_historia = [
     new dialog("Nie, nie możemy tego przesunąć na za tydzień."),
     new dialog("Dobrze, jak nikt się nie zgłasza to generator losowych liczb wybierze."),
     new dialog("Czy możemy proszę nie dyskutować o tym przez 10 minut."),
-    new dialog("Przecież sprawdzian był wpisany 3 tygodnie temu.")
+    new dialog("Przecież sprawdzian był wpisany 3 tygodnie temu."),
+    new dialog("Wytłumaczyć wam Dziady 3? Bóg jest Sigmą, Konrad jest betą.")
+
 ];
 
 //dialogi z informatyki

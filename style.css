@@ -129,6 +129,19 @@ body {
     margin-top: 23vmin;
 }
 
+.humorystyczne {
+    color: white;
+    font-family: 'Segoe UI';
+    text-align: center;
+    font-size: 2.5vmin;
+    width: 70vmin;
+    height: 12.3vh;
+    background-image: url('grafiki/menu_grafiki/humorystyczne.png');
+    background-size: cover;
+    position: absolute;
+    bottom: 5vh;
+}
+
 #muzyka_glosnosc,
 #muzyka_glosnosc2 {
     left: 34.5%;
@@ -955,7 +968,7 @@ body {
     height: 80vh;
     width: calc(100vw - 36vh);
     background-color: transparent;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 

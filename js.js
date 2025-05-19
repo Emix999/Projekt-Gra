@@ -11,7 +11,7 @@ let SAS = "Olek"; //OLEK MUSI BYĆ SASEM
 gracz aktywny to taki który bierze udział w rozgrywce
 gracz wybrany to taki który ma obecnie turę
 */
-
+const mapa = document.getElementById("mapa");
 //debug funkcji
 let ile_wywolan = 0;
 
@@ -323,7 +323,6 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zd
 
 
 
-
 function koniec_konkursu_gwary_poznanskiej() {
     menedzer_gry.czy_jest_konkurs1 = false;
     menedzer_gry.czy_jest_konkurs2 = false;
@@ -442,7 +441,7 @@ const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
     '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"',
     '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"',
     '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'
-], 25, false, () => pojdz_do_sali_017(), 'porwanie czosnowskiego1');
+], 25, false, () => pojdz_do_sali_017(), 'porwanie czosnowskiego1', 'url("grafiki/zsł.jpg")');
 const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '- Pan Czosnowski w piwnicy: "O, nareszcie ktoś łaskawie przyszedł na lekcje"',
     '"Nie widzieliście że jak nauczyciel gdzieś sobie pójdzie to w interesie klasy jest go odszukać, a nie na odwrót?"',
@@ -494,7 +493,7 @@ const zly_dyrektor2 = new nielosowe_zdarzenie(null, [
     '- "Nigdzie się przede mną nie ukryjecie"',
     '- "..."',
     '- "No chyba, że w bibliotece"'
-], 44, false, () => pojdz_do_biblioteki(), 'zły dyrektor2');
+], 44, false, () => pojdz_do_biblioteki(), 'zły dyrektor2', 'url("grafiki/zsł.jpg")');
 const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- Nasz dyrektor: "Yym, jakaż fascynująca lektura"',
     '- "Witajcie drodzy poszukiwacze wiedzy w tym spokojnym miejscu, czy jest coś szczególnego co Was sprowadza"',
@@ -508,7 +507,7 @@ const zly_dyrektor3 = new nielosowe_zdarzenie(null, [
     '- "Czy naprawdę każdy biernie patrzył jak roznosi się u nas totalitaryzm?"',
     '- "Eh, skoro sprawy tak się mają, myślę że to idealna pora na powrót do mojego urzędu"',
     '- "I tak miał być to tylko odpoczynek"',
-    '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie udana nam się obalić tego dyktatora"'
+    '- "Dobrze uczniowie spotkajcie się ze mną za kilka przerw, ja zbiorę nauczycieli i uczniów, wspólnie uda nam się obalić tego dyktatora"'
 ], 44, false, null, 'zły dyrektor3');
 const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- Zły dyrektor: "O widzę, że wszyscy się zebraliście...idealnie"',
@@ -1643,7 +1642,6 @@ const zdane_ogolne = document.getElementById('obecnie_zdane_ogolne');
 const zdane_maturalne = document.getElementById('obecnie_zdane_maturalne');
 
 const otwarte_menu = { statystyki: false, ustawienia: false };
-const mapa = document.getElementById("mapa");
 const ustawienia2 = document.getElementById("ustawienia2");
 const statystyki = document.getElementById('ekran_statystyk');
 
