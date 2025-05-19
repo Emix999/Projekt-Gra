@@ -179,7 +179,7 @@ const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrekto
     'Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
     'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_terapia');
 
@@ -192,7 +192,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Poprzednim razem wykazaliście się ogromną wiedzą i umiejętnościami, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, żaden temat nie jest dla was zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_wygrali');
 
@@ -205,16 +205,16 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
     'Mimo że, ostatnio nie poszło wam najlepiej to i tak macie obecnie największe doświadczenie, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie trochę niepewności, ale wierzycie, że może wam się udać.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_przegrali');
 
 const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
-    'Patrzycie wrogo i z wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',
+    'Patrzycie wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',//do nagrania
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
-    'Są oni gotowi poświęcić wszystko aby, zemścić się za ostatni raz',
+    'Są oni gotowi poświęcić wszystko aby, tym razem pokazać, że ich wiedza jest większa.',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_wygrali');
 
@@ -223,7 +223,7 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
     'Patrzycie z uniżeniem na uczniów ZSK, w końcu ostanio was pokonali.',
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
-    'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
+    'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i strachu',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_przegrali');
 
@@ -232,10 +232,10 @@ const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wie
     'Sala jest ogromna, szczególnie, że w konkursie bierze udział tylko kilka osób.',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
     'Patrzycie z ciekawością na miejsce i waszych przeciwników.',
-    'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
+    'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i strachu',//już nagrane wyżej 
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_terapia');
-
+//ocenzurować resztę
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
     'Czujecie nostaligię ogarniającą was, pamiętacię tą smutną chwilę z przed 3 lat jakby to było wczoraj.',
