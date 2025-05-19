@@ -584,9 +584,9 @@ function pokaz_zdarzenie_nielosowe() {
     }
     menedzer_gry.glosowka = new Audio('dźwięki/sfx/Fabuła ZSŁTale/' + menedzer_gry.zdarzenie.dzwiek + '/1.mp3');
     menedzer_gry.glosowka.volume = slider_sfx.value / 100;
-    menedzer_gry.glosowka.play()
+    menedzer_gry.glosowka.play();
     muzyka_gra.pause();
-    muzyka_zdarzenie.play()
+    muzyka_zdarzenie.play();
 }
 
 function przewin_opis_zdarzenia_nielosowego() {
@@ -731,7 +731,6 @@ const menedzer_gry = {
         while (SAS != 'Olek') {
             alert('Olek to nie SAS');//OLEK MUSI BYĆ SASEM!!!!!!!
         }
-        SAS = 'Skibidi';
 
         //console.log("runda egazmin:" + this.runda_egzamin);//debug
         if (this.runda_egzamin) {
