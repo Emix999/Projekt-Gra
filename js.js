@@ -179,7 +179,7 @@ const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrekto
     'Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
     'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
+    'Wierzę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_terapia');
 
@@ -192,7 +192,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Poprzednim razem wykazaliście się ogromną wiedzą i umiejętnościami, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
+    'Wierzę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, żaden temat nie jest dla was zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_wygrali');
 
@@ -205,7 +205,7 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
     'Mimo że, ostatnio nie poszło wam najlepiej to i tak macie obecnie największe doświadczenie, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych z ZSK. :)',//do nagrania
+    'Wierzę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych nerdów bez życia. :)',
     'Wymieniacie między sobą spojrzenia, czujecie trochę niepewności, ale wierzycie, że może wam się udać.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_przegrali');
 
