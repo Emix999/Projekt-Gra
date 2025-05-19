@@ -107,19 +107,19 @@ const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'Będzie on dotyczył wiedzy na temat Polski i zwyczajów jej obywateli.',
     'Poszukujemy drużyn 2-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
     'Niech zgłaszają się tylko osoby z najlepszą wiedzą na ten temat.',
-    'Musimy pokazać tym nieukom z ZSK, że jesteśmy lepsi.',
+    'Musimy pokazać tym z ZSK, że jesteśmy lepsi.',//do nagrania
     'Wygrany może być tylko jeden...',
     '...i będzie nim nasza złota szkoła!',
     'Wymieniacie między sobą porozumiewawcze spojrzenia.',
     'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
-    'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że dokonali złego wyboru przy rekrutacji.',
+    'Musicie się zgłosić do tego konkursu i pokazać kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że mogli dokonać lepszego wyboru przy rekrutacji.',//do nagrania
     'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
 ], 4, false, null, 'ZSK 1');
 
 const rywalizacja_ZSK_1_cz2 = new nielosowe_zdarzenie('Konkurs wiedzy o Polsce', [
     'Idziecie na konkurs, ubrani w strój galowy i piękne krawaty ZSŁ.',
     'Jesteście oczywiście przygotowani, przeciez pamiętaliście o konkursie i nikt musiał wam o nim przypominać w przeddzień.',
-    'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą groźne spojrzenia pełne woli walki.',
+    'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą spojrzenia pełne woli zwycięstwa.',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 8, false, null, 'ZSK 1 cz2');
 
@@ -130,9 +130,9 @@ const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu',
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
     'Serdeczne Granulacje!',
-    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
+    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności i okazja na pokazanie kto ma większą wiedzę na temat polskich zwyczajów.',//do nagrania
     'Oferujemy wam również nagrodę rzeczową, którą są pierogi',
-    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najsurowsi nauczyciele.'//do nagrania
 ], 8, false, null, 'ZSK 1 cz2 wygrana');
 
 const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
@@ -142,9 +142,9 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'jest drużyna...',
     'Zespołu Szkół Komunikacji!',
     'Serdeczne Granulacje!',
-    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
+    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji i okazja na pokazanie kto ma większą wiedzę na temat polskich zwyczajów.',//do nagrania
     'Mamy dla was nagrodę pocieszenia, którą są sinkersy',
-    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasze sumienia są ciężkie. Rówieśnicy nie są zbyt chętni do nawiązywania znajomości z wami.'//do nagrania
 ], 8, false, null, 'ZSK 1 cz2 przegrana');
 
 function konkurs(konkurs) {
@@ -179,7 +179,7 @@ const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrekto
     'Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
     'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_terapia');
 
@@ -192,7 +192,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Poprzednim razem wykazaliście się ogromną wiedzą i umiejętnościami, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, żaden temat nie jest dla was zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_wygrali');
 
@@ -205,16 +205,16 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
     'Mimo że, ostatnio nie poszło wam najlepiej to i tak macie obecnie największe doświadczenie, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych nerdów bez życia. :)',
+    'Wieżę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych z ZSK. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie trochę niepewności, ale wierzycie, że może wam się udać.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_przegrali');
 
 const rywalizacja_ZSK_2_cz2_jesli_wygrali = new nielosowe_zdarzenie('Konkurs wiedzy o gwarze poznańskiej', [
     'Wchodzicie do tej samej co ostatnio sali konkursowej, ubrani oczywiście w krawaty ZSŁ',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
-    'Patrzycie wrogo i z wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',
+    'Patrzycie wyższością na uczniów ZSK, w końcu wygraliście poprzedni konkurs',//do nagrania
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
-    'Są oni gotowi poświęcić wszystko aby, zemścić się za ostatni raz',
+    'Są oni gotowi poświęcić wszystko aby, tym razem pokazać, że ich wiedza jest większa.',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_wygrali');
 
@@ -223,7 +223,7 @@ const rywalizacja_ZSK_2_cz2_jesli_przegrali = new nielosowe_zdarzenie('Konkurs w
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
     'Patrzycie z uniżeniem na uczniów ZSK, w końcu ostanio was pokonali.',
     'Poznajecie, że są to te same osoby, które widzieliście tutaj poprzednim razem.',
-    'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
+    'Są oni gotowi poświęcić wiele, aby pokonać was ponownie. Ich spojrzenie wywołuje u was dreszcz stresu i strachu',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_przegrali');
 
@@ -232,10 +232,10 @@ const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wie
     'Sala jest ogromna, szczególnie, że w konkursie bierze udział tylko kilka osób.',
     'Gotowi jak nigdy wcześniej (wczoraj każdy z was poświęcił przynajmniej 180 sekund na przygotowanie).',
     'Patrzycie z ciekawością na miejsce i waszych przeciwników.',
-    'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i przerażenia',
+    'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i strachu',//już nagrane wyżej 
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_terapia');
-
+//ocenzurować resztę
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
     'Czujecie nostaligię ogarniającą was, pamiętacię tą smutną chwilę z przed 3 lat jakby to było wczoraj.',
