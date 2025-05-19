@@ -9,7 +9,7 @@ class dialog {
 const dialogi_polski = [
     new dialog("Dobrze robaczki, zobaczymy czy wiecie kim jest bohater romantyczny"),
     new dialog("Klaso przypominam by nie oddawać mi pogryzmolonej kartki"),
-    new dialog("Wyciągamy karteczki – czas sprawdzić, kto zna 'Pana Tadeusza', a kto myśli, że to marka wódki."),
+    new dialog("Wyciągamy karteczki – czas sprawdzić, kto zna 'Pana Tadeusza', a kto myśli, że to marka alkoholu."),
     new dialog("Dziś kartkówka – bo ortografia nie wybacza, a ja też nie."),
     new dialog("Nie oczekuję arcydzieła – oczekuję, że nie obrazicie języka ojczystego."),
     new dialog("To kartkówka z wiedzy, nie z umiejętności ściągania."),
@@ -72,7 +72,6 @@ const dialogi_fizyka = [
 
 const dialogi_geografia = [
     new dialog("Wyciągamy karteczki – zobaczymy, kto umie znaleźć Polskę bez GPS-a."),
-    new dialog("Jak pomylisz kontynenty, to cię wyślę na Syberię – pieszo!"),
     new dialog("Dzisiaj kartkówka z mapy – jak nie znajdziesz Amazonki, to zostajesz w kałuży."),
     new dialog("Jeśli twoim zdaniem Afryka leży w Azji, to twoja głowa leży w błędzie."),
     new dialog("Nie pytaj o długość geograficzną, jak nie wiesz, gdzie masz wschód!"),
@@ -83,7 +82,7 @@ const dialogi_geografia = [
     new dialog("Nie, Wrocław nie leży nad morzem, choć twoja wiedza leży i kwiczy."),
     new dialog("Zamknij zeszyt, otwórz mózg – czas na kartkówkę!"),
     new dialog("Kto dziś nie zna stolic, ten nie zna siebie i swojego miejsca na świecie."),
-    new dialog("Jak napiszesz, że Mount Everest jest w Polsce, to zrobisz sobie zdjęcie z pałą w tle."),
+    new dialog("Jak napiszesz, że Mount Everest jest w Polsce, to zrobisz sobie zdjęcie z jedynką w tle."),
     new dialog("Północ, południe, wschód, zachód – a ty i tak jesteś zagubiony jak satelita w trybie offline."),
     new dialog("Kartkówka sprawdzi, kto zna kontynenty, a kto myśli, że to nowe modele telefonów.")
 ];
@@ -92,7 +91,7 @@ const dialogi_geografia = [
 
 const dialogi_angielski = [
     new dialog("Jak pomylisz ‘he’ z ‘she’, to cię wyślę na kurs podstawowy do przedszkola."),
-    new dialog("Dziś kartkówka z czasów – i nie, nie historycznych, tylko gramatycznych, ty tleniona duszo z błędem językowym!"),
+    new dialog("Dziś kartkówka z czasów – i nie, nie historycznych, tylko gramatycznych."),
     new dialog("Jeśli napiszesz ‘goed’ zamiast ‘went’, to get out, bo you are a mistake."),
     new dialog("Nie będzie pytań o słówka, tylko o twoją godność – która i tak leży między ‘bad’ a ‘terrible’."),
     new dialog("Zobaczymy, kto zna słownictwo, a kto tylko ‘yes’ i ‘no’ mówi z nadzieją, że wystarczy."),
