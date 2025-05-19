@@ -13,6 +13,7 @@ const dialogi_polski = [
     new dialog("Dziś kartkówka – bo ortografia nie wybacza, a ja też nie."),
     new dialog("Nie oczekuję arcydzieła – oczekuję, że nie obrazicie języka ojczystego."),
     new dialog("To kartkówka z wiedzy, nie z umiejętności ściągania."),
+    new dialog("Przepraszam was na chwilę moje robaczki, jak nie napiję się kawy to głowa mi eksploduje i będziecie świadkami kresu polonistki."),
     new dialog("Nie, nie będzie z lektury, którą czytaliście w streszczeniu – będzie z tej, której nawet nie otworzyliście.")
 ];
 

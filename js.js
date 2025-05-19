@@ -107,19 +107,19 @@ const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'Będzie on dotyczył wiedzy na temat Polski i zwyczajów jej obywateli.',
     'Poszukujemy drużyn 2-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
     'Niech zgłaszają się tylko osoby z najlepszą wiedzą na ten temat.',
-    'Musimy pokazać tym nieukom z ZSK, że jesteśmy lepsi.',
+    'Musimy pokazać tym z ZSK, że jesteśmy lepsi.',//do nagrania
     'Wygrany może być tylko jeden...',
     '...i będzie nim nasza złota szkoła!',
     'Wymieniacie między sobą porozumiewawcze spojrzenia.',
     'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
-    'Musicie się zgłosić do tego konkursu i pokazać tym puplikom w mundurkach kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że dokonali złego wyboru przy rekrutacji.',
+    'Musicie się zgłosić do tego konkursu i pokazać kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że mogli dokonać lepszego wyboru przy rekrutacji.',//do nagrania
     'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
 ], 4, false, null, 'ZSK 1');
 
 const rywalizacja_ZSK_1_cz2 = new nielosowe_zdarzenie('Konkurs wiedzy o Polsce', [
     'Idziecie na konkurs, ubrani w strój galowy i piękne krawaty ZSŁ.',
     'Jesteście oczywiście przygotowani, przeciez pamiętaliście o konkursie i nikt musiał wam o nim przypominać w przeddzień.',
-    'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą groźne spojrzenia pełne woli walki.',
+    'Spotkacie się z drużyną ZSK, która również przybyła na konkurs, wymieniając miedzy sobą spojrzenia pełne woli zwycięstwa.',//do nagrania
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 8, false, null, 'ZSK 1 cz2');
 
@@ -130,9 +130,9 @@ const rywalizacja_ZSK_1_cz2_wygrana = new nielosowe_zdarzenie('Koniec konkursu',
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
     'Serdeczne Granulacje!',
-    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności, a także wstyd i chańba dla Zespołu Szkół Komunikacji i jej drużyny.',
+    'Waszą nagrodą jest chwała dla Zespołu Szkół Łączności i okazja na pokazanie kto ma większą wiedzę na temat polskich zwyczajów.',//do nagrania
     'Oferujemy wam również nagrodę rzeczową, którą są pierogi',
-    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najbardziej znienawidzeni nauczyciele.'
+    'Po powrocie do szkoły, jesteście witani jak bohaterowie. Wasza chwała nie mine nigdy. Gratulują wam nawet najsurowsi nauczyciele.'//do nagrania
 ], 8, false, null, 'ZSK 1 cz2 wygrana');
 
 const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu', [
@@ -142,9 +142,9 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'jest drużyna...',
     'Zespołu Szkół Komunikacji!',
     'Serdeczne Granulacje!',
-    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji, a także wstyd i chańba dla Zespołu Szkół Łączności i jej drużyny.',
+    'Nagrodą jest chwała dla Zespołu Szkół Komunikacji i okazja na pokazanie kto ma większą wiedzę na temat polskich zwyczajów.',//do nagrania
     'Mamy dla was nagrodę pocieszenia, którą są sinkersy',
-    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasza hańba nie mine nigdy. Nauczyciele patrzą się na was z politowaniem, a inni uczniowie nie są chętni do nawiązywania rozmów.'
+    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasze sumienia są ciężkie. Rówieśnicy nie są zbyt chętni do nawiązywania znajomości z wami.'//do nagrania
 ], 8, false, null, 'ZSK 1 cz2 przegrana');
 
 function konkurs(konkurs) {
