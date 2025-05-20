@@ -144,7 +144,7 @@ const rywalizacja_ZSK_1_cz2_przegrana = new nielosowe_zdarzenie('Koniec konkursu
     'Serdeczne Granulacje!',
     'Nagrodą jest chwała dla Zespołu Szkół Komunikacji i okazja na pokazanie kto ma większą wiedzę na temat polskich zwyczajów.',//do nagrania
     'Mamy dla was nagrodę pocieszenia, którą są sinkersy',
-    'Po powrocie do szkoły, jesteście witani jako przegrani, widzicie, że dyrektor nie jest z was zadowolony. Wasze sumienia są ciężkie. Rówieśnicy nie są zbyt chętni do nawiązywania znajomości z wami.'//do nagrania
+    'Po powrocie do szkoły, jesteście witani jako przegrani. Porażka jest dla was jednym z najsmutniejszy momentów. Rówieśnicy nie są zbyt chętni do nawiązywania z wami znajomości.'//do nagrania
 ], 8, false, null, 'ZSK 1 cz2 przegrana');
 
 function konkurs(konkurs) {
@@ -179,7 +179,7 @@ const rywalizacja_ZSK_2_jesli_terapia = new nielosowe_zdarzenie('Prośba dyrekto
     'Dlatego musicie pomóc naszej szkole wygrać tą rywalizację, potrzebujemy chętnych.',
     'Dyrektor zwraca się do was: Słyszałem, że jesteście sprytni, co powiecie na wzięcie udziału?',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wierzę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wierzę, iż dla takich geniuszy jak wy wygranie nie będzie żadnym problemem.',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, po pochwałach od dyrektora żaden temat nie wydaje się zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_terapia');
 
@@ -192,7 +192,7 @@ const rywalizacja_ZSK_2_jesli_wygrali = new nielosowe_zdarzenie('Prośba dyrekto
     'Poprzednim razem wykazaliście się ogromną wiedzą i umiejętnościami, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wierzę, iż tacy geniusze jak wy poradzą sobie z wgnieceniem w Ziemię tych nerdów bez życia. :)',
+    'Wierzę, iż dla takich geniuszy jak wy wygranie nie będzie żadnym problemem.',//powtórka z wyżej
     'Wymieniacie między sobą spojrzenia, czujecie się pewni siebie, żaden temat nie jest dla was zbyt trudny.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_wygrali');
 
@@ -205,7 +205,7 @@ const rywalizacja_ZSK_2_jesli_przegrali = new nielosowe_zdarzenie('Prośba dyrek
     'Mimo że, ostatnio nie poszło wam najlepiej to i tak macie obecnie największe doświadczenie, oprócz tego wasza pomoc dla tej szkoły jest nieoceniona.',
     'Dlatego to właśnie wy musicie pomóc naszej szkole wygrać tą rywalizację',
     'Można powiedzieć, że trochę zapomniałem o tym wydarzeniu, dlatego przygotujcie się proszę na jutro.',
-    'Wierzę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać i wgnieść w Ziemię tych nerdów bez życia. :)',
+    'Wierzę, iż wasza wiedza uzupełniona determinacją pozwoli wam wygrać bez najmniejszego problemu. :)',//do nagrania
     'Wymieniacie między sobą spojrzenia, czujecie trochę niepewności, ale wierzycie, że może wam się udać.'
 ], 32, false, null, 'rywalizacja_ZSK_2_jesli_przegrali');
 
@@ -235,7 +235,7 @@ const rywalizacja_ZSK_2_cz2_jesli_terapia = new nielosowe_zdarzenie('Konkurs wie
     'Są oni gotowi poświęcić wiele, aby was pokonać. Ich spojrzenie wywołuje u was dreszcz stresu i strachu',//już nagrane wyżej 
     'Siadacie i słyszycie głos prowadzącego: Niech test się rozpocznie!'
 ], 33, false, null, 'rywalizacja_ZSK_2_cz2_jesli_terapia');
-//ocenzurować resztę
+
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
     'Po napisaniu testu, nie jesteście pewni czy udało wam się wygrać',
     'Czujecie nostaligię ogarniającą was, pamiętacię tą smutną chwilę z przed 3 lat jakby to było wczoraj.',
@@ -244,14 +244,14 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej = new nielosowe_zd
     'jest drużyna...',
     'Zespołu Szkół Łączności!',
     'Waszą nagrodą jest status złotej szkoły dla ZSŁ i chwała dla was.',
-    'Gratulacje! Udało wam się oczyścić hańbę otaczającą wasze imiona w związku z poprzednim konkursem wiedzy o Polsce.',
+    'Gratulacje! Udało wam się oczyścić wasze imiona z porażki sprzed kilku lat podczas konkursu wiedzy o Polsce.',//do nagrania
     'Tym razem zobaczycie jak wygląda nagroda główna, którą są pierogi.',
     'Wychodząc z sali konkursowej patrzycie na przegranych z wyższością.',
     'W szkole jesteście witani jak bohaterowie, dyrektor osobiście wam gratuluje.'
 ], 35, false, null, 'rywalizacja_ZSK_2_cz2_wygrana_jesli_przegrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
-    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych z ZSK.',//do nagrania
     'Czujecie nostaligię ogarniającą was, pamiętacię tą ekscytację, którą czuliście 3 lata temu, jakby to było wczoraj.',
     'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
@@ -273,14 +273,14 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej = new nielosowe_
     'Zespołu Szkół Komunikacji!',
     'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci pierogów.',
     'Natomiast dla drużyny przegranej: ',
-    'Po raz kolejny schańbiliście waszą szkołę i swoje dobre imie, już nigdy nie zostanie wam to zapomniane.',
-    'Tym razem nie ma dla was nawet nagrody pocieszenia. Może w kolejnych latach ZSŁ wystawi jakichś lepszych ucziów...',
+    'Po raz kolejny przegraliście, nie przynosząc sukcesu swojej szkole. Nie udało się wam poprawić po poprzedniej porażce...',//do nagrania
+    'Tym razem nie ma dla was nawet nagrody pocieszenia. Może w kolejnych latach ZSŁ wystawi uczniów z większą wiedzą...',//do nagrania
     'Wychodząc z sali konkursowej czujecie to samo okropne uczucie wstydu co kilka lat temu. Przegraliście i była to wasza wina.',
-    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, a wy zostaliście sami z pogardliwymi spojrzeniami waszych rówieśników.'
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony.'//do nagrania
 ], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_przegrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
-    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych z ZSK.',//już wyżej nagrane
     'Czujecie nostaligię ogarniającą was, pamiętacię tą ekscytację, którą czuliście 3 lata temu, jakby to było wczoraj.',
     'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
@@ -288,14 +288,14 @@ const rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej = new nielosowe_zd
     'Zespołu Szkół Komunikacji!',
     'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci pierogów.',
     'Natomiast dla drużyny przegranej: ',
-    'Schańbiliście waszą szkołę i swoje dobre imie, przegrana jest równa hańbie.',
+    //tutaj była linijka ale podczas cenzurowania ją wywaliłem 
     'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
     'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
-    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony.'//to samo co wyżej
 ], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_wygrali_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
-    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych z ZSK.',//już wyżej nagrane
     'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
@@ -308,20 +308,20 @@ const rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej = new nielosowe_zdar
 ], 35, false, null, 'rywalizacja_ZSK_2_cz2_wygrana_jesli_terapia_wczesniej');
 
 const rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej = new nielosowe_zdarzenie('Koniec konkursu o gwarze poznańskiej', [
-    'Po napisaniu testu, jesteście pewni że pokonaliście tych przegrywów z ZSK.',
+    'Po napisaniu testu, jesteście pewni że pokonaliście tych z ZSK.',//już wyżej nagrane
     'W końcu prowadzący odchrząkuje i mówi:',
     'Wygranym wielkiego konkursu wiedzy o gwarze poznańskiej',
     'jest drużyna...',
     'Zespołu Szkół Komunikacji!',
     'Nagrodą dla zwycięzców jest chwała dla ich szkoły i nagroda w postaci pierogów.',
     'Natomiast dla drużyny przegranej: ',
-    'Schańbiliście waszą szkołę i swoje dobre imie, przegrana jest równa hańbie.',
+    //tutaj była linijka ale podczas cenzurowania ją wywaliłem 
     'Mamy dla was nagrodę pocieszenia, może ona ukoi choć trochę waszą rozpacz. Oto wyśmienita herbata rooibos.',
     'Wychodząc z sali konkursowej czujecie się zdruzgotani. Przegraliście i była to wasza wina. Długo sobie tego nie wybaczycie.',
-    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony, dyrektor się na was zawiódł.'
+    'Po powrocie do szkoły, nikt na was nie czeka, każdy wie już, że ZSK wygrało. Status złotej szkoły został utracony.'//to samo co wyżej
 ], 35, false, null, 'rywalizacja_ZSK_2_cz2_przegrana_jesli_terapia_wczesniej');
 
-
+//tutaj skończyłem cenzurować
 
 function koniec_konkursu_gwary_poznanskiej() {
     menedzer_gry.czy_jest_konkurs1 = false;
