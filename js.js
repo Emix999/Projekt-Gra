@@ -107,12 +107,12 @@ const rywalizacja_ZSK_1 = new nielosowe_zdarzenie('Wiadomość od dyrektora', [
     'Będzie on dotyczył wiedzy na temat Polski i zwyczajów jej obywateli.',
     'Poszukujemy drużyn 2-4 osobowych chętnych do wzięcia udziału w tym wydarzeniu.',
     'Niech zgłaszają się tylko osoby z najlepszą wiedzą na ten temat.',
-    'Musimy pokazać tym z ZSK, że jesteśmy lepsi.',//do nagrania
+    'Musimy pokazać tym z ZSK, że jesteśmy lepsi.',
     'Wygrany może być tylko jeden...',
     '...i będzie nim nasza złota szkoła!',
     'Wymieniacie między sobą porozumiewawcze spojrzenia.',
     'W końcu dochodzicie do wniosku, że nie możecie tego przegapić.',
-    'Musicie się zgłosić do tego konkursu i pokazać kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że mogli dokonać lepszego wyboru przy rekrutacji.',//do nagrania
+    'Musicie się zgłosić do tego konkursu i pokazać kto jest mądrzejszy, w końcu wielu waszych kolegów poszło do tej szkoły, więc trzeba im pokazać, że przy rekrutacji mogli dokonać lepszego wyboru.',//do nagrania
     'Nie myśląc więcej i odpowiadacie na wiadomość, zapisując się na konkurs.'
 ], 4, false, null, 'ZSK 1');
 
@@ -393,7 +393,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
 const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent patrzy na was podczas rozwiązywania testu.',
     'Jego twarz wyraża zdziwienie, zmieszanie i politowanie.',
-    'Prezydent Kaziu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',//do nagrania
+    'Prezydent Kaziu mówi pod nosem: Te odpowiedzi są gorsze niż rapsy Dudy...',//do nagrania
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, szczególnie po usłyszeniu tej reakcji jesteście jeszcze bardziej zestresowani.',
     'Na wasze szczęście stojący nieopodal nerd postanawia się odezwać:',
     'Mówi on: Umm actually, ja znam poprawną odpowiedź na pierwsze pytanie.',
