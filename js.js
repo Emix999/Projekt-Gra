@@ -355,8 +355,8 @@ const bufet1b = new nielosowe_zdarzenie('Zamknięcie Bufetu Łącznik', 'Na kory
 
 const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Idąc korytarzem zauważacie, że wszyscy uczniowie są w szoku.',
-    'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Adriana Dudu. Eskortują go do Bufetu Łącznik.',
-    'Przez tłum uczniów dostrzegacie, że prezydent Dudu wchodzi do bufetu i zjada wyśmienity obiadek.',
+    'Wasza uwaga zostaje skierowana na agentów specjalnych, którzy otaczają prezydenta Kazimierza Wielkiego. Eskortują go do Bufetu Łącznik.',//do nagrania
+    'Przez tłum uczniów dostrzegacie, że prezydent Kazimierz wchodzi do bufetu i zjada wyśmienity obiadek.',//do nagrania
     'Pojawia się wiele robotników.',
     'Wynoszą oni cały sprzęt bufetu, jedzenie, napoje, stoły, krzesła i pracowników.',
     'Wszystko zostaje zamknięte w kontenerach gotowych do wywiezienia.',
@@ -369,23 +369,23 @@ const bufet2 = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Niech żyje bufet Łącznik! Odzyskamy bufet Łącznik!',
     'Prawie cała szkoła zbiera się przed prezydentem. Wasza grupa wychodzi na czoło.',
     'Tłum krzyczy: Nie pozwolimy na zabranie naszego najsmaczniejszego we wszechświecie jedzenia! Prezydencie, musi pan pozwolić nam je zachować!',
-    'Prezydent Dudu odpowiada: A co mi zrobicie jak nie?',
+    'Prezydent Kaziu odpowiada: A co mi zrobicie jak nie?',//do nagrania
     'Tłum odpowiada: Nie wiemy, ale na pewno nie pozwolimy na zabranie bufetu!',
-    'Prezydent Dudu mówi: Podziwiam waszą determinację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',
+    'Prezydent Kaziu mówi: Podziwiam waszą determinację i odwagę, myślę że możemy się jakoś dogadać, jeśli...',//do nagrania
     'Pytacie: Jeśli co?',
-    'Prezydent Dudu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'
+    'Prezydent Kaziu mówi: Jeśli po pierwsze, będę mógł się tutaj codziennie stołować, a po drugie poprawnie rozwiążecie ten test.'//do nagrania
 ], 14, false, null, 'bufet2');
 
 const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
-    'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',
+    'Rozwiązując test, czujecie jakbyście byli na egzaminie, ale pytania same w sobie nie stanowią większego problemu.',//do nagrania
     'W końcu po kilku wyczerpujących minutach myślenia, oddajecie test prezydentowi.',
     'Prezydent przypatruje się waszym odpowiedziom z zdziwieniem.',
-    'Prezydent Dudu mówi: No, macie szczęście, udało się wam zdać ten test!',
-    ' Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
+    'Prezydent Kaziu mówi: No, macie szczęście, udało się wam zdać ten test!',//do nagrania
+    'Dobrze wiedzieć że dzisiejsza młodzież nie jest tylko wpatrzona w te tiktaki i istagramy, ale ma też coś w głowie.',
     'Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Każdy z was dostanie po trzy obiadki ze stołówki.',
-    'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Karosławem Jaczyńskim.',
+    'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Władysławem Łokietkiem.',//do nagrania
     'Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, null, 'bufet3 zdany');
@@ -393,7 +393,7 @@ const bufet3_zdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu',
 const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dudu', [
     'Prezydent patrzy na was podczas rozwiązywania testu.',
     'Jego twarz wyraża zdziwienie, zmieszanie i politowanie.',
-    'Prezydent Dudu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',
+    'Prezydent Kaziu mówi pod nosem: Te odpowiedzi są gorsze niż moje rapowanie...',//do nagrania
     'Rozwiązując test, czujecie jakbyście byli na egzaminie, szczególnie po usłyszeniu tej reakcji jesteście jeszcze bardziej zestresowani.',
     'Na wasze szczęście stojący nieopodal nerd postanawia się odezwać:',
     'Mówi on: Umm actually, ja znam poprawną odpowiedź na pierwsze pytanie.',
@@ -401,12 +401,12 @@ const bufet3_niezdany = new nielosowe_zdarzenie('Przyjazd Prezydenta Adriana Dud
     'Ja w sumie to znam odpowiedź na wszystkie pytania wy nieuki! Dajcie mi to.',
     'Nerd wyrywa wam z rąk test i zaczyna go rozwiązywać.',
     'Po chwili oddaje go prezydentowi i mówi: w przeciwieństwie do tych nieuków ja wiem co nie co o Polsce.',
-    'Prezydent Dudu mówi: Dobrze wiedzieć że nie cała dzisiejsza młodzież jest wpatrzona w te tiktaki i instagramy, ale chociaż jej część ma też coś w głowie.',
+    'Prezydent Kaziu mówi: Dobrze wiedzieć że nie cała dzisiejsza młodzież jest wpatrzona w te tiktaki i instagramy, ale chociaż jej część ma też coś w głowie.',//do nagrania
     'No, macie szczęście mimo problemów udało wam się zdać z pomocą kolegi nerda!',
     'Zgodnie z umową oddam wam bufet Łącznik, ale będę mógł się tutaj codziennie stołować.',
     'Miło mi było was poznać i zjeść tak wybitny posiłek, w zamian za to, że pokazaliście tak dużą determinację i uratowaliście bufet myślę że zasłużyliście na nagrodę.',
     'Każdy z was dostanie po trzy obiadki ze stołówki.',
-    'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Karosławem Jaczyńskim.',
+    'A teraz do widzenia, muszę wracać do Warszawy mam umówione spotkanie z Władysławem Łokietkiem.',// już nagrane
     'Do zobaczenia w bufecie Łącznik!',
     'Na korytarzach widać wszechobecną radość z powodu uratowania bufetu. Nawet nastrój nauczycieli się poprawił.'
 ], 14, false, null, 'bufet3 niezdany');
@@ -436,9 +436,9 @@ const porwanie_czosnowskiego1 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej, na wstępie mam do was pytanie"',
     '"Zdajecie z biologii nie tak jak cała reszta z tej szkoły?"',
     '"OCH JAK DOBRZE! To znaczy, że będziecie mogli mi pomóc"',
-    '"Otóż widzicie...Pan Czosnowski zaginął"',
+    '"Otóż widzicie...Pan Czosnowski zaginął"',//do nagrania
     '"No i jest to problem biorąc pod uwagę, że każdy jest zagrożony"',
-    '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w testamencie Pana Czosnowskiego"',
+    '"Krótko mówiąc: Jesteśmy ugotowani. I właśnie dlatego potrzebujemy kogoś kto nie został spisany na straty w oczach Pana Czosnowskiego"',//do nagrania
     '"Musicie go odszukać, bo tylko dzięki temu uczniowie tej szkoły unikną skreślenia z listy uczniów"',
     '"Oficjalnie mianuje Was "Drużyną Sierpienia", a teraz idźcie ocalić ZSŁ"'
 ], 25, false, () => pojdz_do_sali_017(), 'porwanie czosnowskiego1', 'url("grafiki/zsł.jpg")');
@@ -449,15 +449,15 @@ const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
     '"A jeszcze poprawkę im pozwoliłem napisać...jakiż to ja dobry dla nich jestem, czyż nie?"',
     '"No i również nie mogę nie wspomnieć o tym jak to jako nauczyciel biologii wykonuje największą pracę by kształcić..."',
     '"...I TO JA JESTEM PORYWANY"',
-    '"DO JASNEJ CHOLERY"',
+    '"KURZA TWARZ"',//do nagrania
     '"Zatem pomóżcie mi proszę stąd wyjść, a ja zajmę się tymi wszystkimi najsłabszymi ogniwami"',
     '"Dzięki Bogu, że ratuje mnie ktoś bardziej rozgarnięty'
 ], 25, false, null, 'porwanie czosnowskiego2', 'url("grafiki/sale/017.png")');
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
-    '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 70% tej szkoły"',
-    '"Zła wiadomość - Jestem jednym z 30%..."',
+    '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 90% tej szkoły"',//do nagrania
+    '"Zła wiadomość - Jestem jednym z 10%..."',//do nagrania
     '- Pan Czosnowski z tyłu: "NIECH CIĘ RĘKA BOSKA BRONI, MATKO ŚWIĘTA COŚ TY MI TU POWYPISYWAŁ..."',
     '"No to chyba tu nasze drogi się rozchodzą...przyszła pora bym stał się pierwszym prawdziwym członkiem drużyny sierpienia"',
     '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."',
@@ -539,7 +539,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- "W ZSK tego nie uczyli"',
     'W tej chwili Pan Czosnowski przeszywa go wzrokiem i już przygotowuje swój atak',
     'Zły dyrektor ucieka',
-    '- "Wszystko by mi się udało gdyby nie przeklęta "Drużyna Sierpienia" i ten cholerny SAS!"',//30
+    '- "Wszystko by mi się udało gdyby nie przeklęta "Drużyna Sierpienia" i ten SAS!"',//30
     '- Nasz dyrektor: "Dziękuje Wam drodzy uczniowie, dzięki Wam reszta uczniów z tej szkoły nie została skreślona z listy uczniów"',
     '- "To wielkie osiągniecie uratować całą szkołę. Gratuluje z całego serca"',
     '- Jakiś random: "Też Wam dziękuje, pomogliście nie tylko mi, ale także niejednemu uczniowi"',
