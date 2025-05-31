@@ -615,7 +615,7 @@ body {
 
 .odpowiedz {
     background-color: transparent;
-    width: 26.4vw;
+    width: 25vw;
     height: 12.3vh;
     margin: 2vw;
     color: white;
@@ -732,7 +732,7 @@ body {
     position: absolute;
     top: 38.2vh;
     left: 7%;
-    width: 69.3vw;
+    width: 65vw;
     height: 45.5vh;
     background-color: transparent;
     justify-content: center;
