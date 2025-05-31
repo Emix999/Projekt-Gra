@@ -456,8 +456,8 @@ const porwanie_czosnowskiego2 = new nielosowe_zdarzenie(null, [
 const porwanie_czosnowskiego3 = new nielosowe_zdarzenie(null, [
     '- Jakiś random: "Hej to wy!"',
     '"Dzięki w imieniu wszystkich za odnalezienie Pana Czosnowskiego"',
-    '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 90% tej szkoły"',//do nagrania
-    '"Zła wiadomość - Jestem jednym z 10%..."',//do nagrania
+    '"Wszyscy już pisali poprawę, Pan Czosnowski właśnie je sprawdza, ocaliliście około 70% tej szkoły"',//do nagrania
+    '"Zła wiadomość - Jestem jednym z 30%..."',//do nagrania
     '- Pan Czosnowski z tyłu: "NIECH CIĘ RĘKA BOSKA BRONI, MATKO ŚWIĘTA COŚ TY MI TU POWYPISYWAŁ..."',
     '"No to chyba tu nasze drogi się rozchodzą...przyszła pora bym stał się pierwszym prawdziwym członkiem drużyny sierpienia"',
     '"Ale powiem Wam jedno, jeśli w szkole znowu coś się zadzieje co powinno nastąpić niedługo i czegoś się dowiem..."',
@@ -532,7 +532,7 @@ const zly_dyrektor4 = new nielosowe_zdarzenie(null, [
     '- "Ale też z prawa!"',//20
     '- Pan Czosnowski: "MYŚLAŁEŚ, ŻE JAK MNIE PORWIESZ TO ODPUSZCZĘ CI NIEZDANĄ KARTKÓWKĘ Z BIOLOGI!?"',
     '- "Oj kochany...PRZY TOBIE TO NAWET DADAM I GAROSZ WYPADAJĄ OBŁĘDNIE!"',
-    '- Zły dyrektor: "C-chwila p-p-przecież n-nikt mnie t-t-tu nie uczy"',
+    '- Zły dyrektor: "C-chwila p-p-przecież n-nikt mnie t-t-tu nie uczył"',
     '- Pan Czosnowski: "Ależ ja wiem mój drogi...WYSTARCZY MI TYLKO SPOJRZENIE BY OKREŚLIĆ CZY ZDAJESZ, ZDAŁEŚ ALBO CZY BĘDZIESZ ZDAWAŁ Z BIOLOGI"',
     '- "MATKO ŚWIĘTA! CZY TY W OGÓLE WIESZ ILE MASZ CHROMOSOMÓW"',//25
     '- Zły dyrektor: "yyy aa yyyy aaa yyy aa yyy aa yyyy aaa yy aa"',
