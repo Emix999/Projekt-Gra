@@ -883,7 +883,7 @@ const menedzer_gry = {
                         this.kolejny_rok = true;
                     }
                 }
-            } while (this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii || this.aktywni_gracze[this.indeks_wybranego].sanity <= 0);
+            } while ((this.aktywni_gracze[this.indeks_wybranego].zdana_matematyka + this.aktywni_gracze[this.indeks_wybranego].zdany_polski_i_angielski >= 2 && this.aktywni_gracze[this.indeks_wybranego].zdane_ogolne >= 2 && this.aktywni_gracze[this.indeks_wybranego].zdane_zawodowe >= 2 && !this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii && this.aktywni_gracze[this.indeks_wybranego].czy_zdaje && this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 4) || this.aktywni_gracze[this.indeks_wybranego].zdane_lata == 5 || this.aktywni_gracze[this.indeks_wybranego].czy_na_terapii || this.aktywni_gracze[this.indeks_wybranego].sanity <= 0);
 
             //ustala, które piętro pokazać
             zmiana_ekranu(this.pietro, this.aktywni_gracze[this.indeks_wybranego].pietro)
@@ -1072,6 +1072,21 @@ const menedzer_gry = {
         this.runda = 10;
         for (let i of this.aktywni_gracze) {
             i.zdane_lata = 4;
+        }
+        this.poczatek_tury();
+    },
+    //funkcja do testowania
+    test_matura2: function(){
+        this.indeks_wybranego = -1;
+        this.runda = 10;
+        for (let i of this.aktywni_gracze) {
+            i.zdane_lata = 4;
+        }
+        menedzer_gry.aktywni_gracze[0].zdana_matematyka = 2;
+        menedzer_gry.aktywni_gracze[0].zdane_ogolne = 2;
+        menedzer_gry.aktywni_gracze[0].zdane_zawodowe = 2;
+        for(let i of menedzer_gry.aktywni_gracze){
+            i.podszedl_do_egzaminu = ['a','a','a'];
         }
         this.poczatek_tury();
     },
