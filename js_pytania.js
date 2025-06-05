@@ -902,7 +902,7 @@ const rok3_programista = [
   new pytanie("W jakim języku najczęściej pisze się backend aplikacji webowej?", ["PHP", "HTML", "CSS", "XML"]),
   new pytanie("Która funkcja w PHP łączy się z bazą MySQL?", ["mysqli_connect()", "mysql_open()", "db_connect()", "sql_connect()"]),
   new pytanie("Jaka struktura danych zawiera pary klucz-wartość w PHP?", ["Tablica asocjacyjna", "Lista", "Stos", "Drzewo"]),
-  new pytanie("Jakim językiem opisujemy strukturę dokumentu HTML?", ["HTML", "CSS", "SQL", "PHP"]),
+  new pytanie("Jakim językiem opisujemy strukturę strony internetowej?", ["HTML", "CSS", "SQL", "PHP"]),
   new pytanie("Do czego służy `$_POST` w PHP?", ["Do odczytu danych z formularza", "Do zapisu plików", "Do wysyłki e-mail", "Do wczytywania arkuszy stylów"]),
   new pytanie("Które polecenie SQL wprowadza dane do tabeli?", ["INSERT", "SELECT", "DROP", "ALTER"]),
   new pytanie("Jaki znacznik zamyka paragraf w HTML?", ["&lt;/p&gt;", "&lt;/para&gt;", "&lt;/pt&gt;", "&lt;/txt&gt;"])
